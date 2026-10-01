@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "destination": "pH34r-pH/specified-development",
+  "license": "Apache-2.0",
+  "status": "draft-design-review-candidate",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "ab16cd4fb54849580879155cfa872287471889085d5165bc97077af7cf6d377d"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "README.md",
+      "sha256": "244626aa20284126d38f5ea3bab243f961860bb24fea8f935d979e15b53c7c7c"
+    },
+    {
+      "path": "build/directory-specs/plan.md",
+      "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+    },
+    {
+      "path": "build/directory-specs/tasks.md",
+      "sha256": "90f845521d980d9b52287fc6113cefb285f5385e0497aeb4a20766fd2b7aff55"
+    },
+    {
+      "path": "build/directory-specs/tests.md",
+      "sha256": "b8e8e521cf200c803eccd459c1a6de661d55ac3dd8268c1080e996fcc8a8dac6"
+    },
+    {
+      "path": "build/distribution/plan.md",
+      "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+    },
+    {
+      "path": "build/distribution/tasks.md",
+      "sha256": "2abb40d134ef95f8a7492ccda1f2f589f6698a77b9c65618937ada595adfc56f"
+    },
+    {
+      "path": "build/distribution/tests.md",
+      "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+    },
+    {
+      "path": "build/execution-contract.yaml",
+      "sha256": "ec3449d48b5710dc87e226d9f7ba9b658706c08f4c8a43d56fdfc4736d3bf4ef"
+    },
+    {
+      "path": "build/foundation/design-validation.json",
+      "sha256": "4ad389ca096ec75feadfff2411d14e38a2f38aa8fabee8a0e7057fdbda7cd44b"
+    },
+    {
+      "path": "build/foundation/handoff.md",
+      "sha256": "6a1096a19c022defafacfa9e44404dc12283b8d668809efd7734336cd6ef3fc0"
+    },
+    {
+      "path": "build/foundation/plan.md",
+      "sha256": "3d1690753ab2aecc686e9bb65c9824f2871937d9fc3b899b55fbfddebf4f5d3c"
+    },
+    {
+      "path": "build/foundation/tasks.md",
+      "sha256": "d7e96ce5dbaf1db9d4fa56e5a924a23a8b4b74c6ea06d262c574805fa3983d66"
+    },
+    {
+      "path": "build/foundation/tests.md",
+      "sha256": "5c3ee9629d2a14cf0c1eb695f6ee87030b246f2485af2793693fb5e763e7a8b7"
+    },
+    {
+      "path": "build/native-bindings.json",
+      "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
+    },
+    {
+      "path": "spec/assets/rate-card.fixture.json",
+      "sha256": "e6e6e6db42971c8f14a577296f2d6b43f28b97f8d687da936d0e99c8c75222f6"
+    },
+    {
+      "path": "spec/contracts/authority.md",
+      "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+    },
+    {
+      "path": "spec/contracts/distribution.md",
+      "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+    },
+    {
+      "path": "spec/contracts/documents.md",
+      "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+    },
+    {
+      "path": "spec/features/directory-specs/index.md",
+      "sha256": "3ac2637e29205d920d9b3fd6e13f658ffef3b5cc7a38cf710f5e01335a632d4a"
+    },
+    {
+      "path": "spec/features/distribution/index.md",
+      "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+    },
+    {
+      "path": "spec/index.md",
+      "sha256": "043041fcc2071a7f25fbe5dde3da218a85b5a8a03edea1c7e6d9cdfb158b6f9d"
+    },
+    {
+      "path": "spec/manifest.json",
+      "sha256": "2c69c14e12b4636b1c199e8863089afe8493ac5b2c5fde8f7614f9753183f427"
+    },
+    {
+      "path": "spec/navigation.json",
+      "sha256": "fbfec669d41612c9cad616fc275968cfbc41b16b1eaf4ea512318534c0e77312"
+    },
+    {
+      "path": "spec/operations/rollout.md",
+      "sha256": "080d0b180e3bb6d2edd8072dd575ae19b39ae27f8b4523f10349be503e3b86bd"
+    },
+    {
+      "path": "spec/operations/upstream.md",
+      "sha256": "b6c49f416da521c2df5bae0c188e322424c366213cf01b8007cebeb80ed9833b"
+    },
+    {
+      "path": "spec/usage/lifecycle.md",
+      "sha256": "b527bbb338356ba26cf34459cff6f4431f7527292ebf274f24609266715a301c"
+    }
+  ],
+  "private_inputs_included": false,
+  "product_implementation_claimed": false
+}

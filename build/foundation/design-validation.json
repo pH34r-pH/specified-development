@@ -1,0 +1,33 @@
+{
+  "scope": "sanitized design integrity; product behavior and CI not implemented",
+  "result": "pass",
+  "source_documents": 9,
+  "source_assets": 1,
+  "total_leaves": 60,
+  "native_hard_edges": 93,
+  "native_execution_contracts": 1,
+  "independent_test_contract_cases": {
+    "baseline": 28,
+    "directory": 24,
+    "foundation": 6
+  },
+  "checks": [
+    "whole source inventory and navigation identities",
+    "exact frozen input hashes",
+    "qualified-to-native identity binding and source metadata correspondence",
+    "native internal and cross-feature parents; acyclic and dependency ordered",
+    "independent test trace coverage",
+    "public allowlist and private-sentinel exclusions",
+    "actual git check-ignore retained/disposable paths",
+    "negative native edge mutation rejected"
+  ],
+  "product_tests_run": false,
+  "renderer_qualification_run": false,
+  "regeneration_trials_run": false,
+  "ci_added": false,
+  "real_design_token_price_equivalent": null,
+  "missing_cost_fields": [
+    "observed token usage",
+    "applicable dated rate card"
+  ]
+}

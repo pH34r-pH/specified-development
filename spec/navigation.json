@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "label": "Overview",
+      "document": "specified-development/overview"
+    },
+    {
+      "label": "Lifecycle",
+      "document": "specified-development/lifecycle"
+    },
+    {
+      "label": "Distribution",
+      "document": "specified-development/distribution"
+    },
+    {
+      "label": "Directory specifications",
+      "document": "specified-development/directory-specs"
+    },
+    {
+      "label": "Authority",
+      "document": "specified-development/authority"
+    },
+    {
+      "label": "Documents",
+      "document": "specified-development/documents"
+    },
+    {
+      "label": "Execution and distribution",
+      "document": "specified-development/distribution-contract"
+    },
+    {
+      "label": "Upstream decision",
+      "document": "specified-development/upstream"
+    },
+    {
+      "label": "Rollout",
+      "document": "specified-development/rollout"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "synthetic-arithmetic-2026-10-01",
+  "synthetic_fixture": true,
+  "provider": "fixture",
+  "model": "fixture-fixed-model",
+  "currency": "USD",
+  "effective_date": "2026-10-01",
+  "retrieved_at": "2026-10-01",
+  "source": "contracts/distribution.md#cost-oracle",
+  "input_per_million": "2",
+  "cached_input_per_million": "0.5",
+  "output_per_million": "8",
+  "counting": "inclusive-input-and-output",
+  "actual_billing_claim": false
+}
