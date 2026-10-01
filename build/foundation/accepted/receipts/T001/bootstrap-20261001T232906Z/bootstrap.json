@@ -1,0 +1,199 @@
+{
+  "accepted_design_source": {
+    "acceptance_basis": "Parent accepted this exact revision for bounded foundation work following independent review.",
+    "commit": "25684db5281830c64b08b80ae73cf454c9f0b379",
+    "source_scope_sha256": {
+      "build/execution-contract.yaml": "d8975672d68f4454caf7323670a953c2cd9484e3640d17e0e1c5de1279c97898",
+      "build/foundation/design-validation.json": "b6aae937254f8cdb39a77f83c7c78db96d20365d1bbf39edf7963969f91356fd",
+      "build/foundation/handoff.md": "9284ce852c8279e9dd234b210c84364c7a9777552f7493cbbc57c88f485f57a3",
+      "build/foundation/plan.md": "92ae70a9cc0ff8370511b54ae866061508d44c03ed3f522335a1527418d0de3b",
+      "build/foundation/tasks.md": "e58c0aba8364f34158aa3f632c7eb0458c303d6ed3b86bc542a878d3b2f7fa0e",
+      "build/foundation/tests.md": "4189b0637d8a4d813e750a1ab76e7e111857a9d3abdf3e9d1726814eaac3dea5",
+      "build/native-bindings.json": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368",
+      "payload-inventory.json": "c4c45e03fb60c5a46f12b090e1a350a7ada839a26e8dc2e453d79a8062e80441"
+    }
+  },
+  "artifact": "foundation-bootstrap-receipt",
+  "dependent_issue_binding": {
+    "creator": "pH34r-pH",
+    "internal_id": 5670593587,
+    "marker": "<!-- spec-task:pH34r-pH/specified-development/foundation/T002 -->",
+    "native_blocked_by": [
+      {
+        "internal_id": 5670591963,
+        "number": 2
+      }
+    ],
+    "number": 3,
+    "url": "https://github.com/pH34r-pH/specified-development/issues/3"
+  },
+  "disclosure": {
+    "license": "Apache-2.0",
+    "owner_authorization": "User approved the public repository, Apache-2.0, foundation issue bindings and durable evidence writes to this repository; no access or credentials were added.",
+    "public_repository_confirmed": true
+  },
+  "frozen_t002_authoritative_inputs": [
+    {
+      "path": "README.md",
+      "sha256": "244626aa20284126d38f5ea3bab243f961860bb24fea8f935d979e15b53c7c7c"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "4b84a5015c78fe37f105132d44b3a94c664907568fa3aeb83711afd0172081ee"
+    },
+    {
+      "path": "spec/manifest.json",
+      "sha256": "2c69c14e12b4636b1c199e8863089afe8493ac5b2c5fde8f7614f9753183f427"
+    },
+    {
+      "path": "spec/navigation.json",
+      "sha256": "fbfec669d41612c9cad616fc275968cfbc41b16b1eaf4ea512318534c0e77312"
+    },
+    {
+      "path": "spec/index.md",
+      "sha256": "043041fcc2071a7f25fbe5dde3da218a85b5a8a03edea1c7e6d9cdfb158b6f9d"
+    },
+    {
+      "path": "spec/usage/lifecycle.md",
+      "sha256": "b527bbb338356ba26cf34459cff6f4431f7527292ebf274f24609266715a301c"
+    },
+    {
+      "path": "spec/features/distribution/index.md",
+      "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+    },
+    {
+      "path": "spec/features/directory-specs/index.md",
+      "sha256": "3ac2637e29205d920d9b3fd6e13f658ffef3b5cc7a38cf710f5e01335a632d4a"
+    },
+    {
+      "path": "spec/contracts/authority.md",
+      "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+    },
+    {
+      "path": "spec/contracts/documents.md",
+      "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+    },
+    {
+      "path": "spec/contracts/distribution.md",
+      "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+    },
+    {
+      "path": "spec/operations/upstream.md",
+      "sha256": "b6c49f416da521c2df5bae0c188e322424c366213cf01b8007cebeb80ed9833b"
+    },
+    {
+      "path": "spec/operations/rollout.md",
+      "sha256": "080d0b180e3bb6d2edd8072dd575ae19b39ae27f8b4523f10349be503e3b86bd"
+    },
+    {
+      "path": "spec/assets/rate-card.fixture.json",
+      "sha256": "e6e6e6db42971c8f14a577296f2d6b43f28b97f8d687da936d0e99c8c75222f6"
+    },
+    {
+      "path": "build/foundation/plan.md",
+      "sha256": "92ae70a9cc0ff8370511b54ae866061508d44c03ed3f522335a1527418d0de3b"
+    },
+    {
+      "path": "build/foundation/tests.md",
+      "sha256": "4189b0637d8a4d813e750a1ab76e7e111857a9d3abdf3e9d1726814eaac3dea5"
+    },
+    {
+      "path": "build/distribution/plan.md",
+      "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+    },
+    {
+      "path": "build/distribution/tests.md",
+      "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+    },
+    {
+      "path": "build/distribution/tasks.md",
+      "sha256": "b6c521ea087686b7d01d3c93fcc1756423954d3dda14cf0be14bd9a3a0b1549e"
+    },
+    {
+      "path": "build/directory-specs/plan.md",
+      "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+    },
+    {
+      "path": "build/directory-specs/tests.md",
+      "sha256": "b8e8e521cf200c803eccd459c1a6de661d55ac3dd8268c1080e996fcc8a8dac6"
+    },
+    {
+      "path": "build/directory-specs/tasks.md",
+      "sha256": "a466fb51d1b329e4a90925ff9d5383ca3efde47bd25d03e3e6d1c36745c31bd8"
+    },
+    {
+      "path": "build/foundation/handoff.md",
+      "sha256": "9284ce852c8279e9dd234b210c84364c7a9777552f7493cbbc57c88f485f57a3"
+    },
+    {
+      "path": "build/foundation/design-validation.json",
+      "sha256": "b6aae937254f8cdb39a77f83c7c78db96d20365d1bbf39edf7963969f91356fd"
+    },
+    {
+      "path": "build/native-bindings.json",
+      "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
+    }
+  ],
+  "issue_binding": {
+    "creator": "pH34r-pH",
+    "internal_id": 5670591963,
+    "marker": "<!-- spec-task:pH34r-pH/specified-development/foundation/T001 -->",
+    "number": 2,
+    "state": "open",
+    "url": "https://github.com/pH34r-pH/specified-development/issues/2"
+  },
+  "main_seed": {
+    "base_commit": "4148b955b09a1d20c03dbb04bdffa5cca6c797e2",
+    "files": {
+      "LICENSE": {
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "README.md": {
+        "sha256": "0db8bc6efc6cf908d8fc866f863cd63e90820f174553e6b52182ca946b8ff0b0"
+      }
+    },
+    "preserved_without_reseeding": true,
+    "tree_paths": [
+      "LICENSE",
+      "README.md"
+    ]
+  },
+  "model_and_usage": {
+    "cost": "not calculated",
+    "exact_model": "unavailable from selected runtime metadata",
+    "reasoning_effort": "unavailable",
+    "speed_tier": "unavailable",
+    "token_usage": "unavailable"
+  },
+  "receipt_retention": {
+    "operation": "initial receipt commit on the authorized evidence ref; no overwrite or force update",
+    "private_runtime_logs_included": false,
+    "ref": "refs/heads/evidence/foundation-receipts",
+    "repository": "pH34r-pH/specified-development"
+  },
+  "repository": {
+    "default_branch": "main",
+    "full_name": "pH34r-pH/specified-development",
+    "observed_actor": "pH34r-pH",
+    "observed_repository_permission": "admin",
+    "owner": "pH34r-pH",
+    "visibility": "public"
+  },
+  "schema_version": 1,
+  "task": {
+    "attempt_id": "bootstrap-20261001T232906Z",
+    "native_id": "T001",
+    "qualified_id": "pH34r-pH/specified-development/foundation/T001",
+    "receipt_path": "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json"
+  },
+  "verdict": {
+    "actor_github_login": "pH34r-pH",
+    "at_utc": "2026-10-01T23:29:06Z",
+    "basis": "Owner-authorized bootstrap verification: observed the existing public main seed, exact seed files and hashes, repository permissions, issue identity/creator, approved public-repository disclosure and Apache-2.0 license. No seed write, reset, or history rewrite was performed.",
+    "status": "accepted"
+  }
+}
