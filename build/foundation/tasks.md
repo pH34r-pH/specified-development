@@ -1,6 +1,6 @@
 ---
 artifact: executable-decomposition
-revision: 1
+revision: 2
 acceptance: candidate-review
 dispatch_status: planned-not-dispatched
 ---
@@ -11,12 +11,12 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
 
 - [ ] T001 Establish minimal empty-repository PR base
   Parents: none. Kind: bootstrap. Reasoning: mechanical. Tests: FND-001.
-  Outputs: README.md, LICENSE, build/foundation/runtime/bootstrap-receipt.json.
-  Acceptance: Observed confirmed empty repo seeded with exactly README/LICENSE once; existing main preserved; base SHA/disclosure recorded; one leaf identity bound without ready label.
+  Outputs: README.md, LICENSE, build/foundation/accepted/receipts/T001/*/bootstrap.json, build/foundation/runtime/T001/*/**.
+  Acceptance: Verify/preserve observed main seed with exactly README/LICENSE, or minimally seed only a truly empty approved target; retain actual repository/base/seed/file/permission/disclosure/issue/creator facts and actual accepted bootstrap verdict in immutable sanitized durable receipt; publication facts alone do not close the leaf; no ready label or history reset.
 - [ ] T002 Publish sanitized specification foundation as draft PR
   Parents: T001. Kind: foundation. Reasoning: bounded. Tests: FND-002, FND-003, FND-004, FND-005, FND-006.
-  Outputs: spec/**, build/distribution/plan.md, build/distribution/tests.md, build/distribution/tasks.md, build/directory-specs/plan.md, build/directory-specs/tests.md, build/directory-specs/tasks.md, build/foundation/plan.md, build/foundation/tests.md, build/foundation/tasks.md, README.md, .gitignore, tools/validate_foundation.py, tests/test_foundation.py, tests/fixtures/foundation/**, .github/workflows/foundation.yml, build/execution-contract.yaml, build/native-bindings.json, payload-inventory.json.
-  Acceptance: Allowlisted payload plus bounded validator/independent fixtures/read-only pinned-action CI committed in isolated branch; exactly one leaf issue and native seed parent, draft PR; exact-head checks pass and actual fixed gpt-6-luna receipt retained; no merge/release/deploy/consumer edit.
+  Outputs: spec/**, build/distribution/plan.md, build/distribution/tests.md, build/distribution/tasks.md, build/directory-specs/plan.md, build/directory-specs/tests.md, build/directory-specs/tasks.md, build/foundation/plan.md, build/foundation/tests.md, build/foundation/tasks.md, README.md, .gitignore, tools/validate_foundation.py, tests/test_foundation.py, tests/fixtures/foundation/**, .github/workflows/foundation.yml, build/execution-contract.yaml, build/native-bindings.json, payload-inventory.json, build/foundation/accepted/receipts/T002/*/completion.json, build/foundation/runtime/T002/*/**.
+  Acceptance: Bounded stdlib validator, independent fixtures and read-only officially pinned CI pass in isolated branch at exact accepted design inputs using only available published interfaces; one issue/native accepted T001 parent, draft PR and exact-head checks verified; sanitized durable completion receipt retains actual fixed gpt-6-luna/runtime/settings/budget/permissions/input/scope/issue/parent/PR/check evidence and authorized verdict on separate append-only evidence ref. Candidate/unbound/missing/stale gates block; no invented acceptance, merge, release, deployment or consumer change.
 
 ## Structured semantic metadata
 
@@ -120,7 +120,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": ".gitignore",
-            "sha256": "ab16cd4fb54849580879155cfa872287471889085d5165bc97077af7cf6d377d"
+            "sha256": "4b84a5015c78fe37f105132d44b3a94c664907568fa3aeb83711afd0172081ee"
           },
           {
             "path": "spec/manifest.json",
@@ -148,7 +148,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -172,11 +172,11 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/foundation/plan.md",
-            "sha256": "3d1690753ab2aecc686e9bb65c9824f2871937d9fc3b899b55fbfddebf4f5d3c"
+            "sha256": "92ae70a9cc0ff8370511b54ae866061508d44c03ed3f522335a1527418d0de3b"
           },
           {
             "path": "build/foundation/tests.md",
-            "sha256": "5c3ee9629d2a14cf0c1eb695f6ee87030b246f2485af2793693fb5e763e7a8b7"
+            "sha256": "4189b0637d8a4d813e750a1ab76e7e111857a9d3abdf3e9d1726814eaac3dea5"
           },
           {
             "path": "build/distribution/plan.md",
@@ -188,7 +188,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/distribution/tasks.md",
-            "sha256": "2abb40d134ef95f8a7492ccda1f2f589f6698a77b9c65618937ada595adfc56f"
+            "sha256": "b6c521ea087686b7d01d3c93fcc1756423954d3dda14cf0be14bd9a3a0b1549e"
           },
           {
             "path": "build/directory-specs/plan.md",
@@ -200,38 +200,74 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/directory-specs/tasks.md",
-            "sha256": "90f845521d980d9b52287fc6113cefb285f5385e0497aeb4a20766fd2b7aff55"
+            "sha256": "a466fb51d1b329e4a90925ff9d5383ca3efde47bd25d03e3e6d1c36745c31bd8"
           },
           {
             "path": "build/foundation/handoff.md",
-            "sha256": "6a1096a19c022defafacfa9e44404dc12283b8d668809efd7734336cd6ef3fc0"
+            "sha256": "9284ce852c8279e9dd234b210c84364c7a9777552f7493cbbc57c88f485f57a3"
           },
           {
             "path": "build/foundation/design-validation.json",
-            "sha256": "4ad389ca096ec75feadfff2411d14e38a2f38aa8fabee8a0e7057fdbda7cd44b"
+            "sha256": "b6aae937254f8cdb39a77f83c7c78db96d20365d1bbf39edf7963969f91356fd"
+          },
+          {
+            "path": "build/native-bindings.json",
+            "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
           }
         ],
-        "repository_baseline": "Observe confirmed public repo; bootstrap records actual base HEAD; foundation starts isolated branch at that exact HEAD",
-        "prerequisite_outputs": "Freeze actual native-parent output/oracle digests; missing/stale blocks; baseline distribution interfaces are separately frozen accepted prerequisites",
-        "native_contract": "Freeze accepted sole native-contract bytes digest and stable identity table before claim; no self-hash embedded in authoring metadata"
+        "repository_baseline": "Freeze exact accepted reviewed design commit/tree and isolated worktree; observed main seed is publication evidence only, not an accepted task verdict",
+        "prerequisite_outputs": "T001: no executable native parent. T002: only T001 accepted sanitized durable bootstrap receipt with immutable store ref/hash and native issue/parent evidence; missing/stale/unaccepted blocks. No later distribution interface prerequisite.",
+        "native_contract": "Freeze accepted sole native-contract bytes digest and stable identity table before claim; no self-hash embedded in authoring metadata",
+        "claim_time_hash_bindings": [
+          {
+            "path": "build/execution-contract.yaml",
+            "rule": "freeze exact accepted bytes digest in external claim packet; no recursive self-hash in task metadata"
+          },
+          {
+            "path": "payload-inventory.json",
+            "rule": "freeze exact accepted bytes digest in external claim packet; no recursive self-hash in task metadata"
+          },
+          {
+            "path": "build/foundation/tasks.md",
+            "rule": "freeze exact accepted bytes digest in external claim packet; no recursive self-hash in task metadata"
+          }
+        ]
       },
       "output_scope": [
         "README.md",
         "LICENSE",
-        "build/foundation/runtime/bootstrap-receipt.json"
+        "build/foundation/accepted/receipts/T001/*/bootstrap.json",
+        "build/foundation/runtime/T001/*/**"
       ],
       "read_scope": [
+        "README.md",
+        "LICENSE",
+        ".gitignore",
         "spec/**",
         "build/foundation/**",
-        "tests/fixtures/**",
-        "locked tool/dependency sources",
-        "declared native-parent outputs"
+        "build/distribution/plan.md",
+        "build/distribution/tests.md",
+        "build/distribution/tasks.md",
+        "build/directory-specs/plan.md",
+        "build/directory-specs/tests.md",
+        "build/directory-specs/tasks.md",
+        "build/execution-contract.yaml",
+        "build/native-bindings.json",
+        "payload-inventory.json",
+        "tools/validate_foundation.py",
+        "tests/test_foundation.py",
+        "tests/fixtures/foundation/**",
+        ".github/workflows/foundation.yml",
+        "all confined files explicitly listed in the sanitized public inventory at the frozen source revision",
+        "declared native-parent receipt immutable store object",
+        "observed Python 3.12 stdlib/git/gh and official action pin provenance",
+        "readonly refs/status/objects and authorized metadata for exact target repo/assigned issues/PR"
       ],
       "commands": [
         "C_BOOTSTRAP",
         "C_SEED"
       ],
-      "acceptance": "Observed confirmed empty repo seeded with exactly README/LICENSE once; existing main preserved; base SHA/disclosure recorded; one leaf identity bound without ready label.",
+      "acceptance": "Verify/preserve observed main seed with exactly README/LICENSE, or minimally seed only a truly empty approved target; retain actual repository/base/seed/file/permission/disclosure/issue/creator facts and actual accepted bootstrap verdict in immutable sanitized durable receipt; publication facts alone do not close the leaf; no ready label or history reset.",
       "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
       "evidence_predicates": [
         "accepted_input_hashes",
@@ -241,7 +277,9 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "expected_oracle_result",
         "observed_runtime_and_fixed_model_if_required",
         "permissions",
-        "review_verdict"
+        "review_verdict",
+        "sanitized_durable_receipt_commit_blob_hash",
+        "actual_authorized_verdict_not_publication_inference"
       ],
       "fixed_model_policy": {
         "policy_id": "fixed-model-v3",
@@ -259,15 +297,16 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "reasoning_configuration": "Observe supported effective settings; unsupported requirements block; no invented adapter flags"
       },
       "runtime_requirements": [
-        "Python 3.12",
-        "isolated worktree",
-        "resolved lock/tool fingerprints",
-        "actual supported model/settings/context and permissions if inference required"
+        "Observed Python 3.12 stdlib for published JSON/Markdown design interfaces",
+        "observed git/gh versions, isolated worktree and target authorization",
+        "official first-party CI action SHA/provenance before authoring",
+        "observed exact model/settings/context/output budget if model leaf; no required unreleased distribution module/component/lock/renderer"
       ],
       "permission_requirements": [
-        "Explicitly approved central scaffold/issue/draft-PR only",
-        "bootstrap direct-main exception exactly README/LICENSE if repo empty",
-        "no merge/release/deploy/wiki/consumer edits/credentials/infra charges"
+        "Approved central foundation task outputs and assigned issue/draft-PR operations only",
+        "Explicit read allowlist and frozen source/control hashes; authoritative design immutable within attempt",
+        "Observed existing-owner-approved append-only receipt-ref read/write permission before claim",
+        "No merge/release/deploy/wiki/consumer changes/credentials/infra charges; raw private logs never published"
       ],
       "budget": {
         "wall_minutes": 90,
@@ -286,7 +325,31 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "creator": "observe-authorized-existing-owner-policy",
         "agent_ready": false
       },
-      "state": "planned-not-dispatched"
+      "state": "planned-not-dispatched",
+      "read_authorization": {
+        "precedence": "Explicit read allowlist and actual permission required for every frozen input/control file; hash entry alone grants no additional read or write",
+        "deterministic_full_inventory": true,
+        "model_context": "assigned leaf authority/semantics and bounded diagnostics only; no all-60-record model context or new decomposition",
+        "frozen_authority_writable": false,
+        "inventory_paths": "confinement and symlink validation; no implicit private/unregistered files"
+      },
+      "receipt_policy": {
+        "public_output_path": "build/foundation/accepted/receipts/T001/*/bootstrap.json",
+        "attempt_path_binding": "Before work bind * to exactly one safe attempt slug and canonical real path; reject dot/traversal/symlink/other-leaf paths",
+        "durable_store": {
+          "kind": "existing-repository-append-only-git-ref",
+          "repository": "pH34r-pH/specified-development",
+          "ref": "refs/heads/evidence/foundation-receipts",
+          "permission_and_owner_approval": "observe before claim; unavailable blocks; no new credentials",
+          "immutable_ref": "receipt commit/blob and sha256 retained in existing task owner"
+        },
+        "overwrite_existing": false,
+        "cleanup_permitted": false,
+        "acceptance": "actual verdict/actor/time and exact accepted source/native/input/parent evidence; never inferred from path or publication",
+        "private_raw_logs": "build/foundation/runtime/T001/*/**",
+        "private_logs_public": false,
+        "tested_head_preservation": "Completion receipt stored on declared separate evidence ref after exact-head checks; tested implementation head unchanged; source change needs fresh checks/new receipt"
+      }
     },
     {
       "local_id": "T002",
@@ -316,7 +379,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": ".gitignore",
-            "sha256": "ab16cd4fb54849580879155cfa872287471889085d5165bc97077af7cf6d377d"
+            "sha256": "4b84a5015c78fe37f105132d44b3a94c664907568fa3aeb83711afd0172081ee"
           },
           {
             "path": "spec/manifest.json",
@@ -344,7 +407,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -368,11 +431,11 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/foundation/plan.md",
-            "sha256": "3d1690753ab2aecc686e9bb65c9824f2871937d9fc3b899b55fbfddebf4f5d3c"
+            "sha256": "92ae70a9cc0ff8370511b54ae866061508d44c03ed3f522335a1527418d0de3b"
           },
           {
             "path": "build/foundation/tests.md",
-            "sha256": "5c3ee9629d2a14cf0c1eb695f6ee87030b246f2485af2793693fb5e763e7a8b7"
+            "sha256": "4189b0637d8a4d813e750a1ab76e7e111857a9d3abdf3e9d1726814eaac3dea5"
           },
           {
             "path": "build/distribution/plan.md",
@@ -384,7 +447,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/distribution/tasks.md",
-            "sha256": "2abb40d134ef95f8a7492ccda1f2f589f6698a77b9c65618937ada595adfc56f"
+            "sha256": "b6c521ea087686b7d01d3c93fcc1756423954d3dda14cf0be14bd9a3a0b1549e"
           },
           {
             "path": "build/directory-specs/plan.md",
@@ -396,20 +459,38 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/directory-specs/tasks.md",
-            "sha256": "90f845521d980d9b52287fc6113cefb285f5385e0497aeb4a20766fd2b7aff55"
+            "sha256": "a466fb51d1b329e4a90925ff9d5383ca3efde47bd25d03e3e6d1c36745c31bd8"
           },
           {
             "path": "build/foundation/handoff.md",
-            "sha256": "6a1096a19c022defafacfa9e44404dc12283b8d668809efd7734336cd6ef3fc0"
+            "sha256": "9284ce852c8279e9dd234b210c84364c7a9777552f7493cbbc57c88f485f57a3"
           },
           {
             "path": "build/foundation/design-validation.json",
-            "sha256": "4ad389ca096ec75feadfff2411d14e38a2f38aa8fabee8a0e7057fdbda7cd44b"
+            "sha256": "b6aae937254f8cdb39a77f83c7c78db96d20365d1bbf39edf7963969f91356fd"
+          },
+          {
+            "path": "build/native-bindings.json",
+            "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
           }
         ],
-        "repository_baseline": "Observe confirmed public repo; bootstrap records actual base HEAD; foundation starts isolated branch at that exact HEAD",
-        "prerequisite_outputs": "Freeze actual native-parent output/oracle digests; missing/stale blocks; baseline distribution interfaces are separately frozen accepted prerequisites",
-        "native_contract": "Freeze accepted sole native-contract bytes digest and stable identity table before claim; no self-hash embedded in authoring metadata"
+        "repository_baseline": "Freeze exact accepted reviewed design commit/tree and isolated worktree; observed main seed is publication evidence only, not an accepted task verdict",
+        "prerequisite_outputs": "T001: no executable native parent. T002: only T001 accepted sanitized durable bootstrap receipt with immutable store ref/hash and native issue/parent evidence; missing/stale/unaccepted blocks. No later distribution interface prerequisite.",
+        "native_contract": "Freeze accepted sole native-contract bytes digest and stable identity table before claim; no self-hash embedded in authoring metadata",
+        "claim_time_hash_bindings": [
+          {
+            "path": "build/execution-contract.yaml",
+            "rule": "freeze exact accepted bytes digest in external claim packet; no recursive self-hash in task metadata"
+          },
+          {
+            "path": "payload-inventory.json",
+            "rule": "freeze exact accepted bytes digest in external claim packet; no recursive self-hash in task metadata"
+          },
+          {
+            "path": "build/foundation/tasks.md",
+            "rule": "freeze exact accepted bytes digest in external claim packet; no recursive self-hash in task metadata"
+          }
+        ]
       },
       "output_scope": [
         "spec/**",
@@ -430,14 +511,33 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         ".github/workflows/foundation.yml",
         "build/execution-contract.yaml",
         "build/native-bindings.json",
-        "payload-inventory.json"
+        "payload-inventory.json",
+        "build/foundation/accepted/receipts/T002/*/completion.json",
+        "build/foundation/runtime/T002/*/**"
       ],
       "read_scope": [
+        "README.md",
+        "LICENSE",
+        ".gitignore",
         "spec/**",
         "build/foundation/**",
-        "tests/fixtures/**",
-        "locked tool/dependency sources",
-        "declared native-parent outputs"
+        "build/distribution/plan.md",
+        "build/distribution/tests.md",
+        "build/distribution/tasks.md",
+        "build/directory-specs/plan.md",
+        "build/directory-specs/tests.md",
+        "build/directory-specs/tasks.md",
+        "build/execution-contract.yaml",
+        "build/native-bindings.json",
+        "payload-inventory.json",
+        "tools/validate_foundation.py",
+        "tests/test_foundation.py",
+        "tests/fixtures/foundation/**",
+        ".github/workflows/foundation.yml",
+        "all confined files explicitly listed in the sanitized public inventory at the frozen source revision",
+        "declared native-parent receipt immutable store object",
+        "observed Python 3.12 stdlib/git/gh and official action pin provenance",
+        "readonly refs/status/objects and authorized metadata for exact target repo/assigned issues/PR"
       ],
       "commands": [
         "C_FOUNDATION",
@@ -445,7 +545,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "C_CI_HEAD",
         "C_CI_CHECKS"
       ],
-      "acceptance": "Allowlisted payload plus bounded validator/independent fixtures/read-only pinned-action CI committed in isolated branch; exactly one leaf issue and native seed parent, draft PR; exact-head checks pass and actual fixed gpt-6-luna receipt retained; no merge/release/deploy/consumer edit.",
+      "acceptance": "Bounded stdlib validator, independent fixtures and read-only officially pinned CI pass in isolated branch at exact accepted design inputs using only available published interfaces; one issue/native accepted T001 parent, draft PR and exact-head checks verified; sanitized durable completion receipt retains actual fixed gpt-6-luna/runtime/settings/budget/permissions/input/scope/issue/parent/PR/check evidence and authorized verdict on separate append-only evidence ref. Candidate/unbound/missing/stale gates block; no invented acceptance, merge, release, deployment or consumer change.",
       "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
       "evidence_predicates": [
         "accepted_input_hashes",
@@ -455,7 +555,9 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "expected_oracle_result",
         "observed_runtime_and_fixed_model_if_required",
         "permissions",
-        "review_verdict"
+        "review_verdict",
+        "sanitized_durable_receipt_commit_blob_hash",
+        "actual_authorized_verdict_not_publication_inference"
       ],
       "fixed_model_policy": {
         "policy_id": "fixed-model-v3",
@@ -473,15 +575,16 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "reasoning_configuration": "Observe supported effective settings; unsupported requirements block; no invented adapter flags"
       },
       "runtime_requirements": [
-        "Python 3.12",
-        "isolated worktree",
-        "resolved lock/tool fingerprints",
-        "actual supported model/settings/context and permissions if inference required"
+        "Observed Python 3.12 stdlib for published JSON/Markdown design interfaces",
+        "observed git/gh versions, isolated worktree and target authorization",
+        "official first-party CI action SHA/provenance before authoring",
+        "observed exact model/settings/context/output budget if model leaf; no required unreleased distribution module/component/lock/renderer"
       ],
       "permission_requirements": [
-        "Explicitly approved central scaffold/issue/draft-PR only",
-        "bootstrap direct-main exception exactly README/LICENSE if repo empty",
-        "no merge/release/deploy/wiki/consumer edits/credentials/infra charges"
+        "Approved central foundation task outputs and assigned issue/draft-PR operations only",
+        "Explicit read allowlist and frozen source/control hashes; authoritative design immutable within attempt",
+        "Observed existing-owner-approved append-only receipt-ref read/write permission before claim",
+        "No merge/release/deploy/wiki/consumer changes/credentials/infra charges; raw private logs never published"
       ],
       "budget": {
         "wall_minutes": 90,
@@ -500,8 +603,33 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "creator": "observe-authorized-existing-owner-policy",
         "agent_ready": false
       },
-      "state": "planned-not-dispatched"
+      "state": "planned-not-dispatched",
+      "read_authorization": {
+        "precedence": "Explicit read allowlist and actual permission required for every frozen input/control file; hash entry alone grants no additional read or write",
+        "deterministic_full_inventory": true,
+        "model_context": "assigned leaf authority/semantics and bounded diagnostics only; no all-60-record model context or new decomposition",
+        "frozen_authority_writable": false,
+        "inventory_paths": "confinement and symlink validation; no implicit private/unregistered files"
+      },
+      "receipt_policy": {
+        "public_output_path": "build/foundation/accepted/receipts/T002/*/completion.json",
+        "attempt_path_binding": "Before work bind * to exactly one safe attempt slug and canonical real path; reject dot/traversal/symlink/other-leaf paths",
+        "durable_store": {
+          "kind": "existing-repository-append-only-git-ref",
+          "repository": "pH34r-pH/specified-development",
+          "ref": "refs/heads/evidence/foundation-receipts",
+          "permission_and_owner_approval": "observe before claim; unavailable blocks; no new credentials",
+          "immutable_ref": "receipt commit/blob and sha256 retained in existing task owner"
+        },
+        "overwrite_existing": false,
+        "cleanup_permitted": false,
+        "acceptance": "actual verdict/actor/time and exact accepted source/native/input/parent evidence; never inferred from path or publication",
+        "private_raw_logs": "build/foundation/runtime/T002/*/**",
+        "private_logs_public": false,
+        "tested_head_preservation": "Completion receipt stored on declared separate evidence ref after exact-head checks; tested implementation head unchanged; source change needs fresh checks/new receipt"
+      }
     }
-  ]
+  ],
+  "artifact_revision": 2
 }
 ```

@@ -1,6 +1,6 @@
 ---
 artifact: executable-decomposition
-revision: 1
+revision: 2
 acceptance: candidate-review
 dispatch_status: planned-not-dispatched
 ---
@@ -413,7 +413,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -552,7 +552,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -693,7 +693,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -844,7 +844,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -983,7 +983,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -1121,7 +1121,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -1259,7 +1259,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -1398,7 +1398,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -1538,7 +1538,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -1677,7 +1677,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -1816,7 +1816,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -1954,7 +1954,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -2091,7 +2091,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -2230,7 +2230,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -2372,7 +2372,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -2511,7 +2511,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -2655,7 +2655,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -2801,7 +2801,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -2938,7 +2938,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -3078,7 +3078,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -3218,7 +3218,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -3358,7 +3358,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -3499,7 +3499,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -3640,7 +3640,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -3780,7 +3780,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -3919,7 +3919,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -4057,7 +4057,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -4209,7 +4209,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -4346,7 +4346,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -4483,7 +4483,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -4622,7 +4622,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -4760,7 +4760,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -4914,7 +4914,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -5052,7 +5052,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -5196,7 +5196,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -5335,7 +5335,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "b5562a1348d4d4ce520905bf8d191276c4e8b5d61a4a0e20134fdbef52a3fd14"
+            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
           },
           {
             "path": "spec/contracts/documents.md",
@@ -5446,6 +5446,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "state": "planned-not-dispatched",
       "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
     }
-  ]
+  ],
+  "artifact_revision": 2
 }
 ```
