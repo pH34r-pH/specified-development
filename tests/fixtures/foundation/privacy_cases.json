@@ -1,0 +1,4 @@
+{
+  "private_paths": ["research/notes.md", "build/foundation/runtime/T002/raw.log", "archive/old-export.json", "spec/secrets/key.json"],
+  "credential_patterns": ["constructed-at-test-time", "signed-url-constructed-at-test-time"]
+}

@@ -1,0 +1,189 @@
+{
+  "expected": {
+    "repository": "pH34r-pH/specified-development",
+    "qualified_task_id": "pH34r-pH/specified-development/foundation/T002",
+    "native_id": "T002",
+    "task_issue_number": 3,
+    "issue_marker": "<!-- spec-task:pH34r-pH/specified-development/foundation/T002 -->",
+    "accepted_design_commit": "1111111111111111111111111111111111111111",
+    "accepted_design_tree": "2222222222222222222222222222222222222222",
+    "head_sha": "3333333333333333333333333333333333333333",
+    "head_tree": "4444444444444444444444444444444444444444",
+    "parent_issue_number": 2,
+    "parent_qualified_id": "pH34r-pH/specified-development/foundation/T001",
+    "parent_receipt_commit": "7777777777777777777777777777777777777777",
+    "parent_receipt_path": "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json",
+    "parent_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "issue_dependency_readback": "T002 #3 is blocked by T001 #2",
+    "pr_number": 4,
+    "base_branch": "design/canonical-spec-directory",
+    "required_check_name": "Validate scaffold and independent fixtures",
+    "required_workflow_name": "Foundation scaffold",
+    "evidence_ref": "evidence/foundation-receipts",
+    "receipt_path": "build/foundation/accepted/receipts/T002/attempt-1/completion-revision1.json"
+  },
+  "observed_ci": {
+    "repository": "pH34r-pH/specified-development",
+    "queried_commit_sha": "3333333333333333333333333333333333333333",
+    "run_id": 123,
+    "workflow_name": "Foundation scaffold",
+    "run_status": "completed",
+    "run_conclusion": "success",
+    "job_id": 456,
+    "job_run_id": 123,
+    "job_name": "Validate scaffold and independent fixtures",
+    "job_status": "completed",
+    "job_conclusion": "success"
+  },
+  "observed_store": {
+    "permission_observed": true,
+    "write_allowed": true,
+    "repository": "pH34r-pH/specified-development",
+    "ref": "evidence/foundation-receipts",
+    "path": "build/foundation/accepted/receipts/T002/attempt-1/completion-revision1.json",
+    "append_only_branch": true,
+    "previous_ref_sha": "5555555555555555555555555555555555555555",
+    "path_absent_before_write": true,
+    "path_exists_after_write": true,
+    "receipt_commit_sha": "6666666666666666666666666666666666666666",
+    "receipt_commit_parent_sha": "5555555555555555555555555555555555555555",
+    "ref_head_sha": "6666666666666666666666666666666666666666",
+    "content_repository": "pH34r-pH/specified-development",
+    "content_commit_sha": "6666666666666666666666666666666666666666",
+    "content_path": "build/foundation/accepted/receipts/T002/attempt-1/completion-revision1.json",
+    "receipt_blob_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "receipt_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "receipt": {
+    "schema_version": 1,
+    "task": {
+      "qualified_id": "pH34r-pH/specified-development/foundation/T002",
+      "native_id": "T002",
+      "native_parent": {
+        "qualified_id": "pH34r-pH/specified-development/foundation/T001",
+        "issue_number": 2,
+        "dependency": "blocked-by",
+        "receipt_status": "accepted",
+        "state": "open"
+      },
+      "issue": {
+        "number": 3,
+        "url": "https://github.com/pH34r-pH/specified-development/issues/3",
+        "creator": "pH34r-pH",
+        "state": "open",
+        "marker": "<!-- spec-task:pH34r-pH/specified-development/foundation/T002 -->"
+      }
+    },
+    "source": {
+      "accepted_design_commit": "1111111111111111111111111111111111111111",
+      "accepted_design_tree": "2222222222222222222222222222222222222222",
+      "implementation_commit": "3333333333333333333333333333333333333333",
+      "implementation_tree": "4444444444444444444444444444444444444444",
+      "base_commit": "1111111111111111111111111111111111111111",
+      "working_tree_clean": true
+    },
+    "parent_evidence": {
+      "dependency": "blocked-by",
+      "issue_dependency_readback": "T002 #3 is blocked by T001 #2",
+      "receipt_commit": "7777777777777777777777777777777777777777",
+      "receipt_path": "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json",
+      "receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "verdict_status": "accepted"
+    },
+    "capability_profile": {
+      "profile": "ordinary-implementation-v1",
+      "selection": {
+        "exact_model": "gpt-6-luna",
+        "requested_reasoning_effort": "xhigh",
+        "requested_speed_tier": "default",
+        "admission_status": "accepted",
+        "evidence_kind": "parent-service-admission",
+        "evidence_ref": "https://github.com/pH34r-pH/specified-development/issues/3"
+      },
+      "effective": {
+        "model_identity": null,
+        "reasoning_effort": null,
+        "speed_tier": null,
+        "context_limit": null,
+        "inference_runtime_version": null
+      },
+      "effective_unavailable_reasons": {
+        "model_identity": "unexposed-by-interface",
+        "reasoning_effort": "unexposed-by-interface",
+        "speed_tier": "unexposed-by-interface",
+        "context_limit": "unexposed-by-interface",
+        "inference_runtime_version": "unexposed-by-interface"
+      },
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_tokens": null,
+        "reason": "unexposed-by-interface"
+      },
+      "cost": {"status": "unmeasured", "amount": null, "reason": "usage and rates unavailable"},
+      "requested_budgets": {
+        "wall_minutes": 90,
+        "wall_kind": "requested-advisory",
+        "output_tokens": 16384,
+        "output_kind": "requested-advisory",
+        "initial_attempts": 1,
+        "backend_enforcement": null,
+        "enforcement_reason": "unexposed-by-interface",
+        "parent_stop_conditions": "Best-effort checks at existing owner checkpoints."
+      },
+      "explicit_financial_or_token_hard_cap_requested": false
+    },
+    "validation": {
+      "local_commands": [
+        {"command": "python tools/validate_foundation.py", "result": "passed", "head": "3333333333333333333333333333333333333333"},
+        {"command": "python -m unittest tests.test_foundation -v", "result": "passed", "head": "3333333333333333333333333333333333333333"}
+      ]
+    },
+    "pull_request": {
+      "number": 4,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "base_branch": "design/canonical-spec-directory",
+      "base_sha": "1111111111111111111111111111111111111111",
+      "head_sha": "3333333333333333333333333333333333333333"
+    },
+    "continuous_integration": {
+      "repository": "pH34r-pH/specified-development",
+      "run_id": 123,
+      "job_id": 456,
+      "workflow_name": "Foundation scaffold",
+      "url": "https://github.com/pH34r-pH/specified-development/actions/runs/123/job/456",
+      "check_name": "Validate scaffold and independent fixtures",
+      "head_sha": "3333333333333333333333333333333333333333",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "evidence_store": {
+      "repository": "pH34r-pH/specified-development",
+      "ref": "evidence/foundation-receipts",
+      "append_only_branch": true,
+      "write_permission_observed": true,
+      "write_allowed": true,
+      "previous_ref_sha": "5555555555555555555555555555555555555555",
+      "path": "build/foundation/accepted/receipts/T002/attempt-1/completion-revision1.json",
+      "path_was_absent_before_write": true
+    },
+    "verdict": {"status": "candidate-owner-acceptance-pending", "accepted": false}
+  },
+  "malformed_cases": [
+    "missing-store-permission",
+    "preexisting-path",
+    "missing-parent-receipt",
+    "stale-check-head",
+    "missing-check-run",
+    "unaccepted-parent",
+    "wrong-task-issue",
+    "wrong-parent-dependency",
+    "wrong-pr-base",
+    "unwritten-receipt",
+    "nonappend-commit",
+    "missing-local-test"
+  ]
+}

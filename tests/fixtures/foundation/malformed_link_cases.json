@@ -1,0 +1,6 @@
+[
+  {"name": "missing-target", "source": "start.md", "content": "[missing](missing.md)\n", "files": {"start.md": "[missing](missing.md)\n"}},
+  {"name": "fragment-missing", "source": "start.md", "content": "[missing](target.md#absent)\n", "files": {"start.md": "[missing](target.md#absent)\n", "target.md": "# Present\n"}},
+  {"name": "escape", "source": "start.md", "content": "[outside](../../outside.md)\n", "files": {"start.md": "[outside](../../outside.md)\n"}},
+  {"name": "symlink-fragment-target", "source": "start.md", "content": "[outside](target.md#outside)\n", "symlink_target": "target.md"}
+]

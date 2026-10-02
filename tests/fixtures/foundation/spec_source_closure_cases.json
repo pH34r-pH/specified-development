@@ -1,0 +1,4 @@
+[
+  {"name": "unregistered-text", "path": "unregistered.txt", "content": "synthetic unregistered source"},
+  {"name": "unregistered-binary", "path": "unregistered.bin", "content": "synthetic binary source"}
+]

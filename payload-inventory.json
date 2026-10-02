@@ -5,6 +5,10 @@
   "status": "draft-design-review-candidate",
   "files": [
     {
+      "path": ".github/workflows/foundation.yml",
+      "sha256": "87a0ca82037ac3e79b592763736129cdb3c05f185f269a9881a44c6e017cd0ec"
+    },
+    {
       "path": ".gitignore",
       "sha256": "4b84a5015c78fe37f105132d44b3a94c664907568fa3aeb83711afd0172081ee"
     },
@@ -119,6 +123,50 @@
     {
       "path": "spec/usage/lifecycle.md",
       "sha256": "94cbb5fc9d89b1546b8daac117a3e279768d3d5afb20066ae018792d93033c29"
+    },
+    {
+      "path": "tests/fixtures/foundation/capability_profiles.json",
+      "sha256": "2417a03104aefad23c03328bda92b116b8495486c0e9fe56b815ba783dcb37d7"
+    },
+    {
+      "path": "tests/fixtures/foundation/malformed_link_cases.json",
+      "sha256": "14e7ddefc93c18c570f0ae979bea6c6910b2b6cd8a41b523c7448c67f0c7442f"
+    },
+    {
+      "path": "tests/fixtures/foundation/malformed_manifest_cases.json",
+      "sha256": "f6bd12dbb248876266b212e465a16a06a12148ee8efc68b85774d668f6c9e49c"
+    },
+    {
+      "path": "tests/fixtures/foundation/malformed_navigation_cases.json",
+      "sha256": "9599fc50633ea991b74db50668fb6cc4bb0bc452f97617230122b36240b8f288"
+    },
+    {
+      "path": "tests/fixtures/foundation/native_mutations.json",
+      "sha256": "9c12702970a306493f15a9e8be2d26d51282d858cd710923b570d0d5b76b11a6"
+    },
+    {
+      "path": "tests/fixtures/foundation/outside_target.md",
+      "sha256": "236b786c2b949d0694ad573bf47d75a21973d83dc34c214b3ce94c76557c4e8c"
+    },
+    {
+      "path": "tests/fixtures/foundation/privacy_cases.json",
+      "sha256": "d583ae1a3c9b598eb128db3058906643706b48704bde8a569deb26eeab108c1c"
+    },
+    {
+      "path": "tests/fixtures/foundation/receipt_evidence.json",
+      "sha256": "c6e94c729923d926494dc2e6cffe6cdd25e72e73f40bc6f06c4d51565c94c211"
+    },
+    {
+      "path": "tests/fixtures/foundation/spec_source_closure_cases.json",
+      "sha256": "696de175cde27879354454a89a2f80a36a5636092a8f9fb97a913539cfc5fc1d"
+    },
+    {
+      "path": "tests/test_foundation.py",
+      "sha256": "7e85d109770fb067755923f8241ca69e4a70dc810e36afb23303bc7c7e8313b7"
+    },
+    {
+      "path": "tools/validate_foundation.py",
+      "sha256": "3514828ec93329b61af0d884b9d4e02d0c60624a789c347bb1e5fd79b2ef8ae6"
     }
   ],
   "private_inputs_included": false,
