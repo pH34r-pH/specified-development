@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "artifact": "foundation-task-completion-evidence",
+  "task": {
+    "qualified_id": "pH34r-pH/specified-development/foundation/T002",
+    "native_id": "T002",
+    "issue": {
+      "number": 3,
+      "url": "https://github.com/pH34r-pH/specified-development/issues/3",
+      "creator": "pH34r-pH",
+      "state": "open",
+      "labels": [],
+      "marker": "<!-- spec-task:pH34r-pH/specified-development/foundation/T002 -->"
+    },
+    "native_parent": {
+      "qualified_id": "pH34r-pH/specified-development/foundation/T001",
+      "issue_number": 2,
+      "state": "open",
+      "dependency": "blocked-by",
+      "receipt_status": "accepted"
+    }
+  },
+  "attempt": {
+    "id": "t002-20261002T002335Z",
+    "admitted_at_utc": "2026-10-02T00:23:35Z",
+    "recorded_at_utc": "2026-10-02T01:34:47Z",
+    "elapsed_since_admission_seconds": 4272,
+    "initial_attempt_number": 1,
+    "retries_used": 0
+  },
+  "source": {
+    "accepted_design_commit": "aa16fb0ef3fe24eefef34f8c5be57c7fc0b95e55",
+    "accepted_design_tree": "715dc040ae2defee6108f3237c252d6b92112aef",
+    "implementation_commit": "593b69b618b8a92567d05152cb181b63493d2014",
+    "implementation_tree": "d45057de550f96ecbea8764d99917615071677eb",
+    "base_commit": "aa16fb0ef3fe24eefef34f8c5be57c7fc0b95e55",
+    "working_tree_clean": true
+  },
+  "inputs": {
+    "authoritative_file_count": 27,
+    "canonical_input_set_sha256": "9e160d8c7f4233124a3acf404f3bf2ee5845bbe4901cbcd239c529c01053dbdf",
+    "accepted_claim_source_commit": "aa16fb0ef3fe24eefef34f8c5be57c7fc0b95e55",
+    "frozen_controls": {
+      "execution_contract_sha256": "289c638ff3ecfe53939801099ed5f1af62ca96df28d6cd63706ce0724fbcf5d5",
+      "native_bindings_sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368",
+      "foundation_tasks_sha256": "f749a3312c16f283e3696e4b7fa3ad7c5a91c78ccf383f6e606d7bfc1fa9807c",
+      "capability_contract_sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e",
+      "preimplementation_inventory_sha256": "cc490e7bf61bc2ed723b8434231081d8a110b1f39e2be0d586fd5f3a023759b6"
+    },
+    "resulting_inventory_sha256": "541bb9caf0bd44cd21069bbfbc645e3b0bd998f2f952f9bb0c9e7b1b399b5f7c",
+    "resulting_public_inventory_entries": 41,
+    "frozen_design_files_verified_unchanged": true
+  },
+  "parent_evidence": {
+    "receipt_commit": "8b26481704e0483bb94c41c2c93407f234c9e0ae",
+    "receipt_path": "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json",
+    "receipt_blob_sha": "f96b8c14729e786db7cebeeefb79c06bb8805e2a",
+    "receipt_sha256": "ed807b05cdce8bc7d8b9bbf86dd0a7a60824374f357c4ceee79c92f37ffb411e",
+    "verdict_status": "accepted",
+    "issue_dependency_readback": "T002 #3 is blocked by T001 #2"
+  },
+  "repository_and_permissions": {
+    "full_name": "pH34r-pH/specified-development",
+    "public": true,
+    "default_branch": "main",
+    "authenticated_github_login": "pH34r-pH",
+    "permission": "admin",
+    "observed_readback": true,
+    "new_credentials_created": false,
+    "access_expanded": false
+  },
+  "capability_profile": {
+    "profile": "ordinary-implementation-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "accepted",
+      "evidence_kind": "parent-service-admission",
+      "evidence_ref": "https://github.com/pH34r-pH/specified-development/issues/3"
+    },
+    "effective": {
+      "model_identity": null,
+      "reasoning_effort": null,
+      "speed_tier": null,
+      "context_limit": null,
+      "inference_runtime_version": null
+    },
+    "effective_unavailable_reasons": {
+      "model_identity": "unexposed-by-interface",
+      "reasoning_effort": "unexposed-by-interface",
+      "speed_tier": "unexposed-by-interface",
+      "context_limit": "unexposed-by-interface",
+      "inference_runtime_version": "unexposed-by-interface"
+    },
+    "usage": {
+      "input_tokens": null,
+      "cached_input_tokens": null,
+      "output_tokens": null,
+      "reasoning_tokens": null,
+      "reason": "unexposed-by-interface"
+    },
+    "cost": {
+      "status": "unmeasured",
+      "amount": null,
+      "reason": "usage and applicable dated rates unavailable"
+    },
+    "requested_budgets": {
+      "wall_minutes": 90,
+      "wall_kind": "requested-advisory",
+      "output_tokens": 16384,
+      "output_kind": "requested-advisory",
+      "initial_attempts": 1,
+      "backend_enforcement": null,
+      "enforcement_reason": "unexposed-by-interface",
+      "parent_stop_conditions": "Best-effort elapsed-time, progress and scope checks at existing owner checkpoints; request pause/cancel when an advisory limit is observed."
+    },
+    "explicit_financial_or_token_hard_cap_requested": false
+  },
+  "execution_environment": {
+    "python": "3.12.14",
+    "git": "2.52.0",
+    "gh": "2.46.0",
+    "action_pins": [
+      {
+        "repository": "actions/checkout",
+        "ref": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "verified_tag": "v7.0.1",
+        "official_signature_verified": true
+      },
+      {
+        "repository": "actions/setup-python",
+        "ref": "5fda3b95a4ea91299a34e894583c3862153e4b97",
+        "verified_tag": "v7.0.0",
+        "official_signature_verified": true
+      }
+    ]
+  },
+  "source_changes": {
+    "paths": [
+      ".github/workflows/foundation.yml",
+      "payload-inventory.json",
+      "tests/fixtures/foundation/capability_profiles.json",
+      "tests/fixtures/foundation/malformed_link_cases.json",
+      "tests/fixtures/foundation/malformed_manifest_cases.json",
+      "tests/fixtures/foundation/malformed_navigation_cases.json",
+      "tests/fixtures/foundation/native_mutations.json",
+      "tests/fixtures/foundation/outside_target.md",
+      "tests/fixtures/foundation/privacy_cases.json",
+      "tests/fixtures/foundation/receipt_evidence.json",
+      "tests/fixtures/foundation/spec_source_closure_cases.json",
+      "tests/test_foundation.py",
+      "tools/validate_foundation.py"
+    ],
+    "product_behavior_claimed": false,
+    "compiler_or_renderer_implemented": false,
+    "other_product_leaves_implemented": false,
+    "privacy_detection_scope": "named sensitive JSON fields and declared credential/signature patterns only; not a universal secret detector"
+  },
+  "validation": {
+    "local_commands": [
+      {
+        "command": "python tools/validate_foundation.py",
+        "result": "passed",
+        "head": "593b69b618b8a92567d05152cb181b63493d2014"
+      },
+      {
+        "command": "python -m unittest tests.test_foundation -v",
+        "result": "passed",
+        "tests": 21,
+        "head": "593b69b618b8a92567d05152cb181b63493d2014"
+      }
+    ],
+    "workflow": {
+      "name": "Foundation scaffold",
+      "expected_check": "Validate scaffold and independent fixtures",
+      "permissions": {
+        "contents": "read"
+      }
+    },
+    "prior_revision_validation": {
+      "path": "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision1.json",
+      "evidence_commit": "ce191f144ba09b8691dd8f67d75d528914aae4e7",
+      "blob_sha": "db235d4fb1d4edc96826294487e93580c7e76821",
+      "sha256": "8cd36c04ce6e64b34253459118f95f9db47327e9608a181cebabdb6443e0ca92",
+      "result": "passed with this canonical receipt validator and public-JSON privacy check"
+    }
+  },
+  "pull_request": {
+    "number": 4,
+    "url": "https://github.com/pH34r-pH/specified-development/pull/4",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "base_branch": "design/canonical-spec-directory",
+    "base_sha": "aa16fb0ef3fe24eefef34f8c5be57c7fc0b95e55",
+    "head_branch": "codex/foundation-t002-20261002",
+    "head_sha": "593b69b618b8a92567d05152cb181b63493d2014",
+    "created_by": "pH34r-pH",
+    "authorship_disclosed": "Codex (GPT-6 Luna)",
+    "head_tree": "d45057de550f96ecbea8764d99917615071677eb"
+  },
+  "continuous_integration": {
+    "run_id": 36951454859,
+    "job_id": 110665096422,
+    "url": "https://github.com/pH34r-pH/specified-development/actions/runs/36951454859/job/110665096422",
+    "check_name": "Validate scaffold and independent fixtures",
+    "head_sha": "593b69b618b8a92567d05152cb181b63493d2014",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "evidence_store": {
+    "repository": "pH34r-pH/specified-development",
+    "ref": "evidence/foundation-receipts",
+    "append_only_branch": true,
+    "write_permission_observed": true,
+    "write_allowed": true,
+    "previous_ref_sha": "ce191f144ba09b8691dd8f67d75d528914aae4e7",
+    "path": "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision2.json",
+    "path_was_absent_before_write": true
+  },
+  "verdict": {
+    "status": "revision2-exact-head-checks-passed; independent-review-and-owner-acceptance-pending",
+    "accepted": false,
+    "actor": "Codex (GPT-6 Luna)",
+    "at_utc": "2026-10-02T01:34:47Z",
+    "basis": "Canonical parent-receipt fields are validated. The scaffold validator, 21 tests, and PR CI passed at this exact head. Independent review and T002 owner acceptance remain pending."
+  },
+  "revision": 2,
+  "supersedes_receipt": {
+    "path": "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision1.json",
+    "evidence_commit": "ce191f144ba09b8691dd8f67d75d528914aae4e7",
+    "blob_sha": "db235d4fb1d4edc96826294487e93580c7e76821",
+    "sha256": "8cd36c04ce6e64b34253459118f95f9db47327e9608a181cebabdb6443e0ca92",
+    "status": "immutable-historical-candidate; preserved-unchanged; independent-review-and-owner-acceptance-pending"
+  },
+  "review_findings_addressed": [
+    "Reject every spec/ file not registered as a manifest document or asset, except manifest.json and navigation.json.",
+    "Confine link and fragment targets before use; reject symlink destinations.",
+    "Reject declared sensitive JSON fields and known Azure/Google/GitHub credential forms; detector does not claim universal secret detection.",
+    "Validate completion receipt store permission/reference/overwrite evidence, accepted parent prerequisites, and exact-head PR/CI/local checks with malformed negative fixtures."
+  ]
+}
