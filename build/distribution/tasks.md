@@ -1,6 +1,6 @@
 ---
 artifact: executable-decomposition
-revision: 2
+revision: 3
 acceptance: candidate-review
 dispatch_status: planned-not-dispatched
 ---
@@ -14,7 +14,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
 - [ ] T001 Freeze the toolchain and execution policy
   Parents: none. Kind: setup. Reasoning: mechanical. Tests: declared deterministic receipt.
   Outputs: pyproject.toml, uv.lock, policies/execution.json, extensions/ph34r-contracts/scripts/ph34r_contracts/__init__.py.
-  Acceptance: Pinned upstream commit/version and resolved dependency artifact hashes are recorded; Python/uv are observed; fixed-model-v3 records approved low-cost gpt-6-luna default, preserved reasoning/speed tiers and immutable historical attribution; future dispatch is blocked until actual runtime observation and authority acceptance exist.
+  Acceptance: Pinned upstream commit/version and resolved dependency artifact hashes are recorded; Python/uv are observed; fixed-model-v3 records approved low-cost gpt-6-luna default, preserved reasoning/speed tiers and immutable historical attribution; future dispatch requires exact selected-model admission, declared capability evidence and authority acceptance.
 - [ ] T002 Author independent mature-workflow template tests
   Parents: T001. Kind: test. Reasoning: bounded. Tests: TST-001, TST-002.
   Outputs: tests/test_templates.py, fixtures/mature-feature/spec.md, fixtures/mature-feature/plan.md, fixtures/mature-feature/tests.md, fixtures/mature-feature/tasks.md, fixtures/mature-feature/artifact-state.json.
@@ -50,11 +50,11 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
 - [ ] T010 Author scope, fixed-model and receipt tests
   Parents: T007. Kind: test. Reasoning: integration. Tests: TST-015, TST-016, TST-018.
   Outputs: tests/test_receipts.py, fixtures/mature-feature/receipts.json, fixtures/mature-feature/model-observations.json.
-  Acceptance: Independent RED/GREEN/regression/review, model availability/identity, unavailable alias, unsupported reasoning, changed hash/rename/symlink/scope and undeclared command fixtures distinguish contractual failures from harness errors.
+  Acceptance: Independent selection/admission-vs-effective telemetry, advisory-vs-required-hard limits, measurement qualification, no-fallback, RED/GREEN/regression, changed hash/scope/commands and permission fixtures distinguish contractual rejection from harness error.
 - [ ] T011 Implement preflight and completion receipt guards
   Parents: T010. Kind: implementation. Reasoning: architectural. Tests: TST-015, TST-016, TST-018.
   Outputs: extensions/ph34r-contracts/scripts/ph34r_contracts/receipts.py, schemas/receipt.schema.json.
-  Acceptance: Exact model is observed and fixed per attempt, permissions/context/budgets preflight before work, path/hash/command evidence is current, expected RED-only and GREEN/regression/review predicates enforced; no completion side effect or fallback model.
+  Acceptance: One exact selected model/service admission per task, profile-specific required capability and actual permission/input/scope gates, nullable effective observations and requested/advisory parent stop plan validate; explicit hard limits fail closed without verified controls; actual acceptance predicates and unchanged-oracle regression pass; no silent fallback, false enforcement or completion side effect.
 - [ ] T012 Author cache eligibility and revalidation tests
   Parents: T007. Kind: test. Reasoning: bounded. Tests: TST-020.
   Outputs: tests/test_cache.py, fixtures/mature-feature/cache-cases.json.
@@ -98,7 +98,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
 - [ ] T022 Author existing-installation and execution-owner compatibility tests
   Parents: T017. Kind: test. Reasoning: integration. Tests: TST-007, TST-024.
   Outputs: tests/test_compatibility.py, fixtures/legacy-installation-a/local-authority.json, fixtures/legacy-native-contract/local-authority.json, fixtures/github/existing-executor-capability.json.
-  Acceptance: Sanitized observed installations/authority histories, Claude/Codex active/inactive assets, existing executor creator/allowlist/observed-model limits and Kanban profile are exercised; incompatibility is an explicit block rather than synthetic support.
+  Acceptance: Sanitized observed installations/authority histories, Claude/Codex active/inactive assets, existing executor creator/allowlist/selected-model admission and capability profiles alongside native execution semantics are exercised; incompatibility is an explicit block rather than synthetic support.
 - [ ] T023 Implement compatibility policy and checks
   Parents: T019, T021, T022. Kind: implementation. Reasoning: integration. Tests: TST-007, TST-024.
   Outputs: extensions/ph34r-contracts/scripts/ph34r_contracts/compatibility.py, policies/compatibility.json.
@@ -110,7 +110,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
 - [ ] T025 Implement scoped regeneration evidence verification
   Parents: T024. Kind: implementation. Reasoning: integration. Tests: TST-005, TST-019.
   Outputs: extensions/ph34r-contracts/scripts/ph34r_contracts/regeneration.py, schemas/regeneration.schema.json.
-  Acceptance: Verifier accepts only the complete allowlisted-input evidence, two independent clean workspaces, fixed observed bindings and passing independent behavior/regression receipts; all attempts retained and claims limited to gate.py; it launches no model and deletes no code.
+  Acceptance: Verifier accepts only the complete allowlisted-input evidence, two independent clean workspaces, fixed exact selection/admission and profile-required evidence, with any missing measurements explicitly unqualified and passing independent behavior/regression receipts; all attempts retained and claims limited to gate.py; it launches no model and deletes no code.
 - [ ] T026 Author upstream manifest, packaging and release-lock tests
   Parents: T017. Kind: test. Reasoning: integration. Tests: TST-027.
   Outputs: tests/test_release.py, fixtures/mature-feature/release-cases.json.
@@ -130,7 +130,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
 - [ ] T030 Author complete isolated pilot test
   Parents: T029. Kind: test. Reasoning: integration. Tests: TST-025.
   Outputs: tests/test_pilot.py, fixtures/mature-feature/pilot-expectations.json.
-  Acceptance: Oracle exercises complete mature chain, revision rejection, dry issue plan, unobserved model policy, cache/cost, staged failure recovery and adoption gate states in an isolated first legacy installation installation; absent proof never becomes delivery.
+  Acceptance: Oracle exercises complete mature chain, revision rejection, dry issue plan, missing selected-model admission/profile policy, cache/cost, staged failure recovery and adoption gate states in an isolated first legacy installation installation; absent proof never becomes delivery.
 - [ ] T031 Qualify the complete deterministic pilot in disposable copies
   Parents: T030. Kind: qualification. Reasoning: mechanical. Tests: TST-007, TST-023, TST-024, TST-025.
   Outputs: evidence/pilot/receipts.json, evidence/pilot/input-inventory.json, evidence/pilot/compatibility.json.
@@ -398,26 +398,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "title": "Freeze the toolchain and execution policy",
       "kind": "setup",
       "story": "US2",
-      "goal": "Pinned upstream commit/version and resolved dependency artifact hashes are recorded; Python/uv are observed; fixed-model-v3 records approved low-cost gpt-6-luna default, preserved reasoning/speed tiers and immutable historical attribution; future dispatch is blocked until actual runtime observation and authority acceptance exist.",
+      "goal": "Pinned upstream commit/version and resolved dependency artifact hashes are recorded; Python/uv are observed; fixed-model-v3 records approved low-cost gpt-6-luna default, preserved reasoning/speed tiers and immutable historical attribution; future dispatch requires exact selected-model admission, declared capability evidence and authority acceptance.",
       "parents": [],
       "tests": [],
       "frozen_inputs": {
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -433,11 +433,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -467,7 +471,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "C_ENV",
         "C_LOCK"
       ],
-      "acceptance": "Pinned upstream commit/version and resolved dependency artifact hashes are recorded; Python/uv are observed; fixed-model-v3 records approved low-cost gpt-6-luna default, preserved reasoning/speed tiers and immutable historical attribution; future dispatch is blocked until actual runtime observation and authority acceptance exist.",
+      "acceptance": "Pinned upstream commit/version and resolved dependency artifact hashes are recorded; Python/uv are observed; fixed-model-v3 records approved low-cost gpt-6-luna default, preserved reasoning/speed tiers and immutable historical attribution; future dispatch requires exact selected-model admission, declared capability evidence and authority acceptance.",
       "evidence_predicates": [
         "artifact_hash",
         "contract_hash",
@@ -544,19 +548,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -572,11 +576,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -625,23 +633,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -653,7 +664,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 8192,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T002 -->",
@@ -665,7 +679,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T003",
@@ -685,19 +700,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -713,11 +728,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -775,23 +794,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -803,7 +825,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T003 -->",
@@ -815,7 +840,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T004",
@@ -836,19 +862,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -864,11 +890,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -914,23 +944,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -942,7 +975,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T004 -->",
@@ -954,7 +990,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T005",
@@ -975,19 +1012,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -1003,11 +1040,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -1056,20 +1097,23 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "binding_state": "requires-existing-approved-capability-binding",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -1081,7 +1125,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 24576,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T005 -->",
@@ -1093,7 +1140,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T006",
@@ -1113,19 +1161,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -1141,11 +1189,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -1190,23 +1242,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -1218,7 +1273,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 8192,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T006 -->",
@@ -1230,7 +1288,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T007",
@@ -1251,19 +1310,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -1279,11 +1338,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -1330,23 +1393,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -1358,7 +1424,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T007 -->",
@@ -1370,7 +1439,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T008",
@@ -1390,19 +1460,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -1418,11 +1488,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -1470,23 +1544,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -1498,7 +1575,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T008 -->",
@@ -1510,7 +1590,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T009",
@@ -1530,19 +1611,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -1558,11 +1639,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -1608,23 +1693,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -1636,7 +1724,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T009 -->",
@@ -1648,7 +1739,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T010",
@@ -1656,7 +1748,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "title": "Author scope, fixed-model and receipt tests",
       "kind": "test",
       "story": "US5",
-      "goal": "Independent RED/GREEN/regression/review, model availability/identity, unavailable alias, unsupported reasoning, changed hash/rename/symlink/scope and undeclared command fixtures distinguish contractual failures from harness errors.",
+      "goal": "Independent selection/admission-vs-effective telemetry, advisory-vs-required-hard limits, measurement qualification, no-fallback, RED/GREEN/regression, changed hash/scope/commands and permission fixtures distinguish contractual rejection from harness error.",
       "parents": [
         "T007"
       ],
@@ -1669,19 +1761,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -1697,11 +1789,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -1729,7 +1825,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "commands": [
         "C_RECEIPTS"
       ],
-      "acceptance": "Independent RED/GREEN/regression/review, model availability/identity, unavailable alias, unsupported reasoning, changed hash/rename/symlink/scope and undeclared command fixtures distinguish contractual failures from harness errors.",
+      "acceptance": "Independent selection/admission-vs-effective telemetry, advisory-vs-required-hard limits, measurement qualification, no-fallback, RED/GREEN/regression, changed hash/scope/commands and permission fixtures distinguish contractual rejection from harness error.",
       "evidence_predicates": [
         "artifact_hash",
         "contract_hash",
@@ -1747,23 +1843,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -1775,7 +1874,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T010 -->",
@@ -1787,7 +1889,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T011",
@@ -1795,7 +1898,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "title": "Implement preflight and completion receipt guards",
       "kind": "implementation",
       "story": "US5",
-      "goal": "Exact model is observed and fixed per attempt, permissions/context/budgets preflight before work, path/hash/command evidence is current, expected RED-only and GREEN/regression/review predicates enforced; no completion side effect or fallback model.",
+      "goal": "One exact selected model/service admission per task, profile-specific required capability and actual permission/input/scope gates, nullable effective observations and requested/advisory parent stop plan validate; explicit hard limits fail closed without verified controls; actual acceptance predicates and unchanged-oracle regression pass; no silent fallback, false enforcement or completion side effect.",
       "parents": [
         "T010"
       ],
@@ -1808,19 +1911,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -1836,11 +1939,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -1868,7 +1975,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "C_RECEIPTS",
         "C_GATES"
       ],
-      "acceptance": "Exact model is observed and fixed per attempt, permissions/context/budgets preflight before work, path/hash/command evidence is current, expected RED-only and GREEN/regression/review predicates enforced; no completion side effect or fallback model.",
+      "acceptance": "One exact selected model/service admission per task, profile-specific required capability and actual permission/input/scope gates, nullable effective observations and requested/advisory parent stop plan validate; explicit hard limits fail closed without verified controls; actual acceptance predicates and unchanged-oracle regression pass; no silent fallback, false enforcement or completion side effect.",
       "evidence_predicates": [
         "artifact_hash",
         "contract_hash",
@@ -1890,20 +1997,23 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "binding_state": "requires-existing-approved-capability-binding",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -1915,7 +2025,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 24576,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T011 -->",
@@ -1927,7 +2040,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T012",
@@ -1946,19 +2060,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -1974,11 +2088,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -2023,23 +2141,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -2051,7 +2172,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 8192,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T012 -->",
@@ -2063,7 +2187,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T013",
@@ -2083,19 +2208,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -2111,11 +2236,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -2161,23 +2290,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -2189,7 +2321,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 8192,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T013 -->",
@@ -2201,7 +2336,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T014",
@@ -2222,19 +2358,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -2250,11 +2386,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -2303,23 +2443,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -2331,7 +2474,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 8192,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T014 -->",
@@ -2343,7 +2489,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T015",
@@ -2364,19 +2511,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -2392,11 +2539,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -2443,23 +2594,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -2471,7 +2625,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T015 -->",
@@ -2483,7 +2640,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T016",
@@ -2503,19 +2661,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -2531,11 +2689,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -2582,23 +2744,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -2610,7 +2775,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T016 -->",
@@ -2622,7 +2790,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T017",
@@ -2647,19 +2816,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -2675,11 +2844,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -2737,20 +2910,23 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "binding_state": "requires-existing-approved-capability-binding",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -2762,7 +2938,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 24576,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T017 -->",
@@ -2774,7 +2953,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T018",
@@ -2793,19 +2973,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -2821,11 +3001,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -2870,23 +3054,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -2898,7 +3085,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T018 -->",
@@ -2910,7 +3100,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T019",
@@ -2930,19 +3121,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -2958,11 +3149,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -3013,20 +3208,23 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "binding_state": "requires-existing-approved-capability-binding",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -3038,7 +3236,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 24576,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T019 -->",
@@ -3050,7 +3251,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T020",
@@ -3070,19 +3272,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -3098,11 +3300,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -3149,23 +3355,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -3177,7 +3386,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T020 -->",
@@ -3189,7 +3401,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T021",
@@ -3210,19 +3423,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -3238,11 +3451,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -3293,20 +3510,23 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "binding_state": "requires-existing-approved-capability-binding",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -3318,7 +3538,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 24576,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T021 -->",
@@ -3330,7 +3553,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T022",
@@ -3338,7 +3562,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "title": "Author existing-installation and execution-owner compatibility tests",
       "kind": "test",
       "story": "US2",
-      "goal": "Sanitized observed installations/authority histories, Claude/Codex active/inactive assets, existing executor creator/allowlist/observed-model limits and Kanban profile are exercised; incompatibility is an explicit block rather than synthetic support.",
+      "goal": "Sanitized observed installations/authority histories, Claude/Codex active/inactive assets, existing executor creator/allowlist/selected-model admission and capability profiles alongside native execution semantics are exercised; incompatibility is an explicit block rather than synthetic support.",
       "parents": [
         "T017"
       ],
@@ -3350,19 +3574,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -3378,11 +3602,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -3411,7 +3639,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "commands": [
         "C_COMPAT"
       ],
-      "acceptance": "Sanitized observed installations/authority histories, Claude/Codex active/inactive assets, existing executor creator/allowlist/observed-model limits and Kanban profile are exercised; incompatibility is an explicit block rather than synthetic support.",
+      "acceptance": "Sanitized observed installations/authority histories, Claude/Codex active/inactive assets, existing executor creator/allowlist/selected-model admission and capability profiles alongside native execution semantics are exercised; incompatibility is an explicit block rather than synthetic support.",
       "evidence_predicates": [
         "artifact_hash",
         "contract_hash",
@@ -3429,23 +3657,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -3457,7 +3688,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T022 -->",
@@ -3469,7 +3703,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T023",
@@ -3491,19 +3726,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -3519,11 +3754,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -3571,23 +3810,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -3599,7 +3841,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T023 -->",
@@ -3611,7 +3856,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T024",
@@ -3632,19 +3878,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -3660,11 +3906,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -3715,20 +3965,23 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "binding_state": "requires-existing-approved-capability-binding",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -3740,7 +3993,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 24576,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T024 -->",
@@ -3752,7 +4008,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T025",
@@ -3760,7 +4017,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "title": "Implement scoped regeneration evidence verification",
       "kind": "implementation",
       "story": "US6",
-      "goal": "Verifier accepts only the complete allowlisted-input evidence, two independent clean workspaces, fixed observed bindings and passing independent behavior/regression receipts; all attempts retained and claims limited to gate.py; it launches no model and deletes no code.",
+      "goal": "Verifier accepts only the complete allowlisted-input evidence, two independent clean workspaces, fixed exact selection/admission and profile-required evidence, with any missing measurements explicitly unqualified and passing independent behavior/regression receipts; all attempts retained and claims limited to gate.py; it launches no model and deletes no code.",
       "parents": [
         "T024"
       ],
@@ -3772,19 +4029,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -3800,11 +4057,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -3833,7 +4094,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "C_GATES",
         "C_RECEIPTS"
       ],
-      "acceptance": "Verifier accepts only the complete allowlisted-input evidence, two independent clean workspaces, fixed observed bindings and passing independent behavior/regression receipts; all attempts retained and claims limited to gate.py; it launches no model and deletes no code.",
+      "acceptance": "Verifier accepts only the complete allowlisted-input evidence, two independent clean workspaces, fixed exact selection/admission and profile-required evidence, with any missing measurements explicitly unqualified and passing independent behavior/regression receipts; all attempts retained and claims limited to gate.py; it launches no model and deletes no code.",
       "evidence_predicates": [
         "artifact_hash",
         "contract_hash",
@@ -3852,23 +4113,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -3880,7 +4144,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T025 -->",
@@ -3892,7 +4159,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T026",
@@ -3911,19 +4179,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -3939,11 +4207,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -3988,23 +4260,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -4016,7 +4291,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T026 -->",
@@ -4028,7 +4306,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T027",
@@ -4049,19 +4328,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -4077,11 +4356,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -4134,23 +4417,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -4162,7 +4448,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T027 -->",
@@ -4174,7 +4463,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T028",
@@ -4201,19 +4491,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -4229,11 +4519,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -4278,23 +4572,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -4306,7 +4603,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 8192,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T028 -->",
@@ -4318,7 +4618,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T029",
@@ -4338,19 +4639,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -4366,11 +4667,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -4416,23 +4721,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -4444,7 +4752,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T029 -->",
@@ -4456,7 +4767,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T030",
@@ -4464,7 +4776,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "title": "Author complete isolated pilot test",
       "kind": "test",
       "story": "US6",
-      "goal": "Oracle exercises complete mature chain, revision rejection, dry issue plan, unobserved model policy, cache/cost, staged failure recovery and adoption gate states in an isolated first legacy installation installation; absent proof never becomes delivery.",
+      "goal": "Oracle exercises complete mature chain, revision rejection, dry issue plan, missing selected-model admission/profile policy, cache/cost, staged failure recovery and adoption gate states in an isolated first legacy installation installation; absent proof never becomes delivery.",
       "parents": [
         "T029"
       ],
@@ -4475,19 +4787,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -4503,11 +4815,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -4534,7 +4850,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "commands": [
         "C_PILOT"
       ],
-      "acceptance": "Oracle exercises complete mature chain, revision rejection, dry issue plan, unobserved model policy, cache/cost, staged failure recovery and adoption gate states in an isolated first legacy installation installation; absent proof never becomes delivery.",
+      "acceptance": "Oracle exercises complete mature chain, revision rejection, dry issue plan, missing selected-model admission/profile policy, cache/cost, staged failure recovery and adoption gate states in an isolated first legacy installation installation; absent proof never becomes delivery.",
       "evidence_predicates": [
         "artifact_hash",
         "contract_hash",
@@ -4552,23 +4868,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -4580,7 +4899,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T030 -->",
@@ -4592,7 +4914,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "expected-contractual-RED"
+      "expected_outcome": "expected-contractual-RED",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T031",
@@ -4614,19 +4937,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -4642,11 +4965,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -4752,19 +5079,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -4780,11 +5107,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -4836,20 +5167,23 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "binding_state": "requires-existing-approved-capability-binding",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -4861,7 +5195,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 24576,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T032 -->",
@@ -4878,7 +5215,13 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "retained production gate implementation and every copy/context/attachment of its contents",
         "first-trial generated source and transcripts during the second fresh generation context"
       ],
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1",
+      "measurement_qualification": {
+        "behavioral_claim": "scoped gate.py source-excluded behavioral/regression proof",
+        "fully_measured_claim": "requires measurement-qualified-experiment-v1 and actual declared fields/rates",
+        "unexposed_fields": "retain null/reasons and unqualified measurement status; no cost/effective-settings comparison claim"
+      }
     },
     {
       "local_id": "T033",
@@ -4906,19 +5249,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -4934,11 +5277,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -4986,20 +5333,23 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "binding_state": "requires-existing-approved-capability-binding",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -5011,7 +5361,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 24576,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T033 -->",
@@ -5023,7 +5376,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T034",
@@ -5044,19 +5398,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -5072,11 +5426,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -5125,23 +5483,26 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "role_default_model": "gpt-6-luna",
         "requested_alias": null,
         "exact_model": "gpt-6-luna",
-        "binding_state": "approved-default-awaiting-runtime-observation",
+        "binding_state": "approved-default-awaiting-parent-service-admission",
         "requested_reasoning_effort": "preserve-existing-explicit-request",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-reasoning-tier-and-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "silent_alias_resolution": false,
         "mid_attempt_switch": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "record supported effective runtime setting; unsupported requirement blocks; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Python 3.12",
         "frozen dependency/toolchain lock",
         "isolated workspace",
         "no credentials in artifacts",
-        "observed available exact model",
+        "approved exact selected-model parent/service admission",
         "approved existing inference route",
-        "real context/output preflight"
+        "profile-specific correctness/hard requirements; advisory budgets and nullable observations"
       ],
       "permission_requirements": [
         "Task-scoped isolated central worktree only",
@@ -5153,7 +5514,10 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": 16384,
-        "actual_context_preflight_required": true
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/spec-kit-distribution/001-reusable-distribution/T034 -->",
@@ -5165,7 +5529,8 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "agent_ready": false
       },
       "state": "planned-not-dispatched",
-      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
+      "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
+      "execution_capability_profile": "ordinary-implementation-v1"
     },
     {
       "local_id": "T035",
@@ -5188,19 +5553,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -5216,11 +5581,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -5327,19 +5696,19 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/assets/rate-card.fixture.json",
@@ -5355,11 +5724,15 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact isolated central repository HEAD and scoped readable inventory before claim; retained code is evidence",
@@ -5447,6 +5820,13 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt"
     }
   ],
-  "artifact_revision": 2
+  "artifact_revision": 3,
+  "execution_capability_contract": {
+    "id": "execution-capability-v1",
+    "path": "spec/contracts/execution-capabilities.md",
+    "default_model_profile": "ordinary-implementation-v1",
+    "hard_requirements": "explicit task security/financial/technical or correctness requirements never downgraded",
+    "measurement_profile": "measurement-qualified-experiment-v1 only for declared fully measured claim"
+  }
 }
 ```

@@ -45,7 +45,9 @@
     "specified-development/authority": {
       "path": "contracts/authority.md",
       "role": "contract",
-      "normative_dependencies": [],
+      "normative_dependencies": [
+        "specified-development/execution-capabilities"
+      ],
       "assets": [],
       "visibility": "public"
     },
@@ -59,7 +61,9 @@
     "specified-development/distribution-contract": {
       "path": "contracts/distribution.md",
       "role": "contract",
-      "normative_dependencies": [],
+      "normative_dependencies": [
+        "specified-development/execution-capabilities"
+      ],
       "assets": [
         "specified-development/rate-card-fixture"
       ],
@@ -75,6 +79,13 @@
     "specified-development/rollout": {
       "path": "operations/rollout.md",
       "role": "operation",
+      "normative_dependencies": [],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/execution-capabilities": {
+      "path": "contracts/execution-capabilities.md",
+      "role": "contract",
       "normative_dependencies": [],
       "assets": [],
       "visibility": "public"

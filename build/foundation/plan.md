@@ -1,6 +1,6 @@
 ---
 artifact: foundation-plan
-revision: 2
+revision: 3
 acceptance: authorized-foundation-handoff-candidate
 delivery_status: not-started
 ---
@@ -13,7 +13,7 @@ The confirmed public repository was pH34r-pH/specified-development with Apache-2
 
 The design publication established a main seed containing only README.md and LICENSE. The observed seed commit was `4148b955b09a1d20c03dbb04bdffa5cca6c797e2`; GitHub Contents API had created the two-file seed through two commits. Future bootstrap verification preserved that existing history rather than resetting or reseeding it. These publication facts were not a completed T001 leaf, an accepted parent receipt, an issue binding, a model binding, or product acceptance. If an authorized future target was truly empty, only the minimal README/LICENSE seed was permitted; no extra direct-main content was allowed.
 
-Both leaves and their task artifacts remained candidate/not dispatchable. The existing owner had to accept the applicable exact artifact revision, register/verify the assigned issue identity, bind actual scope/permissions/attempt/budget/runtime requirements, and retain the T001 bootstrap verdict before T002 claim. Exact gpt-6-luna availability, requested/effective settings and context/output limits were observed before the bounded model attempt; the model never changed mid-attempt. Missing evidence blocked claim or completion and never became an invented value.
+Both leaves and their task artifacts remained candidate/not dispatchable. The existing owner had to accept the applicable exact artifact revision, register/verify the assigned issue identity, bind actual scope/permissions/attempt/budget/runtime requirements, and retain the T001 bootstrap verdict before T002 claim. The ordinary-implementation-v1 profile required parent/service evidence of exact selected gpt-6-luna and requested xhigh. Effective model/settings/speed/context/usage and backend token/timer controls could remain unexposed/null. Requested 90-minute/output budgets were advisory with parent-monitored stop conditions. Missing selection, source/parent/permission/correctness evidence or any explicitly required hard control still blocked; missing optional telemetry alone did not. No model switch or invented effective value was allowed.
 
 ## Available design interfaces
 
@@ -33,4 +33,11 @@ CI had read-only contents permissions, Python 3.12 and verified SHA pins for off
 
 T001 wrote sanitized `build/foundation/accepted/receipts/T001/<attempt-id>/bootstrap.json`; T002 wrote `build/foundation/accepted/receipts/T002/<attempt-id>/completion.json`. Output scope bound each attempt slug before work. The existing-owner-approved append-only `evidence/foundation-receipts` branch in this same repository retained the receipt commits separately from the tested implementation head. Permission and immutable receipt references were observed before acceptance. Raw private logs stayed in ignored runtime paths and never counted as durable evidence.
 
-The bootstrap receipt included actual base/seed/file hashes, issue/creator, permission/disclosure and acceptance facts. The completion receipt included accepted input/contract/parent hashes, observed fixed model/runtime/settings/budget/permissions, changed paths/public inventory, issue/native-parent readback, PR/head/check-run references and actual verdict. Publication/model/CI evidence was not inferred from checkboxes or path names. The existing issue owner controlled claim/closure; receipts added no scheduler or retry system.
+The bootstrap receipt included actual base/seed/file hashes, issue/creator, permission/disclosure and acceptance facts. The completion receipt included accepted input/contract/parent hashes, model-selection admission, nullable effective observations, typed advisory/hard budgets and actual permissions, changed paths/public inventory, issue/native-parent readback, PR/head/check-run references and actual verdict. Publication/model/CI evidence was not inferred from checkboxes or path names. The existing issue owner controlled claim/closure; receipts added no scheduler or retry system.
+
+
+## Capability correction and migration
+
+The available cloud interface supplied parent-observed exact selected gpt-6-luna and requested xhigh, not worker runtime introspection or enforced output/wall limits. ordinary-implementation-v1 was the foundation profile. Record unexposed effective settings, speed, context limits, usage/cost and backend controls as null with reasons; parent time/progress monitoring was best effort and never a hard 90-minute guarantee. Explicit protection/correctness hard constraints still failed closed without verified enforcement. Full measurement-qualified experiments remained separate from scaffold behavior acceptance.
+
+Preserve accepted T001 receipt commit 8b26481704e0483bb94c41c2c93407f234c9e0ae and SHA256 ed807b05cdce8bc7d8b9bbf86dd0a7a60824374f357c4ceee79c92f37ffb411e. The scoped migration kept its bootstrap behavior/verdict and issue 2 identity; issue 3 retained its blocked-by-2 edge. The earlier frozen T002 input list remained historical. After parent review, refresh only the T002 claim/admission input packet at the accepted new source; verify native readiness/parent/permission gates. This design correction did not resume T002 or manufacture implementation acceptance.

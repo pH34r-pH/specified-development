@@ -1,6 +1,6 @@
 ---
 artifact: executable-decomposition
-revision: 2
+revision: 3
 acceptance: candidate-review
 dispatch_status: planned-not-dispatched
 ---
@@ -14,9 +14,9 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
   Outputs: README.md, LICENSE, build/foundation/accepted/receipts/T001/*/bootstrap.json, build/foundation/runtime/T001/*/**.
   Acceptance: Verify/preserve observed main seed with exactly README/LICENSE, or minimally seed only a truly empty approved target; retain actual repository/base/seed/file/permission/disclosure/issue/creator facts and actual accepted bootstrap verdict in immutable sanitized durable receipt; publication facts alone do not close the leaf; no ready label or history reset.
 - [ ] T002 Publish sanitized specification foundation as draft PR
-  Parents: T001. Kind: foundation. Reasoning: bounded. Tests: FND-002, FND-003, FND-004, FND-005, FND-006.
+  Parents: T001. Kind: foundation. Reasoning: bounded. Tests: FND-002, FND-003, FND-004, FND-005, FND-006, FND-007, FND-008, FND-009.
   Outputs: spec/**, build/distribution/plan.md, build/distribution/tests.md, build/distribution/tasks.md, build/directory-specs/plan.md, build/directory-specs/tests.md, build/directory-specs/tasks.md, build/foundation/plan.md, build/foundation/tests.md, build/foundation/tasks.md, README.md, .gitignore, tools/validate_foundation.py, tests/test_foundation.py, tests/fixtures/foundation/**, .github/workflows/foundation.yml, build/execution-contract.yaml, build/native-bindings.json, payload-inventory.json, build/foundation/accepted/receipts/T002/*/completion.json, build/foundation/runtime/T002/*/**.
-  Acceptance: Bounded stdlib validator, independent fixtures and read-only officially pinned CI pass in isolated branch at exact accepted design inputs using only available published interfaces; one issue/native accepted T001 parent, draft PR and exact-head checks verified; sanitized durable completion receipt retains actual fixed gpt-6-luna/runtime/settings/budget/permissions/input/scope/issue/parent/PR/check evidence and authorized verdict on separate append-only evidence ref. Candidate/unbound/missing/stale gates block; no invented acceptance, merge, release, deployment or consumer change.
+  Acceptance: Bounded stdlib validator, independent fixtures and read-only officially pinned CI pass in isolated branch at exact accepted design inputs using only available published interfaces; one issue/native accepted T001 parent, draft PR and exact-head checks verified; sanitized durable completion receipt retains parent/service exact selected gpt-6-luna/requested-xhigh evidence, nullable effective observations, requested/advisory budgets/parent stop plan and actual permissions/input/scope/issue/parent/PR/check evidence and authorized verdict on separate append-only evidence ref. Candidate/source/parent/permission/selection/correctness or required hard-cap/missing acceptance/stale gates block; optional unexposed telemetry alone does not; no invented acceptance, merge, release, deployment or consumer change.
 
 ## Structured semantic metadata
 
@@ -124,11 +124,11 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/manifest.json",
-            "sha256": "2c69c14e12b4636b1c199e8863089afe8493ac5b2c5fde8f7614f9753183f427"
+            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
           },
           {
             "path": "spec/navigation.json",
-            "sha256": "fbfec669d41612c9cad616fc275968cfbc41b16b1eaf4ea512318534c0e77312"
+            "sha256": "be382df71bd0346216028b65f94632bcb996f73f3ef7f67440c67de7fe07cb74"
           },
           {
             "path": "spec/index.md",
@@ -136,11 +136,11 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/usage/lifecycle.md",
-            "sha256": "b527bbb338356ba26cf34459cff6f4431f7527292ebf274f24609266715a301c"
+            "sha256": "94cbb5fc9d89b1546b8daac117a3e279768d3d5afb20066ae018792d93033c29"
           },
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/features/directory-specs/index.md",
@@ -148,15 +148,15 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/operations/upstream.md",
@@ -172,23 +172,23 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/foundation/plan.md",
-            "sha256": "92ae70a9cc0ff8370511b54ae866061508d44c03ed3f522335a1527418d0de3b"
+            "sha256": "aefa2faab79bbb7bd9e6e7e8b02da8c90bf6d63a291b215337f072959cc48a74"
           },
           {
             "path": "build/foundation/tests.md",
-            "sha256": "4189b0637d8a4d813e750a1ab76e7e111857a9d3abdf3e9d1726814eaac3dea5"
+            "sha256": "ef9184d73607b4d7e0a934a9976b7403480e27fa0324135912a1701e245ee8ee"
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
           },
           {
             "path": "build/distribution/tasks.md",
-            "sha256": "b6c521ea087686b7d01d3c93fcc1756423954d3dda14cf0be14bd9a3a0b1549e"
+            "sha256": "48baea57dce561116b0997727d4f52850b9dd2f5d58bd242ed02820817f9e686"
           },
           {
             "path": "build/directory-specs/plan.md",
@@ -200,19 +200,23 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/directory-specs/tasks.md",
-            "sha256": "a466fb51d1b329e4a90925ff9d5383ca3efde47bd25d03e3e6d1c36745c31bd8"
+            "sha256": "dcc5feedbf5b051dc0d10fde818d4bbf02a69dad9b7afa79e6185e7c955b9844"
           },
           {
             "path": "build/foundation/handoff.md",
-            "sha256": "9284ce852c8279e9dd234b210c84364c7a9777552f7493cbbc57c88f485f57a3"
+            "sha256": "e5eaf761213b740fd5912eb1292e87b70542c182585d238314bb360ece1970e0"
           },
           {
             "path": "build/foundation/design-validation.json",
-            "sha256": "b6aae937254f8cdb39a77f83c7c78db96d20365d1bbf39edf7963969f91356fd"
+            "sha256": "2c1e700a165e1c329cd7f6d43d02e2f854c2aff94ade8515a23226ac0012d651"
           },
           {
             "path": "build/native-bindings.json",
             "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact accepted reviewed design commit/tree and isolated worktree; observed main seed is publication evidence only, not an accepted task verdict",
@@ -364,7 +368,10 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "FND-003",
         "FND-004",
         "FND-005",
-        "FND-006"
+        "FND-006",
+        "FND-007",
+        "FND-008",
+        "FND-009"
       ],
       "reasoning_class": "bounded",
       "frozen_inputs": {
@@ -383,11 +390,11 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/manifest.json",
-            "sha256": "2c69c14e12b4636b1c199e8863089afe8493ac5b2c5fde8f7614f9753183f427"
+            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
           },
           {
             "path": "spec/navigation.json",
-            "sha256": "fbfec669d41612c9cad616fc275968cfbc41b16b1eaf4ea512318534c0e77312"
+            "sha256": "be382df71bd0346216028b65f94632bcb996f73f3ef7f67440c67de7fe07cb74"
           },
           {
             "path": "spec/index.md",
@@ -395,11 +402,11 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/usage/lifecycle.md",
-            "sha256": "b527bbb338356ba26cf34459cff6f4431f7527292ebf274f24609266715a301c"
+            "sha256": "94cbb5fc9d89b1546b8daac117a3e279768d3d5afb20066ae018792d93033c29"
           },
           {
             "path": "spec/features/distribution/index.md",
-            "sha256": "093a140f8793294f7429fe89a12a512182befddf5bf45e4085a56c23a01aba38"
+            "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
           },
           {
             "path": "spec/features/directory-specs/index.md",
@@ -407,15 +414,15 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/contracts/authority.md",
-            "sha256": "ddfa9420e77436bcc59896ff0c644e996d0d79c3d5fc9d00b6687670c8a4c360"
+            "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
           },
           {
             "path": "spec/contracts/documents.md",
-            "sha256": "90d394fdd3cbdd69d8a7ac6610a74c443f09648ec37b1f9d6c3e84dee026922a"
+            "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
           },
           {
             "path": "spec/contracts/distribution.md",
-            "sha256": "3623268099dc2335b3071e087426da61b3e4e8a6051dbf578bd1168d44a76a15"
+            "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
           },
           {
             "path": "spec/operations/upstream.md",
@@ -431,23 +438,23 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/foundation/plan.md",
-            "sha256": "92ae70a9cc0ff8370511b54ae866061508d44c03ed3f522335a1527418d0de3b"
+            "sha256": "aefa2faab79bbb7bd9e6e7e8b02da8c90bf6d63a291b215337f072959cc48a74"
           },
           {
             "path": "build/foundation/tests.md",
-            "sha256": "4189b0637d8a4d813e750a1ab76e7e111857a9d3abdf3e9d1726814eaac3dea5"
+            "sha256": "ef9184d73607b4d7e0a934a9976b7403480e27fa0324135912a1701e245ee8ee"
           },
           {
             "path": "build/distribution/plan.md",
-            "sha256": "d22254900e42685a6bdd4c99522d380360d3ad390c90ccd866490c80bad6a9b4"
+            "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
           },
           {
             "path": "build/distribution/tests.md",
-            "sha256": "10e1f7a64e531adbe93e25731c0e11c94734ddd1ad0374eb88bdc4c17890d2b4"
+            "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
           },
           {
             "path": "build/distribution/tasks.md",
-            "sha256": "b6c521ea087686b7d01d3c93fcc1756423954d3dda14cf0be14bd9a3a0b1549e"
+            "sha256": "48baea57dce561116b0997727d4f52850b9dd2f5d58bd242ed02820817f9e686"
           },
           {
             "path": "build/directory-specs/plan.md",
@@ -459,19 +466,23 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/directory-specs/tasks.md",
-            "sha256": "a466fb51d1b329e4a90925ff9d5383ca3efde47bd25d03e3e6d1c36745c31bd8"
+            "sha256": "dcc5feedbf5b051dc0d10fde818d4bbf02a69dad9b7afa79e6185e7c955b9844"
           },
           {
             "path": "build/foundation/handoff.md",
-            "sha256": "9284ce852c8279e9dd234b210c84364c7a9777552f7493cbbc57c88f485f57a3"
+            "sha256": "e5eaf761213b740fd5912eb1292e87b70542c182585d238314bb360ece1970e0"
           },
           {
             "path": "build/foundation/design-validation.json",
-            "sha256": "b6aae937254f8cdb39a77f83c7c78db96d20365d1bbf39edf7963969f91356fd"
+            "sha256": "2c1e700a165e1c329cd7f6d43d02e2f854c2aff94ade8515a23226ac0012d651"
           },
           {
             "path": "build/native-bindings.json",
             "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
+          },
+          {
+            "path": "spec/contracts/execution-capabilities.md",
+            "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
           }
         ],
         "repository_baseline": "Freeze exact accepted reviewed design commit/tree and isolated worktree; observed main seed is publication evidence only, not an accepted task verdict",
@@ -490,7 +501,15 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
             "path": "build/foundation/tasks.md",
             "rule": "freeze exact accepted bytes digest in external claim packet; no recursive self-hash in task metadata"
           }
-        ]
+        ],
+        "accepted_parent_compatibility": {
+          "qualified_id": "pH34r-pH/specified-development/foundation/T001",
+          "issue_number": 2,
+          "receipt_commit": "8b26481704e0483bb94c41c2c93407f234c9e0ae",
+          "receipt_path": "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json",
+          "receipt_sha256": "ed807b05cdce8bc7d8b9bbf86dd0a7a60824374f357c4ceee79c92f37ffb411e",
+          "rule": "preserve existing accepted receipt; unchanged bootstrap semantics; reviewed compatibility and native readiness checked before new T002 admission; historical T002 hashes refreshed separately"
+        }
       },
       "output_scope": [
         "spec/**",
@@ -545,7 +564,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "C_CI_HEAD",
         "C_CI_CHECKS"
       ],
-      "acceptance": "Bounded stdlib validator, independent fixtures and read-only officially pinned CI pass in isolated branch at exact accepted design inputs using only available published interfaces; one issue/native accepted T001 parent, draft PR and exact-head checks verified; sanitized durable completion receipt retains actual fixed gpt-6-luna/runtime/settings/budget/permissions/input/scope/issue/parent/PR/check evidence and authorized verdict on separate append-only evidence ref. Candidate/unbound/missing/stale gates block; no invented acceptance, merge, release, deployment or consumer change.",
+      "acceptance": "Bounded stdlib validator, independent fixtures and read-only officially pinned CI pass in isolated branch at exact accepted design inputs using only available published interfaces; one issue/native accepted T001 parent, draft PR and exact-head checks verified; sanitized durable completion receipt retains parent/service exact selected gpt-6-luna/requested-xhigh evidence, nullable effective observations, requested/advisory budgets/parent stop plan and actual permissions/input/scope/issue/parent/PR/check evidence and authorized verdict on separate append-only evidence ref. Candidate/source/parent/permission/selection/correctness or required hard-cap/missing acceptance/stale gates block; optional unexposed telemetry alone does not; no invented acceptance, merge, release, deployment or consumer change.",
       "expected_outcome": "GREEN-and-focused-regression-or-declared-deterministic-receipt",
       "evidence_predicates": [
         "accepted_input_hashes",
@@ -553,7 +572,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "changed_paths",
         "declared_commands",
         "expected_oracle_result",
-        "observed_runtime_and_fixed_model_if_required",
+        "fixed_model_selection_admission_and_profile_required_evidence",
         "permissions",
         "review_verdict",
         "sanitized_durable_receipt_commit_blob_hash",
@@ -561,24 +580,27 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
       ],
       "fixed_model_policy": {
         "policy_id": "fixed-model-v3",
-        "mode": "one-observed-model-per-attempt",
+        "mode": "one-selected-model-per-attempt",
         "role": "approved-low-cost-luna",
         "role_default_model": "gpt-6-luna",
         "exact_model": null,
         "binding_state": "required-before-claim",
-        "requested_reasoning_effort": "preserve-existing-explicit-request",
+        "requested_reasoning_effort": "xhigh",
         "requested_speed_tier": "preserve-existing-explicit-request",
-        "historical_attribution": "immutable-observed-model-runtime-settings-rate-card",
+        "historical_attribution": "immutable-selection-admission-provenance-and-separate-available-effective-observations/rate-card",
         "mid_attempt_switch": false,
         "silent_alias_resolution": false,
-        "observed_identity_required": true,
-        "reasoning_configuration": "Observe supported effective settings; unsupported requirements block; no invented adapter flags"
+        "observed_identity_required": false,
+        "reasoning_configuration": "Preserve parent/service requested options and admission; record unexposed effective settings explicitly; rejected requests/hard requirements block; no invented flags",
+        "selection_evidence_required": true,
+        "effective_telemetry": "nullable by profile; selection never copied into effective fields",
+        "retry_selection": "same exact model for this task; different model requires separately reviewed repair/task identity"
       },
       "runtime_requirements": [
         "Observed Python 3.12 stdlib for published JSON/Markdown design interfaces",
         "observed git/gh versions, isolated worktree and target authorization",
         "official first-party CI action SHA/provenance before authoring",
-        "observed exact model/settings/context/output budget if model leaf; no required unreleased distribution module/component/lock/renderer"
+        "Parent/service admission selected exact gpt-6-luna and requested xhigh; effective identity/reasoning/speed/context/usage/token/timer fields may be unexposed for ordinary foundation work"
       ],
       "permission_requirements": [
         "Approved central foundation task outputs and assigned issue/draft-PR operations only",
@@ -591,8 +613,11 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "initial_attempts": 1,
         "retry_owner": "existing execution system",
         "max_output_tokens": null,
-        "output_token_budget_state": "required-before-claim",
-        "actual_context_preflight_required": true
+        "output_token_budget_state": "advisory-request-or-explicitly-unavailable",
+        "actual_context_preflight_required": false,
+        "wall_budget_kind": "requested-advisory",
+        "output_budget_kind": "requested-advisory; unexposed capacity/control may remain null",
+        "parent_stop_conditions": "best-effort elapsed/progress/scope checks at existing owner checkpoints; pause/cancel when observed; no enforced timer or token cap claimed"
       },
       "issue_identity": {
         "marker": "<!-- spec-task:pH34r-pH/specified-development/foundation/T002 -->",
@@ -627,9 +652,17 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
         "private_raw_logs": "build/foundation/runtime/T002/*/**",
         "private_logs_public": false,
         "tested_head_preservation": "Completion receipt stored on declared separate evidence ref after exact-head checks; tested implementation head unchanged; source change needs fresh checks/new receipt"
-      }
+      },
+      "execution_capability_profile": "ordinary-implementation-v1"
     }
   ],
-  "artifact_revision": 2
+  "artifact_revision": 3,
+  "execution_capability_contract": {
+    "id": "execution-capability-v1",
+    "path": "spec/contracts/execution-capabilities.md",
+    "default_model_profile": "ordinary-implementation-v1",
+    "hard_requirements": "explicit task security/financial/technical or correctness requirements never downgraded",
+    "measurement_profile": "measurement-qualified-experiment-v1 only for declared fully measured claim"
+  }
 }
 ```

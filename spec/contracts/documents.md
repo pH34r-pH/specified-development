@@ -32,7 +32,7 @@ The extension exposed deterministic `ph34r-spec documents validate`, `assemble -
 
 The wrapper resolved repository root, validated feature identity, assembled the adapter, set `SPECIFY_FEATURE_DIRECTORY=build/<feature>` and `SPECIFY_FEATURE_NO_PERSIST=1`, and reused upstream primitives. Presets replaced specify/clarify to edit canonical source and plan/tasks/analyze/implement assumptions to use adapters/source maps. The new independent-tests semantic command preceded task decomposition. Every active integration's installed command assets were hash-verified. Bypass via known unsupported stock commands failed with a repair/installation diagnostic; an arbitrary external tool could still write files, so CI independently rejected drift.
 
-Command guards did not launch a model. Semantic authoring ran in the selected existing executor with one observed exact model; deterministic script verbs used no inference. Requested reasoning/speed settings were preserved as requirements and actual evidence; unsupported flags were not invented.
+Command guards did not launch a model. Semantic authoring ran in the selected existing executor with one approved exact model selection and parent/service admission; deterministic script verbs used no inference. Requested reasoning/speed settings and their parent/service admission were retained separately from available effective observations. Capability profiles distinguished advisory work from hard-limit and measurement requirements; unsupported flags were not invented.
 
 ## Documentation projection
 
