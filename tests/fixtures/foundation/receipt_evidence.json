@@ -10,6 +10,7 @@
     "head_sha": "3333333333333333333333333333333333333333",
     "head_tree": "4444444444444444444444444444444444444444",
     "parent_issue_number": 2,
+    "parent_qualified_id": "pH34r-pH/specified-development/foundation/T001",
     "parent_receipt_commit": "7777777777777777777777777777777777777777",
     "parent_receipt_path": "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json",
     "parent_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
@@ -40,6 +41,13 @@
     "task": {
       "qualified_id": "pH34r-pH/specified-development/foundation/T002",
       "native_id": "T002",
+      "native_parent": {
+        "qualified_id": "pH34r-pH/specified-development/foundation/T001",
+        "issue_number": 2,
+        "dependency": "blocked-by",
+        "receipt_status": "accepted",
+        "state": "open"
+      },
       "issue": {
         "number": 3,
         "url": "https://github.com/pH34r-pH/specified-development/issues/3",
@@ -57,13 +65,12 @@
       "working_tree_clean": true
     },
     "parent_evidence": {
-      "issue_number": 2,
       "dependency": "blocked-by",
       "issue_dependency_readback": "T002 #3 is blocked by T001 #2",
       "receipt_commit": "7777777777777777777777777777777777777777",
       "receipt_path": "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json",
       "receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      "receipt_status": "accepted"
+      "verdict_status": "accepted"
     },
     "capability_profile": {
       "profile": "ordinary-implementation-v1",

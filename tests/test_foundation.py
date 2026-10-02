@@ -228,7 +228,7 @@ class CompletionEvidenceTests(unittest.TestCase):
                 elif case == "missing-check-run":
                     receipt["continuous_integration"] = None
                 elif case == "unaccepted-parent":
-                    receipt["parent_evidence"]["receipt_status"] = "candidate"
+                    receipt["parent_evidence"]["verdict_status"] = "candidate"
                 elif case == "wrong-task-issue":
                     receipt["task"]["issue"]["number"] = 99
                 elif case == "wrong-parent-dependency":

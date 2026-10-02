@@ -613,6 +613,7 @@ def validate_retention(root: Path) -> None:
         "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json",
         "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion.json",
         "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision1.json",
+        "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision2.json",
     ):
         result = subprocess.run(["git", "-C", str(root), "check-ignore", "--no-index", "-q", "--", path], check=False)
         require(result.returncode == 1, "RETENTION_RECEIPT_IGNORED", f"accepted receipt would be ignored: {path}")
@@ -660,7 +661,7 @@ def validate_completion_evidence(receipt: Any, expected: dict[str, Any], observe
     required_context = (
         "repository", "qualified_task_id", "native_id", "task_issue_number", "issue_marker",
         "accepted_design_commit", "accepted_design_tree", "head_sha", "head_tree",
-        "parent_issue_number", "parent_receipt_commit", "parent_receipt_path",
+        "parent_issue_number", "parent_qualified_id", "parent_receipt_commit", "parent_receipt_path",
         "parent_receipt_sha256", "issue_dependency_readback", "pr_number", "base_branch",
         "required_check_name", "evidence_ref", "receipt_path",
     )
@@ -678,6 +679,8 @@ def validate_completion_evidence(receipt: Any, expected: dict[str, Any], observe
     require(task.get("qualified_id") == expected.get("qualified_task_id") and task.get("native_id") == expected.get("native_id"), "RECEIPT_TASK_IDENTITY", "task identity differs from the assigned leaf")
     issue = task.get("issue")
     require(isinstance(issue, dict) and issue.get("number") == expected.get("task_issue_number") and issue.get("state") == "open" and issue.get("marker") == expected.get("issue_marker"), "RECEIPT_ISSUE", "assigned task issue identity/state/marker mismatch")
+    native_parent = task.get("native_parent")
+    require(isinstance(native_parent, dict) and native_parent.get("qualified_id") == expected.get("parent_qualified_id") and native_parent.get("issue_number") == expected.get("parent_issue_number") and native_parent.get("dependency") == "blocked-by" and native_parent.get("receipt_status") == "accepted", "RECEIPT_PARENT_ISSUE", "native parent identity/dependency is missing or unaccepted")
 
     source = receipt.get("source")
     require(isinstance(source, dict), "RECEIPT_SOURCE", "source evidence is missing")
@@ -687,8 +690,9 @@ def validate_completion_evidence(receipt: Any, expected: dict[str, Any], observe
 
     parent = receipt.get("parent_evidence")
     require(isinstance(parent, dict), "RECEIPT_PARENT", "native parent evidence is missing")
-    require(parent.get("receipt_status") == "accepted" and parent.get("receipt_commit") == expected.get("parent_receipt_commit") and parent.get("receipt_sha256") == expected.get("parent_receipt_sha256") and parent.get("receipt_path") == expected.get("parent_receipt_path"), "RECEIPT_PARENT_EVIDENCE", "accepted T001 receipt reference/hash mismatch")
-    require(parent.get("issue_number") == expected.get("parent_issue_number") and parent.get("issue_dependency_readback") == expected.get("issue_dependency_readback"), "RECEIPT_PARENT_ISSUE", "native T001 issue/dependency evidence mismatch")
+    parent_verdict = parent.get("verdict_status", parent.get("receipt_status"))
+    require(parent_verdict == "accepted" and parent.get("receipt_commit") == expected.get("parent_receipt_commit") and parent.get("receipt_sha256") == expected.get("parent_receipt_sha256") and parent.get("receipt_path") == expected.get("parent_receipt_path"), "RECEIPT_PARENT_EVIDENCE", "accepted T001 receipt reference/hash mismatch")
+    require(parent.get("issue_dependency_readback") == expected.get("issue_dependency_readback"), "RECEIPT_PARENT_ISSUE", "native T001 issue/dependency evidence mismatch")
 
     capability = receipt.get("capability_profile")
     require(isinstance(capability, dict), "RECEIPT_CAPABILITY", "capability profile is missing")
