@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "destination": "pH34r-pH/specified-development",
+  "license": "Apache-2.0",
+  "status": "draft-design-review-candidate",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "4b84a5015c78fe37f105132d44b3a94c664907568fa3aeb83711afd0172081ee"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "README.md",
+      "sha256": "244626aa20284126d38f5ea3bab243f961860bb24fea8f935d979e15b53c7c7c"
+    },
+    {
+      "path": "build/directory-specs/plan.md",
+      "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+    },
+    {
+      "path": "build/directory-specs/tasks.md",
+      "sha256": "dcc5feedbf5b051dc0d10fde818d4bbf02a69dad9b7afa79e6185e7c955b9844"
+    },
+    {
+      "path": "build/directory-specs/tests.md",
+      "sha256": "b8e8e521cf200c803eccd459c1a6de661d55ac3dd8268c1080e996fcc8a8dac6"
+    },
+    {
+      "path": "build/distribution/plan.md",
+      "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
+    },
+    {
+      "path": "build/distribution/tasks.md",
+      "sha256": "48baea57dce561116b0997727d4f52850b9dd2f5d58bd242ed02820817f9e686"
+    },
+    {
+      "path": "build/distribution/tests.md",
+      "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+    },
+    {
+      "path": "build/execution-contract.yaml",
+      "sha256": "289c638ff3ecfe53939801099ed5f1af62ca96df28d6cd63706ce0724fbcf5d5"
+    },
+    {
+      "path": "build/foundation/design-validation.json",
+      "sha256": "2c1e700a165e1c329cd7f6d43d02e2f854c2aff94ade8515a23226ac0012d651"
+    },
+    {
+      "path": "build/foundation/handoff.md",
+      "sha256": "e5eaf761213b740fd5912eb1292e87b70542c182585d238314bb360ece1970e0"
+    },
+    {
+      "path": "build/foundation/plan.md",
+      "sha256": "aefa2faab79bbb7bd9e6e7e8b02da8c90bf6d63a291b215337f072959cc48a74"
+    },
+    {
+      "path": "build/foundation/tasks.md",
+      "sha256": "f749a3312c16f283e3696e4b7fa3ad7c5a91c78ccf383f6e606d7bfc1fa9807c"
+    },
+    {
+      "path": "build/foundation/tests.md",
+      "sha256": "ef9184d73607b4d7e0a934a9976b7403480e27fa0324135912a1701e245ee8ee"
+    },
+    {
+      "path": "build/native-bindings.json",
+      "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
+    },
+    {
+      "path": "spec/assets/rate-card.fixture.json",
+      "sha256": "e6e6e6db42971c8f14a577296f2d6b43f28b97f8d687da936d0e99c8c75222f6"
+    },
+    {
+      "path": "spec/contracts/authority.md",
+      "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
+    },
+    {
+      "path": "spec/contracts/distribution.md",
+      "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
+    },
+    {
+      "path": "spec/contracts/documents.md",
+      "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
+    },
+    {
+      "path": "spec/contracts/execution-capabilities.md",
+      "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
+    },
+    {
+      "path": "spec/features/directory-specs/index.md",
+      "sha256": "3ac2637e29205d920d9b3fd6e13f658ffef3b5cc7a38cf710f5e01335a632d4a"
+    },
+    {
+      "path": "spec/features/distribution/index.md",
+      "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
+    },
+    {
+      "path": "spec/index.md",
+      "sha256": "043041fcc2071a7f25fbe5dde3da218a85b5a8a03edea1c7e6d9cdfb158b6f9d"
+    },
+    {
+      "path": "spec/manifest.json",
+      "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+    },
+    {
+      "path": "spec/navigation.json",
+      "sha256": "be382df71bd0346216028b65f94632bcb996f73f3ef7f67440c67de7fe07cb74"
+    },
+    {
+      "path": "spec/operations/rollout.md",
+      "sha256": "080d0b180e3bb6d2edd8072dd575ae19b39ae27f8b4523f10349be503e3b86bd"
+    },
+    {
+      "path": "spec/operations/upstream.md",
+      "sha256": "b6c49f416da521c2df5bae0c188e322424c366213cf01b8007cebeb80ed9833b"
+    },
+    {
+      "path": "spec/usage/lifecycle.md",
+      "sha256": "94cbb5fc9d89b1546b8daac117a3e279768d3d5afb20066ae018792d93033c29"
+    }
+  ],
+  "private_inputs_included": false,
+  "product_implementation_claimed": false
+}

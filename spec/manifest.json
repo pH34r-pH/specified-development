@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "documents": {
+    "specified-development/overview": {
+      "path": "index.md",
+      "role": "overview",
+      "normative_dependencies": [],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/lifecycle": {
+      "path": "usage/lifecycle.md",
+      "role": "usage",
+      "normative_dependencies": [
+        "specified-development/authority"
+      ],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/distribution": {
+      "path": "features/distribution/index.md",
+      "role": "feature",
+      "normative_dependencies": [
+        "specified-development/authority",
+        "specified-development/distribution-contract",
+        "specified-development/upstream",
+        "specified-development/rollout"
+      ],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/directory-specs": {
+      "path": "features/directory-specs/index.md",
+      "role": "feature",
+      "normative_dependencies": [
+        "specified-development/authority",
+        "specified-development/documents",
+        "specified-development/distribution-contract",
+        "specified-development/upstream",
+        "specified-development/rollout"
+      ],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/authority": {
+      "path": "contracts/authority.md",
+      "role": "contract",
+      "normative_dependencies": [
+        "specified-development/execution-capabilities"
+      ],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/documents": {
+      "path": "contracts/documents.md",
+      "role": "contract",
+      "normative_dependencies": [],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/distribution-contract": {
+      "path": "contracts/distribution.md",
+      "role": "contract",
+      "normative_dependencies": [
+        "specified-development/execution-capabilities"
+      ],
+      "assets": [
+        "specified-development/rate-card-fixture"
+      ],
+      "visibility": "public"
+    },
+    "specified-development/upstream": {
+      "path": "operations/upstream.md",
+      "role": "operation",
+      "normative_dependencies": [],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/rollout": {
+      "path": "operations/rollout.md",
+      "role": "operation",
+      "normative_dependencies": [],
+      "assets": [],
+      "visibility": "public"
+    },
+    "specified-development/execution-capabilities": {
+      "path": "contracts/execution-capabilities.md",
+      "role": "contract",
+      "normative_dependencies": [],
+      "assets": [],
+      "visibility": "public"
+    }
+  },
+  "features": {
+    "distribution": {
+      "root": "specified-development/distribution"
+    },
+    "directory-specs": {
+      "root": "specified-development/directory-specs"
+    }
+  },
+  "assets": {
+    "specified-development/rate-card-fixture": {
+      "path": "assets/rate-card.fixture.json",
+      "media_type": "application/json",
+      "visibility": "public"
+    }
+  }
+}

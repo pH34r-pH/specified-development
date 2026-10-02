@@ -1,0 +1,15 @@
+# Only disposable outputs. Never ignore all of build/.
+/.venv/
+**/__pycache__/
+*.pyc
+/build/site/
+/build/wiki-stage/
+/build/*/.tmp/
+/build/*/candidate/
+/build/*/runtime/
+/build/*/spec.md
+/build/*/source-map.json
+/build/*/inputs.lock.json
+/build/*/contracts/
+# plan.md, tests.md, tasks.md, execution-contract.yaml, and accepted/ remain tracked.
+# Sanitized accepted/receipts are durable; runtime/ contains only disposable private logs.
