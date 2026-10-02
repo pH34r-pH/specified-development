@@ -1,0 +1,35 @@
+[
+  {
+    "name": "traversal",
+    "manifest": {
+      "schema_version": 1,
+      "documents": {"specified-development/overview": {"path": "../outside.md", "role": "overview", "normative_dependencies": [], "assets": [], "visibility": "public"}},
+      "assets": {},
+      "features": {}
+    },
+    "available_paths": ["../outside.md"]
+  },
+  {
+    "name": "missing-dependency",
+    "manifest": {
+      "schema_version": 1,
+      "documents": {"specified-development/overview": {"path": "index.md", "role": "overview", "normative_dependencies": ["specified-development/absent"], "assets": [], "visibility": "public"}},
+      "assets": {},
+      "features": {}
+    },
+    "available_paths": ["index.md"]
+  },
+  {
+    "name": "case-colliding-paths",
+    "manifest": {
+      "schema_version": 1,
+      "documents": {
+        "specified-development/overview": {"path": "contracts/Terms.md", "role": "contract", "normative_dependencies": [], "assets": [], "visibility": "public"},
+        "specified-development/other": {"path": "contracts/terms.md", "role": "contract", "normative_dependencies": [], "assets": [], "visibility": "public"}
+      },
+      "assets": {},
+      "features": {}
+    },
+    "available_paths": ["contracts/Terms.md", "contracts/terms.md"]
+  }
+]

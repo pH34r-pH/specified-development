@@ -1,0 +1,10 @@
+[
+  {
+    "name": "duplicate-document",
+    "navigation": {"schema_version": 1, "items": [{"label": "First", "document": "specified-development/overview"}, {"label": "Again", "document": "specified-development/overview"}]}
+  },
+  {
+    "name": "unknown-document",
+    "navigation": {"schema_version": 1, "items": [{"label": "Missing", "document": "specified-development/missing"}]}
+  }
+]

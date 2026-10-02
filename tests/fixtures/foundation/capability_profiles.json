@@ -1,0 +1,161 @@
+{
+  "ordinary_unexposed": {
+    "profile": "ordinary-implementation-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "accepted",
+      "evidence_kind": "parent-service-admission",
+      "evidence_ref": "parent-admission-fixture"
+    },
+    "effective": {
+      "model_identity": null,
+      "reasoning_effort": null,
+      "speed_tier": null,
+      "context_limit": null,
+      "runtime_version": null
+    },
+    "unavailable_reasons": {
+      "model_identity": "unexposed-by-interface",
+      "reasoning_effort": "unexposed-by-interface",
+      "speed_tier": "unexposed-by-interface",
+      "context_limit": "unexposed-by-interface",
+      "runtime_version": "unexposed-by-interface"
+    },
+    "usage": null,
+    "usage_unavailable_reason": "unexposed-by-interface",
+    "budget": {
+      "wall_minutes": 90,
+      "wall_kind": "requested-advisory",
+      "output_tokens": 16384,
+      "output_kind": "requested-advisory",
+      "parent_stop_conditions": "Check elapsed time and progress at existing owner checkpoints; request pause when scope or advisory time is reached."
+    },
+    "required_capabilities": [
+      {"name": "source-confinement", "status": "verified", "evidence_ref": "test-fixture"},
+      {"name": "deterministic-validation", "status": "verified", "evidence_ref": "test-fixture"}
+    ],
+    "required_constraints": []
+  },
+  "rejected_selection": {
+    "profile": "ordinary-implementation-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "rejected",
+      "evidence_kind": "parent-service-admission",
+      "evidence_ref": "rejected-admission-fixture"
+    },
+    "effective": {},
+    "unavailable_reasons": {},
+    "usage": null,
+    "usage_unavailable_reason": "unexposed-by-interface",
+    "budget": {"wall_kind": "requested-advisory", "output_kind": "requested-advisory", "parent_stop_conditions": "checkpoint"},
+    "required_capabilities": [],
+    "required_constraints": []
+  },
+  "hard_limit_unverified": {
+    "profile": "hard-limit-required-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "accepted",
+      "evidence_kind": "synthetic-fixture",
+      "evidence_ref": "synthetic-selection"
+    },
+    "required_capabilities": [{"name": "source-confinement", "status": "verified", "evidence_ref": "synthetic-control"}],
+    "required_constraints": [{"name": "max-output", "value": 1000, "unit": "tokens", "operation": "fixture-operation"}],
+    "verified_controls": []
+  },
+  "hard_limit_verified": {
+    "profile": "hard-limit-required-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "accepted",
+      "evidence_kind": "synthetic-fixture",
+      "evidence_ref": "synthetic-selection"
+    },
+    "required_capabilities": [{"name": "source-confinement", "status": "verified", "evidence_ref": "synthetic-control"}],
+    "required_constraints": [{"name": "max-output", "value": 1000, "unit": "tokens", "operation": "fixture-operation"}],
+    "verified_controls": [{"constraint": "max-output", "status": "verified", "operation": "fixture-operation", "value": 1000, "unit": "tokens", "evidence_ref": "synthetic-enforcer"}]
+  },
+  "ordinary_hard_limit_downgrade": {
+    "profile": "ordinary-implementation-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "accepted",
+      "evidence_kind": "synthetic-fixture",
+      "evidence_ref": "synthetic-selection"
+    },
+    "effective": {"model_identity": null, "reasoning_effort": null, "speed_tier": null, "context_limit": null, "runtime_version": null},
+    "unavailable_reasons": {"model_identity": "unexposed-by-interface", "reasoning_effort": "unexposed-by-interface", "speed_tier": "unexposed-by-interface", "context_limit": "unexposed-by-interface", "runtime_version": "unexposed-by-interface"},
+    "usage": null,
+    "usage_unavailable_reason": "unexposed-by-interface",
+    "budget": {"wall_kind": "requested-advisory", "output_kind": "requested-advisory", "parent_stop_conditions": "checkpoint"},
+    "required_capabilities": [],
+    "required_constraints": [{"name": "max-output", "value": 1000, "unit": "tokens", "operation": "fixture-operation"}]
+  },
+  "unknown_correctness_capability": {
+    "profile": "ordinary-implementation-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "accepted",
+      "evidence_kind": "synthetic-fixture",
+      "evidence_ref": "synthetic-selection"
+    },
+    "effective": {"model_identity": null, "reasoning_effort": null, "speed_tier": null, "context_limit": null, "runtime_version": null},
+    "unavailable_reasons": {"model_identity": "unexposed-by-interface", "reasoning_effort": "unexposed-by-interface", "speed_tier": "unexposed-by-interface", "context_limit": "unexposed-by-interface", "runtime_version": "unexposed-by-interface"},
+    "usage": null,
+    "usage_unavailable_reason": "unexposed-by-interface",
+    "budget": {"wall_kind": "requested-advisory", "output_kind": "requested-advisory", "parent_stop_conditions": "checkpoint"},
+    "required_capabilities": [{"name": "source-confinement", "status": "unknown", "evidence_ref": null}],
+    "required_constraints": []
+  },
+  "measurement_incomplete": {
+    "profile": "measurement-qualified-experiment-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "accepted",
+      "evidence_kind": "synthetic-fixture",
+      "evidence_ref": "synthetic-selection"
+    },
+    "effective": {"runtime_version": "Python 3.12 fixture"},
+    "usage": {"input_tokens": 1000000},
+    "rates": {"input_per_million": "0.15", "effective_on": "2026-10-02"},
+    "measurement": {
+      "claim": "synthetic Decimal oracle",
+      "required_fields": ["effective.runtime_version", "usage.input_tokens", "usage.output_tokens", "rates.input_per_million", "rates.output_per_million", "rates.effective_on"],
+      "provenance_ref": "synthetic-incomplete-fixture"
+    }
+  },
+  "measurement_complete": {
+    "profile": "measurement-qualified-experiment-v1",
+    "selection": {
+      "exact_model": "gpt-6-luna",
+      "requested_reasoning_effort": "xhigh",
+      "requested_speed_tier": "default",
+      "admission_status": "accepted",
+      "evidence_kind": "synthetic-fixture",
+      "evidence_ref": "synthetic-selection"
+    },
+    "effective": {"runtime_version": "Python 3.12 fixture"},
+    "usage": {"input_tokens": 1000000, "cached_input_tokens": 250000, "output_tokens": 500000, "reasoning_tokens": 125000},
+    "rates": {"input_per_million": "0.15", "output_per_million": "0.60", "effective_on": "2026-10-02"},
+    "measurement": {
+      "claim": "synthetic Decimal oracle",
+      "required_fields": ["effective.runtime_version", "usage.input_tokens", "usage.output_tokens", "rates.input_per_million", "rates.output_per_million", "rates.effective_on"],
+      "provenance_ref": "synthetic-complete-fixture"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+[
+  {"name": "extra-edge", "area": "native-parent-array"},
+  {"name": "unknown-parent", "area": "authored-parent-reference"},
+  {"name": "duplicate-identity", "area": "qualified-id"},
+  {"name": "omitted-metadata", "area": "projected-metadata"}
+]
