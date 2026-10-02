@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
+import shutil
+import subprocess
 import tempfile
 import unittest
 from decimal import Decimal
@@ -18,6 +21,42 @@ FIXTURES = ROOT / "tests" / "fixtures" / "foundation"
 
 def load_fixture(name: str):
     return json.loads((FIXTURES / name).read_text(encoding="utf-8"))
+
+
+def copy_public_workspace(destination: Path) -> Path:
+    """Copy only git-visible public files; ignored runtime material is excluded."""
+    destination.mkdir(parents=True, exist_ok=True)
+    listing = subprocess.check_output(
+        ["git", "-C", str(ROOT), "ls-files", "--cached", "--others", "--exclude-standard", "-z"]
+    )
+    for raw in listing.split(b"\0"):
+        if not raw:
+            continue
+        relative = raw.decode("utf-8")
+        source = ROOT / relative
+        if source.is_symlink():
+            raise AssertionError(f"test copy refuses source symlink: {relative}")
+        target = destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+    subprocess.run(["git", "init", "-q", str(destination)], check=True)
+    return destination
+
+
+def update_inventory_hash(root: Path, relative: str) -> None:
+    inventory_path = root / "payload-inventory.json"
+    inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
+    digest = hashlib.sha256((root / relative).read_bytes()).hexdigest()
+    found = False
+    for item in inventory["files"]:
+        if item["path"] == relative:
+            item["sha256"] = digest
+            found = True
+            break
+    if not found:
+        inventory["files"].append({"path": relative, "sha256": digest})
+    inventory["files"].sort(key=lambda item: item["path"])
+    inventory_path.write_text(json.dumps(inventory, indent=2) + "\n", encoding="utf-8")
 
 
 class ManifestAndNavigationTests(unittest.TestCase):
@@ -42,6 +81,12 @@ class ManifestAndNavigationTests(unittest.TestCase):
             with self.subTest(fixture=fixture["name"]):
                 with tempfile.TemporaryDirectory() as temporary:
                     spec_root = Path(temporary)
+                    if "symlink_target" in fixture:
+                        (spec_root / fixture["source"]).write_text(fixture["content"], encoding="utf-8")
+                        (spec_root / fixture["symlink_target"]).symlink_to(FIXTURES / "outside_target.md")
+                        with self.assertRaisesRegex(vf.ValidationError, "LINK_ESCAPE"):
+                            vf.validate_markdown_links(spec_root, {"fixture": fixture["source"]})
+                        continue
                     for relative, content in fixture["files"].items():
                         path = spec_root / relative
                         path.parent.mkdir(parents=True, exist_ok=True)
@@ -135,6 +180,66 @@ class CapabilityProfileTests(unittest.TestCase):
         self.assertLessEqual(usage["cached_input_tokens"], usage["input_tokens"])
         self.assertLessEqual(usage["reasoning_tokens"], usage["output_tokens"])
 
+    def test_canonical_completion_receipt_capability_shape_is_accepted(self):
+        receipt = load_fixture("receipt_evidence.json")["receipt"]
+        self.assertEqual("ordinary-behavior-eligible", vf.validate_capability_record(receipt["capability_profile"]))
+
+
+class CompletionEvidenceTests(unittest.TestCase):
+    def setUp(self):
+        data = load_fixture("receipt_evidence.json")
+        self.receipt = data["receipt"]
+        self.expected = data["expected"]
+        self.observed_store = data["observed_store"]
+
+    def test_current_candidate_completion_evidence_passes_without_claiming_acceptance(self):
+        result = vf.validate_completion_evidence(self.receipt, self.expected, self.observed_store)
+        self.assertEqual("candidate-evidence-current; owner-acceptance-pending", result)
+        self.assertFalse(self.receipt["verdict"]["accepted"])
+
+    def test_fnd005_store_permission_reference_and_overwrite_gates_fail_closed(self):
+        for case in ("missing-store-permission", "preexisting-path", "missing-parent-receipt", "unwritten-receipt", "nonappend-commit"):
+            with self.subTest(case=case):
+                receipt = copy.deepcopy(self.receipt)
+                expected = copy.deepcopy(self.expected)
+                store = copy.deepcopy(self.observed_store)
+                if case == "missing-store-permission":
+                    store["permission_observed"] = False
+                elif case == "preexisting-path":
+                    store["path_absent_before_write"] = False
+                    receipt["evidence_store"]["path_was_absent_before_write"] = False
+                elif case == "missing-parent-receipt":
+                    receipt["parent_evidence"]["receipt_sha256"] = None
+                elif case == "unwritten-receipt":
+                    store["path_exists_after_write"] = False
+                elif case == "nonappend-commit":
+                    store["receipt_commit_parent_sha"] = "9999999999999999999999999999999999999999"
+                with self.assertRaises(vf.ValidationError):
+                    vf.validate_completion_evidence(receipt, expected, store)
+
+    def test_fnd006_stale_missing_check_and_parent_gates_fail_closed(self):
+        for case in ("stale-check-head", "missing-check-run", "unaccepted-parent", "wrong-task-issue", "wrong-parent-dependency", "wrong-pr-base", "missing-local-test"):
+            with self.subTest(case=case):
+                receipt = copy.deepcopy(self.receipt)
+                expected = copy.deepcopy(self.expected)
+                store = copy.deepcopy(self.observed_store)
+                if case == "stale-check-head":
+                    receipt["continuous_integration"]["head_sha"] = "2222222222222222222222222222222222222222"
+                elif case == "missing-check-run":
+                    receipt["continuous_integration"] = None
+                elif case == "unaccepted-parent":
+                    receipt["parent_evidence"]["receipt_status"] = "candidate"
+                elif case == "wrong-task-issue":
+                    receipt["task"]["issue"]["number"] = 99
+                elif case == "wrong-parent-dependency":
+                    receipt["parent_evidence"]["issue_dependency_readback"] = "T002 #3 has no blocked-by parent"
+                elif case == "wrong-pr-base":
+                    receipt["pull_request"]["base_sha"] = "9999999999999999999999999999999999999999"
+                elif case == "missing-local-test":
+                    receipt["validation"]["local_commands"] = receipt["validation"]["local_commands"][:1]
+                with self.assertRaises(vf.ValidationError):
+                    vf.validate_completion_evidence(receipt, expected, store)
+
 
 class InventoryPrivacyAndRetentionTests(unittest.TestCase):
     def test_only_scoped_public_paths_are_admitted(self):
@@ -148,16 +253,45 @@ class InventoryPrivacyAndRetentionTests(unittest.TestCase):
     def test_public_structured_data_rejects_credential_fields_and_signed_urls(self):
         with self.assertRaises(vf.ValidationError):
             vf.validate_public_json_privacy({"access_token": "fixture-value"})
-        constructed = "https://example.invalid/download?token=" + "fixture" + "signature"
-        with self.assertRaises(vf.ValidationError):
-            vf.validate_public_json_privacy({"url": constructed})
-        credential = "ghp_" + "A" * 30
-        with self.assertRaises(vf.ValidationError):
-            vf.validate_public_json_privacy({"value": credential})
+        for value in (
+            {"password": "synthetic dummy value"},
+            {"db_password": "synthetic dummy value"},
+            {"url": "https://example.invalid/download?sig=" + "dummy" + "signature"},
+            {"url": "X-Goog-Signature=" + "A" * 32},
+            {"value": "github" + "_pat_" + "A" * 40},
+            {"value": "ghp_" + "A" * 30},
+        ):
+            with self.subTest(value=list(value)):
+                with self.assertRaises(vf.ValidationError):
+                    vf.validate_public_json_privacy(value)
+        vf.validate_public_json_privacy({"url": "https://example.invalid/public-document"})
 
     def test_real_public_inventory_and_retention_rules_validate(self):
         vf.check_public_inventory(ROOT)
         vf.validate_retention(ROOT)
+
+    def test_whole_workspace_rejects_rehashed_dummy_credential_fixture(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = copy_public_workspace(Path(temporary) / "repo")
+            fixture_path = root / "tests/fixtures/foundation/privacy_cases.json"
+            fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+            fixture["dummy_negative_case"] = {"password": "synthetic-not-a-secret"}
+            fixture_path.write_text(json.dumps(fixture, indent=2) + "\n", encoding="utf-8")
+            update_inventory_hash(root, "tests/fixtures/foundation/privacy_cases.json")
+            with self.assertRaisesRegex(vf.ValidationError, "PRIVACY_FIELD"):
+                vf.validate_workspace(root)
+
+    def test_whole_workspace_rejects_hashed_unregistered_spec_file(self):
+        cases = load_fixture("spec_source_closure_cases.json")
+        for fixture in cases:
+            with self.subTest(path=fixture["path"]), tempfile.TemporaryDirectory() as temporary:
+                root = copy_public_workspace(Path(temporary) / "repo")
+                path = root / "spec" / fixture["path"]
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(fixture["content"].encode("utf-8"))
+                update_inventory_hash(root, f"spec/{fixture['path']}")
+                with self.assertRaisesRegex(vf.ValidationError, "SPEC_SOURCE_CLOSURE"):
+                    vf.validate_workspace(root)
 
 
 class WholeScaffoldTests(unittest.TestCase):

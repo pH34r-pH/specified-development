@@ -130,7 +130,7 @@
     },
     {
       "path": "tests/fixtures/foundation/malformed_link_cases.json",
-      "sha256": "99c1b83b077f4ec71c93b0c3473666f0fb518e751d39050771e64654d0c129df"
+      "sha256": "14e7ddefc93c18c570f0ae979bea6c6910b2b6cd8a41b523c7448c67f0c7442f"
     },
     {
       "path": "tests/fixtures/foundation/malformed_manifest_cases.json",
@@ -145,16 +145,28 @@
       "sha256": "9c12702970a306493f15a9e8be2d26d51282d858cd710923b570d0d5b76b11a6"
     },
     {
+      "path": "tests/fixtures/foundation/outside_target.md",
+      "sha256": "236b786c2b949d0694ad573bf47d75a21973d83dc34c214b3ce94c76557c4e8c"
+    },
+    {
       "path": "tests/fixtures/foundation/privacy_cases.json",
       "sha256": "d583ae1a3c9b598eb128db3058906643706b48704bde8a569deb26eeab108c1c"
     },
     {
+      "path": "tests/fixtures/foundation/receipt_evidence.json",
+      "sha256": "a44a26e19cc770fb835d1b31312daaee065e40dfec390d3a63cef46377cca6a0"
+    },
+    {
+      "path": "tests/fixtures/foundation/spec_source_closure_cases.json",
+      "sha256": "696de175cde27879354454a89a2f80a36a5636092a8f9fb97a913539cfc5fc1d"
+    },
+    {
       "path": "tests/test_foundation.py",
-      "sha256": "cdb0694204f84e44c06d20764794106f6cef08161152d3a282ef5c0cd2079d88"
+      "sha256": "811d5ea131e6ce0898fec5c0fd1d85c5f70899156fb26e3bdcbfb0071794309f"
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "a35817a9a6f6590498fa5ae30d34c111bef917b29ca0e5f6504ec0a71e4d606c"
+      "sha256": "e9292488c21ad12667574f658392142c9b68102a5dd05e1ba19ce3eb3288a410"
     }
   ],
   "private_inputs_included": false,

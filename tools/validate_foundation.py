@@ -33,8 +33,11 @@ DENIED_PATH_PARTS = {
     "runtime", "secret", "secrets", "snapshot", "snapshots", "temp", "tmp",
 }
 DENIED_JSON_KEYS = {
-    "access_token", "api_key", "authorization", "cookie", "private_key",
-    "raw_prompt", "secret", "signed_url", "token", "webhook_secret",
+    "access_token", "api_key", "api_token", "authorization", "bearer_token",
+    "client_secret", "cookie", "credential", "credentials", "gh_token", "github_token",
+    "oauth_token", "password", "passwd", "private_key", "raw_prompt", "refresh_token",
+    "sas_token", "secret", "secret_key", "session_token", "signed_url", "token",
+    "webhook_secret",
 }
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 TASK_BLOCK_RE = re.compile(r"```task-metadata\s*\n(.*?)\n```", re.DOTALL)
@@ -328,33 +331,46 @@ def validate_markdown_links(spec_root: Path, documents: dict[str, str]) -> None:
                         stack.append(part)
                 require(not escaped, "LINK_ESCAPE", f"{source_rel} -> {target}")
                 destination = PurePosixPath(*stack).as_posix()
-                require(destination in sources or (spec_root / destination).is_file(), "LINK_MISSING", f"{source_rel} -> {target}")
             else:
                 destination = source_rel
+            # Resolve and reject symlinks before testing existence or opening a
+            # fragment target. Path.is_file()/read_text() alone follows links.
+            destination_path = confined_file(spec_root, destination, code="LINK_ESCAPE")
+            require(destination_path.is_file(), "LINK_MISSING", f"{source_rel} -> {target}")
             if sep and fragment:
-                require(destination in sources or (spec_root / destination).is_file(), "LINK_FRAGMENT_TARGET", f"{source_rel} -> {target}")
                 if destination in sources:
                     target_text = sources[destination]
                 else:
-                    target_text = (spec_root / destination).read_text(encoding="utf-8")
+                    try:
+                        target_text = destination_path.read_text(encoding="utf-8")
+                    except (OSError, UnicodeError) as exc:
+                        raise ValidationError(f"LINK_FRAGMENT_READ: {source_rel} -> {target}: {exc}") from exc
                 require(fragment in _anchors(target_text), "LINK_FRAGMENT_MISSING", f"{source_rel} -> {target}")
 
 
 def validate_spec(root: Path) -> None:
     manifest_path = confined_file(root, "spec/manifest.json")
     manifest = read_json(manifest_path)
-    available = {
-        p.relative_to(root / "spec").as_posix()
-        for p in (root / "spec").rglob("*")
-        if p.is_file() and not p.is_symlink()
-    }
+    spec_root = confined_file(root, "spec")
+    available: set[str] = set()
+    folded_paths: dict[str, str] = {}
+    for entry in spec_root.rglob("*"):
+        relative = entry.relative_to(spec_root).as_posix()
+        safe_relative_path(relative, code="SPEC_PATH")
+        require(not entry.is_symlink(), "SPEC_SYMLINK", f"symlinks are not allowed in the specification tree: {relative}")
+        if entry.is_file():
+            folded = relative.casefold()
+            require(folded not in folded_paths, "SPEC_CASE_COLLISION", f"case-fold collision: {folded_paths.get(folded)} and {relative}")
+            folded_paths[folded] = relative
+            available.add(relative)
+        else:
+            require(entry.is_dir(), "SPEC_ENTRY_TYPE", f"unsupported filesystem entry: {relative}")
     validate_manifest_shape(manifest, available)
     listed_documents = {item["path"] for item in manifest["documents"].values()}
-    actual_documents = {path for path in available if path.lower().endswith(".md")}
-    require(actual_documents == listed_documents, "DOCUMENT_INVENTORY", f"unlisted={sorted(actual_documents-listed_documents)}; missing={sorted(listed_documents-actual_documents)}")
     listed_assets = {item["path"] for item in manifest["assets"].values()}
-    actual_assets = {path for path in available if path.startswith("assets/")}
-    require(actual_assets == listed_assets, "ASSET_INVENTORY", f"unlisted={sorted(actual_assets-listed_assets)}; missing={sorted(listed_assets-actual_assets)}")
+    allowed_controls = {"manifest.json", "navigation.json"}
+    registered = listed_documents | listed_assets | allowed_controls
+    require(available == registered, "SPEC_SOURCE_CLOSURE", f"unregistered={sorted(available-registered)}; missing={sorted(registered-available)}")
     navigation = read_json(confined_file(root, "spec/navigation.json"))
     doc_ids = _document_targets(manifest)
     validate_navigation_shape(navigation, doc_ids)
@@ -553,20 +569,28 @@ def validate_capability_record(record: Any) -> str:
             control = matching[0]
             require(control.get("status") == "verified" and control.get("operation") == constraint.get("operation") and control.get("value") == constraint.get("value") and control.get("unit") == constraint.get("unit") and control.get("evidence_ref"), "CAPABILITY_CONTROL_UNVERIFIED", f"hard constraint is not enforced for its declared value, unit and operation: {name}")
     if profile == "ordinary-implementation-v1":
-        budget = record.get("budget")
+        budget = record.get("requested_budgets", record.get("budget"))
         require(isinstance(budget, dict), "CAPABILITY_BUDGET", "ordinary profile requires a typed budget")
         require(budget.get("wall_kind") == "requested-advisory", "CAPABILITY_BUDGET_KIND", "wall budget must be explicitly advisory")
         require(budget.get("output_kind") == "requested-advisory", "CAPABILITY_BUDGET_KIND", "output budget must be explicitly advisory")
         require(isinstance(budget.get("parent_stop_conditions"), str) and budget["parent_stop_conditions"], "CAPABILITY_STOP_PLAN", "best-effort parent stop plan is required")
         effective = record.get("effective")
-        reasons = record.get("unavailable_reasons")
+        reasons = record.get("effective_unavailable_reasons", record.get("unavailable_reasons"))
         require(isinstance(effective, dict) and isinstance(reasons, dict), "CAPABILITY_EFFECTIVE", "effective values and unavailability reasons must be separate")
-        for field in ("model_identity", "reasoning_effort", "speed_tier", "context_limit", "runtime_version"):
+        runtime_field = "inference_runtime_version" if "inference_runtime_version" in effective else "runtime_version"
+        for field in ("model_identity", "reasoning_effort", "speed_tier", "context_limit", runtime_field):
             if effective.get(field) is None:
                 require(reasons.get(field) == "unexposed-by-interface", "CAPABILITY_UNEXPLAINED_NULL", f"missing unavailability reason for effective.{field}")
         usage = record.get("usage")
         if usage is None:
             require(record.get("usage_unavailable_reason") == "unexposed-by-interface", "CAPABILITY_USAGE", "unreported usage requires a reason")
+        elif isinstance(usage, dict):
+            counters = ("input_tokens", "cached_input_tokens", "output_tokens", "reasoning_tokens")
+            missing = [field for field in counters if usage.get(field) is None]
+            if missing:
+                require(usage.get("reason") == "unexposed-by-interface", "CAPABILITY_USAGE", "null usage counters require an explicit unavailability reason")
+        else:
+            raise ValidationError("CAPABILITY_USAGE: usage must be an object or null")
         return "ordinary-behavior-eligible"
     if profile == "hard-limit-required-v1":
         require(bool(constraints), "CAPABILITY_NO_HARD_CONSTRAINT", "hard-limit profile must declare a constraint")
@@ -588,6 +612,7 @@ def validate_retention(root: Path) -> None:
     for path in (
         "build/foundation/accepted/receipts/T001/bootstrap-20261001T232906Z/bootstrap.json",
         "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion.json",
+        "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision1.json",
     ):
         result = subprocess.run(["git", "-C", str(root), "check-ignore", "--no-index", "-q", "--", path], check=False)
         require(result.returncode == 1, "RETENTION_RECEIPT_IGNORED", f"accepted receipt would be ignored: {path}")
@@ -596,17 +621,118 @@ def validate_retention(root: Path) -> None:
     require(result.returncode == 0, "RETENTION_RUNTIME_PUBLIC", "runtime logs must remain ignored")
 
 
+SENSITIVE_VALUE_PATTERNS = (
+    re.compile(r"(?i)(?:[?&](?:token|sig|signature|x-amz-signature|x-goog-signature)=|x-goog-signature\s*[:=])"),
+    re.compile(r"(?i)gh[pousr]_[A-Za-z0-9]{24,}"),
+    re.compile(r"(?i)github_pat_[A-Za-z0-9_]{20,}"),
+    re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
+)
+
+
 def validate_public_json_privacy(value: Any, path: str = "$", denied_keys: set[str] | None = None) -> None:
+    """Reject named sensitive fields and known credential/signature forms.
+
+    This is a bounded public-payload check, not a universal secret detector.
+    """
     denied = denied_keys or DENIED_JSON_KEYS
     if isinstance(value, dict):
         for key, child in value.items():
-            require(str(key).lower() not in denied, "PRIVACY_FIELD", f"sensitive field at {path}.{key}")
+            normalized_key = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", str(key)).lower().replace("-", "_")
+            sensitive_segments = {"password", "passwd"}
+            require(normalized_key not in denied and not (set(normalized_key.split("_")) & sensitive_segments), "PRIVACY_FIELD", f"sensitive field at {path}.{key}")
             validate_public_json_privacy(child, f"{path}.{key}", denied)
     elif isinstance(value, list):
         for index, child in enumerate(value):
             validate_public_json_privacy(child, f"{path}[{index}]", denied)
     elif isinstance(value, str):
-        require(re.search(r"(?i)(?:https?://[^\s/?#]+/[^\s]*[?&](?:token|signature|x-amz-signature)=)|(?:gh[pousr]_[A-Za-z0-9]{24,})|(?:-----BEGIN [A-Z ]*PRIVATE KEY-----)", value) is None, "PRIVACY_VALUE", f"credential or signed URL pattern at {path}")
+        require(not any(pattern.search(value) for pattern in SENSITIVE_VALUE_PATTERNS), "PRIVACY_VALUE", f"known credential or signed URL pattern at {path}")
+
+
+def validate_completion_evidence(receipt: Any, expected: dict[str, Any], observed_store: dict[str, Any]) -> str:
+    """Fail closed on the canonical T002 receipt, current PR/checks and store readback.
+
+    `expected` and `observed_store` are read-only task-owner/GitHub observations,
+    kept separate from the receipt's claims so stale or missing evidence cannot
+    validate itself.
+    """
+    require(isinstance(receipt, dict) and receipt.get("schema_version") == 1, "RECEIPT_SCHEMA", "completion receipt schema_version 1 is required")
+    require(isinstance(expected, dict) and isinstance(observed_store, dict), "RECEIPT_CONTEXT", "independent expected values and store readback are required")
+    required_context = (
+        "repository", "qualified_task_id", "native_id", "task_issue_number", "issue_marker",
+        "accepted_design_commit", "accepted_design_tree", "head_sha", "head_tree",
+        "parent_issue_number", "parent_receipt_commit", "parent_receipt_path",
+        "parent_receipt_sha256", "issue_dependency_readback", "pr_number", "base_branch",
+        "required_check_name", "evidence_ref", "receipt_path",
+    )
+    require(all(expected.get(key) not in (None, "") for key in required_context), "RECEIPT_CONTEXT_MISSING", "independent expected context is incomplete")
+    for key in ("accepted_design_commit", "head_sha", "parent_receipt_commit"):
+        require(isinstance(expected[key], str) and re.fullmatch(r"[0-9a-f]{40}", expected[key]) is not None, "RECEIPT_CONTEXT_HASH", f"invalid expected {key}")
+    for key in ("accepted_design_tree", "head_tree"):
+        require(isinstance(expected[key], str) and re.fullmatch(r"[0-9a-f]{40}", expected[key]) is not None, "RECEIPT_CONTEXT_HASH", f"invalid expected {key}")
+    require(SHA256_RE.fullmatch(expected["parent_receipt_sha256"]) is not None, "RECEIPT_CONTEXT_HASH", "invalid expected parent receipt digest")
+    safe_relative_path(expected["parent_receipt_path"], code="RECEIPT_CONTEXT_PATH")
+    safe_relative_path(expected["receipt_path"], code="RECEIPT_CONTEXT_PATH")
+    require(expected["issue_marker"] == f"<!-- spec-task:{expected['qualified_task_id']} -->", "RECEIPT_CONTEXT_MARKER", "expected issue marker is inconsistent")
+    task = receipt.get("task")
+    require(isinstance(task, dict), "RECEIPT_TASK", "task identity is missing")
+    require(task.get("qualified_id") == expected.get("qualified_task_id") and task.get("native_id") == expected.get("native_id"), "RECEIPT_TASK_IDENTITY", "task identity differs from the assigned leaf")
+    issue = task.get("issue")
+    require(isinstance(issue, dict) and issue.get("number") == expected.get("task_issue_number") and issue.get("state") == "open" and issue.get("marker") == expected.get("issue_marker"), "RECEIPT_ISSUE", "assigned task issue identity/state/marker mismatch")
+
+    source = receipt.get("source")
+    require(isinstance(source, dict), "RECEIPT_SOURCE", "source evidence is missing")
+    require(source.get("accepted_design_commit") == expected.get("accepted_design_commit") and source.get("accepted_design_tree") == expected.get("accepted_design_tree") and source.get("base_commit") == expected.get("accepted_design_commit"), "RECEIPT_SOURCE_BASE", "implementation is not based on the accepted design commit/tree")
+    require(source.get("implementation_commit") == expected.get("head_sha") and source.get("implementation_tree") == expected.get("head_tree"), "RECEIPT_SOURCE_HEAD", "implementation source head/tree is missing or stale")
+    require(source.get("working_tree_clean") is True, "RECEIPT_DIRTY_TREE", "tested source tree was not clean")
+
+    parent = receipt.get("parent_evidence")
+    require(isinstance(parent, dict), "RECEIPT_PARENT", "native parent evidence is missing")
+    require(parent.get("receipt_status") == "accepted" and parent.get("receipt_commit") == expected.get("parent_receipt_commit") and parent.get("receipt_sha256") == expected.get("parent_receipt_sha256") and parent.get("receipt_path") == expected.get("parent_receipt_path"), "RECEIPT_PARENT_EVIDENCE", "accepted T001 receipt reference/hash mismatch")
+    require(parent.get("issue_number") == expected.get("parent_issue_number") and parent.get("issue_dependency_readback") == expected.get("issue_dependency_readback"), "RECEIPT_PARENT_ISSUE", "native T001 issue/dependency evidence mismatch")
+
+    capability = receipt.get("capability_profile")
+    require(isinstance(capability, dict), "RECEIPT_CAPABILITY", "capability profile is missing")
+    require(validate_capability_record(capability) == "ordinary-behavior-eligible", "RECEIPT_CAPABILITY", "ordinary implementation profile did not qualify")
+
+    validation = receipt.get("validation")
+    require(isinstance(validation, dict), "RECEIPT_LOCAL_CHECKS", "validation command evidence is missing")
+    local_runs = validation.get("local_commands")
+    require(isinstance(local_runs, list), "RECEIPT_LOCAL_CHECKS", "local command evidence must be a list")
+    passed_commands = {item.get("command") for item in local_runs if isinstance(item, dict) and item.get("result") == "passed" and item.get("head") == expected.get("head_sha")}
+    required_commands = {"python tools/validate_foundation.py", "python -m unittest tests.test_foundation -v"}
+    require(required_commands.issubset(passed_commands), "RECEIPT_LOCAL_CHECKS", f"missing passing local checks: {sorted(required_commands-passed_commands)}")
+
+    pr = receipt.get("pull_request")
+    require(isinstance(pr, dict), "RECEIPT_PR", "draft PR evidence is missing")
+    require(pr.get("number") == expected.get("pr_number") and pr.get("state") == "open" and pr.get("draft") is True and pr.get("merged") is False, "RECEIPT_PR_STATE", "expected an open, unmerged draft PR")
+    require(pr.get("base_branch") == expected.get("base_branch") and pr.get("base_sha") == expected.get("accepted_design_commit"), "RECEIPT_PR_BASE", "PR base is not the accepted design head")
+    require(pr.get("head_sha") == expected.get("head_sha") and pr.get("head_sha") == source.get("implementation_commit"), "RECEIPT_PR_HEAD", "PR head differs from the tested implementation head")
+
+    ci = receipt.get("continuous_integration")
+    require(isinstance(ci, dict), "RECEIPT_CI_MISSING", "expected CI check evidence is missing")
+    require(ci.get("check_name") == expected.get("required_check_name") and ci.get("status") == "completed" and ci.get("conclusion") == "success", "RECEIPT_CI_RESULT", "expected CI check did not complete successfully")
+    require(ci.get("head_sha") == expected.get("head_sha") and ci.get("head_sha") == pr.get("head_sha"), "RECEIPT_CI_STALE", "CI result is missing or belongs to a stale head")
+    require(type(ci.get("run_id")) is int and ci["run_id"] > 0 and isinstance(ci.get("url"), str) and ci["url"].startswith("https://github.com/"), "RECEIPT_CI_REFERENCE", "CI run reference is missing")
+
+    store = receipt.get("evidence_store")
+    require(isinstance(store, dict), "RECEIPT_STORE", "durable receipt store evidence is missing")
+    require(store.get("repository") == expected.get("repository") and store.get("ref") == expected.get("evidence_ref"), "RECEIPT_STORE_REF", "receipt store repository/ref mismatch")
+    require(store.get("append_only_branch") is True and store.get("write_permission_observed") is True and store.get("write_allowed") is True, "RECEIPT_STORE_PERMISSION", "append-only write permission was not observed")
+    require(store.get("path") == expected.get("receipt_path") and store.get("path_was_absent_before_write") is True, "RECEIPT_STORE_OVERWRITE", "receipt path was wrong or existed before write")
+    require(store.get("previous_ref_sha") == observed_store.get("previous_ref_sha"), "RECEIPT_STORE_PARENT", "receipt ref did not append to the observed previous ref")
+    require(observed_store.get("repository") == expected.get("repository") and observed_store.get("ref") == expected.get("evidence_ref") and observed_store.get("path") == expected.get("receipt_path"), "RECEIPT_STORE_REF", "independent receipt store path/ref readback mismatch")
+    require(observed_store.get("permission_observed") is True and observed_store.get("write_allowed") is True, "RECEIPT_STORE_PERMISSION", "independent store permission readback failed")
+    require(observed_store.get("path_absent_before_write") is True and observed_store.get("path_exists_after_write") is True, "RECEIPT_STORE_OVERWRITE", "receipt path existence/overwrite readback failed")
+    require(observed_store.get("receipt_commit_parent_sha") == observed_store.get("previous_ref_sha"), "RECEIPT_STORE_NON_APPEND", "receipt commit is not a fast-forward append")
+    require(observed_store.get("ref_head_sha") == observed_store.get("receipt_commit_sha"), "RECEIPT_STORE_HEAD", "receipt commit is not the current evidence ref head")
+    for key in ("receipt_commit_sha", "receipt_commit_parent_sha", "previous_ref_sha", "ref_head_sha"):
+        require(isinstance(observed_store.get(key), str) and re.fullmatch(r"[0-9a-f]{40}", observed_store[key]) is not None, "RECEIPT_STORE_REFERENCE", f"invalid store {key}")
+    require(isinstance(observed_store.get("receipt_blob_sha"), str) and re.fullmatch(r"[0-9a-f]{40}", observed_store["receipt_blob_sha"]) is not None, "RECEIPT_STORE_BLOB", "receipt blob reference is missing")
+    require(isinstance(observed_store.get("receipt_sha256"), str) and SHA256_RE.fullmatch(observed_store["receipt_sha256"]) is not None, "RECEIPT_STORE_DIGEST", "receipt content digest is missing")
+
+    verdict = receipt.get("verdict")
+    require(isinstance(verdict, dict) and verdict.get("accepted") is False, "RECEIPT_VERDICT", "this candidate receipt must not infer T002 owner acceptance")
+    return "candidate-evidence-current; owner-acceptance-pending"
 
 
 def validate_frozen_design_hashes(root: Path, contract: dict[str, Any]) -> None:
