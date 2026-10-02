@@ -614,6 +614,7 @@ def validate_retention(root: Path) -> None:
         "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion.json",
         "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision1.json",
         "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision2.json",
+        "build/foundation/accepted/receipts/T002/t002-20261002T002335Z/completion-revision3.json",
     ):
         result = subprocess.run(["git", "-C", str(root), "check-ignore", "--no-index", "-q", "--", path], check=False)
         require(result.returncode == 1, "RETENTION_RECEIPT_IGNORED", f"accepted receipt would be ignored: {path}")
@@ -649,21 +650,34 @@ def validate_public_json_privacy(value: Any, path: str = "$", denied_keys: set[s
         require(not any(pattern.search(value) for pattern in SENSITIVE_VALUE_PATTERNS), "PRIVACY_VALUE", f"known credential or signed URL pattern at {path}")
 
 
-def validate_completion_evidence(receipt: Any, expected: dict[str, Any], observed_store: dict[str, Any]) -> str:
-    """Fail closed on the canonical T002 receipt, current PR/checks and store readback.
+def git_blob_sha(data: bytes) -> str:
+    """Return the Git SHA-1 for a blob containing exactly `data`."""
+    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
-    `expected` and `observed_store` are read-only task-owner/GitHub observations,
-    kept separate from the receipt's claims so stale or missing evidence cannot
-    validate itself.
+
+def validate_completion_evidence(
+    receipt: Any,
+    expected: dict[str, Any],
+    observed_ci: Any = None,
+    observed_store: Any = None,
+    receipt_bytes: bytes | None = None,
+) -> str:
+    """Bind a T002 receipt to separately observed GitHub CI and immutable store bytes.
+
+    The caller must collect `observed_ci` and `observed_store` through read-only
+    GitHub/Git observations. Receipt claims alone never establish check status,
+    repository identity, commit/blob identity, or content digests.
     """
     require(isinstance(receipt, dict) and receipt.get("schema_version") == 1, "RECEIPT_SCHEMA", "completion receipt schema_version 1 is required")
-    require(isinstance(expected, dict) and isinstance(observed_store, dict), "RECEIPT_CONTEXT", "independent expected values and store readback are required")
+    require(isinstance(expected, dict), "RECEIPT_CONTEXT", "independent expected values are required")
+    require(isinstance(observed_ci, dict), "RECEIPT_CI_UNVERIFIED", "independent GitHub workflow and job observations are required")
+    require(isinstance(observed_store, dict) and isinstance(receipt_bytes, bytes), "RECEIPT_STORE_UNVERIFIED", "independent store readback and receipt bytes are required")
     required_context = (
         "repository", "qualified_task_id", "native_id", "task_issue_number", "issue_marker",
         "accepted_design_commit", "accepted_design_tree", "head_sha", "head_tree",
         "parent_issue_number", "parent_qualified_id", "parent_receipt_commit", "parent_receipt_path",
         "parent_receipt_sha256", "issue_dependency_readback", "pr_number", "base_branch",
-        "required_check_name", "evidence_ref", "receipt_path",
+        "required_check_name", "required_workflow_name", "evidence_ref", "receipt_path",
     )
     require(all(expected.get(key) not in (None, "") for key in required_context), "RECEIPT_CONTEXT_MISSING", "independent expected context is incomplete")
     for key in ("accepted_design_commit", "head_sha", "parent_receipt_commit"):
@@ -713,26 +727,59 @@ def validate_completion_evidence(receipt: Any, expected: dict[str, Any], observe
     require(pr.get("head_sha") == expected.get("head_sha") and pr.get("head_sha") == source.get("implementation_commit"), "RECEIPT_PR_HEAD", "PR head differs from the tested implementation head")
 
     ci = receipt.get("continuous_integration")
-    require(isinstance(ci, dict), "RECEIPT_CI_MISSING", "expected CI check evidence is missing")
-    require(ci.get("check_name") == expected.get("required_check_name") and ci.get("status") == "completed" and ci.get("conclusion") == "success", "RECEIPT_CI_RESULT", "expected CI check did not complete successfully")
-    require(ci.get("head_sha") == expected.get("head_sha") and ci.get("head_sha") == pr.get("head_sha"), "RECEIPT_CI_STALE", "CI result is missing or belongs to a stale head")
-    require(type(ci.get("run_id")) is int and ci["run_id"] > 0 and isinstance(ci.get("url"), str) and ci["url"].startswith("https://github.com/"), "RECEIPT_CI_REFERENCE", "CI run reference is missing")
+    require(isinstance(ci, dict), "RECEIPT_CI_UNVERIFIED", "receipt CI claim is missing")
+    ci_fields = (
+        "repository", "queried_commit_sha", "run_id", "workflow_name", "run_status", "run_conclusion",
+        "job_id", "job_run_id", "job_name", "job_status", "job_conclusion",
+    )
+    require(all(observed_ci.get(key) not in (None, "") for key in ci_fields), "RECEIPT_CI_UNVERIFIED", "independent workflow/job observation is incomplete")
+    require(observed_ci.get("repository") == expected.get("repository"), "RECEIPT_CI_REPOSITORY", "observed CI belongs to a different repository")
+    require(observed_ci.get("queried_commit_sha") == expected.get("head_sha"), "RECEIPT_CI_STALE", "workflow runs were not fetched for the expected implementation head")
+    run_id = observed_ci.get("run_id")
+    job_id = observed_ci.get("job_id")
+    require(type(run_id) is int and run_id > 0 and type(job_id) is int and job_id > 0, "RECEIPT_CI_UNVERIFIED", "observed run and job IDs must be positive integers")
+    require(observed_ci.get("job_run_id") == run_id, "RECEIPT_CI_JOB_RUN", "observed job is not part of the observed workflow run")
+    require(observed_ci.get("workflow_name") == expected.get("required_workflow_name") and observed_ci.get("job_name") == expected.get("required_check_name"), "RECEIPT_CI_NAME", "observed workflow/check name differs from the required check")
+    require(observed_ci.get("run_status") == "completed" and observed_ci.get("run_conclusion") == "success" and observed_ci.get("job_status") == "completed" and observed_ci.get("job_conclusion") == "success", "RECEIPT_CI_RESULT", "observed workflow or required job did not complete successfully")
+    expected_job_url = f"https://github.com/{expected['repository']}/actions/runs/{run_id}/job/{job_id}"
+    require(ci.get("repository") == expected["repository"] and ci.get("run_id") == run_id and ci.get("job_id") == job_id, "RECEIPT_CI_REFERENCE", "receipt run/job tuple differs from independent GitHub observations")
+    require(ci.get("workflow_name") == observed_ci.get("workflow_name") and ci.get("check_name") == observed_ci.get("job_name"), "RECEIPT_CI_NAME", "receipt workflow/check names differ from independent GitHub observations")
+    require(ci.get("head_sha") == expected["head_sha"] == observed_ci.get("queried_commit_sha"), "RECEIPT_CI_STALE", "receipt CI head differs from independently queried implementation head")
+    require(ci.get("status") == observed_ci.get("job_status") == "completed" and ci.get("conclusion") == observed_ci.get("job_conclusion") == "success", "RECEIPT_CI_RESULT", "receipt CI result differs from the observed required job")
+    require(ci.get("url") == expected_job_url, "RECEIPT_CI_URL", "receipt job URL does not bind the observed repository, run and job")
 
     store = receipt.get("evidence_store")
     require(isinstance(store, dict), "RECEIPT_STORE", "durable receipt store evidence is missing")
-    require(store.get("repository") == expected.get("repository") and store.get("ref") == expected.get("evidence_ref"), "RECEIPT_STORE_REF", "receipt store repository/ref mismatch")
-    require(store.get("append_only_branch") is True and store.get("write_permission_observed") is True and store.get("write_allowed") is True, "RECEIPT_STORE_PERMISSION", "append-only write permission was not observed")
-    require(store.get("path") == expected.get("receipt_path") and store.get("path_was_absent_before_write") is True, "RECEIPT_STORE_OVERWRITE", "receipt path was wrong or existed before write")
-    require(store.get("previous_ref_sha") == observed_store.get("previous_ref_sha"), "RECEIPT_STORE_PARENT", "receipt ref did not append to the observed previous ref")
-    require(observed_store.get("repository") == expected.get("repository") and observed_store.get("ref") == expected.get("evidence_ref") and observed_store.get("path") == expected.get("receipt_path"), "RECEIPT_STORE_REF", "independent receipt store path/ref readback mismatch")
-    require(observed_store.get("permission_observed") is True and observed_store.get("write_allowed") is True, "RECEIPT_STORE_PERMISSION", "independent store permission readback failed")
+    store_fields = (
+        "repository", "ref", "path", "append_only_branch", "permission_observed", "write_allowed",
+        "path_absent_before_write", "path_exists_after_write", "previous_ref_sha", "receipt_commit_sha",
+        "receipt_commit_parent_sha", "ref_head_sha", "content_repository", "content_commit_sha", "content_path",
+        "receipt_blob_sha", "receipt_sha256",
+    )
+    require(all(observed_store.get(key) not in (None, "") for key in store_fields), "RECEIPT_STORE_UNVERIFIED", "independent store observation is incomplete")
+    require(observed_store.get("repository") == expected.get("repository") and observed_store.get("ref") == expected.get("evidence_ref") and observed_store.get("path") == expected.get("receipt_path"), "RECEIPT_STORE_REF", "independent receipt store repository/ref/path mismatch")
+    require(observed_store.get("content_repository") == expected.get("repository") and observed_store.get("content_commit_sha") == observed_store.get("receipt_commit_sha") and observed_store.get("content_path") == expected.get("receipt_path"), "RECEIPT_STORE_CONTENT_BINDING", "supplied bytes were not read from the observed receipt commit/path")
+    require(observed_store.get("append_only_branch") is True and observed_store.get("permission_observed") is True and observed_store.get("write_allowed") is True, "RECEIPT_STORE_PERMISSION", "append-only store and write permission were not independently observed")
     require(observed_store.get("path_absent_before_write") is True and observed_store.get("path_exists_after_write") is True, "RECEIPT_STORE_OVERWRITE", "receipt path existence/overwrite readback failed")
     require(observed_store.get("receipt_commit_parent_sha") == observed_store.get("previous_ref_sha"), "RECEIPT_STORE_NON_APPEND", "receipt commit is not a fast-forward append")
-    require(observed_store.get("ref_head_sha") == observed_store.get("receipt_commit_sha"), "RECEIPT_STORE_HEAD", "receipt commit is not the current evidence ref head")
-    for key in ("receipt_commit_sha", "receipt_commit_parent_sha", "previous_ref_sha", "ref_head_sha"):
-        require(isinstance(observed_store.get(key), str) and re.fullmatch(r"[0-9a-f]{40}", observed_store[key]) is not None, "RECEIPT_STORE_REFERENCE", f"invalid store {key}")
-    require(isinstance(observed_store.get("receipt_blob_sha"), str) and re.fullmatch(r"[0-9a-f]{40}", observed_store["receipt_blob_sha"]) is not None, "RECEIPT_STORE_BLOB", "receipt blob reference is missing")
-    require(isinstance(observed_store.get("receipt_sha256"), str) and SHA256_RE.fullmatch(observed_store["receipt_sha256"]) is not None, "RECEIPT_STORE_DIGEST", "receipt content digest is missing")
+    require(observed_store.get("ref_head_sha") == observed_store.get("receipt_commit_sha"), "RECEIPT_STORE_HEAD", "receipt commit is not the observed evidence ref head")
+    for key in ("receipt_commit_sha", "receipt_commit_parent_sha", "previous_ref_sha", "ref_head_sha", "receipt_blob_sha"):
+        require(isinstance(observed_store.get(key), str) and re.fullmatch(r"[0-9a-f]{40}", observed_store[key]) is not None and observed_store[key] != "0" * 40, "RECEIPT_STORE_REFERENCE", f"invalid store {key}")
+    require(SHA256_RE.fullmatch(observed_store.get("receipt_sha256", "")) is not None, "RECEIPT_STORE_DIGEST", "observed receipt content digest is missing")
+    require(store.get("repository") == expected["repository"] == observed_store["repository"] and store.get("ref") == expected["evidence_ref"] == observed_store["ref"], "RECEIPT_STORE_REF", "receipt store claim differs from independent readback")
+    require(store.get("append_only_branch") is True and store.get("write_permission_observed") is True and store.get("write_allowed") is True, "RECEIPT_STORE_PERMISSION", "receipt does not record observed append-only write permission")
+    require(store.get("path") == expected["receipt_path"] == observed_store["path"] and store.get("path_was_absent_before_write") is True and observed_store["path_absent_before_write"] is True, "RECEIPT_STORE_OVERWRITE", "receipt store path/absence claim differs from independent readback")
+    require(store.get("previous_ref_sha") == observed_store.get("previous_ref_sha"), "RECEIPT_STORE_PARENT", "receipt ref did not append to the independently observed previous ref")
+    try:
+        observed_receipt = json.loads(receipt_bytes)
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        raise ValidationError("RECEIPT_STORE_BYTES: supplied receipt bytes are not valid JSON") from None
+    require(observed_receipt == receipt, "RECEIPT_STORE_BYTES", "parsed receipt differs from the supplied immutable store bytes")
+    computed_blob_sha = git_blob_sha(receipt_bytes)
+    computed_sha256 = hashlib.sha256(receipt_bytes).hexdigest()
+    require(observed_store["receipt_blob_sha"] == computed_blob_sha, "RECEIPT_STORE_BLOB", "GitHub blob observation does not match the supplied receipt bytes")
+    require(observed_store["receipt_sha256"] == computed_sha256, "RECEIPT_STORE_DIGEST", "observed receipt digest does not match the supplied bytes")
+    require(store.get("previous_ref_sha") == observed_store["receipt_commit_parent_sha"], "RECEIPT_STORE_PARENT", "receipt commit parent differs from its recorded previous ref")
 
     verdict = receipt.get("verdict")
     require(isinstance(verdict, dict) and verdict.get("accepted") is False, "RECEIPT_VERDICT", "this candidate receipt must not infer T002 owner acceptance")

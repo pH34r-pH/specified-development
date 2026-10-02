@@ -154,7 +154,7 @@
     },
     {
       "path": "tests/fixtures/foundation/receipt_evidence.json",
-      "sha256": "ad565c6affb2476f9dc002e2758e18918e8507f84fe30617ceff4565d8a80025"
+      "sha256": "c6e94c729923d926494dc2e6cffe6cdd25e72e73f40bc6f06c4d51565c94c211"
     },
     {
       "path": "tests/fixtures/foundation/spec_source_closure_cases.json",
@@ -162,11 +162,11 @@
     },
     {
       "path": "tests/test_foundation.py",
-      "sha256": "9e42894d26b0e4726b961ec857a5e0df620da3a8b9d4a281718b473bf552faff"
+      "sha256": "7e85d109770fb067755923f8241ca69e4a70dc810e36afb23303bc7c7e8313b7"
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "9c5f8a9c320c7666136cc065420b8e5953bcba890e33693143f916ed65849d71"
+      "sha256": "3514828ec93329b61af0d884b9d4e02d0c60624a789c347bb1e5fd79b2ef8ae6"
     }
   ],
   "private_inputs_included": false,

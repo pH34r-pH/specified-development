@@ -190,19 +190,33 @@ class CompletionEvidenceTests(unittest.TestCase):
         data = load_fixture("receipt_evidence.json")
         self.receipt = data["receipt"]
         self.expected = data["expected"]
+        self.observed_ci = data["observed_ci"]
         self.observed_store = data["observed_store"]
+        self.receipt_bytes = (json.dumps(self.receipt, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+        self.observed_store["receipt_blob_sha"] = vf.git_blob_sha(self.receipt_bytes)
+        self.observed_store["receipt_sha256"] = hashlib.sha256(self.receipt_bytes).hexdigest()
+
+    def test_git_blob_digest_matches_git_object_hash(self):
+        data = b"immutable fixture bytes\n"
+        expected = subprocess.check_output(["git", "hash-object", "--stdin"], input=data, cwd=ROOT).decode("ascii").strip()
+        self.assertEqual(expected, vf.git_blob_sha(data))
 
     def test_current_candidate_completion_evidence_passes_without_claiming_acceptance(self):
-        result = vf.validate_completion_evidence(self.receipt, self.expected, self.observed_store)
+        result = vf.validate_completion_evidence(self.receipt, self.expected, self.observed_ci, self.observed_store, self.receipt_bytes)
         self.assertEqual("candidate-evidence-current; owner-acceptance-pending", result)
         self.assertFalse(self.receipt["verdict"]["accepted"])
 
     def test_fnd005_store_permission_reference_and_overwrite_gates_fail_closed(self):
-        for case in ("missing-store-permission", "preexisting-path", "missing-parent-receipt", "unwritten-receipt", "nonappend-commit"):
+        for case in (
+            "missing-store-permission", "preexisting-path", "missing-parent-receipt", "unwritten-receipt",
+            "nonappend-commit", "wrong-store-blob", "wrong-store-digest", "missing-receipt-bytes", "missing-store-observation",
+        ):
             with self.subTest(case=case):
                 receipt = copy.deepcopy(self.receipt)
                 expected = copy.deepcopy(self.expected)
                 store = copy.deepcopy(self.observed_store)
+                observed_ci = copy.deepcopy(self.observed_ci)
+                receipt_bytes = self.receipt_bytes
                 if case == "missing-store-permission":
                     store["permission_observed"] = False
                 elif case == "preexisting-path":
@@ -214,17 +228,41 @@ class CompletionEvidenceTests(unittest.TestCase):
                     store["path_exists_after_write"] = False
                 elif case == "nonappend-commit":
                     store["receipt_commit_parent_sha"] = "9999999999999999999999999999999999999999"
+                elif case == "wrong-store-blob":
+                    store["receipt_blob_sha"] = "0" * 40
+                elif case == "wrong-store-digest":
+                    store["receipt_sha256"] = "0" * 64
+                elif case == "missing-receipt-bytes":
+                    receipt_bytes = None
+                elif case == "missing-store-observation":
+                    store = None
                 with self.assertRaises(vf.ValidationError):
-                    vf.validate_completion_evidence(receipt, expected, store)
+                    vf.validate_completion_evidence(receipt, expected, observed_ci, store, receipt_bytes)
 
     def test_fnd006_stale_missing_check_and_parent_gates_fail_closed(self):
-        for case in ("stale-check-head", "missing-check-run", "unaccepted-parent", "wrong-task-issue", "wrong-parent-dependency", "wrong-pr-base", "missing-local-test"):
+        for case in (
+            "stale-check-head", "stale-run-and-job", "wrong-repository-url", "missing-job-id",
+            "missing-ci-observation", "cross-repository-observation", "missing-check-run", "unaccepted-parent",
+            "wrong-task-issue", "wrong-parent-dependency", "wrong-pr-base", "missing-local-test",
+        ):
             with self.subTest(case=case):
                 receipt = copy.deepcopy(self.receipt)
                 expected = copy.deepcopy(self.expected)
                 store = copy.deepcopy(self.observed_store)
+                observed_ci = copy.deepcopy(self.observed_ci)
                 if case == "stale-check-head":
                     receipt["continuous_integration"]["head_sha"] = "2222222222222222222222222222222222222222"
+                elif case == "stale-run-and-job":
+                    receipt["continuous_integration"]["run_id"] = 36948329481
+                    receipt["continuous_integration"]["job_id"] = 110655379342
+                elif case == "wrong-repository-url":
+                    receipt["continuous_integration"]["url"] = "https://github.com/unrelated/repository/actions/runs/123/job/456"
+                elif case == "missing-job-id":
+                    observed_ci.pop("job_id")
+                elif case == "missing-ci-observation":
+                    observed_ci = None
+                elif case == "cross-repository-observation":
+                    observed_ci["repository"] = "unrelated/repository"
                 elif case == "missing-check-run":
                     receipt["continuous_integration"] = None
                 elif case == "unaccepted-parent":
@@ -238,7 +276,7 @@ class CompletionEvidenceTests(unittest.TestCase):
                 elif case == "missing-local-test":
                     receipt["validation"]["local_commands"] = receipt["validation"]["local_commands"][:1]
                 with self.assertRaises(vf.ValidationError):
-                    vf.validate_completion_evidence(receipt, expected, store)
+                    vf.validate_completion_evidence(receipt, expected, observed_ci, store, self.receipt_bytes)
 
 
 class InventoryPrivacyAndRetentionTests(unittest.TestCase):

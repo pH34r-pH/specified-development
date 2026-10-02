@@ -18,8 +18,22 @@
     "pr_number": 4,
     "base_branch": "design/canonical-spec-directory",
     "required_check_name": "Validate scaffold and independent fixtures",
+    "required_workflow_name": "Foundation scaffold",
     "evidence_ref": "evidence/foundation-receipts",
     "receipt_path": "build/foundation/accepted/receipts/T002/attempt-1/completion-revision1.json"
+  },
+  "observed_ci": {
+    "repository": "pH34r-pH/specified-development",
+    "queried_commit_sha": "3333333333333333333333333333333333333333",
+    "run_id": 123,
+    "workflow_name": "Foundation scaffold",
+    "run_status": "completed",
+    "run_conclusion": "success",
+    "job_id": 456,
+    "job_run_id": 123,
+    "job_name": "Validate scaffold and independent fixtures",
+    "job_status": "completed",
+    "job_conclusion": "success"
   },
   "observed_store": {
     "permission_observed": true,
@@ -27,12 +41,16 @@
     "repository": "pH34r-pH/specified-development",
     "ref": "evidence/foundation-receipts",
     "path": "build/foundation/accepted/receipts/T002/attempt-1/completion-revision1.json",
+    "append_only_branch": true,
     "previous_ref_sha": "5555555555555555555555555555555555555555",
     "path_absent_before_write": true,
     "path_exists_after_write": true,
     "receipt_commit_sha": "6666666666666666666666666666666666666666",
     "receipt_commit_parent_sha": "5555555555555555555555555555555555555555",
     "ref_head_sha": "6666666666666666666666666666666666666666",
+    "content_repository": "pH34r-pH/specified-development",
+    "content_commit_sha": "6666666666666666666666666666666666666666",
+    "content_path": "build/foundation/accepted/receipts/T002/attempt-1/completion-revision1.json",
     "receipt_blob_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     "receipt_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
   },
@@ -132,8 +150,11 @@
       "head_sha": "3333333333333333333333333333333333333333"
     },
     "continuous_integration": {
+      "repository": "pH34r-pH/specified-development",
       "run_id": 123,
-      "url": "https://github.com/example/repository/actions/runs/123",
+      "job_id": 456,
+      "workflow_name": "Foundation scaffold",
+      "url": "https://github.com/pH34r-pH/specified-development/actions/runs/123/job/456",
       "check_name": "Validate scaffold and independent fixtures",
       "head_sha": "3333333333333333333333333333333333333333",
       "status": "completed",
