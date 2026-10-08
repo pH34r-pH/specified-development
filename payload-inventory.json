@@ -6,7 +6,7 @@
   "files": [
     {
       "path": ".github/workflows/foundation.yml",
-      "sha256": "87a0ca82037ac3e79b592763736129cdb3c05f185f269a9881a44c6e017cd0ec"
+      "sha256": "29a576d66675e071491e8b9317fa3bf8f1da048cde22c37ef2093f987674b983"
     },
     {
       "path": ".gitignore",

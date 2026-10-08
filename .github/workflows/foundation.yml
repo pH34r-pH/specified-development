@@ -3,6 +3,7 @@ name: Foundation scaffold
 on:
   pull_request:
     branches:
+      - main
       - design/canonical-spec-directory
 
 permissions:
