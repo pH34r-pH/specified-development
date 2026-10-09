@@ -6,7 +6,7 @@
   "files": [
     {
       "path": ".github/workflows/foundation.yml",
-      "sha256": "87a0ca82037ac3e79b592763736129cdb3c05f185f269a9881a44c6e017cd0ec"
+      "sha256": "29a576d66675e071491e8b9317fa3bf8f1da048cde22c37ef2093f987674b983"
     },
     {
       "path": ".gitignore",
@@ -22,11 +22,11 @@
     },
     {
       "path": "build/directory-specs/plan.md",
-      "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+      "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
     },
     {
       "path": "build/directory-specs/tasks.md",
-      "sha256": "dcc5feedbf5b051dc0d10fde818d4bbf02a69dad9b7afa79e6185e7c955b9844"
+      "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
     },
     {
       "path": "build/directory-specs/tests.md",
@@ -46,7 +46,7 @@
     },
     {
       "path": "build/execution-contract.yaml",
-      "sha256": "289c638ff3ecfe53939801099ed5f1af62ca96df28d6cd63706ce0724fbcf5d5"
+      "sha256": "baeb30f0734e2e312698abd2d7a5959e610b5706e04fcb58ecd66cf2b8da5e43"
     },
     {
       "path": "build/foundation/design-validation.json",
@@ -62,7 +62,7 @@
     },
     {
       "path": "build/foundation/tasks.md",
-      "sha256": "f749a3312c16f283e3696e4b7fa3ad7c5a91c78ccf383f6e606d7bfc1fa9807c"
+      "sha256": "2401f06cdf1868ee490086ae2e6e6410b7dcc97bed87ff051332e55a3de1479b"
     },
     {
       "path": "build/foundation/tests.md",
@@ -122,7 +122,7 @@
     },
     {
       "path": "spec/usage/lifecycle.md",
-      "sha256": "94cbb5fc9d89b1546b8daac117a3e279768d3d5afb20066ae018792d93033c29"
+      "sha256": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05"
     },
     {
       "path": "tests/fixtures/foundation/capability_profiles.json",

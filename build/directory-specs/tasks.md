@@ -1,6 +1,6 @@
 ---
 artifact: executable-decomposition
-revision: 3
+revision: 4
 acceptance: candidate-review
 dispatch_status: planned-not-dispatched
 ---
@@ -279,7 +279,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -409,7 +409,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -547,7 +547,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -687,7 +687,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -827,7 +827,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -965,7 +965,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -1103,7 +1103,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -1241,7 +1241,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -1379,7 +1379,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -1518,7 +1518,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -1657,7 +1657,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -1798,7 +1798,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -1938,7 +1938,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -2079,7 +2079,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -2219,7 +2219,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -2359,7 +2359,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -2497,7 +2497,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -2640,7 +2640,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -2780,7 +2780,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -2933,7 +2933,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -3071,7 +3071,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -3231,7 +3231,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "a01cab2937d6e00bf772081f8ddeaf8964ba62ab4e8d5934b4f05d7c9d9a3e18"
+            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
           },
           {
             "path": "build/directory-specs/tests.md",
