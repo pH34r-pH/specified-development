@@ -18,7 +18,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "244626aa20284126d38f5ea3bab243f961860bb24fea8f935d979e15b53c7c7c"
+      "sha256": "5c7cbf51421d59d71d18862a48cfd13da65b72f6be9815d7ea6cf1fdf6b62f42"
     },
     {
       "path": "build/directory-specs/plan.md",
@@ -73,6 +73,10 @@
       "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
     },
     {
+      "path": "spec/assets/hero.png",
+      "sha256": "11b9d93d0481d0ab4c50f9de827c775cabae63f719fda8b9d9492f184e6e390f"
+    },
+    {
       "path": "spec/assets/rate-card.fixture.json",
       "sha256": "e6e6e6db42971c8f14a577296f2d6b43f28b97f8d687da936d0e99c8c75222f6"
     },
@@ -106,7 +110,7 @@
     },
     {
       "path": "spec/manifest.json",
-      "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+      "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
     },
     {
       "path": "spec/navigation.json",
