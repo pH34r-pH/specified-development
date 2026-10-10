@@ -1,5 +1,7 @@
 # Specified Development
 
+![Specified Development — Make intent explicit. Build from reviewed specifications.](spec/assets/hero.png)
+
 Specified Development was designed as a reusable GitHub Spec Kit distribution: a pinned preset, executable extension, and bundle. Its canonical specification was also its documentation. Research remained free-form Markdown; mature intent advanced through **spec → plan → independent tests → tasks**. Executable leaves had frozen inputs, one fixed model, bounded output scope, and one issue each.
 
 **Status:** architecture approved; source-directory enhancement specified; implementation, component releases, compatibility qualification, regeneration proof, and deployment remained pending. Past-tense product prose described the intended complete product and did not assert delivery.

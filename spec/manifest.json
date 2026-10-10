@@ -104,6 +104,11 @@
       "path": "assets/rate-card.fixture.json",
       "media_type": "application/json",
       "visibility": "public"
+    },
+    "specified-development/hero": {
+      "path": "assets/hero.png",
+      "media_type": "image/png",
+      "visibility": "public"
     }
   }
 }
