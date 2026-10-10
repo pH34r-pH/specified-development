@@ -26,7 +26,7 @@
     },
     {
       "path": "build/directory-specs/tasks.md",
-      "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
+      "sha256": "4b42ac3124dbeba87e3ff5fd3e269078d7a143528508cb7c645ff0812f1bbfee"
     },
     {
       "path": "build/directory-specs/tests.md",
@@ -46,7 +46,7 @@
     },
     {
       "path": "build/execution-contract.yaml",
-      "sha256": "baeb30f0734e2e312698abd2d7a5959e610b5706e04fcb58ecd66cf2b8da5e43"
+      "sha256": "0829ea48fd2801661956a3e1494cdd7416d78fbb3d685607fdc3cabacd2d5759"
     },
     {
       "path": "build/foundation/design-validation.json",
@@ -62,7 +62,7 @@
     },
     {
       "path": "build/foundation/tasks.md",
-      "sha256": "2401f06cdf1868ee490086ae2e6e6410b7dcc97bed87ff051332e55a3de1479b"
+      "sha256": "be71b34da72e5ba831d7ab42921a60ae81bd8ddb9c2a2dee5aa4b2cbe32e2aca"
     },
     {
       "path": "build/foundation/tests.md",
