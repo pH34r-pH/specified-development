@@ -113,6 +113,22 @@ def allowed_public_path(value: str) -> bool:
         ".github/workflows/foundation.yml",
     }:
         return True
+    # Authorized portable guidance package; no broader application scope.
+    if value in {
+        "skills/README.md", "tools/validate_skills.py", "tests/test_skills.py",
+        "skills/deabstract-stablecode/SKILL.md",
+        "skills/deabstract-stablecode/README.md",
+        "skills/deabstract-stablecode/NOTICE.md",
+        "skills/deabstract-stablecode/LICENSE",
+        "skills/deabstract-stablecode/LICENSE.dzhng-skills",
+        "skills/deabstract-stablecode/references/explore-unknowns.md",
+        "skills/deabstract-stablecode/references/plan-targets.md",
+        "skills/deabstract-stablecode/references/refactor-clean.md",
+        "skills/deabstract-stablecode/references/audit-tests.md",
+        "skills/deabstract-stablecode/references/qualify-change.md",
+        "skills/deabstract-stablecode/references/review-decisions.md",
+    }:
+        return True
     if value.startswith("spec/"):
         return True
     if value in {
