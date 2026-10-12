@@ -10,15 +10,15 @@
     "sha256": {
       ".gitignore": "4b84a5015c78fe37f105132d44b3a94c664907568fa3aeb83711afd0172081ee",
       "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-      "README.md": "244626aa20284126d38f5ea3bab243f961860bb24fea8f935d979e15b53c7c7c",
+      "README.md": "5c7cbf51421d59d71d18862a48cfd13da65b72f6be9815d7ea6cf1fdf6b62f42",
       "build/directory-specs/plan.md": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1",
-      "build/directory-specs/tasks.md": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4",
+      "build/directory-specs/tasks.md": "4b42ac3124dbeba87e3ff5fd3e269078d7a143528508cb7c645ff0812f1bbfee",
       "build/directory-specs/tests.md": "b8e8e521cf200c803eccd459c1a6de661d55ac3dd8268c1080e996fcc8a8dac6",
       "build/distribution/plan.md": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437",
       "build/distribution/tasks.md": "48baea57dce561116b0997727d4f52850b9dd2f5d58bd242ed02820817f9e686",
       "build/distribution/tests.md": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60",
       "build/foundation/plan.md": "aefa2faab79bbb7bd9e6e7e8b02da8c90bf6d63a291b215337f072959cc48a74",
-      "build/foundation/tasks.md": "2401f06cdf1868ee490086ae2e6e6410b7dcc97bed87ff051332e55a3de1479b",
+      "build/foundation/tasks.md": "be71b34da72e5ba831d7ab42921a60ae81bd8ddb9c2a2dee5aa4b2cbe32e2aca",
       "build/foundation/tests.md": "ef9184d73607b4d7e0a934a9976b7403480e27fa0324135912a1701e245ee8ee",
       "build/native-bindings.json": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368",
       "spec/assets/rate-card.fixture.json": "e6e6e6db42971c8f14a577296f2d6b43f28b97f8d687da936d0e99c8c75222f6",
@@ -28,7 +28,7 @@
       "spec/features/directory-specs/index.md": "3ac2637e29205d920d9b3fd6e13f658ffef3b5cc7a38cf710f5e01335a632d4a",
       "spec/features/distribution/index.md": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39",
       "spec/index.md": "043041fcc2071a7f25fbe5dde3da218a85b5a8a03edea1c7e6d9cdfb158b6f9d",
-      "spec/manifest.json": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9",
+      "spec/manifest.json": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1",
       "spec/navigation.json": "be382df71bd0346216028b65f94632bcb996f73f3ef7f67440c67de7fe07cb74",
       "spec/operations/rollout.md": "080d0b180e3bb6d2edd8072dd575ae19b39ae27f8b4523f10349be503e3b86bd",
       "spec/operations/upstream.md": "b6c49f416da521c2df5bae0c188e322424c366213cf01b8007cebeb80ed9833b",
@@ -1698,7 +1698,7 @@
           "authoritative": [
             {
               "path": "README.md",
-              "sha256": "244626aa20284126d38f5ea3bab243f961860bb24fea8f935d979e15b53c7c7c"
+              "sha256": "5c7cbf51421d59d71d18862a48cfd13da65b72f6be9815d7ea6cf1fdf6b62f42"
             },
             {
               "path": "LICENSE",
@@ -1710,7 +1710,7 @@
             },
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -1786,7 +1786,7 @@
             },
             {
               "path": "build/directory-specs/tasks.md",
-              "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
+              "sha256": "4b42ac3124dbeba87e3ff5fd3e269078d7a143528508cb7c645ff0812f1bbfee"
             },
             {
               "path": "build/foundation/handoff.md",
@@ -1963,7 +1963,7 @@
           "authoritative": [
             {
               "path": "README.md",
-              "sha256": "244626aa20284126d38f5ea3bab243f961860bb24fea8f935d979e15b53c7c7c"
+              "sha256": "5c7cbf51421d59d71d18862a48cfd13da65b72f6be9815d7ea6cf1fdf6b62f42"
             },
             {
               "path": "LICENSE",
@@ -1975,7 +1975,7 @@
             },
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -2051,7 +2051,7 @@
             },
             {
               "path": "build/directory-specs/tasks.md",
-              "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
+              "sha256": "4b42ac3124dbeba87e3ff5fd3e269078d7a143528508cb7c645ff0812f1bbfee"
             },
             {
               "path": "build/foundation/handoff.md",
@@ -7618,7 +7618,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -7747,7 +7747,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -7884,7 +7884,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -8023,7 +8023,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -8162,7 +8162,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -8299,7 +8299,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -8436,7 +8436,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -8573,7 +8573,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -8710,7 +8710,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -8848,7 +8848,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -8986,7 +8986,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -9126,7 +9126,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -9264,7 +9264,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -9403,7 +9403,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -9541,7 +9541,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -9679,7 +9679,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -9815,7 +9815,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -9957,7 +9957,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -10096,7 +10096,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -10248,7 +10248,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -10385,7 +10385,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",
@@ -10543,7 +10543,7 @@
           "authoritative": [
             {
               "path": "spec/manifest.json",
-              "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+              "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
             },
             {
               "path": "spec/navigation.json",

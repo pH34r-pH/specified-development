@@ -251,7 +251,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -381,7 +381,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -519,7 +519,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -659,7 +659,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -799,7 +799,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -937,7 +937,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -1075,7 +1075,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -1213,7 +1213,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -1351,7 +1351,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -1490,7 +1490,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -1629,7 +1629,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -1770,7 +1770,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -1910,7 +1910,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -2051,7 +2051,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -2191,7 +2191,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -2331,7 +2331,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -2469,7 +2469,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -2612,7 +2612,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -2752,7 +2752,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -2905,7 +2905,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -3043,7 +3043,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
@@ -3203,7 +3203,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
         "authoritative": [
           {
             "path": "spec/manifest.json",
-            "sha256": "fd6a67a708845644727970467cc2f589cb3276d738c61331609087265e92bdd9"
+            "sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1"
           },
           {
             "path": "spec/navigation.json",
