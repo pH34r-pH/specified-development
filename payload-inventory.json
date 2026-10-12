@@ -6,7 +6,7 @@
   "files": [
     {
       "path": ".github/workflows/foundation.yml",
-      "sha256": "29a576d66675e071491e8b9317fa3bf8f1da048cde22c37ef2093f987674b983"
+      "sha256": "a0d47bcd20b4760c21f07b5d53dc4229109486d4426b1832a090ae2dcaaaee7e"
     },
     {
       "path": ".gitignore",
@@ -22,11 +22,11 @@
     },
     {
       "path": "build/directory-specs/plan.md",
-      "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+      "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
     },
     {
       "path": "build/directory-specs/tasks.md",
-      "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
+      "sha256": "2b777b2de91ada4f537a9275a50e4338b9dbd067a5e70c91f79d30174600421d"
     },
     {
       "path": "build/directory-specs/tests.md",
@@ -46,7 +46,7 @@
     },
     {
       "path": "build/execution-contract.yaml",
-      "sha256": "baeb30f0734e2e312698abd2d7a5959e610b5706e04fcb58ecd66cf2b8da5e43"
+      "sha256": "f478fff0281c83ec8382ce2f9579829fca00f354dcaaee1c945cdff5cb963137"
     },
     {
       "path": "build/foundation/design-validation.json",
@@ -62,7 +62,7 @@
     },
     {
       "path": "build/foundation/tasks.md",
-      "sha256": "2401f06cdf1868ee490086ae2e6e6410b7dcc97bed87ff051332e55a3de1479b"
+      "sha256": "7e202088bc9a53b502b32da1510d4e676217753db9fd634f8fe4284e1ae65867"
     },
     {
       "path": "build/foundation/tests.md",
@@ -71,6 +71,54 @@
     {
       "path": "build/native-bindings.json",
       "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
+    },
+    {
+      "path": "skills/README.md",
+      "sha256": "8051bc7483715cd4155dfea7caccd33481e261d14d2949a2b8b4061a21651b63"
+    },
+    {
+      "path": "skills/deabstract-stablecode/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "skills/deabstract-stablecode/LICENSE.dzhng-skills",
+      "sha256": "653bb41fb060605c0e01fd72e6e6be72bffef192e0ab6ae8b0cd4abf9ba8d040"
+    },
+    {
+      "path": "skills/deabstract-stablecode/NOTICE.md",
+      "sha256": "6a5fd7b9079cf1e0aa511a694af5f42010c27e13d85327d1de6d6bfe1226e2c8"
+    },
+    {
+      "path": "skills/deabstract-stablecode/README.md",
+      "sha256": "b5acc4dd8993357df7a9d20119d7359782cafd9f8034fdc61045c5d4a8f0e6fb"
+    },
+    {
+      "path": "skills/deabstract-stablecode/SKILL.md",
+      "sha256": "b6b14bfc6a2acc14efbc539800c47046d7859b91a59a9890503be5bd2e506533"
+    },
+    {
+      "path": "skills/deabstract-stablecode/references/audit-tests.md",
+      "sha256": "0902f402538338a2e1f319c1e5bd4d53ca85d6e6c62e8f87ac593248279bf911"
+    },
+    {
+      "path": "skills/deabstract-stablecode/references/explore-unknowns.md",
+      "sha256": "8c2640284790fd6d5ccc38caf846e0575b0bd2312297b03f9d31bdb9b834d4f7"
+    },
+    {
+      "path": "skills/deabstract-stablecode/references/plan-targets.md",
+      "sha256": "81b3dc189f293b33e4cf17e1b898a4d126f21cb84311b5a1765edbf99210220f"
+    },
+    {
+      "path": "skills/deabstract-stablecode/references/qualify-change.md",
+      "sha256": "dd762f51c60b7a969d4611a0d2df01c2cbbbaf336d6c6b29b024d20fdf6e7493"
+    },
+    {
+      "path": "skills/deabstract-stablecode/references/refactor-clean.md",
+      "sha256": "76dc684cc2a1e577176ec87c49ea7590c7142909ad4503fa58f645c77f91194c"
+    },
+    {
+      "path": "skills/deabstract-stablecode/references/review-decisions.md",
+      "sha256": "83f5c9dbfcaecdbb5fc8b29a6b046dd76ab7d92431b6c6d359897b3fff976a4d"
     },
     {
       "path": "spec/assets/rate-card.fixture.json",
@@ -122,7 +170,7 @@
     },
     {
       "path": "spec/usage/lifecycle.md",
-      "sha256": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05"
+      "sha256": "373f4408d944482a7028b9bd09987f7516a2f5650e65de0a8cf4bd95c0847d75"
     },
     {
       "path": "tests/fixtures/foundation/capability_profiles.json",
@@ -157,6 +205,10 @@
       "sha256": "c6e94c729923d926494dc2e6cffe6cdd25e72e73f40bc6f06c4d51565c94c211"
     },
     {
+      "path": "tests/fixtures/foundation/skill-behavioral-cases.md",
+      "sha256": "eb9182452380257275c3d34974052a6ff91d0daec3775efb01f567c8db63c6f7"
+    },
+    {
       "path": "tests/fixtures/foundation/spec_source_closure_cases.json",
       "sha256": "696de175cde27879354454a89a2f80a36a5636092a8f9fb97a913539cfc5fc1d"
     },
@@ -165,8 +217,16 @@
       "sha256": "7e85d109770fb067755923f8241ca69e4a70dc810e36afb23303bc7c7e8313b7"
     },
     {
+      "path": "tests/test_skills.py",
+      "sha256": "b9e1e1e5a5bcdd83951f67c12d2666cc30f904140a2dbca91e37cd74af7a4709"
+    },
+    {
       "path": "tools/validate_foundation.py",
-      "sha256": "3514828ec93329b61af0d884b9d4e02d0c60624a789c347bb1e5fd79b2ef8ae6"
+      "sha256": "9979fafa9d3842149371b2a92bdac5243785ddfafabc6ac030fc4e0c0dbcda76"
+    },
+    {
+      "path": "tools/validate_skills.py",
+      "sha256": "60b305c4469cfe0feea604ddb56e77f8f17b9ea41dd253d1e3780987d6af0628"
     }
   ],
   "private_inputs_included": false,

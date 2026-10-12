@@ -11,14 +11,14 @@
       ".gitignore": "4b84a5015c78fe37f105132d44b3a94c664907568fa3aeb83711afd0172081ee",
       "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
       "README.md": "244626aa20284126d38f5ea3bab243f961860bb24fea8f935d979e15b53c7c7c",
-      "build/directory-specs/plan.md": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1",
-      "build/directory-specs/tasks.md": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4",
+      "build/directory-specs/plan.md": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319",
+      "build/directory-specs/tasks.md": "2b777b2de91ada4f537a9275a50e4338b9dbd067a5e70c91f79d30174600421d",
       "build/directory-specs/tests.md": "b8e8e521cf200c803eccd459c1a6de661d55ac3dd8268c1080e996fcc8a8dac6",
       "build/distribution/plan.md": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437",
       "build/distribution/tasks.md": "48baea57dce561116b0997727d4f52850b9dd2f5d58bd242ed02820817f9e686",
       "build/distribution/tests.md": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60",
       "build/foundation/plan.md": "aefa2faab79bbb7bd9e6e7e8b02da8c90bf6d63a291b215337f072959cc48a74",
-      "build/foundation/tasks.md": "2401f06cdf1868ee490086ae2e6e6410b7dcc97bed87ff051332e55a3de1479b",
+      "build/foundation/tasks.md": "7e202088bc9a53b502b32da1510d4e676217753db9fd634f8fe4284e1ae65867",
       "build/foundation/tests.md": "ef9184d73607b4d7e0a934a9976b7403480e27fa0324135912a1701e245ee8ee",
       "build/native-bindings.json": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368",
       "spec/assets/rate-card.fixture.json": "e6e6e6db42971c8f14a577296f2d6b43f28b97f8d687da936d0e99c8c75222f6",
@@ -32,7 +32,7 @@
       "spec/navigation.json": "be382df71bd0346216028b65f94632bcb996f73f3ef7f67440c67de7fe07cb74",
       "spec/operations/rollout.md": "080d0b180e3bb6d2edd8072dd575ae19b39ae27f8b4523f10349be503e3b86bd",
       "spec/operations/upstream.md": "b6c49f416da521c2df5bae0c188e322424c366213cf01b8007cebeb80ed9833b",
-      "spec/usage/lifecycle.md": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05",
+      "spec/usage/lifecycle.md": "373f4408d944482a7028b9bd09987f7516a2f5650e65de0a8cf4bd95c0847d75",
       "build/foundation/handoff.md": "e5eaf761213b740fd5912eb1292e87b70542c182585d238314bb360ece1970e0",
       "build/foundation/design-validation.json": "2c1e700a165e1c329cd7f6d43d02e2f854c2aff94ade8515a23226ac0012d651",
       "spec/contracts/execution-capabilities.md": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
@@ -1722,7 +1722,7 @@
             },
             {
               "path": "spec/usage/lifecycle.md",
-              "sha256": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05"
+              "sha256": "373f4408d944482a7028b9bd09987f7516a2f5650e65de0a8cf4bd95c0847d75"
             },
             {
               "path": "spec/features/distribution/index.md",
@@ -1778,7 +1778,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -1786,7 +1786,7 @@
             },
             {
               "path": "build/directory-specs/tasks.md",
-              "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
+              "sha256": "2b777b2de91ada4f537a9275a50e4338b9dbd067a5e70c91f79d30174600421d"
             },
             {
               "path": "build/foundation/handoff.md",
@@ -1987,7 +1987,7 @@
             },
             {
               "path": "spec/usage/lifecycle.md",
-              "sha256": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05"
+              "sha256": "373f4408d944482a7028b9bd09987f7516a2f5650e65de0a8cf4bd95c0847d75"
             },
             {
               "path": "spec/features/distribution/index.md",
@@ -2043,7 +2043,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -2051,7 +2051,7 @@
             },
             {
               "path": "build/directory-specs/tasks.md",
-              "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
+              "sha256": "2b777b2de91ada4f537a9275a50e4338b9dbd067a5e70c91f79d30174600421d"
             },
             {
               "path": "build/foundation/handoff.md",
@@ -7646,7 +7646,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -7775,7 +7775,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -7912,7 +7912,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -8051,7 +8051,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -8190,7 +8190,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -8327,7 +8327,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -8464,7 +8464,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -8601,7 +8601,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -8738,7 +8738,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -8876,7 +8876,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -9014,7 +9014,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -9154,7 +9154,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -9292,7 +9292,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -9431,7 +9431,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -9569,7 +9569,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -9707,7 +9707,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -9843,7 +9843,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -9985,7 +9985,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -10124,7 +10124,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -10276,7 +10276,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -10413,7 +10413,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",
@@ -10571,7 +10571,7 @@
             },
             {
               "path": "build/directory-specs/plan.md",
-              "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+              "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
             },
             {
               "path": "build/directory-specs/tests.md",

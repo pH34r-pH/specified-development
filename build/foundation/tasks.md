@@ -136,7 +136,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/usage/lifecycle.md",
-            "sha256": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05"
+            "sha256": "373f4408d944482a7028b9bd09987f7516a2f5650e65de0a8cf4bd95c0847d75"
           },
           {
             "path": "spec/features/distribution/index.md",
@@ -192,7 +192,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+            "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -200,7 +200,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/directory-specs/tasks.md",
-            "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
+            "sha256": "2b777b2de91ada4f537a9275a50e4338b9dbd067a5e70c91f79d30174600421d"
           },
           {
             "path": "build/foundation/handoff.md",
@@ -402,7 +402,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "spec/usage/lifecycle.md",
-            "sha256": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05"
+            "sha256": "373f4408d944482a7028b9bd09987f7516a2f5650e65de0a8cf4bd95c0847d75"
           },
           {
             "path": "spec/features/distribution/index.md",
@@ -458,7 +458,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/directory-specs/plan.md",
-            "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+            "sha256": "0f6b37d35b95fc64c4a56a796b63c4bbe96c25912c8edcbbc17b78e1121d2319"
           },
           {
             "path": "build/directory-specs/tests.md",
@@ -466,7 +466,7 @@ Semantic decomposition was completed in this fixed-model design pass. Each unche
           },
           {
             "path": "build/directory-specs/tasks.md",
-            "sha256": "9a9709f640a71863caa67aba0e7094f0c05d88ab9c83356d72571fa5dad089f4"
+            "sha256": "2b777b2de91ada4f537a9275a50e4338b9dbd067a5e70c91f79d30174600421d"
           },
           {
             "path": "build/foundation/handoff.md",
