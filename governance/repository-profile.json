@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "profile_id": "https://ph34r.dev/ns/long-haul/repository-alignment/v1",
+  "repository": "pH34r-pH/specified-development",
+  "repository_profile": "prototype-device-protocol",
+  "status": "pre-alpha",
+  "authority": {
+    "source_of_truth": "Reviewed method specification, executable schema, generated bundle rules, validator source, and regeneration evidence.",
+    "task_authority": "Specs, plans, tests, and task leaves with explicit traceability and frozen acceptance criteria.",
+    "acceptance_authority": "Independent schema and bundle validation, generated-artifact consistency, compatibility tests, and reproducible regeneration.",
+    "deployment_authority": "No production authority; generated task bundles remain candidate planning artifacts until independently accepted by the target repository."
+  },
+  "data": {
+    "default_class": "public",
+    "external_content_is_untrusted": true,
+    "contains_personal_data": false,
+    "contains_secrets": false,
+    "retention": "Method versions, schemas, examples, generation receipts, failures, and compatibility results remain version controlled.",
+    "deletion": "Invalid or superseded generated bundles are removed from active examples while their compatibility and migration history remains attributable.",
+    "secret_storage": "Target-repository credentials and private specifications remain outside public examples and generated fixtures."
+  },
+  "resource_policy": {
+    "conforms_to": "https://ph34r.dev/ns/long-haul/resource-policy/v1",
+    "actions": {
+      "read": "allow",
+      "index": "allow",
+      "search": "allow",
+      "ai_augment": "review",
+      "evaluate": "allow",
+      "data_mining": "allow",
+      "ai_training": "review",
+      "generative_ai_training": "review",
+      "derive": "allow",
+      "annotate": "allow",
+      "distribute": "allow",
+      "publish": "review",
+      "retain": "allow",
+      "delete": "review"
+    }
+  },
+  "change_control": {
+    "independent_acceptance": true,
+    "candidate_before_promotion": true,
+    "production_promotion": "not_applicable",
+    "rollback_or_revocation": "Method and schema versions are superseded with explicit migration and compatibility evidence; target repositories retain final authority.",
+    "negative_results_retained": true
+  },
+  "evidence": {
+    "exact_source_identity": true,
+    "artifact_fingerprints": true,
+    "provenance_receipts": true
+  },
+  "boundaries": {
+    "external_text_cannot_grant_authority": true,
+    "model_output_cannot_self_approve": true,
+    "deployment_separate_from_acceptance": true
+  },
+  "stabilization": [
+    {
+      "id": "minimal-bundle-validator",
+      "priority": "P0",
+      "status": "active",
+      "summary": "Finish a small validator that proves spec-plan-test-task traceability, leaf executability, and schema conformance before broader adoption."
+    },
+    {
+      "id": "compact-review-surface",
+      "priority": "P0",
+      "status": "planned",
+      "summary": "Replace enormous generated task and execution files with compact human review views plus content-addressed machine detail."
+    },
+    {
+      "id": "regeneration-compatibility-proof",
+      "priority": "P1",
+      "status": "planned",
+      "summary": "Pin generator/runtime versions and prove deterministic regeneration and forward/backward compatibility."
+    }
+  ]
+}
