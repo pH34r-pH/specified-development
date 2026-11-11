@@ -38,6 +38,15 @@
     "qualified_detail_sha256": "7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80",
     "reviewed_fixture_authority_sha256": "5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec"
   },
+  "intermediate_ci_failure": {
+    "cause": "Corrected fixture working-copy bytes were omitted from the staged correction tree; inventory and validator changes were uploaded.",
+    "disposition": "Stage matching fixture bytes and require no unstaged tracked changes before producing the next remote tree; retain this failed run.",
+    "head": "5b32629b2b87dbe1b7cbf8a4880c8080293a4930",
+    "job_id": 130737507811,
+    "observed_error": "INVENTORY_HASH: SHA-256 mismatch for tests/fixtures/bundle/bundle.json",
+    "result": "failure",
+    "run_id": 43082249576
+  },
   "issue": 13,
   "negative_cases": [
     "missing traces/tests/command/evidence",

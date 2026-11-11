@@ -42,7 +42,7 @@
     },
     {
       "path": "build/bundle-qualification.json",
-      "sha256": "b0caeba7fde7af9c9071b21301b441df2bdcfc21bccfbf941c3df4024060eeab"
+      "sha256": "e722941fd76c1ceb401b57d716e6ffe3ae6ebbe56b6377fb7bbbbf91b2d0e441"
     },
     {
       "path": "build/bundle-review/README.md",

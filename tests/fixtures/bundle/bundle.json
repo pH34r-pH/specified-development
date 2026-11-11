@@ -1,6 +1,9 @@
 {
   "authority": {
-    "acceptance_source": "authority.md",
+    "acceptance_source": {
+      "id": "authority.md",
+      "sha256": "13ff14c26ae951aeb72bedd7729682070cfe61772c728ae31f393de376ed7a56"
+    },
     "capabilities": [
       "read",
       "edit",
