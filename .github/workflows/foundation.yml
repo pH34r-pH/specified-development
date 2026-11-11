@@ -1,6 +1,8 @@
 name: Foundation scaffold
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches:
       - main
@@ -13,6 +15,8 @@ jobs:
   scaffold:
     name: Validate scaffold and independent fixtures
     runs-on: ubuntu-24.04
+    env:
+      BUNDLE_AUTHORITY_SHA256: 5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec
     timeout-minutes: 10
     steps:
       - name: Check out source
@@ -20,8 +24,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0, verified official release commit
         with:
-          python-version: "3.12"
+          python-version: "3.12.14"
       - name: Validate published scaffold
         run: python tools/validate_foundation.py
       - name: Run independent malformed-input tests
-        run: python -m unittest tests.test_foundation -v
+        run: python -m unittest discover -s tests -v
+      - name: Validate the portable complete bundle
+        run: python tools/bundle_validation.py bundle.json --root tests/fixtures/bundle --authority-sha256 "$BUNDLE_AUTHORITY_SHA256"
+      - name: Verify compact legacy review from exact frozen bytes
+        run: python tools/bundle_review.py render build/execution-contract.yaml --legacy-review-only --output build/bundle-review --check
+      - name: Verify qualified example regeneration
+        run: python tools/bundle_review.py render bundle.json --root tests/fixtures/bundle --output build/bundle-example-review --authority-sha256 "$BUNDLE_AUTHORITY_SHA256" --check

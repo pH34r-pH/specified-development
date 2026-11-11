@@ -1,0 +1,88 @@
+{
+  "baseline_commit": "3f48adc34ae26d7d25c44fc3bbef4cc6f3be9ffc",
+  "baseline_observation": {
+    "command": "python tools/validate_foundation.py; python -m unittest discover -s tests -p test_foundation.py -v",
+    "disposition": "preserved observation; repaired exact file inventory, not bypassed",
+    "tests": {
+      "errors": 2,
+      "failures": 2,
+      "run": 22
+    },
+    "validator": "INVENTORY_COVERAGE: unlisted governance/repository-profile.json and .github/workflows/repository-governance.yml"
+  },
+  "candidate_checks": {
+    "git_diff_check": "passed",
+    "legacy_review_regeneration": "exact match; migration not granted",
+    "portable_copy_cli": "passed with only three shared scripts; no sibling repository modules",
+    "python -m unittest discover -s tests -v": "38 tests passed",
+    "python tools/validate_foundation.py": "passed",
+    "qualified_fixture_regeneration": "exact match across independent workspaces",
+    "ruff_new_modules": "passed"
+  },
+  "dependency_commit": "5cab6749e65090b16d0b28970fe4edc81379d646",
+  "environment": {
+    "generator": {
+      "generator": "1.0.0",
+      "runtime": "CPython-3.12.14",
+      "source_sha256": {
+        "bundle_common.py": "df1a428045bd6ffa5d07512daa0fd4de3e7051f3829f27de47ec56ba1d9e75b9",
+        "bundle_review.py": "e0f20215b38b32782f0845e2cc2a785a75ff97e2aa97a3f9f63160edd2b30df3",
+        "bundle_validation.py": "9082e9bbdda10558453e7b7c12c134028356265e02b56d0a931b25774275487a"
+      }
+    },
+    "python": "3.12.14"
+  },
+  "evidence": {
+    "legacy_detail_sha256": "235092412551c5f54fef79f1bec8863460dbeacfc2d18a094e232fe128de497e",
+    "legacy_native_sha256": "0829ea48fd2801661956a3e1494cdd7416d78fbb3d685607fdc3cabacd2d5759",
+    "qualified_detail_sha256": "7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80",
+    "reviewed_fixture_authority_sha256": "5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec"
+  },
+  "intermediate_ci_failure": {
+    "cause": "Corrected fixture working-copy bytes were omitted from the staged correction tree; inventory and validator changes were uploaded.",
+    "disposition": "Stage matching fixture bytes and require no unstaged tracked changes before producing the next remote tree; retain this failed run.",
+    "head": "5b32629b2b87dbe1b7cbf8a4880c8080293a4930",
+    "job_id": 130737507811,
+    "observed_error": "INVENTORY_HASH: SHA-256 mismatch for tests/fixtures/bundle/bundle.json",
+    "result": "failure",
+    "run_id": 43082249576
+  },
+  "issue": 13,
+  "negative_cases": [
+    "missing traces/tests/command/evidence",
+    "unknown/cyclic native parents",
+    "authority pin mismatch or missing pin",
+    "outside/protected/frozen-source output",
+    "scope traversal and source/cwd/output symlinks",
+    "stale source hashes",
+    "duplicate JSON and second task-edge assertion",
+    "schema/generator/runtime incompatibility",
+    "legacy migration refusal",
+    "tampered detail/review and nonempty expansion",
+    "missing/wrong target implementation fails independent fixture oracle",
+    "coordinated acceptance-policy and source-digest replacement under an unchanged caller pin"
+  ],
+  "program": "pH34r-pH/long-haul#252",
+  "review_correction": {
+    "finding": "Caller authority pin covered an acceptance-source alias but not its content digest; a coordinated policy/source-hash replacement remained structurally valid.",
+    "regression": "test_acceptance_policy_replacement_requires_new_external_authority_pin",
+    "repair": "Bind exact acceptance source id and SHA-256 into the caller-pinned authority projection; reject replacement under old pin. Strictly type nested schema versions.",
+    "superseded_candidate_ci": [
+      43081522815,
+      43081522738
+    ],
+    "superseded_candidate_head": "ea12c384ed2157939870e5d4d24e0996356b0e45",
+    "superseded_fixture_authority_sha256": "8417030904b77837b21f30079f5e082f9f76c3415215f905f2c0e7892e1d8275"
+  },
+  "schema_version": 1,
+  "scope": "Issue 13 P0/P1 only; unrelated draft PR10 untouched; accepted/native historical records retained byte-identically.",
+  "states": {
+    "deployment": "not performed",
+    "legacy_migration": "not performed; reviewed version-1 input required",
+    "physical_device": "not performed",
+    "publication": "not performed",
+    "source_validation": "passed locally; exact-head CI required before merge",
+    "target_task_acceptance": "not granted",
+    "upstream_distribution_installation": "not performed"
+  }
+}

@@ -6,7 +6,11 @@
   "files": [
     {
       "path": ".github/workflows/foundation.yml",
-      "sha256": "29a576d66675e071491e8b9317fa3bf8f1da048cde22c37ef2093f987674b983"
+      "sha256": "6ee1626fb55823a2b26daa78db7c3887db265e80dabc1d0aa84b400b26cdc3bf"
+    },
+    {
+      "path": ".github/workflows/repository-governance.yml",
+      "sha256": "902a5d7135f232098682120143eb309774c96ff8680c2b7dcb52bf226c2b3b46"
     },
     {
       "path": ".gitignore",
@@ -19,6 +23,38 @@
     {
       "path": "README.md",
       "sha256": "5c7cbf51421d59d71d18862a48cfd13da65b72f6be9815d7ea6cf1fdf6b62f42"
+    },
+    {
+      "path": "REVIEW.md",
+      "sha256": "e7a89e7a98b8d9b4cc1005b237e4f0a393bcf52490ecc14296815cfc560fe588"
+    },
+    {
+      "path": "build/bundle-example-review/README.md",
+      "sha256": "88dc521257be908e67979c4886525e3af0067f549abd348cde7666143b71f241"
+    },
+    {
+      "path": "build/bundle-example-review/objects/7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80.json",
+      "sha256": "7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80"
+    },
+    {
+      "path": "build/bundle-example-review/regeneration.json",
+      "sha256": "1f045e28aabbb93e469a0155784032c176134d63a9b9a1a56d253d8754a7d4b5"
+    },
+    {
+      "path": "build/bundle-qualification.json",
+      "sha256": "e722941fd76c1ceb401b57d716e6ffe3ae6ebbe56b6377fb7bbbbf91b2d0e441"
+    },
+    {
+      "path": "build/bundle-review/README.md",
+      "sha256": "eaedff671c774ef45a87bc7f6a71c5f6d16cab510bc4a927eaabc43b3640e8b1"
+    },
+    {
+      "path": "build/bundle-review/objects/235092412551c5f54fef79f1bec8863460dbeacfc2d18a094e232fe128de497e.json",
+      "sha256": "235092412551c5f54fef79f1bec8863460dbeacfc2d18a094e232fe128de497e"
+    },
+    {
+      "path": "build/bundle-review/regeneration.json",
+      "sha256": "f99e737421a27c9925d82a2527eac0b066d4b176741682f0a3d224d34b63f7bc"
     },
     {
       "path": "build/directory-specs/plan.md",
@@ -71,6 +107,14 @@
     {
       "path": "build/native-bindings.json",
       "sha256": "fc5ebccdbe838079d3b9355aeb3194a265576544b618924b846d661b4e0fe368"
+    },
+    {
+      "path": "docs/bundle-validation.md",
+      "sha256": "2c8576385d76ecb646c596bac60709893b4547df98bf33fd011be16dde1cee5f"
+    },
+    {
+      "path": "governance/repository-profile.json",
+      "sha256": "ce4a621e1d8000a08c5c39353f36ea63ab37e2f3bac09f04f6b39d1f61112286"
     },
     {
       "path": "spec/assets/hero.png",
@@ -129,6 +173,34 @@
       "sha256": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05"
     },
     {
+      "path": "tests/fixtures/bundle/authority.md",
+      "sha256": "13ff14c26ae951aeb72bedd7729682070cfe61772c728ae31f393de376ed7a56"
+    },
+    {
+      "path": "tests/fixtures/bundle/bundle.json",
+      "sha256": "29709893d79ea7c393d0bb909a49c1977181b30015860b064cd38131624b475c"
+    },
+    {
+      "path": "tests/fixtures/bundle/checks/oracle.py",
+      "sha256": "c4f90ff01d5766eabea6ff8fb0ca1468bd6eda27321c5b59e2049bd9c508ea89"
+    },
+    {
+      "path": "tests/fixtures/bundle/plan.md",
+      "sha256": "c43ed900e5104f04847489e970e1c21af7c7fd53fcdd4df71ad0108aa2cad110"
+    },
+    {
+      "path": "tests/fixtures/bundle/spec.md",
+      "sha256": "3e0d3ba677570b688886e2be33d6a09b072b588014aec34fabc49fd613a8557c"
+    },
+    {
+      "path": "tests/fixtures/bundle/tasks.md",
+      "sha256": "55d5aab6853918284814b1bdb57905a9d8ebeda159c6fe2497ebd7738632204a"
+    },
+    {
+      "path": "tests/fixtures/bundle/tests.md",
+      "sha256": "92ca2cd2a30cfe0665e99ea085c9fee774087b171ecf6f11ba4d2ac32021ff6b"
+    },
+    {
       "path": "tests/fixtures/foundation/capability_profiles.json",
       "sha256": "2417a03104aefad23c03328bda92b116b8495486c0e9fe56b815ba783dcb37d7"
     },
@@ -165,12 +237,28 @@
       "sha256": "696de175cde27879354454a89a2f80a36a5636092a8f9fb97a913539cfc5fc1d"
     },
     {
+      "path": "tests/test_bundle.py",
+      "sha256": "1c21152c1635345879c95469410be760bf948df28eb81bbf0e84b4eabc6f4653"
+    },
+    {
       "path": "tests/test_foundation.py",
       "sha256": "7e85d109770fb067755923f8241ca69e4a70dc810e36afb23303bc7c7e8313b7"
     },
     {
+      "path": "tools/bundle_common.py",
+      "sha256": "df1a428045bd6ffa5d07512daa0fd4de3e7051f3829f27de47ec56ba1d9e75b9"
+    },
+    {
+      "path": "tools/bundle_review.py",
+      "sha256": "e0f20215b38b32782f0845e2cc2a785a75ff97e2aa97a3f9f63160edd2b30df3"
+    },
+    {
+      "path": "tools/bundle_validation.py",
+      "sha256": "9082e9bbdda10558453e7b7c12c134028356265e02b56d0a931b25774275487a"
+    },
+    {
       "path": "tools/validate_foundation.py",
-      "sha256": "3514828ec93329b61af0d884b9d4e02d0c60624a789c347bb1e5fd79b2ef8ae6"
+      "sha256": "a74b730e0b256a3be1e4645f2da832602138707bfaed633d14d4ffc5adf75d34"
     }
   ],
   "private_inputs_included": false,
