@@ -14,7 +14,7 @@
     "git_diff_check": "passed",
     "legacy_review_regeneration": "exact match; migration not granted",
     "portable_copy_cli": "passed with only three shared scripts; no sibling repository modules",
-    "python -m unittest discover -s tests -v": "37 tests passed",
+    "python -m unittest discover -s tests -v": "38 tests passed",
     "python tools/validate_foundation.py": "passed",
     "qualified_fixture_regeneration": "exact match across independent workspaces",
     "ruff_new_modules": "passed"
@@ -27,7 +27,7 @@
       "source_sha256": {
         "bundle_common.py": "df1a428045bd6ffa5d07512daa0fd4de3e7051f3829f27de47ec56ba1d9e75b9",
         "bundle_review.py": "e0f20215b38b32782f0845e2cc2a785a75ff97e2aa97a3f9f63160edd2b30df3",
-        "bundle_validation.py": "48f39ceb55ff06931bd6bcec31c339bc38f75bbc14520ab8c3a64b7c1efa484b"
+        "bundle_validation.py": "9082e9bbdda10558453e7b7c12c134028356265e02b56d0a931b25774275487a"
       }
     },
     "python": "3.12.14"
@@ -35,8 +35,8 @@
   "evidence": {
     "legacy_detail_sha256": "235092412551c5f54fef79f1bec8863460dbeacfc2d18a094e232fe128de497e",
     "legacy_native_sha256": "0829ea48fd2801661956a3e1494cdd7416d78fbb3d685607fdc3cabacd2d5759",
-    "qualified_detail_sha256": "28b2f85b43f98b3bfa1ef3d9b671d4ef93543d2434ded1ef3bba7457c249f400",
-    "reviewed_fixture_authority_sha256": "8417030904b77837b21f30079f5e082f9f76c3415215f905f2c0e7892e1d8275"
+    "qualified_detail_sha256": "7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80",
+    "reviewed_fixture_authority_sha256": "5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec"
   },
   "issue": 13,
   "negative_cases": [
@@ -50,9 +50,21 @@
     "schema/generator/runtime incompatibility",
     "legacy migration refusal",
     "tampered detail/review and nonempty expansion",
-    "missing/wrong target implementation fails independent fixture oracle"
+    "missing/wrong target implementation fails independent fixture oracle",
+    "coordinated acceptance-policy and source-digest replacement under an unchanged caller pin"
   ],
   "program": "pH34r-pH/long-haul#252",
+  "review_correction": {
+    "finding": "Caller authority pin covered an acceptance-source alias but not its content digest; a coordinated policy/source-hash replacement remained structurally valid.",
+    "regression": "test_acceptance_policy_replacement_requires_new_external_authority_pin",
+    "repair": "Bind exact acceptance source id and SHA-256 into the caller-pinned authority projection; reject replacement under old pin. Strictly type nested schema versions.",
+    "superseded_candidate_ci": [
+      43081522815,
+      43081522738
+    ],
+    "superseded_candidate_head": "ea12c384ed2157939870e5d4d24e0996356b0e45",
+    "superseded_fixture_authority_sha256": "8417030904b77837b21f30079f5e082f9f76c3415215f905f2c0e7892e1d8275"
+  },
   "schema_version": 1,
   "scope": "Issue 13 P0/P1 only; unrelated draft PR10 untouched; accepted/native historical records retained byte-identically.",
   "states": {

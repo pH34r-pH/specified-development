@@ -6,7 +6,7 @@
   "files": [
     {
       "path": ".github/workflows/foundation.yml",
-      "sha256": "a74afecf27afba37db15914afa0f049fe00233d32ff00dddf1d87f07e785267e"
+      "sha256": "6ee1626fb55823a2b26daa78db7c3887db265e80dabc1d0aa84b400b26cdc3bf"
     },
     {
       "path": ".github/workflows/repository-governance.yml",
@@ -30,19 +30,19 @@
     },
     {
       "path": "build/bundle-example-review/README.md",
-      "sha256": "4b6cabf64a7be1c35f47c96c72081fd45e5f5aa4f62527b6f4cd993ba9d2b7ec"
+      "sha256": "88dc521257be908e67979c4886525e3af0067f549abd348cde7666143b71f241"
     },
     {
-      "path": "build/bundle-example-review/objects/28b2f85b43f98b3bfa1ef3d9b671d4ef93543d2434ded1ef3bba7457c249f400.json",
-      "sha256": "28b2f85b43f98b3bfa1ef3d9b671d4ef93543d2434ded1ef3bba7457c249f400"
+      "path": "build/bundle-example-review/objects/7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80.json",
+      "sha256": "7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80"
     },
     {
       "path": "build/bundle-example-review/regeneration.json",
-      "sha256": "24fa26e04a867b3bdd12817937308b30ea93b29f937b18ee80c365d953bc50cf"
+      "sha256": "1f045e28aabbb93e469a0155784032c176134d63a9b9a1a56d253d8754a7d4b5"
     },
     {
       "path": "build/bundle-qualification.json",
-      "sha256": "0b7a265158226e74cd0ce16d3d97cad49aa1d07951ba671103cd8e91fea7934b"
+      "sha256": "b0caeba7fde7af9c9071b21301b441df2bdcfc21bccfbf941c3df4024060eeab"
     },
     {
       "path": "build/bundle-review/README.md",
@@ -54,7 +54,7 @@
     },
     {
       "path": "build/bundle-review/regeneration.json",
-      "sha256": "ad4930dd2f9a54cf044fca77c1fd3be745fc99c7c115aa3fe70d0c79d69a5d57"
+      "sha256": "f99e737421a27c9925d82a2527eac0b066d4b176741682f0a3d224d34b63f7bc"
     },
     {
       "path": "build/directory-specs/plan.md",
@@ -110,7 +110,7 @@
     },
     {
       "path": "docs/bundle-validation.md",
-      "sha256": "bc8c62267bdac1324857e356d458803dba4ecaae54dc38d37730c9466a67e97e"
+      "sha256": "2c8576385d76ecb646c596bac60709893b4547df98bf33fd011be16dde1cee5f"
     },
     {
       "path": "governance/repository-profile.json",
@@ -178,7 +178,7 @@
     },
     {
       "path": "tests/fixtures/bundle/bundle.json",
-      "sha256": "c8b94b307846607f0b086cd281af49a2435dc8bcfd8c3413b12cab09833bab33"
+      "sha256": "29709893d79ea7c393d0bb909a49c1977181b30015860b064cd38131624b475c"
     },
     {
       "path": "tests/fixtures/bundle/checks/oracle.py",
@@ -238,7 +238,7 @@
     },
     {
       "path": "tests/test_bundle.py",
-      "sha256": "d71ec62db6dda737838ece31aae8012f23874a7caa863a415397db66b2afaebc"
+      "sha256": "1c21152c1635345879c95469410be760bf948df28eb81bbf0e84b4eabc6f4653"
     },
     {
       "path": "tests/test_foundation.py",
@@ -254,11 +254,11 @@
     },
     {
       "path": "tools/bundle_validation.py",
-      "sha256": "48f39ceb55ff06931bd6bcec31c339bc38f75bbc14520ab8c3a64b7c1efa484b"
+      "sha256": "9082e9bbdda10558453e7b7c12c134028356265e02b56d0a931b25774275487a"
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "5296dceeeb76c843654aa41a7fc2642b503490e050b97be1a2f313f4f5fca0b5"
+      "sha256": "a74b730e0b256a3be1e4645f2da832602138707bfaed633d14d4ffc5adf75d34"
     }
   ],
   "private_inputs_included": false,

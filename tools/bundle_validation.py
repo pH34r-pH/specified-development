@@ -119,7 +119,10 @@ def _validate_authority(bundle: dict[str, Any], sources: dict[str, Any]) -> dict
             path_pattern(path)
     require(set(strings(authority["capabilities"], "capabilities")) <= CAPABILITIES, "AUTHORITY_CAPABILITY", "only read/edit/test declarations are supported")
     require(authority["promotion"] == "target-repository-only", "AUTHORITY_PROMOTION", "validation cannot grant acceptance or promotion")
-    _source(sources, authority["acceptance_source"], "policy")
+    acceptance = authority["acceptance_source"]
+    require(isinstance(acceptance, dict) and set(acceptance) == {"id", "sha256"}, "ACCEPTANCE_SOURCE_FIELDS", "pin an exact policy source identity and digest")
+    _source(sources, acceptance["id"], "policy")
+    require(acceptance["sha256"] == sources[acceptance["id"]].get("sha256"), "ACCEPTANCE_SOURCE_DIGEST", "reviewed acceptance-source digest differs from source record")
     return authority
 
 
@@ -199,6 +202,8 @@ def validate_bundle(root: Path, path: str, *, expected_authority_sha256: str | N
     profile = mapping(bundle["x_bundle"], "x_bundle")
     require(set(profile) == {"profile", "versions", "sources", "requirements", "plans", "tests", "task_traces"}, "PROFILE_FIELDS", "unknown or missing profile fields")
     require(profile.get("profile") == PROFILE, "PROFILE_UNSUPPORTED", "explicit migration is required")
+    versions = profile.get("versions")
+    require(isinstance(versions, dict) and type(versions.get("schema")) is int, "VERSION_UNSUPPORTED", "schema version must be an integer")
     require(profile.get("versions") == {"schema": SCHEMA_VERSION, "generator": GENERATOR_VERSION, "runtime": runtime_identity()}, "VERSION_UNSUPPORTED", "generator/schema/runtime identity must match exactly")
     require(bundle.get("status") == "candidate", "ACCEPTANCE_AUTHORITY", "a bundle validator cannot declare target acceptance")
     sources = mapping(profile.get("sources"), "sources")

@@ -71,7 +71,7 @@ BUNDLE_PUBLIC_FILES = {
     ".github/workflows/repository-governance.yml",
     "REVIEW.md",
     "build/bundle-example-review/README.md",
-    "build/bundle-example-review/objects/28b2f85b43f98b3bfa1ef3d9b671d4ef93543d2434ded1ef3bba7457c249f400.json",
+    "build/bundle-example-review/objects/7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80.json",
     "build/bundle-example-review/regeneration.json",
     "build/bundle-review/README.md",
     "build/bundle-review/objects/235092412551c5f54fef79f1bec8863460dbeacfc2d18a094e232fe128de497e.json",

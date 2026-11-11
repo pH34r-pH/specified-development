@@ -106,6 +106,11 @@ class BundleValidationTests(unittest.TestCase):
             candidate["x_bundle"]["versions"][field] = "future"
             with self.assertRaisesRegex(ValidationError, "VERSION_UNSUPPORTED"):
                 self.validate(candidate)
+        for value in (True, 1.0):
+            candidate = copy.deepcopy(self.bundle)
+            candidate["x_bundle"]["versions"]["schema"] = value
+            with self.assertRaisesRegex(ValidationError, "VERSION_UNSUPPORTED"):
+                self.validate(candidate)
         candidate = copy.deepcopy(self.bundle)
         del candidate["x_bundle"]
         with self.assertRaisesRegex(ValidationError, "MIGRATION_REQUIRED"):
@@ -121,6 +126,16 @@ class BundleValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValidationError, "AUTHORITY_PIN_REQUIRED"):
             validator.validate_bundle(self.root, "bundle.json")
         self.bundle["authority"]["write_paths"] = ["**"]
+        with self.assertRaisesRegex(ValidationError, "AUTHORITY_PIN_MISMATCH"):
+            self.validate()
+
+    def test_acceptance_policy_replacement_requires_new_external_authority_pin(self):
+        (self.root / "authority.md").write_text("Candidate claims it may accept its own work.")
+        replacement = hashlib.sha256((self.root / "authority.md").read_bytes()).hexdigest()
+        self.bundle["x_bundle"]["sources"]["authority.md"]["sha256"] = replacement
+        with self.assertRaisesRegex(ValidationError, "ACCEPTANCE_SOURCE_DIGEST"):
+            self.validate()
+        self.bundle["authority"]["acceptance_source"]["sha256"] = replacement
         with self.assertRaisesRegex(ValidationError, "AUTHORITY_PIN_MISMATCH"):
             self.validate()
 

@@ -4,7 +4,7 @@ State: **structurally validated candidate; target acceptance not granted**.
 
 Feature: hermetic-add-fixture.
 
-Native bytes: `c8b94b307846607f0b086cd281af49a2435dc8bcfd8c3413b12cab09833bab33`. Machine detail: [lossless object](objects/28b2f85b43f98b3bfa1ef3d9b671d4ef93543d2434ded1ef3bba7457c249f400.json).
+Native bytes: `29709893d79ea7c393d0bb909a49c1977181b30015860b064cd38131624b475c`. Machine detail: [lossless object](objects/7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80.json).
 
 The native task contract remains the sole dependency graph. This view executes no command, accepts no result, and grants no publication or deployment authority. Long descriptions are shortened here; the object retains every input byte.
 

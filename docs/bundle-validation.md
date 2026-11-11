@@ -5,13 +5,13 @@ The three portable files `tools/bundle_common.py`, `tools/bundle_validation.py`,
 The qualified version is `native-bundle-v1`, generator `1.0.0`, with the exact CPython runtime recorded in the bundle and regeneration receipt. The hermetic example pins `CPython-3.12.14`; CI runs that version. Tool source SHA-256 values are also retained, so changing code without changing its display version remains observable.
 
 ```sh
-export BUNDLE_AUTHORITY_SHA256=8417030904b77837b21f30079f5e082f9f76c3415215f905f2c0e7892e1d8275
+export BUNDLE_AUTHORITY_SHA256=5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec
 python tools/bundle_validation.py bundle.json --root tests/fixtures/bundle --authority-sha256 "$BUNDLE_AUTHORITY_SHA256"
 python tools/bundle_review.py render bundle.json --root tests/fixtures/bundle --output /tmp/bundle-review --authority-sha256 "$BUNDLE_AUTHORITY_SHA256"
 python tools/bundle_review.py render bundle.json --root tests/fixtures/bundle --output /tmp/bundle-review --authority-sha256 "$BUNDLE_AUTHORITY_SHA256" --check
 ```
 
-The authority pin comes from independently reviewed caller/control state, never from a field supplied by the candidate bundle. The example value above freezes the public fixture's exact authority projection. A target owner reviews its own projection and supplies its canonical sorted-JSON SHA-256; changing the bundle's allowed paths or capabilities then fails. This fingerprint is a comparison boundary, not a digital signature or authentication service.
+The authority pin comes from independently reviewed caller/control state, never from a field supplied by the candidate bundle. The example value above freezes the public fixture's exact authority projection, including `acceptance_source: {id, sha256}`. That digest must match the independently frozen policy source record and bytes. A target owner reviews its own projection and supplies its canonical sorted-JSON SHA-256; changing allowed paths, capabilities, or acceptance-policy bytes then requires a new caller-reviewed pin. This fingerprint is a comparison boundary, not a digital signature or authentication service.
 
 Exit 0 means structural conformance or exact regeneration. Exit 2 means invalid, stale, incompatible, or unsafe input. Validation does not run declared commands, accept task results, change native scheduling, or grant deployment/publication authority. The target repository retains its independent acceptance and runtime sandbox boundaries.
 

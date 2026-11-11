@@ -16,7 +16,7 @@ jobs:
     name: Validate scaffold and independent fixtures
     runs-on: ubuntu-24.04
     env:
-      BUNDLE_AUTHORITY_SHA256: 8417030904b77837b21f30079f5e082f9f76c3415215f905f2c0e7892e1d8275
+      BUNDLE_AUTHORITY_SHA256: 5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec
     timeout-minutes: 10
     steps:
       - name: Check out source
