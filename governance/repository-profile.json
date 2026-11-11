@@ -59,19 +59,19 @@
     {
       "id": "minimal-bundle-validator",
       "priority": "P0",
-      "status": "active",
+      "status": "implemented",
       "summary": "Finish a small validator that proves spec-plan-test-task traceability, leaf executability, and schema conformance before broader adoption."
     },
     {
       "id": "compact-review-surface",
       "priority": "P0",
-      "status": "planned",
+      "status": "implemented",
       "summary": "Replace enormous generated task and execution files with compact human review views plus content-addressed machine detail."
     },
     {
       "id": "regeneration-compatibility-proof",
       "priority": "P1",
-      "status": "planned",
+      "status": "implemented",
       "summary": "Pin generator/runtime versions and prove deterministic regeneration and forward/backward compatibility."
     }
   ]

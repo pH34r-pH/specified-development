@@ -16,7 +16,6 @@ from collections import defaultdict
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 
-
 ROOT = Path(__file__).resolve().parents[1]
 TASK_SOURCES = {
     "foundation": "build/foundation/tasks.md",
@@ -47,50 +46,50 @@ HEADING_RE = re.compile(r"^#{1,6}\s+(.+?)\s*#*\s*$", re.MULTILINE)
 HTML_ID_RE = re.compile(r"\b(?:id|name)=[\"']([^\"']+)[\"']")
 
 
-class ValidationError(ValueError):
-    """A stable, user-facing validation failure."""
+try:
+    from .bundle_common import (
+        ValidationError,
+        confined_file,
+        read_json,
+        require,
+        safe_relative_path,
+        sha256_file,
+    )
+except ImportError:  # Direct stdlib CLI invocation.
+    from bundle_common import (
+        ValidationError,
+        confined_file,
+        read_json,
+        require,
+        safe_relative_path,
+        sha256_file,
+    )
 
 
-def require(condition: bool, code: str, message: str) -> None:
-    if not condition:
-        raise ValidationError(f"{code}: {message}")
-
-
-def read_json(path: Path) -> Any:
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        raise ValidationError(f"JSON_INVALID: {path}: {exc}") from exc
-
-
-def safe_relative_path(value: Any, *, code: str = "PATH_INVALID") -> PurePosixPath:
-    require(isinstance(value, str) and value != "", code, "path must be a nonempty string")
-    require("\\" not in value and "\x00" not in value, code, f"unsafe path {value!r}")
-    require(not value.startswith("/") and not re.match(r"^[A-Za-z]:", value), code, f"absolute path {value!r}")
-    parts = value.split("/")
-    require(all(part not in {"", ".", ".."} for part in parts), code, f"traversal or empty component in {value!r}")
-    return PurePosixPath(value)
-
-
-def confined_file(root: Path, relative: str, *, code: str = "PATH_ESCAPE") -> Path:
-    rel = safe_relative_path(relative)
-    candidate = root.joinpath(*rel.parts)
-    cursor = root
-    for part in rel.parts:
-        cursor = cursor / part
-        require(not cursor.is_symlink(), code, f"symlink is not allowed: {relative}")
-    resolved_root = root.resolve()
-    resolved = candidate.resolve(strict=False)
-    require(resolved == resolved_root or resolved_root in resolved.parents, code, f"path escaped root: {relative}")
-    return candidate
-
-
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+BUNDLE_PUBLIC_FILES = {
+    "build/bundle-qualification.json",
+    ".github/workflows/repository-governance.yml",
+    "REVIEW.md",
+    "build/bundle-example-review/README.md",
+    "build/bundle-example-review/objects/28b2f85b43f98b3bfa1ef3d9b671d4ef93543d2434ded1ef3bba7457c249f400.json",
+    "build/bundle-example-review/regeneration.json",
+    "build/bundle-review/README.md",
+    "build/bundle-review/objects/235092412551c5f54fef79f1bec8863460dbeacfc2d18a094e232fe128de497e.json",
+    "build/bundle-review/regeneration.json",
+    "docs/bundle-validation.md",
+    "governance/repository-profile.json",
+    "tests/fixtures/bundle/authority.md",
+    "tests/fixtures/bundle/bundle.json",
+    "tests/fixtures/bundle/checks/oracle.py",
+    "tests/fixtures/bundle/plan.md",
+    "tests/fixtures/bundle/spec.md",
+    "tests/fixtures/bundle/tasks.md",
+    "tests/fixtures/bundle/tests.md",
+    "tests/test_bundle.py",
+    "tools/bundle_common.py",
+    "tools/bundle_review.py",
+    "tools/bundle_validation.py",
+}
 
 
 def allowed_public_path(value: str) -> bool:
@@ -105,6 +104,8 @@ def allowed_public_path(value: str) -> bool:
         return False
     if path.suffix.lower() in {".pem", ".key", ".p12", ".pfx"}:
         return False
+    if value in BUNDLE_PUBLIC_FILES:
+        return True
     if value in {".gitignore", "LICENSE", "README.md", "payload-inventory.json"}:
         return True
     if value in {

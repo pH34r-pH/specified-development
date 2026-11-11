@@ -1,0 +1,132 @@
+{
+  "authority": {
+    "acceptance_source": "authority.md",
+    "capabilities": [
+      "read",
+      "edit",
+      "test"
+    ],
+    "promotion": "target-repository-only",
+    "protected_paths": [
+      "src/credentials/**"
+    ],
+    "read_paths": [
+      "spec.md",
+      "plan.md",
+      "tests.md",
+      "tasks.md",
+      "authority.md",
+      "checks/oracle.py"
+    ],
+    "write_paths": [
+      "src/**"
+    ]
+  },
+  "commands": {
+    "ORACLE": {
+      "argv": [
+        "python",
+        "checks/oracle.py"
+      ],
+      "capability": "test",
+      "cwd": "."
+    }
+  },
+  "feature": "hermetic-add-fixture",
+  "schema_version": 1,
+  "status": "candidate",
+  "tasks": {
+    "T1": {
+      "commands": [
+        "ORACLE"
+      ],
+      "expected": "All three fixed arithmetic cases pass for the exact candidate; target owner reviews independently.",
+      "parents": [],
+      "paths": [
+        "src/add.py"
+      ],
+      "tests": [
+        "CASE1"
+      ]
+    }
+  },
+  "x_bundle": {
+    "plans": {
+      "P1": {
+        "requirements": [
+          "R1"
+        ],
+        "source": "plan.md"
+      }
+    },
+    "profile": "native-bundle-v1",
+    "requirements": {
+      "R1": {
+        "observable": "integer sum including zero and negative inputs",
+        "source": "spec.md"
+      }
+    },
+    "sources": {
+      "authority.md": {
+        "kind": "policy",
+        "path": "authority.md",
+        "sha256": "13ff14c26ae951aeb72bedd7729682070cfe61772c728ae31f393de376ed7a56"
+      },
+      "checks/oracle.py": {
+        "kind": "tests",
+        "path": "checks/oracle.py",
+        "sha256": "c4f90ff01d5766eabea6ff8fb0ca1468bd6eda27321c5b59e2049bd9c508ea89"
+      },
+      "plan.md": {
+        "kind": "plan",
+        "path": "plan.md",
+        "sha256": "c43ed900e5104f04847489e970e1c21af7c7fd53fcdd4df71ad0108aa2cad110"
+      },
+      "spec.md": {
+        "kind": "spec",
+        "path": "spec.md",
+        "sha256": "3e0d3ba677570b688886e2be33d6a09b072b588014aec34fabc49fd613a8557c"
+      },
+      "tasks.md": {
+        "kind": "tasks",
+        "path": "tasks.md",
+        "sha256": "55d5aab6853918284814b1bdb57905a9d8ebeda159c6fe2497ebd7738632204a"
+      },
+      "tests.md": {
+        "kind": "tests",
+        "path": "tests.md",
+        "sha256": "92ca2cd2a30cfe0665e99ea085c9fee774087b171ecf6f11ba4d2ac32021ff6b"
+      }
+    },
+    "task_traces": {
+      "T1": {
+        "evidence": [
+          "candidate_identity",
+          "command_results",
+          "independent_review"
+        ],
+        "plan": "P1",
+        "requirements": [
+          "R1"
+        ],
+        "source": "tasks.md"
+      }
+    },
+    "tests": {
+      "CASE1": {
+        "command": "ORACLE",
+        "expected_exit": 0,
+        "observable": "[5, 0, -3] for independent fixed inputs; absent function fails",
+        "requirements": [
+          "R1"
+        ],
+        "source": "tests.md"
+      }
+    },
+    "versions": {
+      "generator": "1.0.0",
+      "runtime": "CPython-3.12.14",
+      "schema": 1
+    }
+  }
+}
