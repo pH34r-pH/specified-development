@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "experiment_compiler": {
+      "repository": "pH34r-pH/experiment-compiler",
+      "commit": "ca76cca015d1bc8c4ffbace2bfafca2ef8ebab90"
+    },
+    "long_haul": {
+      "repository": "pH34r-pH/long-haul",
+      "commit": "660d0258da03950682a37a23d39a2a2b910372c1"
+    }
+  },
+  "json": [
+    {"id": "unicode-object", "text": "{\"name\":\"café\",\"items\":[1,true,null]}", "accept": true},
+    {"id": "array-is-valid-json", "text": "[1,2]", "accept": true},
+    {"id": "duplicate-top-level", "text": "{\"a\":1,\"a\":2}", "accept": false},
+    {"id": "duplicate-nested", "text": "{\"nested\":{\"a\":1,\"a\":2}}", "accept": false},
+    {"id": "nan", "text": "{\"value\":NaN}", "accept": false},
+    {"id": "positive-infinity", "text": "{\"value\":Infinity}", "accept": false},
+    {"id": "negative-infinity", "text": "{\"value\":-Infinity}", "accept": false},
+    {"id": "numeric-overflow", "text": "{\"value\":1e999}", "accept": false, "known_gap": "experiment_compiler", "owner": "https://github.com/pH34r-pH/experiment-compiler/issues/155"},
+    {"id": "malformed-json", "text": "{", "accept": false}
+  ],
+  "paths": [
+    {"id": "ordinary", "path": "src/result.py", "specified": true, "experiment_compiler": true, "long_haul": true},
+    {"id": "unicode", "path": "src/café.py", "specified": true, "experiment_compiler": true, "long_haul": true},
+    {"id": "parent", "path": "../escape", "specified": false, "experiment_compiler": false, "long_haul": false},
+    {"id": "absolute", "path": "/escape", "specified": false, "experiment_compiler": false, "long_haul": false},
+    {"id": "backslash", "path": "src\\file", "specified": false, "experiment_compiler": false, "long_haul": false},
+    {"id": "empty-component", "path": "src//file", "specified": false, "experiment_compiler": false, "long_haul": false},
+    {"id": "dot-component", "path": "./file", "specified": false, "experiment_compiler": false, "long_haul": false},
+    {"id": "windows-drive", "path": "C:/file", "specified": false, "experiment_compiler": false, "long_haul": false},
+    {"id": "nul", "path": "a\u0000b", "specified": false, "experiment_compiler": false, "long_haul": false},
+    {"id": "git-metadata", "path": ".git/config", "specified": true, "experiment_compiler": true, "long_haul": false, "reason": "Git context paths exclude control metadata; lexical artifact paths leave authorization to the consuming scope."},
+    {"id": "windows-reserved", "path": "CON.txt", "specified": true, "experiment_compiler": false, "long_haul": true, "reason": "Archive portability rejects Windows devices; repository-object and lexical path identities are distinct policies."},
+    {"id": "trailing-dot", "path": "src/name.", "specified": true, "experiment_compiler": false, "long_haul": true, "reason": "The compiler archive profile requires portable member names."}
+  ],
+  "collections": [
+    {"id": "distinct-unicode", "paths": ["src/café.py", "src/東京.py"], "accept": true},
+    {"id": "duplicate", "paths": ["src/a", "src/a"], "accept": false},
+    {"id": "case-collision", "paths": ["src/a", "src/A"], "accept": false},
+    {"id": "normalization-collision", "paths": ["src/café", "src/café"], "accept": false, "known_gap": "experiment_compiler", "owner": "https://github.com/pH34r-pH/experiment-compiler/issues/155"},
+    {"id": "file-directory-collision", "paths": ["src/a", "src/a/b"], "accept": false}
+  ]
+}

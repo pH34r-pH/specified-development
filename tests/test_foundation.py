@@ -14,7 +14,6 @@ from pathlib import Path
 
 from tools import validate_foundation as vf
 
-
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures" / "foundation"
 
@@ -65,34 +64,31 @@ class ManifestAndNavigationTests(unittest.TestCase):
 
     def test_malformed_manifest_fixtures_reject(self):
         for fixture in load_fixture("malformed_manifest_cases.json"):
-            with self.subTest(fixture=fixture["name"]):
-                with self.assertRaises(vf.ValidationError):
-                    vf.validate_manifest_shape(fixture["manifest"], set(fixture["available_paths"]))
+            with self.subTest(fixture=fixture["name"]), self.assertRaises(vf.ValidationError):
+                vf.validate_manifest_shape(fixture["manifest"], set(fixture["available_paths"]))
 
     def test_malformed_navigation_fixtures_reject(self):
         document_ids = {"specified-development/overview"}
         for fixture in load_fixture("malformed_navigation_cases.json"):
-            with self.subTest(fixture=fixture["name"]):
-                with self.assertRaises(vf.ValidationError):
-                    vf.validate_navigation_shape(fixture["navigation"], document_ids)
+            with self.subTest(fixture=fixture["name"]), self.assertRaises(vf.ValidationError):
+                vf.validate_navigation_shape(fixture["navigation"], document_ids)
 
     def test_malformed_markdown_links_reject(self):
         for fixture in load_fixture("malformed_link_cases.json"):
-            with self.subTest(fixture=fixture["name"]):
-                with tempfile.TemporaryDirectory() as temporary:
-                    spec_root = Path(temporary)
-                    if "symlink_target" in fixture:
-                        (spec_root / fixture["source"]).write_text(fixture["content"], encoding="utf-8")
-                        (spec_root / fixture["symlink_target"]).symlink_to(FIXTURES / "outside_target.md")
-                        with self.assertRaisesRegex(vf.ValidationError, "LINK_ESCAPE"):
-                            vf.validate_markdown_links(spec_root, {"fixture": fixture["source"]})
-                        continue
-                    for relative, content in fixture["files"].items():
-                        path = spec_root / relative
-                        path.parent.mkdir(parents=True, exist_ok=True)
-                        path.write_text(content, encoding="utf-8")
-                    with self.assertRaises(vf.ValidationError):
+            with self.subTest(fixture=fixture["name"]), tempfile.TemporaryDirectory() as temporary:
+                spec_root = Path(temporary)
+                if "symlink_target" in fixture:
+                    (spec_root / fixture["source"]).write_text(fixture["content"], encoding="utf-8")
+                    (spec_root / fixture["symlink_target"]).symlink_to(FIXTURES / "outside_target.md")
+                    with self.assertRaisesRegex(vf.ValidationError, "LINK_ESCAPE"):
                         vf.validate_markdown_links(spec_root, {"fixture": fixture["source"]})
+                    continue
+                for relative, content in fixture["files"].items():
+                    path = spec_root / relative
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(content, encoding="utf-8")
+                with self.assertRaises(vf.ValidationError):
+                    vf.validate_markdown_links(spec_root, {"fixture": fixture["source"]})
 
     def test_valid_local_fragment_is_accepted(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -361,9 +357,8 @@ class InventoryPrivacyAndRetentionTests(unittest.TestCase):
             {"value": "github" + "_pat_" + "A" * 40},
             {"value": "ghp_" + "A" * 30},
         ):
-            with self.subTest(value=list(value)):
-                with self.assertRaises(vf.ValidationError):
-                    vf.validate_public_json_privacy(value)
+            with self.subTest(value=list(value)), self.assertRaises(vf.ValidationError):
+                vf.validate_public_json_privacy(value)
         vf.validate_public_json_privacy({"url": "https://example.invalid/public-document"})
 
     def test_real_public_inventory_and_retention_rules_validate(self):

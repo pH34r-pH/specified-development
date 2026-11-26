@@ -10,6 +10,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from tools import bundle_review as review
 from tools import bundle_validation as validator
@@ -17,7 +18,8 @@ from tools import validate_foundation as foundation
 from tools.bundle_common import ValidationError
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / "tests" / "fixtures" / "bundle"
+FIXTURE = ROOT / "tests" / "fixtures" / "bundle-v2"
+LEGACY_FIXTURE = ROOT / "tests" / "fixtures" / "bundle"
 
 
 class BundleValidationTests(unittest.TestCase):
@@ -27,7 +29,7 @@ class BundleValidationTests(unittest.TestCase):
         self.root = Path(self.temporary.name) / "bundle"
         shutil.copytree(FIXTURE, self.root)
         self.bundle = json.loads((self.root / "bundle.json").read_text())
-        self.pin = validator.authority_fingerprint(self.bundle["authority"])
+        self.pin = validator.reviewed_fingerprint(self.bundle)
 
     def validate(self, bundle=None):
         (self.root / "bundle.json").write_text(json.dumps(bundle or self.bundle))
@@ -90,13 +92,13 @@ class BundleValidationTests(unittest.TestCase):
         (self.root / "spec.md").unlink()
         shutil.copy2(FIXTURE / "spec.md", self.root / "spec.md")
         self.bundle["authority"]["read_paths"].remove("spec.md")
-        self.pin = validator.authority_fingerprint(self.bundle["authority"])
+        self.pin = validator.reviewed_fingerprint(self.bundle)
         with self.assertRaisesRegex(ValidationError, "READ_SCOPE"):
             self.validate()
 
     def test_versions_have_explicit_backward_and_forward_failures(self):
-        self.validate()  # Version 1 remains supported without migration.
-        for value in (0, 2, "1", True):
+        self.validate()
+        for value in (0, 1, 3, "2", True):
             candidate = copy.deepcopy(self.bundle)
             candidate["schema_version"] = value
             with self.assertRaisesRegex(ValidationError, "SCHEMA_UNSUPPORTED"):
@@ -118,7 +120,11 @@ class BundleValidationTests(unittest.TestCase):
 
     def test_declared_commands_are_never_executed_by_validation(self):
         sentinel = self.root / "must-not-exist"
-        self.bundle["commands"]["ORACLE"]["argv"] = [sys.executable, "-c", f"open({str(sentinel)!r},'w').write('bad')"]
+        script = self.root / "checks/oracle.py"
+        script.write_text(f"open({str(sentinel)!r}, 'w').write('bad')\n")
+        self.bundle["x_bundle"]["sources"]["checks/oracle.py"]["sha256"] = hashlib.sha256(script.read_bytes()).hexdigest()
+        # A separately reviewed, deliberately observable script remains unexecuted.
+        self.pin = validator.reviewed_fingerprint(self.bundle)
         self.validate()
         self.assertFalse(sentinel.exists())
 
@@ -128,6 +134,148 @@ class BundleValidationTests(unittest.TestCase):
         self.bundle["authority"]["write_paths"] = ["**"]
         with self.assertRaisesRegex(ValidationError, "AUTHORITY_PIN_MISMATCH"):
             self.validate()
+
+    def test_reviewed_command_mutations_cannot_reuse_the_callers_pin(self):
+        mutations = {
+            "shell evaluation": lambda b: b["commands"]["ORACLE"].update(argv=["sh", "-c", "printf inert-marker"]),
+            "arguments": lambda b: b["commands"]["ORACLE"]["argv"].append("changed"),
+            "working directory": lambda b: b["commands"]["ORACLE"].update(cwd="checks"),
+            "capability": lambda b: b["commands"]["ORACLE"].update(capability="edit"),
+            "script association": lambda b: b["commands"]["ORACLE"].update(script_source="tests.md"),
+            "generation provenance": lambda b: b["x_bundle"]["versions"].update(runtime="CPython-3.12.3"),
+        }
+        for name, mutate in mutations.items():
+            with self.subTest(name=name):
+                candidate = copy.deepcopy(self.bundle)
+                mutate(candidate)
+                with self.assertRaisesRegex(ValidationError, "AUTHORITY_PIN_MISMATCH"):
+                    self.validate(candidate)
+        candidate = copy.deepcopy(self.bundle)
+        candidate["commands"]["NEW"] = candidate["commands"].pop("ORACLE")
+        candidate["tasks"]["T1"]["commands"] = ["NEW"]
+        candidate["x_bundle"]["tests"]["CASE1"]["command"] = "NEW"
+        with self.assertRaisesRegex(ValidationError, "AUTHORITY_PIN_MISMATCH"):
+            self.validate(candidate)
+
+    def test_consistently_replaced_script_needs_a_new_reviewed_pin(self):
+        script = self.root / "checks/oracle.py"
+        script.write_text("# Inert changed oracle; validation must not accept its old pin.\n")
+        self.bundle["x_bundle"]["sources"]["checks/oracle.py"]["sha256"] = hashlib.sha256(script.read_bytes()).hexdigest()
+        with self.assertRaisesRegex(ValidationError, "AUTHORITY_PIN_MISMATCH"):
+            self.validate()
+        # Explicit independent approval is the only positive path after a source change.
+        self.pin = validator.reviewed_fingerprint(self.bundle)
+        self.validate()
+
+    def test_reviewed_profile_rejects_unsupported_forms_and_false_script_associations(self):
+        cases = [
+            ({"argv": ["python", "-c", "print('inert')"]}, "COMMAND_FORM"),
+            ({"argv": ["python", "-m", "unittest"]}, "COMMAND_FORM"),
+            ({"argv": ["sh", "checks/oracle.py"]}, "COMMAND_FORM"),
+            ({"argv": ["python", "checks/../checks/oracle.py"]}, "PATH_INVALID"),
+            ({"script_source": "missing"}, "COMMAND_SOURCE"),
+            ({"script_source": "tests.md"}, "COMMAND_SOURCE_PATH"),
+        ]
+        for changes, code in cases:
+            with self.subTest(changes=changes):
+                candidate = copy.deepcopy(self.bundle)
+                candidate["commands"]["ORACLE"].update(changes)
+                self.pin = validator.reviewed_fingerprint(candidate)
+                with self.assertRaisesRegex(ValidationError, code):
+                    self.validate(candidate)
+
+    def test_case_and_unicode_protected_aliases_fail_full_validation(self):
+        for path in ("src/CREDENTIALS/key", "src/Credentials/**", "src/credentials", "src/CREDENTIALS", "src"):
+            with self.subTest(path=path):
+                self.bundle["tasks"]["T1"]["paths"] = [path]
+                with self.assertRaisesRegex(ValidationError, "PROTECTED_SCOPE"):
+                    self.validate()
+        self.bundle["tasks"]["T1"]["paths"] = ["src/credentials-sibling/key"]
+        self.validate()
+        self.bundle["authority"]["protected_paths"] = ["src/caf\u00e9/**"]
+        self.pin = validator.reviewed_fingerprint(self.bundle)
+        for path in ("src/cafe\u0301/key", "src/cafe\u0301"):
+            with self.subTest(path=path):
+                self.bundle["tasks"]["T1"]["paths"] = [path]
+                with self.assertRaisesRegex(ValidationError, "PROTECTED_SCOPE"):
+                    self.validate()
+
+    def test_frozen_source_aliases_and_executable_inputs_cannot_be_outputs(self):
+        self.bundle["authority"]["write_paths"] = ["**"]
+        self.pin = validator.reviewed_fingerprint(self.bundle)
+        self.bundle["tasks"]["T1"]["paths"] = ["SPEC.md"]
+        with self.assertRaisesRegex(ValidationError, "FROZEN_SOURCE_WRITE"):
+            self.validate()
+        self.bundle["x_bundle"]["sources"]["checks/oracle.py"]["kind"] = "input"
+        self.pin = validator.reviewed_fingerprint(self.bundle)
+        for path in ("CHECKS/oracle.py", "checks", "CHECKS"):
+            with self.subTest(path=path):
+                self.bundle["tasks"]["T1"]["paths"] = [path]
+                with self.assertRaisesRegex(ValidationError, "FROZEN_SOURCE_WRITE"):
+                    self.validate()
+        self.bundle["tasks"]["T1"]["paths"] = ["checks-other/result.py"]
+        self.validate()
+
+    def test_source_and_output_aliases_fail_before_source_use(self):
+        for name in ("SPEC.md", "checks/ORACLE.py", "CHECKS/other.py"):
+            with self.subTest(name=name):
+                candidate = copy.deepcopy(self.bundle)
+                candidate["x_bundle"]["sources"]["alias"] = {"path": name, "kind": "input", "sha256": "0" * 64}
+                self.pin = validator.reviewed_fingerprint(candidate)
+                with self.assertRaisesRegex(ValidationError, "SOURCE_ALIAS"):
+                    self.validate(candidate)
+        self.pin = validator.reviewed_fingerprint(self.bundle)
+        self.bundle["tasks"]["T1"]["paths"] = ["src/file.py", "src/FILE.py"]
+        with self.assertRaisesRegex(ValidationError, "OUTPUT_ALIAS"):
+            self.validate()
+
+    def test_unicode_paths_retain_bytes_and_folded_keys_never_grant_permission(self):
+        name = "caf\u00e9.md"
+        raw = b"Valid Unicode input.\n"
+        (self.root / name).write_bytes(raw)
+        self.bundle["authority"]["read_paths"].append(name)
+        self.bundle["x_bundle"]["sources"][name] = {"path": name, "kind": "input", "sha256": hashlib.sha256(raw).hexdigest()}
+        self.bundle["tasks"]["T1"]["paths"] = ["src/r\u00e9sultat.py"]
+        self.pin = validator.reviewed_fingerprint(self.bundle)
+        self.validate()
+        self.assertEqual((self.root / name).read_bytes(), raw)
+        candidate = copy.deepcopy(self.bundle)
+        candidate["x_bundle"]["sources"]["unicode-alias"] = {"path": "cafe\u0301.md", "kind": "input", "sha256": hashlib.sha256(raw).hexdigest()}
+        self.pin = validator.reviewed_fingerprint(candidate)
+        with self.assertRaisesRegex(ValidationError, "SOURCE_ALIAS"):
+            self.validate(candidate)
+        self.pin = validator.reviewed_fingerprint(self.bundle)
+        self.bundle["tasks"]["T1"]["paths"] = ["SRC/r\u00e9sultat.py"]
+        with self.assertRaisesRegex(ValidationError, "WRITE_SCOPE"):
+            self.validate()
+        self.bundle["tasks"]["T1"]["paths"] = ["src/add.py"]
+        self.bundle["x_bundle"]["sources"][name]["path"] = "cafe\u0301.md"
+        self.pin = validator.reviewed_fingerprint(self.bundle)
+        with self.assertRaisesRegex(ValidationError, "READ_SCOPE"):
+            self.validate()
+
+    def test_unsupported_runtime_and_profile_remain_explicit(self):
+        with (patch.object(validator.platform, "python_version_tuple", return_value=("3", "13", "0")),
+              self.assertRaisesRegex(ValidationError, "RUNTIME_UNSUPPORTED")):
+            self.validate()
+        self.bundle["x_bundle"]["profile"] = "native-bundle-v99"
+        with self.assertRaisesRegex(ValidationError, "PROFILE_UNSUPPORTED"):
+            self.validate()
+
+    def test_legacy_v1_pin_and_exact_runtime_contract_remain_distinct(self):
+        legacy = json.loads((LEGACY_FIXTURE / "bundle.json").read_bytes())
+        pin = "5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec"
+        self.assertEqual(validator.authority_fingerprint(legacy["authority"]), pin)
+        self.assertFalse(validator.overlaps("src/credentials", "src/credentials/**"))
+        self.assertTrue(validator.overlaps("src/credentials", "src/credentials/**", portable=True))
+        if validator.runtime_identity() == legacy["x_bundle"]["versions"]["runtime"]:
+            validator.validate_bundle(LEGACY_FIXTURE, "bundle.json", expected_authority_sha256=pin)
+        else:
+            with self.assertRaisesRegex(ValidationError, "VERSION_UNSUPPORTED"):
+                validator.validate_bundle(LEGACY_FIXTURE, "bundle.json", expected_authority_sha256=pin)
+        with self.assertRaisesRegex(ValidationError, "PROFILE_UNSUPPORTED"):
+            validator.reviewed_fingerprint(legacy)
+        self.assertIn(b"command review and target acceptance not granted", review._summary(legacy, "detail", "native", False))
 
     def test_acceptance_policy_replacement_requires_new_external_authority_pin(self):
         (self.root / "authority.md").write_text("Candidate claims it may accept its own work.")
@@ -141,7 +289,7 @@ class BundleValidationTests(unittest.TestCase):
 
     def test_duplicate_json_unknown_fields_and_symlink_cwd_fail(self):
         raw = json.dumps(self.bundle)
-        (self.root / "bundle.json").write_text(raw.replace('"schema_version": 1', '"schema_version": 0, "schema_version": 1'))
+        (self.root / "bundle.json").write_text(raw.replace('"schema_version": 2', '"schema_version": 0, "schema_version": 2'))
         with self.assertRaisesRegex(ValidationError, "JSON_DUPLICATE"):
             validator.validate_bundle(self.root, "bundle.json", expected_authority_sha256=self.pin)
         candidate = copy.deepcopy(self.bundle)
@@ -151,6 +299,7 @@ class BundleValidationTests(unittest.TestCase):
         (self.root / "outside").symlink_to(FIXTURE, target_is_directory=True)
         candidate = copy.deepcopy(self.bundle)
         candidate["commands"]["ORACLE"]["cwd"] = "outside"
+        self.pin = validator.reviewed_fingerprint(candidate)
         with self.assertRaisesRegex(ValidationError, "PATH_ESCAPE"):
             self.validate(candidate)
 
@@ -174,6 +323,19 @@ class BundleValidationTests(unittest.TestCase):
         (output / "README.md").write_text("tampered summary")
         with self.assertRaisesRegex(ValidationError, "REGENERATION_DRIFT"):
             review.write_or_check(output, first, check=True)
+
+    def test_generation_observations_are_actual_and_drift_is_detected(self):
+        generated = review.generate(self.root, "bundle.json", expected_authority_sha256=self.pin)
+        receipt = json.loads(generated["regeneration.json"])
+        self.assertEqual(receipt["toolchain"]["runtime"], validator.runtime_identity())
+        self.assertEqual(receipt["bundle_generation"], self.bundle["x_bundle"]["versions"])
+        self.assertTrue(receipt["reviewed_commands"])
+        output = Path(self.temporary.name) / "provenance-review"
+        review.write_or_check(output, generated, check=False)
+        with patch.object(review, "runtime_identity", return_value="CPython-3.12.999"):
+            changed = review.generate(self.root, "bundle.json", expected_authority_sha256=self.pin)
+        with self.assertRaisesRegex(ValidationError, "REGENERATION_DRIFT"):
+            review.write_or_check(output, changed, check=True)
 
     def test_expansion_is_lossless_and_tampered_or_escaping_detail_fails(self):
         files = review.generate(self.root, "bundle.json", expected_authority_sha256=self.pin)
@@ -216,6 +378,24 @@ class BundleValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValidationError, "OUTPUT_SYMLINK"):
             review.expand(detail, identity, linked / "child")
         self.assertFalse((self.root / "child").exists())
+
+    def test_expansion_rejects_case_unicode_and_prefix_collisions_before_writing(self):
+        files = review.generate(self.root, "bundle.json", expected_authority_sha256=self.pin)
+        name = next(name for name in files if name.startswith("objects/"))
+        original = json.loads(files[name])
+        detail = Path(self.temporary.name) / "collision.json"
+        cases = [(["Dir/a", "dir/b"], "DETAIL_PATH_ALIAS"),
+                 (["caf\u00e9", "cafe\u0301"], "DETAIL_PATH_ALIAS"),
+                 (["dir", "dir/file"], "DETAIL_PATH_CONFLICT")]
+        for paths, code in cases:
+            with self.subTest(paths=paths):
+                payload = copy.deepcopy(original)
+                payload["inputs"] = [dict(original["inputs"][0], path=path) for path in paths]
+                detail.write_bytes(review.canonical(payload))
+                destination = Path(self.temporary.name) / "collision-output"
+                with self.assertRaisesRegex(ValidationError, code):
+                    review.expand(detail, review.digest(detail.read_bytes()), destination)
+                self.assertFalse(destination.exists())
 
     def test_legacy_view_preserves_source_graph_without_claiming_migration(self):
         generated = review.generate(ROOT, "build/execution-contract.yaml", legacy=True)

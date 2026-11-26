@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "document_id",
+    "role",
+    "revision",
+    "target_status",
+    "approval_status",
+    "artifact_acceptance",
+    "delivery_status",
+    "delivery_evidence",
+    "qualifiers"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "enum": [
+        "overview",
+        "usage",
+        "feature",
+        "contract",
+        "operation"
+      ]
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "feature_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "approval_status": {
+      "enum": [
+        "unspecified",
+        "proposed",
+        "review-required",
+        "decision-approved",
+        "architecture-approved"
+      ]
+    },
+    "artifact_acceptance": {
+      "enum": [
+        "unspecified",
+        "candidate-review",
+        "accepted",
+        "rejected",
+        "stale"
+      ]
+    },
+    "target_status": {
+      "enum": [
+        "unspecified",
+        "mature-complete-product"
+      ]
+    },
+    "delivery_status": {
+      "enum": [
+        "designed-only",
+        "researched-only",
+        "implemented",
+        "qualified",
+        "deployed"
+      ]
+    },
+    "delivery_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "reference"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "source",
+              "test",
+              "deployment"
+            ]
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "qualifiers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "supersedes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "revision"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "acceptance_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor",
+        "at",
+        "reference"
+      ],
+      "properties": {
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "role": {
+            "const": "feature"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "feature_id"
+        ]
+      },
+      "else": {
+        "not": {
+          "required": [
+            "feature_id"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "delivery_status": {
+            "enum": [
+              "designed-only",
+              "researched-only"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "delivery_evidence": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "artifact_acceptance": {
+            "const": "accepted"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "approval_status": {
+            "enum": [
+              "decision-approved",
+              "architecture-approved"
+            ]
+          }
+        },
+        "required": [
+          "acceptance_evidence"
+        ]
+      }
+    }
+  ]
+}

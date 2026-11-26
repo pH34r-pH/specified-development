@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Validate the published specification scaffold using only Python's stdlib.
 
 This checks structural consistency and public-payload hygiene. It does not build,
@@ -7,14 +6,16 @@ render, install, or qualify the proposed product.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
 import subprocess
 import sys
 from collections import defaultdict
+from collections.abc import Iterable
 from pathlib import Path, PurePosixPath
-from typing import Any, Iterable
+from typing import TYPE_CHECKING, Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
 TASK_SOURCES = {
@@ -46,11 +47,12 @@ HEADING_RE = re.compile(r"^#{1,6}\s+(.+?)\s*#*\s*$", re.MULTILINE)
 HTML_ID_RE = re.compile(r"\b(?:id|name)=[\"']([^\"']+)[\"']")
 
 
-try:
+if TYPE_CHECKING or __package__:
     from .bundle_common import (
         ValidationError,
         _invalid_constant,
         _unique_object,
+        cli_error,
         confined_file,
         read_json,
         require,
@@ -58,11 +60,12 @@ try:
         sha256_file,
     )
     from .bundle_validation import path_pattern
-except ImportError:  # Direct stdlib CLI invocation.
+else:  # Direct invocation, including the portable three-file bundle tools.
     from bundle_common import (
         ValidationError,
         _invalid_constant,
         _unique_object,
+        cli_error,
         confined_file,
         read_json,
         require,
@@ -73,17 +76,39 @@ except ImportError:  # Direct stdlib CLI invocation.
 
 
 BUNDLE_PUBLIC_FILES = {
+    ".github/dependabot.yml",
     "build/bundle-qualification.json",
     ".github/workflows/repository-governance.yml",
     "REVIEW.md",
     "build/bundle-example-review/README.md",
+    "build/bundle-example-review/objects/18ea9c527ba0cc4162a7fb57ed912c56d4eb14c38797e8009afab1a79ab10e98.json",
     "build/bundle-example-review/objects/7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80.json",
     "build/bundle-example-review/regeneration.json",
     "build/bundle-review/README.md",
     "build/bundle-review/objects/235092412551c5f54fef79f1bec8863460dbeacfc2d18a094e232fe128de497e.json",
     "build/bundle-review/regeneration.json",
+    "build/bundle-v2-review/README.md",
+    "build/bundle-v2-review/objects/4bcd9eb5d4341fca8d65a6c36adfc7a620af5c8fe291a522ff492a2fd14fd49e.json",
+    "build/bundle-v2-review/regeneration.json",
+    "build/shared-safety-conformance.json",
     "docs/bundle-validation.md",
+    "docs/evidence/foundation-capability-observations-v1.md",
+    "docs/fingerprint-serialization.md",
+    "docs/governance-maintenance.md",
+    "docs/quality-checks.md",
+    "docs/shared-safety.md",
+    "docs/specification-review.json",
+    "docs/specification-review.md",
+    "docs/specification/execution-capabilities-v2.md",
+    "docs/task-review.md",
+    "docs/tooling.md",
     "governance/repository-profile.json",
+    "pyproject.toml",
+    "requirements-dev.in",
+    "requirements-dev.txt",
+    "schemas/spec-frontmatter-legacy.schema.json",
+    "schemas/spec-frontmatter-v1.schema.json",
+    "schemas/spec-review-v1.schema.json",
     "tests/fixtures/bundle/authority.md",
     "tests/fixtures/bundle/bundle.json",
     "tests/fixtures/bundle/checks/oracle.py",
@@ -91,10 +116,27 @@ BUNDLE_PUBLIC_FILES = {
     "tests/fixtures/bundle/spec.md",
     "tests/fixtures/bundle/tasks.md",
     "tests/fixtures/bundle/tests.md",
+    "tests/fixtures/bundle-v2/authority.md",
+    "tests/fixtures/bundle-v2/bundle.json",
+    "tests/fixtures/bundle-v2/checks/oracle.py",
+    "tests/fixtures/bundle-v2/plan.md",
+    "tests/fixtures/bundle-v2/spec.md",
+    "tests/fixtures/bundle-v2/tasks.md",
+    "tests/fixtures/bundle-v2/tests.md",
+    "tests/fixtures/safety/conformance.json",
+    "tests/fixtures/tooling/authority-serialization-v1.json",
     "tests/test_bundle.py",
+    "tests/test_packaging.py",
+    "tests/test_safety_conformance.py",
+    "tests/test_spec_validation.py",
+    "tests/test_task_review.py",
+    "tests/test_tooling.py",
+    "tools/__init__.py",
     "tools/bundle_common.py",
     "tools/bundle_review.py",
     "tools/bundle_validation.py",
+    "tools/spec_validation.py",
+    "tools/task_review.py",
 }
 
 
@@ -133,9 +175,7 @@ def allowed_public_path(value: str) -> bool:
         for name in ("plan.md", "tests.md", "tasks.md")
     }:
         return True
-    if value.startswith("tests/fixtures/foundation/"):
-        return True
-    return False
+    return value.startswith("tests/fixtures/foundation/")
 
 
 def check_public_inventory(root: Path) -> None:
@@ -187,7 +227,7 @@ def check_public_inventory(root: Path) -> None:
 def _document_targets(manifest: dict[str, Any]) -> set[str]:
     docs = manifest.get("documents")
     require(isinstance(docs, dict) and docs, "MANIFEST_DOCUMENTS", "documents must be a nonempty object")
-    return set(docs)
+    return set(cast(dict[str, Any], docs))
 
 
 def validate_manifest_shape(manifest: Any, available_paths: set[str] | None = None) -> None:
@@ -317,7 +357,7 @@ def validate_markdown_links(spec_root: Path, documents: dict[str, str]) -> None:
         source_path = PurePosixPath(source_rel)
         for raw_target in LINK_RE.findall(content):
             target = raw_target.strip().split(maxsplit=1)[0].strip("<>\"'")
-            if not target or target.startswith(("http://", "https://", "mailto:", "tel:", "data:")) or target.startswith("//"):
+            if not target or target.startswith(("http://", "https://", "mailto:", "tel:", "data:", "//")):
                 continue
             path_text, sep, fragment = target.partition("#")
             if path_text:
@@ -410,13 +450,14 @@ def _frozen_authority(task: dict[str, Any]) -> list[dict[str, Any]]:
     entries = frozen.get("authoritative") if isinstance(frozen, dict) else None
     require(isinstance(entries, list) and entries, "TASK_FROZEN_INPUTS",
             f"nonempty frozen authoritative inputs required: {task['qualified_id']}")
-    return entries
+    return cast(list[dict[str, Any]], entries)
 
 
 def _validate_candidate_model(task: dict[str, Any]) -> bool:
     qid = task["qualified_id"]
     policy = task.get("fixed_model_policy")
     require(isinstance(policy, dict) and policy.get("policy_id") == "fixed-model-v3", "TASK_MODEL_POLICY", qid)
+    policy = cast(dict[str, Any], policy)
     require({"exact_model", "role_default_model"} <= policy.keys(), "TASK_MODEL_SELECTION",
             f"model binding fields must be explicit: {qid}")
     require(policy.get("mid_attempt_switch") is False and policy.get("silent_alias_resolution") is False,
@@ -446,6 +487,7 @@ def _candidate_issue_key(task: dict[str, Any]) -> tuple[str, int, int] | None:
     issue = task.get("issue_identity")
     require(isinstance(issue, dict) and issue.get("marker") == f"<!-- spec-task:{qid} -->",
             "TASK_ISSUE_IDENTITY", f"expected one task marker binding: {qid}")
+    issue = cast(dict[str, Any], issue)
     targets = [issue[key] for key in ("repository", "candidate_repository") if key in issue]
     require(len(targets) == 1 and isinstance(targets[0], str)
             and re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", targets[0]), "TASK_ISSUE_TARGET", qid)
@@ -456,7 +498,7 @@ def _candidate_issue_key(task: dict[str, Any]) -> tuple[str, int, int] | None:
         return None
     require(type(number) is int and type(database_id) is int and number > 0 and database_id > 0,
             "TASK_ISSUE_BINDING", f"issue number and immutable database ID must be bound together: {qid}")
-    return targets[0].casefold(), number, database_id
+    return targets[0].casefold(), cast(int, number), cast(int, database_id)
 
 
 def _validate_candidate_leaf(task: dict[str, Any]) -> None:
@@ -494,6 +536,7 @@ def load_authoring_tasks(root: Path) -> tuple[dict[str, Any], list[dict[str, Any
         authored = metadata.get("tasks")
         require(isinstance(authored, list) and authored and all(isinstance(task, dict) for task in authored),
                 "TASK_LIST", f"task list missing or malformed in {relative}")
+        authored = cast(list[dict[str, Any]], authored)
         markers = TASK_MARKER_RE.findall(content)
         ids = [task.get("local_id") for task in authored if isinstance(task, dict)]
         require(len(ids) == len(set(ids)) == len(markers), "TASK_MARKERS", f"task markers/metadata differ in {relative}")
@@ -506,7 +549,7 @@ def load_authoring_tasks(root: Path) -> tuple[dict[str, Any], list[dict[str, Any
             expected_qid = f"{NAMESPACES[feature]}/{local_id}"
             require(qualified_id == expected_qid, "TASK_QUALIFIED_ID", f"{local_id} has unexpected qualified id")
             require(qualified_id not in all_qids, "TASK_DUPLICATE_IDENTITY", f"duplicate qualified id: {qualified_id}")
-            all_qids.add(qualified_id)
+            all_qids.add(expected_qid)
             _validate_candidate_leaf(task)
             unknown_cases = set(task["tests"]) - cases
             require(not unknown_cases, "TASK_TEST_UNKNOWN", f"unknown tests for {qualified_id}: {sorted(unknown_cases)}")
@@ -796,6 +839,7 @@ def validate_completion_evidence(
     require(isinstance(expected, dict), "RECEIPT_CONTEXT", "independent expected values are required")
     require(isinstance(observed_ci, dict), "RECEIPT_CI_UNVERIFIED", "independent GitHub workflow and job observations are required")
     require(isinstance(observed_store, dict) and isinstance(receipt_bytes, bytes), "RECEIPT_STORE_UNVERIFIED", "independent store readback and receipt bytes are required")
+    receipt_bytes = cast(bytes, receipt_bytes)
     required_context = (
         "repository", "qualified_task_id", "native_id", "task_issue_number", "task_issue_id", "issue_marker",
         "accepted_design_commit", "accepted_design_tree", "head_sha", "head_tree",
@@ -940,13 +984,17 @@ def validate_workspace(root: Path = ROOT) -> None:
 
 
 def main(argv: Iterable[str] | None = None) -> int:
-    args = list(argv if argv is not None else sys.argv[1:])
-    root = Path(args[0]).resolve() if args else ROOT
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("root", type=Path, nargs="?", default=Path.cwd(), help="repository checkout to validate (default: current directory)")
+    parser.add_argument("--debug", action="store_true", help="show a traceback for an unexpected internal fault")
+    args = parser.parse_args(list(argv) if argv is not None else None)
     try:
-        validate_workspace(root)
+        validate_workspace(args.root.resolve())
     except ValidationError as exc:
         print(f"FOUNDATION validation failed: {exc}", file=sys.stderr)
         return 1
+    except Exception as exc:  # noqa: BLE001 - CLI boundary reports internal faults with a distinct exit.
+        return cli_error(exc, context="FOUNDATION validation failed", debug=args.debug)
     return 0
 
 

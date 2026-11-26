@@ -1,0 +1,42 @@
+{
+  "claim": "helper-level cross-repository conformance observations; not archive, sandbox or product qualification",
+  "decision": "share conformance vectors; retain consumer-specific implementations and resource policies",
+  "issue": 31,
+  "known_gap_owner": "https://github.com/pH34r-pH/experiment-compiler/issues/155",
+  "long_haul_import_dependency": {
+    "pydantic": "2.13.4"
+  },
+  "observed_date": "2026-11-26",
+  "result": {
+    "errors": 0,
+    "expected_failures": [
+      "test_compiler_normalization_gap_is_owned_by_155 (test_safety_conformance.CrossRepositorySafetyVectors.test_compiler_normalization_gap_is_owned_by_155)",
+      "test_compiler_numeric_overflow_gap_is_owned_by_155 (test_safety_conformance.CrossRepositorySafetyVectors.test_compiler_numeric_overflow_gap_is_owned_by_155)"
+    ],
+    "passed": 4,
+    "tests_run": 6,
+    "unexpected_failures": 0
+  },
+  "runtime": "CPython-3.12.14",
+  "schema_version": 1,
+  "sources": {
+    "experiment_compiler": {
+      "commit": "ca76cca015d1bc8c4ffbace2bfafca2ef8ebab90",
+      "repository": "pH34r-pH/experiment-compiler",
+      "source_sha256": {
+        "experiment_compiler/archive_policy.py": "1fa2d39ef43a9e2b30e08990f1ff79f35211f0367093daaca6afcb58994a5d6f",
+        "experiment_compiler/core.py": "bd396a226171c49226f83d1f85a877747ac6cf84347a2f7c8175e26f7b576190"
+      }
+    },
+    "long_haul": {
+      "commit": "660d0258da03950682a37a23d39a2a2b910372c1",
+      "repository": "pH34r-pH/long-haul",
+      "source_sha256": {
+        "src/long_haul/work/repository_git.py": "faa43cf13bfc8e3c67e352614fddb1b14766bcd0bcaa18ee2190e48b127bb8e6",
+        "src/long_haul/work/repository_models.py": "f8d8166a2280959af7cee9cb99bb61bd0ecbcbd17c2adaa02f15d58a84d09ed0"
+      }
+    }
+  },
+  "test_source_sha256": "c057d0ee2a059e3fbbba06b1be43eae178753168f57ce563d396dd074e8a9443",
+  "vectors_sha256": "80527791c2e9e0afdf310c4dece84e92e9da0d53547dd123cba5a0fb87608443"
+}
