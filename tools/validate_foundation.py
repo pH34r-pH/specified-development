@@ -112,7 +112,7 @@ def allowed_public_path(value: str) -> bool:
         return False
     if value in BUNDLE_PUBLIC_FILES:
         return True
-    if value in {".github/README.md", ".gitignore", "LICENSE", "README.md", "payload-inventory.json"}:
+    if value in {".github/README.md", ".gitignore", "LICENSE", "LICENSING.md", "README.md", "payload-inventory.json"}:
         return True
     if value in {
         "build/execution-contract.yaml", "build/native-bindings.json",

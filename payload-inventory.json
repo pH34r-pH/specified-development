@@ -25,12 +25,16 @@
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
     },
     {
+      "path": "LICENSING.md",
+      "sha256": "c1ead03bcc369b6b6eb19436629a90532e9d210ca2ce7f1df11fab34e338327a"
+    },
+    {
       "path": "README.md",
       "sha256": "5c7cbf51421d59d71d18862a48cfd13da65b72f6be9815d7ea6cf1fdf6b62f42"
     },
     {
       "path": "REVIEW.md",
-      "sha256": "e97b4379172e7b551926002a818a872c09995df04c24a347908082faee3094b6"
+      "sha256": "d44a97d4814a96750a497e034322e3fdbd60ec034e696ebcd7c55b2d74fb6901"
     },
     {
       "path": "build/bundle-example-review/README.md",
@@ -262,7 +266,7 @@
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "5d5df2737e02b78b3a47506f8ee3cb30b74a8340881ba90944f6f1e4931d6f1e"
+      "sha256": "3210f7308a1128df24d1a016b4619adb5fcb6b29e9289ce59cfa9bacd751eb12"
     }
   ],
   "private_inputs_included": false,
