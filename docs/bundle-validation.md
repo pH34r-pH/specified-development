@@ -1,5 +1,7 @@
 # Executable bundle validation and review
 
+See the [delivery status and qualification evidence](../REVIEW.md#delivery-status) for the scope of these tools and the remaining distribution gates.
+
 The three portable files `tools/bundle_common.py`, `tools/bundle_validation.py`, and `tools/bundle_review.py` validate and review a native task bundle using Python's standard library. Copy them together; target repositories need no repository-specific validator, Long-Haul Python dependency, model, service, or network access.
 
 The qualified version is `native-bundle-v1`, generator `1.0.0`, with the exact CPython runtime recorded in the bundle and regeneration receipt. The hermetic example pins `CPython-3.12.14`; CI runs that version. Tool source SHA-256 values are also retained, so changing code without changing its display version remains observable.
