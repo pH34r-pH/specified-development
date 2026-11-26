@@ -147,7 +147,7 @@ def verify(lock: Path, archive_root: Path, *, lock_sha256: str, upstream_commit:
         if not isinstance(archive, dict):
             raise ValidationError("RELEASE_LOCK: component archive is required")
         expected_files = _inventory(item, commit)
-        path = confined_file(archive_root, archive.get("path"))
+        path = confined_file(archive_root, safe_relative_path(archive.get("path")).as_posix())
         archive_digest = _digest(archive.get("sha256"), SHA256, "archive SHA-256")
         require(path.is_file() and sha256_file(path) == archive_digest,
                 "RELEASE_ARCHIVE_DIGEST", "candidate archive is missing or differs from reviewed bytes")

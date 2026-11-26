@@ -418,7 +418,7 @@
     },
     {
       "path": "tools/release_attribution.py",
-      "sha256": "6d03bec3f19509d735c0fb5f5aeba12eedbcbbfd1299340697a32afc9fc5f278"
+      "sha256": "f4293e5d0889f219da9fcca46022bb65352f6a379a3c3c8cd9fb782aa725546c"
     },
     {
       "path": "tools/spec_validation.py",
