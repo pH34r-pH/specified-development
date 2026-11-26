@@ -55,8 +55,8 @@ def _inventory(component: dict[str, Any], upstream_commit: str) -> dict[str, str
         path = safe_relative_path(item["path"]).as_posix()
         contents[path] = _digest(item.get("sha256"), SHA256, "member SHA-256")
         ids = item.get("source_ids")
-        require(isinstance(ids, list) and ids and all(isinstance(value, str) for value in ids),
-                "RELEASE_ATTRIBUTION", "each member needs source attribution")
+        if not isinstance(ids, list) or not ids or not all(isinstance(value, str) for value in ids):
+            raise ValidationError("RELEASE_ATTRIBUTION: each member needs source attribution")
         for source_id in ids:
             source = sources.get(source_id.casefold())
             require(source is not None and source["id"] == source_id
@@ -116,8 +116,10 @@ def _verify_zip(archive: Path, expected: dict[str, str]) -> None:
                     "candidate membership differs from the reviewed lock")
             for path, digest in expected.items():
                 with package.open(observed[path]) as stream:
-                    require(hashlib.file_digest(stream, "sha256").hexdigest() == digest,
-                            "RELEASE_MEMBER_DIGEST", f"reviewed member changed: {path}")
+                    actual = hashlib.sha256()
+                    for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                        actual.update(chunk)
+                require(actual.hexdigest() == digest, "RELEASE_MEMBER_DIGEST", f"reviewed member changed: {path}")
     except (zipfile.BadZipFile, RuntimeError, NotImplementedError, OSError) as exc:
         raise ValidationError("RELEASE_ARCHIVE: cannot read candidate ZIP") from exc
 
@@ -142,7 +144,8 @@ def verify(lock: Path, archive_root: Path, *, lock_sha256: str, upstream_commit:
         require(isinstance(item.get("version"), str) and item["version"].strip(),
                 "RELEASE_LOCK", "component version is required")
         archive = item.get("archive")
-        require(isinstance(archive, dict), "RELEASE_LOCK", "component archive is required")
+        if not isinstance(archive, dict):
+            raise ValidationError("RELEASE_LOCK: component archive is required")
         expected_files = _inventory(item, commit)
         path = confined_file(archive_root, archive.get("path"))
         archive_digest = _digest(archive.get("sha256"), SHA256, "archive SHA-256")
