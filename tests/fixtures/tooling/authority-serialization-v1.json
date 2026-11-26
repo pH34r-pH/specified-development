@@ -1,0 +1,84 @@
+{
+  "profile": "sorted-json-authority-v1",
+  "vectors": [
+    {
+      "id": "qualified-v1-authority",
+      "value": {
+        "acceptance_source": {
+          "id": "authority.md",
+          "sha256": "13ff14c26ae951aeb72bedd7729682070cfe61772c728ae31f393de376ed7a56"
+        },
+        "capabilities": [
+          "read",
+          "edit",
+          "test"
+        ],
+        "promotion": "target-repository-only",
+        "protected_paths": [
+          "src/credentials/**"
+        ],
+        "read_paths": [
+          "spec.md",
+          "plan.md",
+          "tests.md",
+          "tasks.md",
+          "authority.md",
+          "checks/oracle.py"
+        ],
+        "write_paths": [
+          "src/**"
+        ]
+      },
+      "serialized_utf8": "{\"acceptance_source\":{\"id\":\"authority.md\",\"sha256\":\"13ff14c26ae951aeb72bedd7729682070cfe61772c728ae31f393de376ed7a56\"},\"capabilities\":[\"read\",\"edit\",\"test\"],\"promotion\":\"target-repository-only\",\"protected_paths\":[\"src/credentials/**\"],\"read_paths\":[\"spec.md\",\"plan.md\",\"tests.md\",\"tasks.md\",\"authority.md\",\"checks/oracle.py\"],\"write_paths\":[\"src/**\"]}",
+      "sha256": "5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec"
+    },
+    {
+      "id": "unicode-escaping",
+      "value": {
+        "a": [
+          "caf\u00e9",
+          "\u6771\u4eac",
+          "\ud83d\ude80"
+        ],
+        "quote": "\"\\\n\t\b\f\r\u0001",
+        "slash": "a/b"
+      },
+      "serialized_utf8": "{\"a\":[\"caf\\u00e9\",\"\\u6771\\u4eac\",\"\\ud83d\\ude80\"],\"quote\":\"\\\"\\\\\\n\\t\\b\\f\\r\\u0001\",\"slash\":\"a/b\"}",
+      "sha256": "0413eeeb245a777fdbc0647d9fb720c47e4be69e989ab587adedddc7099e6909"
+    },
+    {
+      "id": "codepoint-key-order",
+      "value": {
+        "A": "first",
+        "\ue000": "bmp",
+        "\ud800\udc00": "astral"
+      },
+      "serialized_utf8": "{\"A\":\"first\",\"\\ue000\":\"bmp\",\"\\ud800\\udc00\":\"astral\"}",
+      "sha256": "d9f4dde0bdd9101de452870925af73c623dc9e1ea9cd3f2708e2acac19a344c2"
+    },
+    {
+      "id": "array-order-and-nesting",
+      "value": {
+        "a": {
+          "a": "first",
+          "z": "last"
+        },
+        "z": [
+          "z",
+          "a",
+          "z"
+        ]
+      },
+      "serialized_utf8": "{\"a\":{\"a\":\"first\",\"z\":\"last\"},\"z\":[\"z\",\"a\",\"z\"]}",
+      "sha256": "ef9d2d8e844de4353361251fe0d04fb71bdcf4d1e7127781431a1f5df953f8d1"
+    },
+    {
+      "id": "ascii-del-escaping",
+      "value": {
+        "del": "\u007f"
+      },
+      "serialized_utf8": "{\"del\":\"\\u007f\"}",
+      "sha256": "2a4be89ced8ad4d4ff64d890bb443669cd846aaf7b706c45ba3218cee13a30ad"
+    }
+  ]
+}

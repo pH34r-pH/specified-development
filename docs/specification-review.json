@@ -1,0 +1,500 @@
+{
+  "schema_version": 1,
+  "base_manifest_sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1",
+  "current_documents": {
+    "specified-development/execution-capabilities": "docs/specification/execution-capabilities-v2.md"
+  },
+  "section_traces": [
+    {
+      "document_id": "specified-development/overview",
+      "heading": "Specified Development",
+      "kind": "informative",
+      "requirements": [],
+      "sha256": "31e3d46c6b40c4a94177082d79c71c7471c98f0c1851940b177ab8673c744865"
+    },
+    {
+      "document_id": "specified-development/lifecycle",
+      "heading": "Authoring and using the lifecycle",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-001",
+        "specified-development/distribution#FR-002",
+        "specified-development/distribution#FR-003",
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-007",
+        "specified-development/distribution#FR-008",
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-014",
+        "specified-development/directory-specs#DS-FR-006",
+        "specified-development/directory-specs#DS-FR-008"
+      ],
+      "sha256": "6c3c20de74a982afa3159e06fc0394540db3b6af893fa57f20c8024a1bd03830"
+    },
+    {
+      "document_id": "specified-development/lifecycle",
+      "heading": "Prior-art review before plan authoring",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-001",
+        "specified-development/distribution#FR-003",
+        "specified-development/distribution#FR-007"
+      ],
+      "sha256": "f5d7a0d74febab27275cc49feab71b63f9eb7e0a3397bb01619c77660db041c3"
+    },
+    {
+      "document_id": "specified-development/lifecycle",
+      "heading": "Implementation finish and refinement",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-007",
+        "specified-development/distribution#FR-014",
+        "specified-development/distribution#FR-015",
+        "specified-development/distribution#FR-016",
+        "specified-development/distribution#FR-017",
+        "specified-development/directory-specs#DS-FR-012",
+        "specified-development/directory-specs#DS-FR-013",
+        "specified-development/directory-specs#DS-FR-014"
+      ],
+      "sha256": "96961e479c8165ee8c914be36baef8b91d583e74e997fefdbbc75f4b6ec7e67e"
+    },
+    {
+      "document_id": "specified-development/distribution",
+      "heading": "Reusable repository specification lifecycle",
+      "kind": "informative",
+      "requirements": [],
+      "sha256": "f412a960721f1c591c3589d2cb7475629e5c0a183875940d131ff331ec9b9b41"
+    },
+    {
+      "document_id": "specified-development/distribution",
+      "heading": "Completed-product description",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-001",
+        "specified-development/distribution#FR-002",
+        "specified-development/distribution#FR-003",
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-008",
+        "specified-development/distribution#FR-009",
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-019"
+      ],
+      "sha256": "c742fd6f5c56c57636092c4034cadb87be0bde567f2447b1c824bb9862149050"
+    },
+    {
+      "document_id": "specified-development/distribution",
+      "heading": "Actors and acceptance scenarios",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#US1-AS1",
+        "specified-development/distribution#US1-AS2",
+        "specified-development/distribution#US2-AS1",
+        "specified-development/distribution#US2-AS2",
+        "specified-development/distribution#US2-AS3",
+        "specified-development/distribution#US3-AS1",
+        "specified-development/distribution#US3-AS2",
+        "specified-development/distribution#US3-AS3",
+        "specified-development/distribution#US4-AS1",
+        "specified-development/distribution#US4-AS2",
+        "specified-development/distribution#US4-AS3",
+        "specified-development/distribution#US5-AS1",
+        "specified-development/distribution#US5-AS2",
+        "specified-development/distribution#US6-AS1",
+        "specified-development/distribution#US6-AS2",
+        "specified-development/distribution#US6-AS3"
+      ],
+      "sha256": "0a63b9c73de4d4115c9ac8a5bb44c6dcb5d481326c860064c154b0665f8a9668"
+    },
+    {
+      "document_id": "specified-development/distribution",
+      "heading": "Functional requirements",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-001",
+        "specified-development/distribution#FR-002",
+        "specified-development/distribution#FR-003",
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-005",
+        "specified-development/distribution#FR-006",
+        "specified-development/distribution#FR-007",
+        "specified-development/distribution#FR-008",
+        "specified-development/distribution#FR-009",
+        "specified-development/distribution#FR-010",
+        "specified-development/distribution#FR-011",
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-014",
+        "specified-development/distribution#FR-015",
+        "specified-development/distribution#FR-016",
+        "specified-development/distribution#FR-017",
+        "specified-development/distribution#FR-018",
+        "specified-development/distribution#FR-019",
+        "specified-development/distribution#FR-020",
+        "specified-development/distribution#FR-021",
+        "specified-development/distribution#FR-022"
+      ],
+      "sha256": "68a8d7c05f6461db79c39a2843bcc0c7053288f6881ae7683597ac6c9ea5fa54"
+    },
+    {
+      "document_id": "specified-development/distribution",
+      "heading": "Success criteria",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#SC-001",
+        "specified-development/distribution#SC-002",
+        "specified-development/distribution#SC-003",
+        "specified-development/distribution#SC-004",
+        "specified-development/distribution#SC-005",
+        "specified-development/distribution#SC-006",
+        "specified-development/distribution#SC-007",
+        "specified-development/distribution#SC-008"
+      ],
+      "sha256": "294716a7c7ad594868715e174906ed2c86281c2fb463a6deab7b1162af3a3686"
+    },
+    {
+      "document_id": "specified-development/distribution",
+      "heading": "Boundaries and assumptions",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-002",
+        "specified-development/distribution#FR-010",
+        "specified-development/distribution#FR-016",
+        "specified-development/distribution#FR-020",
+        "specified-development/distribution#FR-021",
+        "specified-development/distribution#FR-022"
+      ],
+      "sha256": "c6de0f6490318160d48400a4abd4ad10175fac08b50a0e28eba552a074e1e222"
+    },
+    {
+      "document_id": "specified-development/directory-specs",
+      "heading": "Canonical specification directory",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-FR-001",
+        "specified-development/directory-specs#DS-FR-006",
+        "specified-development/directory-specs#DS-FR-007"
+      ],
+      "sha256": "91356103308bcac9e139a8611aa2ab504ac1f7974d5663ed80373eb37bb3924f"
+    },
+    {
+      "document_id": "specified-development/directory-specs",
+      "heading": "Actors and scenarios",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-US1-AS1",
+        "specified-development/directory-specs#DS-US1-AS2",
+        "specified-development/directory-specs#DS-US1-AS3",
+        "specified-development/directory-specs#DS-US2-AS1",
+        "specified-development/directory-specs#DS-US2-AS2",
+        "specified-development/directory-specs#DS-US2-AS3",
+        "specified-development/directory-specs#DS-US3-AS1",
+        "specified-development/directory-specs#DS-US3-AS2",
+        "specified-development/directory-specs#DS-US3-AS3",
+        "specified-development/directory-specs#DS-US4-AS1",
+        "specified-development/directory-specs#DS-US4-AS2",
+        "specified-development/directory-specs#DS-US4-AS3"
+      ],
+      "sha256": "cf3ff940391876d05207055e4ddc55a3c9d30846d3432bde424962b81362da84"
+    },
+    {
+      "document_id": "specified-development/directory-specs",
+      "heading": "Functional requirements",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-FR-001",
+        "specified-development/directory-specs#DS-FR-002",
+        "specified-development/directory-specs#DS-FR-003",
+        "specified-development/directory-specs#DS-FR-004",
+        "specified-development/directory-specs#DS-FR-005",
+        "specified-development/directory-specs#DS-FR-006",
+        "specified-development/directory-specs#DS-FR-007",
+        "specified-development/directory-specs#DS-FR-008",
+        "specified-development/directory-specs#DS-FR-009",
+        "specified-development/directory-specs#DS-FR-010",
+        "specified-development/directory-specs#DS-FR-011",
+        "specified-development/directory-specs#DS-FR-012",
+        "specified-development/directory-specs#DS-FR-013",
+        "specified-development/directory-specs#DS-FR-014",
+        "specified-development/directory-specs#DS-FR-015",
+        "specified-development/directory-specs#DS-FR-016"
+      ],
+      "sha256": "3e518d795954b6a82e029cda5680e6966911572d1b1ad9753d8124813e38ae3c"
+    },
+    {
+      "document_id": "specified-development/directory-specs",
+      "heading": "Success criteria",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-SC-001",
+        "specified-development/directory-specs#DS-SC-002",
+        "specified-development/directory-specs#DS-SC-003",
+        "specified-development/directory-specs#DS-SC-004",
+        "specified-development/directory-specs#DS-SC-005",
+        "specified-development/directory-specs#DS-SC-006"
+      ],
+      "sha256": "19b344a02c1c954c889a8cf5755a3ea4b8f83ec3d82deb5da7220561a83d8e4b"
+    },
+    {
+      "document_id": "specified-development/directory-specs",
+      "heading": "Boundaries",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-FR-002",
+        "specified-development/directory-specs#DS-FR-005",
+        "specified-development/directory-specs#DS-FR-013",
+        "specified-development/directory-specs#DS-FR-014",
+        "specified-development/directory-specs#DS-FR-016"
+      ],
+      "sha256": "677f7901408241851c3904e117524567e63b6109f4f2149e478790fe623b9b0b"
+    },
+    {
+      "document_id": "specified-development/authority",
+      "heading": "Authority and retention",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-003",
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-008",
+        "specified-development/distribution#FR-009",
+        "specified-development/distribution#FR-010",
+        "specified-development/distribution#FR-014",
+        "specified-development/distribution#FR-016",
+        "specified-development/directory-specs#DS-FR-010",
+        "specified-development/directory-specs#DS-FR-012"
+      ],
+      "sha256": "afa93e46b657a3a73fb8cb6997e5e3aa06f2349811b8eae8f292abbda9aa645e"
+    },
+    {
+      "document_id": "specified-development/authority",
+      "heading": "Foundation receipts and read authorization",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-009",
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-015",
+        "specified-development/distribution#FR-020",
+        "specified-development/directory-specs#DS-FR-012"
+      ],
+      "sha256": "3c737011412b736560e37929204c0171b17ef9a902880706f5ad55e63f00dd4c"
+    },
+    {
+      "document_id": "specified-development/documents",
+      "heading": "Document compilation contract",
+      "kind": "informative",
+      "requirements": [],
+      "sha256": "235813f229c95e832a5d51fe544ddec2227668d437b135bba6320158bff69f18"
+    },
+    {
+      "document_id": "specified-development/documents",
+      "heading": "Source inventory and identity",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-FR-001",
+        "specified-development/directory-specs#DS-FR-002",
+        "specified-development/directory-specs#DS-FR-003",
+        "specified-development/directory-specs#DS-FR-004",
+        "specified-development/directory-specs#DS-FR-005"
+      ],
+      "sha256": "51d7c54e68341b83c46ec11e8d18778d25ecb25c21325d059da3210fb04944e7"
+    },
+    {
+      "document_id": "specified-development/documents",
+      "heading": "Assembly and source map",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-FR-006",
+        "specified-development/directory-specs#DS-FR-009",
+        "specified-development/directory-specs#DS-FR-011"
+      ],
+      "sha256": "93a331862ad1d44546fc298e13de66c2fe2e347d4c1fdde4738b44a64cbb4b16"
+    },
+    {
+      "document_id": "specified-development/documents",
+      "heading": "Upstream integration and command surface",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-FR-007",
+        "specified-development/directory-specs#DS-FR-008",
+        "specified-development/directory-specs#DS-FR-015",
+        "specified-development/distribution#FR-013"
+      ],
+      "sha256": "f0c7bbc760eea14f7d8d2f6343eac6f735eb2f25cc75a66b3f1f324e11965c0d"
+    },
+    {
+      "document_id": "specified-development/documents",
+      "heading": "Documentation projection",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/directory-specs#DS-FR-013",
+        "specified-development/directory-specs#DS-FR-014",
+        "specified-development/directory-specs#DS-FR-016"
+      ],
+      "sha256": "9c120251ff1cd8e9518b969c17100d74d3beb24c015a9b627d351d7ce841a501"
+    },
+    {
+      "document_id": "specified-development/distribution-contract",
+      "heading": "Distribution data and interface contract",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-005",
+        "specified-development/distribution#FR-021"
+      ],
+      "sha256": "d6079245ce248fe470df8bbb8f11f14b41c4f46ebe92bc5b016f1c13e9f1f2cf"
+    },
+    {
+      "document_id": "specified-development/distribution-contract",
+      "heading": "Native manifests",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-005",
+        "specified-development/distribution#FR-006",
+        "specified-development/distribution#FR-021",
+        "specified-development/distribution#FR-022"
+      ],
+      "sha256": "7e88a22d041add9ba8b51bbfad73ae32fc93541e30430901c43a7637152fc40e"
+    },
+    {
+      "document_id": "specified-development/distribution-contract",
+      "heading": "CLI and failures",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-003",
+        "specified-development/distribution#FR-011",
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-014",
+        "specified-development/distribution#FR-015"
+      ],
+      "sha256": "5c5125a4cf0c613ddc5d8be47cccfaa42081c74e9c8c95d850b11739d7d68ac4"
+    },
+    {
+      "document_id": "specified-development/distribution-contract",
+      "heading": "Authoritative records",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-008",
+        "specified-development/distribution#FR-009",
+        "specified-development/distribution#FR-010",
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-015",
+        "specified-development/distribution#FR-017",
+        "specified-development/distribution#FR-019"
+      ],
+      "sha256": "2a6462a4daaab665cc82772ff85865440fa25768de30b8a2bd16c65f52ede397"
+    },
+    {
+      "document_id": "specified-development/distribution-contract",
+      "heading": "Native scheduling semantics",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-007",
+        "specified-development/distribution#FR-009",
+        "specified-development/distribution#FR-010",
+        "specified-development/distribution#FR-011",
+        "specified-development/distribution#FR-021"
+      ],
+      "sha256": "6a7cd9137ddfe3e291de3fb5e588584a21e469ad347c0ef3b11db49b3b00d61b"
+    },
+    {
+      "document_id": "specified-development/distribution-contract",
+      "heading": "Cost oracle",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-018",
+        "specified-development/distribution#FR-019",
+        "specified-development/distribution#FR-020"
+      ],
+      "sha256": "19aa435e01fb6a1d27f08f1225c49b9b2bb2eedb9da012c22dd65e9bc65483f4"
+    },
+    {
+      "document_id": "specified-development/upstream",
+      "heading": "Distribution rather than fork",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-005",
+        "specified-development/distribution#FR-006",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-021",
+        "specified-development/distribution#FR-022",
+        "specified-development/directory-specs#DS-FR-007",
+        "specified-development/directory-specs#DS-FR-015"
+      ],
+      "sha256": "9dd308b9bc0febe9d877de12c913f1c75dd5a6543e1caf9b4dd6b27c772461f7"
+    },
+    {
+      "document_id": "specified-development/rollout",
+      "heading": "Ownership, pilot, and rollout gates",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-005",
+        "specified-development/distribution#FR-006",
+        "specified-development/distribution#FR-017",
+        "specified-development/distribution#FR-020",
+        "specified-development/distribution#FR-021",
+        "specified-development/distribution#FR-022",
+        "specified-development/directory-specs#DS-FR-016"
+      ],
+      "sha256": "893b43c6834f8b683640c9cda352d029f72850575917887f3311b678fee41626"
+    },
+    {
+      "document_id": "specified-development/execution-capabilities",
+      "heading": "Execution capability profiles",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-015",
+        "specified-development/distribution#FR-020"
+      ],
+      "sha256": "2e7104579e9302c697a6c0f5a27b450e5dc02c14609f5425cea3d5a9f4338f70"
+    },
+    {
+      "document_id": "specified-development/execution-capabilities",
+      "heading": "Profiles and decision rules",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-017",
+        "specified-development/distribution#FR-019"
+      ],
+      "sha256": "5fafe17082a5e5e5a1b69c014b4a1a4663824e33b3418aa2c48375a695e4368e"
+    },
+    {
+      "document_id": "specified-development/execution-capabilities",
+      "heading": "Admission, observations and budgets",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-012",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-014",
+        "specified-development/distribution#FR-019",
+        "specified-development/distribution#FR-020"
+      ],
+      "sha256": "37c09a96a0dc41c6689b85059207c48350c10f79185b225999a6399650def158"
+    },
+    {
+      "document_id": "specified-development/execution-capabilities",
+      "heading": "Migration and compatibility",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-013",
+        "specified-development/distribution#FR-014",
+        "specified-development/distribution#FR-021"
+      ],
+      "sha256": "ad5f1aea7727cbeeb2afc090cf76b1521acf464b10910856635f0154f0d61445"
+    },
+    {
+      "document_id": "specified-development/execution-capabilities",
+      "heading": "Evidence reference",
+      "kind": "informative",
+      "requirements": [],
+      "sha256": "f0f9303ccf59118ea9997bab8d2920d46c6d96b6bcffb344d38122b9ebdb3526"
+    }
+  ]
+}

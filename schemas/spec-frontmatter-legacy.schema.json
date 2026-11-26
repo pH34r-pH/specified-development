@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "document_id",
+    "delivery_status"
+  ],
+  "properties": {
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "feature_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact": {
+      "const": "specification"
+    },
+    "approval_status": {
+      "enum": [
+        "architecture-approved",
+        "architecture-approved-directory-enhancement-specified",
+        "user-requested-enhancement-design-candidate",
+        "enhancement-design-candidate",
+        "distribution-choice-approved",
+        "proposed-contract-repair-parent-review-required"
+      ]
+    },
+    "architecture_approval": {
+      "const": "delegated-user-directive"
+    },
+    "artifact_acceptance": {
+      "enum": [
+        "candidate-review"
+      ]
+    },
+    "target_status": {
+      "const": "mature-complete-product"
+    },
+    "delivery_status": {
+      "enum": [
+        "designed-only",
+        "researched-only"
+      ]
+    },
+    "delivery_evidence": {
+      "type": "array",
+      "maxItems": 0
+    }
+  },
+  "not": {
+    "required": [
+      "approval_status",
+      "architecture_approval"
+    ]
+  }
+}

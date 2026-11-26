@@ -1,0 +1,13 @@
+# Maintained CI and authoring tools; no portable-validator runtime dependencies.
+build==1.6.1
+mypy==2.4.1
+pip-audit==2.10.1
+ruff==0.17.6
+setuptools==84.2.1
+types-PyYAML==6.0.12.20261122
+wheel==0.48.0
+zizmor==1.33.1
+PyYAML==6.0.4
+jsonschema==4.26.0
+markdown-it-py==4.3.0
+types-jsonschema==4.26.0.20261006

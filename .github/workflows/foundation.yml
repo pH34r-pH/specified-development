@@ -9,29 +9,82 @@ on:
       - design/canonical-spec-directory
 
 permissions:
+  # Validation reads repository contents and does not publish artifacts.
   contents: read
+
+concurrency:
+  group: foundation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   scaffold:
     name: Validate scaffold and independent fixtures
     runs-on: ubuntu-24.04
     env:
-      BUNDLE_AUTHORITY_SHA256: 5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec
+      BUNDLE_AUTHORITY_SHA256: 9713363e11ede97f43b5faee72ad86ae8692e3a14f7a7a8d90edf8eb58aaaf7a
+      LEGACY_AUTHORITY_SHA256: 5d10341e61568ce6795fe194ffc4d0188863b7e32f46864c00dfb118e8f034ec
     timeout-minutes: 10
     steps:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, verified official release commit
+        with:
+          persist-credentials: false
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0, verified official release commit
         with:
           python-version: "3.12.14"
+      - name: Install pinned validation and quality tools
+        run: python -m pip install --require-hashes -r requirements-dev.txt
       - name: Validate published scaffold
         run: python tools/validate_foundation.py
+      - name: Validate current specification metadata and independent coverage
+        run: python -m tools.spec_validation
+      - name: Verify the task review against structured authoring records
+        run: python -m tools.task_review --check
       - name: Run independent malformed-input tests
         run: python -m unittest discover -s tests -v
+      - name: Build and verify a clean installed wheel
+        shell: bash
+        run: |
+          package_source="$RUNNER_TEMP/specified-development-source"
+          package_dist="$RUNNER_TEMP/specified-development-dist"
+          mkdir -p "$package_source" "$package_dist"
+          git archive HEAD | tar -x -C "$package_source"
+          python -m build --wheel --no-isolation --outdir "$package_dist" "$package_source"
+          package_wheels=("$package_dist/"*.whl)
+          test "${#package_wheels[@]}" -eq 1
+          SPECIFIED_TEST_WHEEL="${package_wheels[0]}" python -m unittest discover -s tests -p test_packaging.py -v
       - name: Validate the portable complete bundle
-        run: python tools/bundle_validation.py bundle.json --root tests/fixtures/bundle --authority-sha256 "$BUNDLE_AUTHORITY_SHA256"
+        run: python tools/bundle_validation.py bundle.json --root tests/fixtures/bundle-v2 --authority-sha256 "$BUNDLE_AUTHORITY_SHA256"
       - name: Verify compact legacy review from exact frozen bytes
         run: python tools/bundle_review.py render build/execution-contract.yaml --legacy-review-only --output build/bundle-review --check
-      - name: Verify qualified example regeneration
-        run: python tools/bundle_review.py render bundle.json --root tests/fixtures/bundle --output build/bundle-example-review --authority-sha256 "$BUNDLE_AUTHORITY_SHA256" --check
+      - name: Verify the historical structural example
+        run: python tools/bundle_review.py render bundle.json --root tests/fixtures/bundle --output build/bundle-example-review --authority-sha256 "$LEGACY_AUTHORITY_SHA256" --check
+      - name: Verify the reviewed version 2 example
+        run: python tools/bundle_review.py render bundle.json --root tests/fixtures/bundle-v2 --output build/bundle-v2-review --authority-sha256 "$BUNDLE_AUTHORITY_SHA256" --check
+      - name: Lint maintained Python
+        run: ruff check --no-cache tools tests
+      - name: Type check maintained tools
+        run: mypy --cache-dir "$RUNNER_TEMP/mypy" tools
+      - name: Audit workflow definitions
+        run: zizmor --offline .github/workflows .github/dependabot.yml
+      - name: Audit locked authoring and development dependencies
+        run: pip-audit --requirement requirements-dev.txt --no-deps --disable-pip --strict
+
+  compatibility:
+    name: Supported CPython 3.12.12 validation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up another supported patch release
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12.12"
+      - name: Install the same locked validation tools
+        run: python -m pip install --require-hashes -r requirements-dev.txt
+      - name: Run validation and independent tests without rewriting fixtures
+        run: python -m unittest discover -s tests -v

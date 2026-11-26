@@ -1,10 +1,10 @@
 # Bundle review
 
-State: **structurally validated candidate; target acceptance not granted**.
+State: **legacy v1 structural validation; command review and target acceptance not granted**.
 
 Feature: hermetic-add-fixture.
 
-Native bytes: `29709893d79ea7c393d0bb909a49c1977181b30015860b064cd38131624b475c`. Machine detail: [lossless object](objects/7b3f62bbf8a7046e5f10e0b1acd675b7d550badaed9d3ddab5975047ca5efc80.json).
+Native bytes: `29709893d79ea7c393d0bb909a49c1977181b30015860b064cd38131624b475c`. Machine detail: [lossless object](objects/18ea9c527ba0cc4162a7fb57ed912c56d4eb14c38797e8009afab1a79ab10e98.json).
 
 The native task contract remains the sole dependency graph. This view executes no command, accepts no result, and grants no publication or deployment authority. Long descriptions are shortened here; the object retains every input byte.
 
