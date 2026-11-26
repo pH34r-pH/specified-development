@@ -19,4 +19,4 @@ jobs:
         with:
           persist-credentials: false
       - name: Validate the shared governance profile
-        uses: pH34r-pH/long-haul/.github/actions/repository-governance@28b9afbd17faa2baea9f2fb302abe7db71ee9882
+        uses: pH34r-pH/long-haul/.github/actions/repository-governance@660d0258da03950682a37a23d39a2a2b910372c1
