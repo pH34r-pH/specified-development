@@ -133,6 +133,46 @@ class NativeProjectionTests(unittest.TestCase):
                 with self.assertRaises(vf.ValidationError):
                     vf.validate_native_projection(metadata, records, bindings, contract)
 
+    def test_matching_authoring_and_projection_still_require_bounded_leaves(self):
+        for field, value, diagnostic in (
+            ("frozen_inputs", {}, "TASK_FROZEN_INPUTS"),
+            ("frozen_inputs", {"authoritative": []}, "TASK_FROZEN_INPUTS"),
+            ("fixed_model_policy", None, "TASK_MODEL_POLICY"),
+            ("fixed_model_policy", {"policy_id": "fixed-model-v3", "exact_model": None,
+                                    "role_default_model": None, "mid_attempt_switch": True}, "TASK_MODEL_SWITCH"),
+            ("output_scope", [], "TASK_LEAF_FIELDS"),
+            ("output_scope", ["**"], "TASK_OUTPUT_SCOPE"),
+            ("acceptance", None, "TASK_ACCEPTANCE"),
+            ("tests", [], "TASK_TESTS"),
+            ("state", "ready", "TASK_STAGE"),
+        ):
+            records = copy.deepcopy(self.records)
+            metadata = copy.deepcopy(self.metadata)
+            contract = copy.deepcopy(self.contract)
+            record = next(row for row in records if row["qualified_id"].endswith("/foundation/T002"))
+            record[field] = value
+            metadata["foundation"]["tasks"][1][field] = value
+            contract["x_distribution"]["task_metadata"]["T002"][field] = value
+            native_name = {"output_scope": "paths", "acceptance": "expected", "tests": "tests"}.get(field)
+            if native_name:
+                contract["tasks"]["T002"][native_name] = value
+            with self.subTest(field=field, value=value), self.assertRaisesRegex(vf.ValidationError, diagnostic):
+                vf.validate_native_projection(metadata, records, self.bindings, contract)
+
+    def test_consistent_projection_refuses_partial_or_duplicate_issue_bindings(self):
+        for identity, diagnostic in (({"issue_number": 42}, "TASK_ISSUE_BINDING"),
+                                     ({"issue_number": 42, "issue_id": 4242}, "TASK_ISSUE_DUPLICATE"),
+                                     ({"agent_ready": True}, "TASK_ISSUE_READY")):
+            records = copy.deepcopy(self.records)
+            metadata = copy.deepcopy(self.metadata)
+            contract = copy.deepcopy(self.contract)
+            for index, native_id in enumerate(("T001", "T002")):
+                records[index]["issue_identity"].update(identity)
+                metadata["foundation"]["tasks"][index]["issue_identity"].update(identity)
+                contract["x_distribution"]["task_metadata"][native_id]["issue_identity"].update(identity)
+            with self.subTest(identity=identity), self.assertRaisesRegex(vf.ValidationError, diagnostic):
+                vf.validate_native_projection(metadata, records, self.bindings, contract)
+
 
 class CapabilityProfileTests(unittest.TestCase):
     def setUp(self):
@@ -184,12 +224,22 @@ class CapabilityProfileTests(unittest.TestCase):
         receipt = load_fixture("receipt_evidence.json")["receipt"]
         self.assertEqual("ordinary-behavior-eligible", vf.validate_capability_record(receipt["capability_profile"]))
 
+    def test_model_selection_history_must_stay_fixed_for_an_attempt(self):
+        record = copy.deepcopy(self.fixtures["ordinary_unexposed"])
+        selected = record["selection"]
+        record["selection_history"] = [selected]
+        self.assertEqual("ordinary-behavior-eligible", vf.validate_capability_record(record))
+        record["selection_history"].append({**selected, "exact_model": "different-fixture-model"})
+        with self.assertRaisesRegex(vf.ValidationError, "CAPABILITY_MODEL_SWITCH"):
+            vf.validate_capability_record(record)
+
 
 class CompletionEvidenceTests(unittest.TestCase):
     def setUp(self):
         data = load_fixture("receipt_evidence.json")
         self.receipt = data["receipt"]
         self.expected = data["expected"]
+        self.observed_issues = data["observed_issues"]
         self.observed_ci = data["observed_ci"]
         self.observed_store = data["observed_store"]
         self.receipt_bytes = (json.dumps(self.receipt, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
@@ -202,9 +252,19 @@ class CompletionEvidenceTests(unittest.TestCase):
         self.assertEqual(expected, vf.git_blob_sha(data))
 
     def test_current_candidate_completion_evidence_passes_without_claiming_acceptance(self):
-        result = vf.validate_completion_evidence(self.receipt, self.expected, self.observed_ci, self.observed_store, self.receipt_bytes)
+        result = vf.validate_completion_evidence(self.receipt, self.expected, self.observed_ci, self.observed_store,
+                                                 self.receipt_bytes, observed_issues=self.observed_issues)
         self.assertEqual("candidate-evidence-current; owner-acceptance-pending", result)
         self.assertFalse(self.receipt["verdict"]["accepted"])
+
+    def test_completion_requires_one_independently_bound_issue(self):
+        issue = self.observed_issues[0]
+        for observations in (None, [], [issue, issue], [{**issue, "number": 4}], [{**issue, "database_id": None}],
+                             [{**issue, "database_id": 4243}],
+                             [{**issue, "repository": "other/project"}], [{**issue, "marker": "wrong"}]):
+            with self.subTest(observations=observations), self.assertRaisesRegex(vf.ValidationError, "RECEIPT_ISSUE_READBACK"):
+                vf.validate_completion_evidence(self.receipt, self.expected, self.observed_ci, self.observed_store,
+                                                self.receipt_bytes, observed_issues=observations)
 
     def test_fnd005_store_permission_reference_and_overwrite_gates_fail_closed(self):
         for case in (
@@ -237,7 +297,8 @@ class CompletionEvidenceTests(unittest.TestCase):
                 elif case == "missing-store-observation":
                     store = None
                 with self.assertRaises(vf.ValidationError):
-                    vf.validate_completion_evidence(receipt, expected, observed_ci, store, receipt_bytes)
+                    vf.validate_completion_evidence(receipt, expected, observed_ci, store, receipt_bytes,
+                                                    observed_issues=self.observed_issues)
 
     def test_fnd006_stale_missing_check_and_parent_gates_fail_closed(self):
         for case in (
@@ -276,7 +337,8 @@ class CompletionEvidenceTests(unittest.TestCase):
                 elif case == "missing-local-test":
                     receipt["validation"]["local_commands"] = receipt["validation"]["local_commands"][:1]
                 with self.assertRaises(vf.ValidationError):
-                    vf.validate_completion_evidence(receipt, expected, observed_ci, store, self.receipt_bytes)
+                    vf.validate_completion_evidence(receipt, expected, observed_ci, store, self.receipt_bytes,
+                                                    observed_issues=self.observed_issues)
 
 
 class InventoryPrivacyAndRetentionTests(unittest.TestCase):

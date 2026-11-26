@@ -4,6 +4,7 @@
     "qualified_task_id": "pH34r-pH/specified-development/foundation/T002",
     "native_id": "T002",
     "task_issue_number": 3,
+    "task_issue_id": 4242,
     "issue_marker": "<!-- spec-task:pH34r-pH/specified-development/foundation/T002 -->",
     "accepted_design_commit": "1111111111111111111111111111111111111111",
     "accepted_design_tree": "2222222222222222222222222222222222222222",
@@ -22,6 +23,16 @@
     "evidence_ref": "evidence/foundation-receipts",
     "receipt_path": "build/foundation/accepted/receipts/T002/attempt-1/completion-revision1.json"
   },
+  "observed_issues": [
+    {
+      "repository": "pH34r-pH/specified-development",
+      "number": 3,
+      "database_id": 4242,
+      "state": "open",
+      "creator": "pH34r-pH",
+      "marker": "<!-- spec-task:pH34r-pH/specified-development/foundation/T002 -->"
+    }
+  ],
   "observed_ci": {
     "repository": "pH34r-pH/specified-development",
     "queried_commit_sha": "3333333333333333333333333333333333333333",

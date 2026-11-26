@@ -49,21 +49,27 @@ HTML_ID_RE = re.compile(r"\b(?:id|name)=[\"']([^\"']+)[\"']")
 try:
     from .bundle_common import (
         ValidationError,
+        _invalid_constant,
+        _unique_object,
         confined_file,
         read_json,
         require,
         safe_relative_path,
         sha256_file,
     )
+    from .bundle_validation import path_pattern
 except ImportError:  # Direct stdlib CLI invocation.
     from bundle_common import (
         ValidationError,
+        _invalid_constant,
+        _unique_object,
         confined_file,
         read_json,
         require,
         safe_relative_path,
         sha256_file,
     )
+    from bundle_validation import path_pattern
 
 
 BUNDLE_PUBLIC_FILES = {
@@ -383,15 +389,95 @@ def _task_metadata(markdown: str, source: str) -> dict[str, Any]:
     matches = TASK_BLOCK_RE.findall(markdown)
     require(len(matches) == 1, "TASK_METADATA_BLOCK", f"expected one task-metadata block in {source}")
     try:
-        metadata = json.loads(matches[0])
+        metadata = json.loads(matches[0], object_pairs_hook=_unique_object, parse_constant=_invalid_constant)
     except json.JSONDecodeError as exc:
         raise ValidationError(f"TASK_METADATA_JSON: {source}: {exc}") from exc
-    require(metadata.get("metadata_schema") == "ph34r-task-authoring-v1", "TASK_METADATA_SCHEMA", f"unexpected metadata schema in {source}")
+    require(isinstance(metadata, dict) and metadata.get("metadata_schema") == "ph34r-task-authoring-v1",
+            "TASK_METADATA_SCHEMA", f"unexpected metadata schema in {source}")
     return metadata
 
 
 def _case_ids(markdown: str) -> set[str]:
     return set(re.findall(r"^\|\s*((?:FND|TST|DIR)-\d{3})\s*\|", markdown, re.MULTILINE))
+
+
+def _nonempty_text(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _frozen_authority(task: dict[str, Any]) -> list[dict[str, Any]]:
+    frozen = task.get("frozen_inputs")
+    entries = frozen.get("authoritative") if isinstance(frozen, dict) else None
+    require(isinstance(entries, list) and entries, "TASK_FROZEN_INPUTS",
+            f"nonempty frozen authoritative inputs required: {task['qualified_id']}")
+    return entries
+
+
+def _validate_candidate_model(task: dict[str, Any]) -> bool:
+    qid = task["qualified_id"]
+    policy = task.get("fixed_model_policy")
+    require(isinstance(policy, dict) and policy.get("policy_id") == "fixed-model-v3", "TASK_MODEL_POLICY", qid)
+    require({"exact_model", "role_default_model"} <= policy.keys(), "TASK_MODEL_SELECTION",
+            f"model binding fields must be explicit: {qid}")
+    require(policy.get("mid_attempt_switch") is False and policy.get("silent_alias_resolution") is False,
+            "TASK_MODEL_SWITCH", f"model switches and automatic alias resolution must be disabled: {qid}")
+    mode = policy.get("mode")
+    state = policy.get("binding_state")
+    if mode == "deterministic-no-model":
+        require(state == "not-applicable" and policy.get("exact_model") is None
+                and policy.get("role_default_model") is None, "TASK_MODEL_DETERMINISTIC", qid)
+        return True
+    require(mode in ("fixed-once-per-attempt", "one-selected-model-per-attempt")
+            and policy.get("selection_evidence_required") is True, "TASK_MODEL_SELECTION", qid)
+    exact_model = policy.get("exact_model")
+    if state == "approved-default-awaiting-parent-service-admission":
+        require(isinstance(exact_model, str) and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}", exact_model)
+                and exact_model.casefold() not in {"auto", "default", "latest"}
+                and exact_model == policy.get("role_default_model"),
+                "TASK_MODEL_SELECTION", f"planned model default must identify one exact model: {qid}")
+    else:
+        require(state in ("required-before-claim", "requires-existing-approved-capability-binding")
+                and exact_model is None, "TASK_MODEL_SELECTION", f"unsupported selection or admission state: {qid}")
+    return False
+
+
+def _candidate_issue_key(task: dict[str, Any]) -> tuple[str, int, int] | None:
+    qid = task["qualified_id"]
+    issue = task.get("issue_identity")
+    require(isinstance(issue, dict) and issue.get("marker") == f"<!-- spec-task:{qid} -->",
+            "TASK_ISSUE_IDENTITY", f"expected one task marker binding: {qid}")
+    targets = [issue[key] for key in ("repository", "candidate_repository") if key in issue]
+    require(len(targets) == 1 and isinstance(targets[0], str)
+            and re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", targets[0]), "TASK_ISSUE_TARGET", qid)
+    require(issue.get("agent_ready") is False, "TASK_ISSUE_READY", f"candidate cannot claim readiness: {qid}")
+    require({"issue_number", "issue_id"} <= issue.keys(), "TASK_ISSUE_BINDING", f"issue binding must be explicit: {qid}")
+    number, database_id = issue.get("issue_number"), issue.get("issue_id")
+    if number is None and database_id is None:
+        return None
+    require(type(number) is int and type(database_id) is int and number > 0 and database_id > 0,
+            "TASK_ISSUE_BINDING", f"issue number and immutable database ID must be bound together: {qid}")
+    return targets[0].casefold(), number, database_id
+
+
+def _validate_candidate_leaf(task: dict[str, Any]) -> None:
+    qid = task["qualified_id"]
+    require(task.get("state") == "planned-not-dispatched", "TASK_STAGE", f"candidate task is not planned: {qid}")
+    _frozen_authority(task)
+    deterministic = _validate_candidate_model(task)
+    for key in ("output_scope", "commands", "evidence_predicates"):
+        value = task.get(key)
+        require(isinstance(value, list) and value and all(_nonempty_text(item) for item in value),
+                "TASK_LEAF_FIELDS", f"nonempty {key} required: {qid}")
+    for value in task["output_scope"]:
+        parts = path_pattern(value)
+        require(parts[0].casefold() not in (".git", "*", "**"),
+                "TASK_OUTPUT_SCOPE", f"output must have a literal repository-relative root: {qid}")
+    tests = task.get("tests")
+    require(isinstance(tests, list) and all(_nonempty_text(item) for item in tests), "TASK_TESTS", qid)
+    require(bool(tests) or (deterministic and task.get("kind") in ("setup", "qualification")),
+            "TASK_TESTS", f"observable test references required: {qid}")
+    require(_nonempty_text(task.get("acceptance")) and _nonempty_text(task.get("expected_outcome")),
+            "TASK_ACCEPTANCE", f"acceptance and an expected outcome are required: {qid}")
 
 
 def load_authoring_tasks(root: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
@@ -403,8 +489,11 @@ def load_authoring_tasks(root: Path) -> tuple[dict[str, Any], list[dict[str, Any
         content = path.read_text(encoding="utf-8")
         metadata = _task_metadata(content, relative)
         require(metadata.get("namespace") == NAMESPACES[feature], "TASK_NAMESPACE", f"namespace mismatch in {relative}")
+        require(metadata.get("artifact_acceptance") == "candidate-review" and metadata.get("dispatchable") is False,
+                "TASK_STAGE", f"authoring metadata must remain in candidate review: {relative}")
         authored = metadata.get("tasks")
-        require(isinstance(authored, list) and authored, "TASK_LIST", f"task list missing in {relative}")
+        require(isinstance(authored, list) and authored and all(isinstance(task, dict) for task in authored),
+                "TASK_LIST", f"task list missing or malformed in {relative}")
         markers = TASK_MARKER_RE.findall(content)
         ids = [task.get("local_id") for task in authored if isinstance(task, dict)]
         require(len(ids) == len(set(ids)) == len(markers), "TASK_MARKERS", f"task markers/metadata differ in {relative}")
@@ -418,15 +507,14 @@ def load_authoring_tasks(root: Path) -> tuple[dict[str, Any], list[dict[str, Any
             require(qualified_id == expected_qid, "TASK_QUALIFIED_ID", f"{local_id} has unexpected qualified id")
             require(qualified_id not in all_qids, "TASK_DUPLICATE_IDENTITY", f"duplicate qualified id: {qualified_id}")
             all_qids.add(qualified_id)
-            require(isinstance(task.get("tests"), list), "TASK_TESTS", f"tests must be a list: {qualified_id}")
+            _validate_candidate_leaf(task)
             unknown_cases = set(task["tests"]) - cases
             require(not unknown_cases, "TASK_TEST_UNKNOWN", f"unknown tests for {qualified_id}: {sorted(unknown_cases)}")
             marker = f"<!-- spec-task:{qualified_id} -->"
             require(content.count(marker) == 1, "TASK_ISSUE_MARKER", f"expected one stable task marker for {qualified_id}")
             issue_identity = task.get("issue_identity")
             require(isinstance(issue_identity, dict) and issue_identity.get("marker") == marker, "TASK_ISSUE_IDENTITY", f"structured issue marker differs for {qualified_id}")
-            frozen = task.get("frozen_inputs", {}).get("authoritative", [])
-            require(isinstance(frozen, list), "TASK_FROZEN_INPUTS", f"frozen authoritative inputs must be a list: {qualified_id}")
+            frozen = _frozen_authority(task)
             frozen_paths: set[str] = set()
             for input_record in frozen:
                 require(isinstance(input_record, dict) and set(input_record) == {"path", "sha256"}, "TASK_FROZEN_INPUT", f"invalid frozen input record: {qualified_id}")
@@ -482,8 +570,19 @@ def validate_native_projection(
 
     graph_tasks = contract.get("tasks")
     require(isinstance(graph_tasks, dict), "NATIVE_TASKS", "native tasks must be an object")
+    require(contract.get("status") == "candidate-not-dispatched", "TASK_STAGE", "native scaffold remains a candidate")
+    bound_issues: set[tuple[str, int]] = set()
+    bound_ids: set[int] = set()
     feature_by_qid = {record["qualified_id"]: record["source_feature"] for record in authored_records}
     for qid, record in qid_records.items():
+        _validate_candidate_leaf(record)
+        issue_key = _candidate_issue_key(record)
+        if issue_key is not None:
+            repository, number, database_id = issue_key
+            require((repository, number) not in bound_issues and database_id not in bound_ids,
+                    "TASK_ISSUE_DUPLICATE", f"issue already bound to a different candidate: {qid}")
+            bound_issues.add((repository, number))
+            bound_ids.add(database_id)
         native_id = qualified_to_native[qid]
         feature = feature_by_qid[qid]
         metadata = metadata_by_feature[feature]
@@ -543,6 +642,9 @@ def validate_capability_record(record: Any) -> str:
     require(isinstance(record, dict), "CAPABILITY_RECORD", "capability record must be an object")
     selection = record.get("selection")
     require(isinstance(selection, dict), "CAPABILITY_SELECTION", "selection evidence is required")
+    if "selection_history" in record:
+        require(record["selection_history"] == [selection], "CAPABILITY_MODEL_SWITCH",
+                "an attempt must have one immutable admitted selection")
     require(selection.get("exact_model") == "gpt-6-luna", "CAPABILITY_MODEL", "selected model must be the admitted exact model")
     require(selection.get("admission_status") == "accepted", "CAPABILITY_ADMISSION", "selection was not admitted")
     require(selection.get("requested_reasoning_effort") == "xhigh", "CAPABILITY_REASONING", "requested reasoning setting changed")
@@ -656,25 +758,46 @@ def git_blob_sha(data: bytes) -> str:
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
 
+def validate_observed_issue_binding(observed: Any, expected: dict[str, Any]) -> dict[str, Any]:
+    """Require one issue independently read by the existing task owner."""
+    require(isinstance(observed, list) and len(observed) == 1 and isinstance(observed[0], dict),
+            "RECEIPT_ISSUE_READBACK", "exactly one observed issue is required for the assigned leaf")
+    issue = observed[0]
+    number = expected["task_issue_number"]
+    issue_id = expected["task_issue_id"]
+    repository = expected["repository"]
+    require(type(number) is int and number > 0 and type(issue.get("number")) is int
+            and issue["number"] == number and issue.get("repository") == repository,
+            "RECEIPT_ISSUE_READBACK", "observed issue repository or number differs from the assigned leaf")
+    require(type(issue_id) is int and issue_id > 0 and type(issue.get("database_id")) is int
+            and issue["database_id"] == issue_id
+            and issue.get("state") == "open" and _nonempty_text(issue.get("creator"))
+            and issue.get("marker") == expected["issue_marker"], "RECEIPT_ISSUE_READBACK",
+            "observed immutable issue identity, state, creator, or marker is missing or mismatched")
+    return issue
+
+
 def validate_completion_evidence(
     receipt: Any,
     expected: dict[str, Any],
     observed_ci: Any = None,
     observed_store: Any = None,
     receipt_bytes: bytes | None = None,
+    *,
+    observed_issues: Any = None,
 ) -> str:
     """Bind a T002 receipt to separately observed GitHub CI and immutable store bytes.
 
-    The caller must collect `observed_ci` and `observed_store` through read-only
-    GitHub/Git observations. Receipt claims alone never establish check status,
-    repository identity, commit/blob identity, or content digests.
+    The caller must collect `observed_issues`, `observed_ci` and `observed_store`
+    through read-only GitHub/Git observations. Receipt claims alone never establish
+    issue identity, check status, repository identity, or immutable store evidence.
     """
     require(isinstance(receipt, dict) and receipt.get("schema_version") == 1, "RECEIPT_SCHEMA", "completion receipt schema_version 1 is required")
     require(isinstance(expected, dict), "RECEIPT_CONTEXT", "independent expected values are required")
     require(isinstance(observed_ci, dict), "RECEIPT_CI_UNVERIFIED", "independent GitHub workflow and job observations are required")
     require(isinstance(observed_store, dict) and isinstance(receipt_bytes, bytes), "RECEIPT_STORE_UNVERIFIED", "independent store readback and receipt bytes are required")
     required_context = (
-        "repository", "qualified_task_id", "native_id", "task_issue_number", "issue_marker",
+        "repository", "qualified_task_id", "native_id", "task_issue_number", "task_issue_id", "issue_marker",
         "accepted_design_commit", "accepted_design_tree", "head_sha", "head_tree",
         "parent_issue_number", "parent_qualified_id", "parent_receipt_commit", "parent_receipt_path",
         "parent_receipt_sha256", "issue_dependency_readback", "pr_number", "base_branch",
@@ -693,7 +816,10 @@ def validate_completion_evidence(
     require(isinstance(task, dict), "RECEIPT_TASK", "task identity is missing")
     require(task.get("qualified_id") == expected.get("qualified_task_id") and task.get("native_id") == expected.get("native_id"), "RECEIPT_TASK_IDENTITY", "task identity differs from the assigned leaf")
     issue = task.get("issue")
-    require(isinstance(issue, dict) and issue.get("number") == expected.get("task_issue_number") and issue.get("state") == "open" and issue.get("marker") == expected.get("issue_marker"), "RECEIPT_ISSUE", "assigned task issue identity/state/marker mismatch")
+    observed_issue = validate_observed_issue_binding(observed_issues, expected)
+    require(isinstance(issue, dict) and type(issue.get("number")) is int
+            and all(issue.get(key) == observed_issue[key] for key in ("number", "state", "marker", "creator")),
+            "RECEIPT_ISSUE", "assigned task issue identity/state/marker/creator mismatch")
     native_parent = task.get("native_parent")
     require(isinstance(native_parent, dict) and native_parent.get("qualified_id") == expected.get("parent_qualified_id") and native_parent.get("issue_number") == expected.get("parent_issue_number") and native_parent.get("dependency") == "blocked-by" and native_parent.get("receipt_status") == "accepted", "RECEIPT_PARENT_ISSUE", "native parent identity/dependency is missing or unaccepted")
 

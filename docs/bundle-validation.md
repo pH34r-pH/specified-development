@@ -45,6 +45,23 @@ The example oracle independently demonstrates missing/wrong code failing and cor
 
 ## Legacy compatibility and migration
 
+The scaffold validator checks the legacy authoring records at their current
+candidate stage. The native bundle validator continues to check the structural
+version 1 contract above. The existing executor and target owner supply the
+evidence required for later stages.
+
+| Requirement | Candidate and frozen contract | Existing owner at admission or completion |
+| --- | --- | --- |
+| Frozen inputs | Require a nonempty exact-byte input list and verify each declared hash. | Recheck approved source and accepted parent receipts for the assigned attempt. |
+| Fixed model | Require a fixed policy with switching and implicit resolution disabled. A pending binding remains reviewable. Deterministic leaves declare no model. | Bind one admitted selection to the attempt. Validate a supplied selection history against that selection. Keep optional effective observations separate. |
+| Issue identity | Require one stable marker, a single target repository, and either a complete issue binding or an explicit pending binding. Reject cross-task duplicates. | Require exactly one independently observed issue matching the assigned repository, number, immutable ID, state, and marker at the foundation evidence check. |
+| Output and acceptance | Require a bounded relative output scope, observable acceptance and declared commands. Executable model leaves reference their test cases. | Verify actual scope, command and independent target evidence before accepting the result. |
+
+The checked-in authoring records and native graph remain candidates. Pending
+model and issue bindings grant no readiness or acceptance. The read-only
+validator consumes observations supplied by the existing owner and never
+dispatches a task.
+
 The existing 60-task execution contract and its accepted historical receipts remain byte-identical. [Its compact review](../build/bundle-review/README.md) is the human entry point; the lossless object retains its machine detail and frozen source closure. Rendering it requires `--legacy-review-only`. Its unresolved symbolic read scopes and old candidate semantics are explicitly unqualified for the new generic profile.
 
 ```sh

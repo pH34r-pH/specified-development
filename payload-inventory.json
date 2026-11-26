@@ -110,7 +110,7 @@
     },
     {
       "path": "docs/bundle-validation.md",
-      "sha256": "2c8576385d76ecb646c596bac60709893b4547df98bf33fd011be16dde1cee5f"
+      "sha256": "5998008f0c4471b748cf41386f6dc94d172e3d96a1c68270512053766dc88879"
     },
     {
       "path": "governance/repository-profile.json",
@@ -230,7 +230,7 @@
     },
     {
       "path": "tests/fixtures/foundation/receipt_evidence.json",
-      "sha256": "c6e94c729923d926494dc2e6cffe6cdd25e72e73f40bc6f06c4d51565c94c211"
+      "sha256": "4180a2618accd5b624c66c76efc6a174a7b478e9c2251300d7764c67ecfabbdb"
     },
     {
       "path": "tests/fixtures/foundation/spec_source_closure_cases.json",
@@ -242,7 +242,7 @@
     },
     {
       "path": "tests/test_foundation.py",
-      "sha256": "7e85d109770fb067755923f8241ca69e4a70dc810e36afb23303bc7c7e8313b7"
+      "sha256": "bf73b9cc3a68338b1f22400874c296681cdcbdbedeafa2d0c45ed9af276f8a74"
     },
     {
       "path": "tools/bundle_common.py",
@@ -258,7 +258,7 @@
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "a74b730e0b256a3be1e4645f2da832602138707bfaed633d14d4ffc5adf75d34"
+      "sha256": "62abeb2cfc297f8f084131d19d0ac954c9fd00cb4e7a997c24f03b1f631c4d91"
     }
   ],
   "private_inputs_included": false,
