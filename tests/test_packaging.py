@@ -9,6 +9,7 @@ import subprocess
 import tempfile
 import unittest
 import venv
+import zipfile
 from pathlib import Path
 
 from tools import bundle_validation as validator
@@ -18,6 +19,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @unittest.skipUnless(os.environ.get("SPECIFIED_TEST_WHEEL"), "set SPECIFIED_TEST_WHEEL for the clean installed-package gate")
 class InstalledPackageTests(unittest.TestCase):
+    def test_wheel_carries_exact_project_license(self):
+        wheel = Path(os.environ["SPECIFIED_TEST_WHEEL"]).resolve(strict=True)
+        with zipfile.ZipFile(wheel) as archive:
+            license_paths = [
+                name for name in archive.namelist() if name.endswith(".dist-info/licenses/LICENSE")
+            ]
+            self.assertEqual(len(license_paths), 1)
+            self.assertEqual(archive.read(license_paths[0]), (ROOT / "LICENSE").read_bytes())
+
     def test_wheel_module_and_portable_copy_have_same_round_trip(self):
         wheel = Path(os.environ["SPECIFIED_TEST_WHEEL"]).resolve(strict=True)
         with tempfile.TemporaryDirectory() as temporary:
@@ -79,6 +89,7 @@ class InstalledPackageTests(unittest.TestCase):
             self.assertEqual(outputs[0], outputs[2])
             run([str(binary / ("specified-validate-foundation" + extension)), "--help"])
             run([str(binary / ("specified-task-review" + extension)), "--help"])
+            run([str(python), "-m", "tools.release_attribution", "--help"])
 
 
 if __name__ == "__main__":

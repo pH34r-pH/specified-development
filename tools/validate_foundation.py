@@ -127,6 +127,7 @@ BUNDLE_PUBLIC_FILES = {
     "tests/fixtures/tooling/authority-serialization-v1.json",
     "tests/test_bundle.py",
     "tests/test_packaging.py",
+    "tests/test_release_attribution.py",
     "tests/test_safety_conformance.py",
     "tests/test_spec_validation.py",
     "tests/test_task_review.py",
@@ -135,6 +136,7 @@ BUNDLE_PUBLIC_FILES = {
     "tools/bundle_common.py",
     "tools/bundle_review.py",
     "tools/bundle_validation.py",
+    "tools/release_attribution.py",
     "tools/spec_validation.py",
     "tools/task_review.py",
 }

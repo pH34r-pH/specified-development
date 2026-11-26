@@ -30,7 +30,7 @@
     },
     {
       "path": "LICENSING.md",
-      "sha256": "c1ead03bcc369b6b6eb19436629a90532e9d210ca2ce7f1df11fab34e338327a"
+      "sha256": "a43035e6ef9462b7062ed12ad41072ffbc3163c0df89dad075edc68c9ea86edd"
     },
     {
       "path": "README.md",
@@ -378,7 +378,11 @@
     },
     {
       "path": "tests/test_packaging.py",
-      "sha256": "8be05809a7eba09a00e39c712201364bc1d5a0e7b56b05531602d577b79a1635"
+      "sha256": "c98c92567a5a62786ca8714416b065c86d83fd2b61ff5e67567f28eb2cb17caf"
+    },
+    {
+      "path": "tests/test_release_attribution.py",
+      "sha256": "0e6fe71814aca55d7a9089c14adf0ab7b144f7f5ed56c673eb87a208f6b1c3a4"
     },
     {
       "path": "tests/test_safety_conformance.py",
@@ -413,6 +417,10 @@
       "sha256": "22902e564948d935b42e22bb240ec95a2d25b43479ac68648f0c0be370d588fd"
     },
     {
+      "path": "tools/release_attribution.py",
+      "sha256": "05ace95a28a4f50b3bdec631fe6ad55c30f44c725154cf64aa22a0f3146d0d8a"
+    },
+    {
       "path": "tools/spec_validation.py",
       "sha256": "5e2344a382d486fca7931ddf60cf6ca9b5f9c5fb596cd442a214e3717f17e8ca"
     },
@@ -422,7 +430,7 @@
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "486da16bbc5f20601cfe43a5b29b96e6b0350315eba557aaa42cbd5d011c28a4"
+      "sha256": "4d0ab1306852219240f181c4cfeafa41175f7b660ca37441f81b104141ad340c"
     }
   ],
   "private_inputs_included": false,
