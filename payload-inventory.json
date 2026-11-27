@@ -14,11 +14,11 @@
     },
     {
       "path": ".github/workflows/foundation.yml",
-      "sha256": "7d2289967361aa9aab595cca687ead067b149f5a6d93b458a0344636b2d69a26"
+      "sha256": "2a26d51502bdcbdea7e9d01566de0482ab2667143ce209bd9c1a37ea54bda5e7"
     },
     {
       "path": ".github/workflows/repository-governance.yml",
-      "sha256": "e7f7e344e68b0461a2b0d215af69bc4442e38ff8f5a196c3fab73ecdffc9822b"
+      "sha256": "b39296ad5d7ab0f9f435bacd48884a6410149c09ac607acf90d0c300931ecf52"
     },
     {
       "path": ".gitignore",
