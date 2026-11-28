@@ -410,7 +410,7 @@
     },
     {
       "path": "tests/test_packaging.py",
-      "sha256": "ae6b6f348ca80bfd058c05855305ae3060a46741f915661aa81016580bb63d6f"
+      "sha256": "c98c92567a5a62786ca8714416b065c86d83fd2b61ff5e67567f28eb2cb17caf"
     },
     {
       "path": "tests/test_release_attribution.py",

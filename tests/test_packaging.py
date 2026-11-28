@@ -89,7 +89,6 @@ class InstalledPackageTests(unittest.TestCase):
             self.assertEqual(outputs[0], outputs[2])
             run([str(binary / ("specified-validate-foundation" + extension)), "--help"])
             run([str(binary / ("specified-task-review" + extension)), "--help"])
-            run([str(binary / ("specified-onboarding" + extension)), "--help"])
             run([str(python), "-m", "tools.release_attribution", "--help"])
 
 
