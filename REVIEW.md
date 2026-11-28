@@ -18,7 +18,7 @@ The living product specification describes the complete distribution in present 
 | Complete distribution and source-directory compiler | Implementation pending for the Spec Kit preset, extension, and bundle, and for the source-directory compiler. | [Distribution feature](spec/features/distribution/index.md) and [directory feature](spec/features/directory-specs/index.md). |
 | Upstream compatibility and component release | Compatibility qualification and component releases pending. | [Pinned upstream decision](spec/operations/upstream.md), [rollout gates G1 and G4](spec/operations/rollout.md), and [release attribution](LICENSING.md). |
 | Behavioral regeneration | Independent regeneration of a declared product module is pending. | [Rollout gate G4](spec/operations/rollout.md). |
-| Deployment | Consumer adoption, activation, and publication require their own evidence and approval. Deployment remains pending. | [Rollout gates G5–G7](spec/operations/rollout.md). |
+| Deployment | Core adoption (G5a) needs the brownfield pilot (GB); packaged distribution adoption (G5b), activation and publication need G1–G4 and their own approval. No repository has adopted yet and deployment remains pending. | [Rollout gates GB and G5–G7](spec/operations/rollout.md). |
 
 ## Review current bundles
 
