@@ -31,6 +31,7 @@ the package's supported dependency ranges.
 | `specified-validate-foundation` | `python -m tools.validate_foundation` |
 | `specified-validate-spec` | `python -m tools.spec_validation` |
 | `specified-task-review` | `python -m tools.task_review` |
+| `specified-onboarding` | `python -m tools.onboarding` |
 
 The existing `python tools/bundle_validation.py ...` and
 `python tools/bundle_review.py ...` commands continue to work, including in the
@@ -42,6 +43,26 @@ into site-packages.
 Import selection depends on the invocation's `__package__` value. An import
 failure inside a module propagates normally; it is never retried as an import
 of an unrelated top-level module.
+
+## Brownfield onboarding records
+
+`specified-onboarding` validates one [onboarding record](../spec/usage/onboarding.md)
+against the onboarded repository's accepted specification. It needs the
+`authoring` extra. Run it from the onboarded repository root, or pass `--root`:
+
+```sh
+specified-onboarding onboarding.json --root /path/to/project
+specified-onboarding onboarding.json --root /path/to/project --results results.json
+```
+
+The record names the onboarded areas, characterization sources for every
+accepted requirement, a decision for each known defect, the independent oracle
+and the initial gaps. With `--results` (independent case outcomes at the exact
+baseline revision), the declared gaps must equal the requirements without
+passing evidence. The validator never runs project code and never derives
+expected values from implementation output. A worked example lives in
+[tests/fixtures/onboarding/tally](../tests/fixtures/onboarding/tally/onboarding.json).
+The command exits 0 when the record is valid and 2 for an invalid record or I/O failure.
 
 ## Diagnostics
 

@@ -10,6 +10,10 @@
       "document": "specified-development/lifecycle"
     },
     {
+      "label": "Brownfield onboarding",
+      "document": "specified-development/onboarding"
+    },
+    {
       "label": "Distribution",
       "document": "specified-development/distribution"
     },
