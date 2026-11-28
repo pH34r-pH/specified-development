@@ -134,6 +134,7 @@ BUNDLE_PUBLIC_FILES = {
     "tests/fixtures/safety/conformance.json",
     "tests/fixtures/tooling/authority-serialization-v1.json",
     "tests/test_bundle.py",
+    "tests/test_composition_oracle.py",
     "tests/test_gaps.py",
     "tests/test_kit.py",
     "tests/test_onboarding.py",

@@ -90,7 +90,7 @@
     },
     {
       "path": "build/directory-specs/plan.md",
-      "sha256": "db11bf595e154e8aec7a284700b793e6ca5dbc22189fd672b314de862aa13642"
+      "sha256": "59e4aa33109d10647d0a8b8b8814d83734696bd0a6f477c1c2367aa5554b4970"
     },
     {
       "path": "build/directory-specs/tasks.md",
@@ -98,7 +98,7 @@
     },
     {
       "path": "build/directory-specs/tests.md",
-      "sha256": "a59d8ede07e405a930df9c63e195def7e0e17d18db104d1930da94386f5e3bfa"
+      "sha256": "58f63b61f5629bce532510aab6cfa4acc550e22757239486e4503268ded63a18"
     },
     {
       "path": "build/distribution/plan.md",
@@ -461,6 +461,10 @@
       "sha256": "73a63bb93c015e294e8c2aec4e97a08e1796f47dc228afeeffca9a13ea848d12"
     },
     {
+      "path": "tests/test_composition_oracle.py",
+      "sha256": "e1b260a5bf6745920a70ca5861d9d15e1125c91b722f54377036e83a1e010caa"
+    },
+    {
       "path": "tests/test_foundation.py",
       "sha256": "95f10d8a0280a224770c5679f1d2f78bf2a55a3830a2cd5bcad2e9a546e7b2a2"
     },
@@ -542,7 +546,7 @@
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "98da993afcf4e2ce17017262a734925d7386fb3152983a300d37fca802526e2e"
+      "sha256": "e2dfa2bf1638a16986023d7570b048623a4516fccad073e0fc1f8c5b82ed6362"
     }
   ],
   "private_inputs_included": false,
