@@ -57,6 +57,20 @@
     },
     {
       "document_id": "specified-development/lifecycle",
+      "heading": "Specification and plan authority",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-002",
+        "specified-development/distribution#FR-003",
+        "specified-development/distribution#FR-007",
+        "specified-development/distribution#FR-014",
+        "specified-development/distribution#FR-016",
+        "specified-development/distribution#FR-017"
+      ],
+      "sha256": "805dd6bf78531b17984329b68e164486df7fd9bc004abe4bc048f512463aca89"
+    },
+    {
+      "document_id": "specified-development/lifecycle",
       "heading": "Prior-art review before plan authoring",
       "kind": "normative",
       "requirements": [
