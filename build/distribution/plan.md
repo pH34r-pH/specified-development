@@ -90,10 +90,12 @@ Regeneration qualification targets only `extensions/ph34r-contracts/scripts/ph34
 | G2 Compatibility | Claude/Codex active-asset tests; local override/constitution/history preservation; both existing contract profiles | Disposable copies/fixtures |
 | G3 Recovery | Wrong-version/tamper/interrupted stage/promotion/rollback tests | Disposable installations |
 | G4 Pilot | Complete lifecycle, projection, receipt, cache/cost, two scoped regeneration trials | Synthetic feature + isolated first legacy installation copy |
-| G5 Repository adoption | Repo owner reconciles local scope, model binding, CI, permissions and current feature history | Separate explicitly scoped per-repo change |
+| GB Brownfield pilot | Accepted onboarding record, independent tests, initial gaps, one propagated spec-first change and one scoped regeneration trial on one real codebase | Isolated copy; original repository unchanged |
+| G5a Core adoption | Pinned adoption kit, onboarding procedure, gap report and GB evidence; no release archives | Separate explicitly scoped per-repo change |
+| G5b Repository distribution adoption | G1–G4 evidence; repo owner reconciles local scope, model binding, CI, permissions and current feature history | Separate explicitly scoped per-repo change |
 | G6 Activation | Existing execution owner enforces source/permission/selection gates and the declared capability profile; creator/allowlist/native edges verified | existing executor owner or existing Kanban owner; no overlap separately owned infrastructure changes |
 
-After the pilot, each consumer qualifies adoption in its own owner-approved PR after coordinating with active work. Broad rollout and application implementation remain outside this distribution change.
+Core adoption (G5a) follows the brownfield pilot and does not wait for the packaged distribution; distribution adoption (G5b) follows the complete pilot. Each consumer qualifies adoption in its own owner-approved PR after coordinating with active work. Broad rollout and application implementation remain outside this distribution change.
 
 
 ## Directory and native-contract binding

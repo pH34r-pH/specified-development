@@ -42,7 +42,7 @@
     },
     {
       "path": "REVIEW.md",
-      "sha256": "5107072508b8394fca3badc262e1e8db8295e3c212fc7e0814e1b79f00b16fdc"
+      "sha256": "02b20b24440ded3e18d1c3b34f150a70b02c50eacfca6b2c30e6f968ad12a353"
     },
     {
       "path": "build/bundle-example-review/README.md",
@@ -102,7 +102,7 @@
     },
     {
       "path": "build/distribution/plan.md",
-      "sha256": "15fb6837288cf3c2ea4276271ecf66548e1cba9107e2e237c312ac8eaa32d5a7"
+      "sha256": "400f65b52e13ddc555a8bdf9d66b0588f556492b65c096ba81458091d6ec3202"
     },
     {
       "path": "build/distribution/tasks.md",
@@ -110,7 +110,7 @@
     },
     {
       "path": "build/distribution/tests.md",
-      "sha256": "a70d0d92b80ca88827f810d38e717d3a29a24cabce77da2ce17dee87c7181ef0"
+      "sha256": "640240ac1e08f5890d7afeb9cb78ef086d31f008d6a29555cecbfd15714ecede"
     },
     {
       "path": "build/execution-contract.yaml",
@@ -170,7 +170,7 @@
     },
     {
       "path": "docs/specification-review.json",
-      "sha256": "42e7fa650d2b6d6ef05abafdf59a2dda107f9277b1c1fd16d0bafef5d6073309"
+      "sha256": "d4295d0e0af59511cc07d17221f159d39a176239a55bb0b2a85a7fc42c1a50a9"
     },
     {
       "path": "docs/specification-review.md",
@@ -290,7 +290,7 @@
     },
     {
       "path": "spec/features/distribution/index.md",
-      "sha256": "67542392849ee4969ceca9d4b47c08b4b306b9d75a3de5c9a76060b3ab65a614"
+      "sha256": "9c96a60fadb701ebf17bde5cb086a063aba7b918e17d7d033ed2749cf6d78456"
     },
     {
       "path": "spec/index.md",
@@ -306,7 +306,7 @@
     },
     {
       "path": "spec/operations/rollout.md",
-      "sha256": "c6af95ca97ab6c9e79a86aa9d567e2b553e3ae40693dda248402df0b9fe50e5a"
+      "sha256": "a6b2f325742d21bbc4505ff2f30a9451c538883ebd688ba1fd34fa61f135d5e4"
     },
     {
       "path": "spec/operations/upstream.md",
@@ -490,7 +490,7 @@
     },
     {
       "path": "tests/test_spec_validation.py",
-      "sha256": "bc0e86b38ec5ed8f08ec992d1c10f8df60d7f39043c4639d878a7ebad4d1cee8"
+      "sha256": "3c4b7020f21446b7a7e4f4f7eba1dcabd9345b3a36e83734ebf371c643e80295"
     },
     {
       "path": "tests/test_task_review.py",

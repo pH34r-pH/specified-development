@@ -209,7 +209,7 @@
         "specified-development/distribution#US6-AS2",
         "specified-development/distribution#US6-AS3"
       ],
-      "sha256": "fc75747e31e63340e16237b9b255b4cdb2c5844426dbc485e6f70c862656b0a5"
+      "sha256": "7e9e00c7fc817e1b05e199d2761169b705d6dd92229aca30939e12807c145bcc"
     },
     {
       "document_id": "specified-development/distribution",
@@ -239,7 +239,7 @@
         "specified-development/distribution#FR-021",
         "specified-development/distribution#FR-022"
       ],
-      "sha256": "41ea996734ab2178f1087e0e8a2dca66eb6e084f0253a719d3ea6b0b78ff4db8"
+      "sha256": "b8fb57bf04d7d7c4a0964bc1d9cbb29a6ca44fe8a806764d6a41828c1386fb84"
     },
     {
       "document_id": "specified-development/distribution",
@@ -553,7 +553,7 @@
         "specified-development/distribution#FR-022",
         "specified-development/directory-specs#DS-FR-016"
       ],
-      "sha256": "cb1ca528a8c6f3647b0d8613bf932e70076419a9c0a29ca97520c81b7c56bf2f"
+      "sha256": "364b07e09060db21e78706904d81c81dadd7641e51e455bea247cea62ea3c5c1"
     },
     {
       "document_id": "specified-development/execution-capabilities",

@@ -49,6 +49,7 @@ Each row defines its complete stable case: level/environment, traces, preconditi
 | TST-031 | contract E1; US8-AS1/AS2/AS3/AS4, FR-004/025, SC-010 | Synthetic onboarded repository with a plan citing requirement IDs, independent cases, tasks and a previous satisfied report. Stimuli: add one requirement, change one requirement's text, make one previously passing case fail, leave the rest unchanged. | Gaps are exactly the added (untested), changed (stale) and failing (regressed) requirements; the stale set is exactly the tracing cases, dependent tasks and citing plan sections; unchanged requirements stay satisfied. The report is byte-identical across runs and invokes no model. | `tests/test_gaps.py`; delivered gap report |
 | TST-032 | contract E1; US8-AS2, FR-025, SC-010 | Evidence mutations: unknown requirement ID, case tracing no requirement, task naming an unknown case, results from another revision, undeclared case outcome, invalid outcome value, prose claiming delivery. | Each fails closed with a stable diagnostic before a report is produced; no prose or document field can mark a requirement satisfied. | `tests/test_gaps.py`; delivered gap report |
 | TST-033 | contract E1; US9-AS1/AS2, FR-026, SC-011 | Kit templates instantiated for one feature in an empty temporary project; the synthetic brownfield example. Mutations: unregistered spec file, frontmatter without schema version 1 fields, plan without the implementation-targets section, test case tracing an unknown requirement, missing test contract. | Both valid layouts pass and report untested requirements as gaps; each mutation fails with its stable diagnostic; kit files carry no unpinned action or dependency reference. | `tests/test_kit.py`; delivered adoption kit |
+| TST-034 | qualification E2; US9-AS3, FR-022, SC-008 | Isolated copy of one real codebase plus adoption records for a core-track and a distribution-track repository; no release archives present. | Core adoption readiness requires the accepted onboarding record, independent tests, initial gaps, a propagated spec-first change and a scoped regeneration trial, and passes without archives; distribution adoption readiness stays blocked without G1–G4 evidence; the original repository is unchanged. | `tests/test_pilot.py`; brownfield pilot qualification |
 
 ## Coverage matrices
 
@@ -62,7 +63,7 @@ Each row defines its complete stable case: level/environment, traces, preconditi
 | US6-AS1 / AS2 / AS3 | TST-005, TST-019, TST-025 / TST-021, TST-022, TST-023, TST-028 / TST-020, TST-023 |
 | US7-AS1 / AS2 / AS3 / AS4 | TST-029 / TST-030 / TST-029, TST-030 / TST-030 |
 | US8-AS1 / AS2 / AS3 / AS4 | TST-031 / TST-031, TST-032 / TST-031 / TST-031 |
-| US9-AS1 / AS2 | TST-033 / TST-033 |
+| US9-AS1 / AS2 / AS3 | TST-033 / TST-033 / TST-034 |
 
 | Requirement | Cases |
 | --- | --- |
@@ -87,7 +88,7 @@ Each row defines its complete stable case: level/environment, traces, preconditi
 | FR-019 | TST-021, TST-022, TST-023, TST-028 |
 | FR-020 | TST-016, TST-022 |
 | FR-021 | TST-007, TST-014, TST-024, TST-027 |
-| FR-022 | TST-014, TST-025, TST-027 |
+| FR-022 | TST-014, TST-025, TST-027, TST-034 |
 | FR-023 | TST-029, TST-030 |
 | FR-024 | TST-029, TST-030 |
 | FR-025 | TST-031, TST-032 |
@@ -102,12 +103,12 @@ Each row defines its complete stable case: level/environment, traces, preconditi
 | SC-005 | TST-004, TST-010, TST-015, TST-016, TST-017, TST-018, TST-026, TST-028 |
 | SC-006 | TST-005, TST-019 |
 | SC-007 | TST-020, TST-021, TST-022, TST-023, TST-028 |
-| SC-008 | TST-014, TST-016, TST-022, TST-024, TST-025, TST-026, TST-027 |
+| SC-008 | TST-014, TST-016, TST-022, TST-024, TST-025, TST-026, TST-027, TST-034 |
 | SC-009 | TST-029, TST-030 |
 | SC-010 | TST-031, TST-032 |
 | SC-011 | TST-033 |
 
-All SCs are buildable qualification criteria. No coverage exclusion is claimed. Contract entity rules are covered as follows: artifact/revision TST-002/003/004/017; task/contract TST-009/010/011/012; installation/release TST-006/007/008/026/027; issue binding TST-013/014; model/receipt TST-015/016/018; cache TST-020; usage/rate card TST-021/022/023; regeneration TST-005/019/025; onboarding record TST-029/030; requirement status and gap report TST-031/032; adoption kit and layout check TST-033. The final column above is the mandatory TST→task/file matrix.
+All SCs are buildable qualification criteria. No coverage exclusion is claimed. Contract entity rules are covered as follows: artifact/revision TST-002/003/004/017; task/contract TST-009/010/011/012; installation/release TST-006/007/008/026/027; issue binding TST-013/014; model/receipt TST-015/016/018; cache TST-020; usage/rate card TST-021/022/023; regeneration TST-005/019/025; onboarding record TST-029/030; requirement status and gap report TST-031/032; adoption kit and layout check TST-033; core adoption readiness TST-034. The final column above is the mandatory TST→task/file matrix.
 
 ## Evidence and independence rules
 
