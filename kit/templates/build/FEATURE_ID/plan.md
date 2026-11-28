@@ -28,6 +28,12 @@ This plan owns technical choices for the FEATURE_TITLE feature. Product behavior
 
 **Unresolved decisions and local discretion.** List open technical decisions and the local choices implementation tasks may make on their own.
 
+## Public interface
+
+List every name, signature, attribute, constant and message format that code outside this feature imports or relies on. Search the rest of the repository for uses of the feature's modules. Write "None" only when nothing outside the feature uses it.
+
+- `module.Name(argument: type) -> type`: what callers rely on.
+
 ## Prior-art decisions
 
 Record material choices of standards, algorithms, data structures or libraries: the requirement and constraints, a simple baseline, alternatives, why each is adopted or rejected, and the exact source and version consulted. Trivial choices need no record.

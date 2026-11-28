@@ -122,7 +122,7 @@
       "requirements": [
         "specified-development/distribution#FR-023"
       ],
-      "sha256": "5fd3cb665e46fe98db530a65ed2f3732cbf41893818a621d9400d652a1b2895e"
+      "sha256": "5cc785725b1c2347163f7d2281d4fb096d5d44d891816e6af7e68cfadf6a5166"
     },
     {
       "document_id": "specified-development/onboarding",
@@ -239,7 +239,7 @@
         "specified-development/distribution#FR-021",
         "specified-development/distribution#FR-022"
       ],
-      "sha256": "b8fb57bf04d7d7c4a0964bc1d9cbb29a6ca44fe8a806764d6a41828c1386fb84"
+      "sha256": "9e12b9f9079b45118f072675cd932eeb01a1a99798e000006c3143ef092a3402"
     },
     {
       "document_id": "specified-development/distribution",

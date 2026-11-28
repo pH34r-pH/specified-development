@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -83,14 +84,27 @@ class AdoptionKitTests(unittest.TestCase):
         def missing(root: Path) -> None:
             (root / "build/orders/tests.md").unlink()
 
+        def interface(root: Path) -> None:
+            path = root / "build/orders/plan.md"
+            path.write_bytes(path.read_bytes().replace(b"## Public interface", b"## Interface notes"))
+
         for mutate, code in ((unregistered, "SPEC_SOURCE_CLOSURE"), (frontmatter, "LAYOUT_FRONTMATTER"),
                              (targets, "LAYOUT_PLAN_TARGETS"), (unknown, "LAYOUT_TEST_REFERENCE"),
-                             (missing, "LAYOUT_TESTS_MISSING")):
+                             (missing, "LAYOUT_TESTS_MISSING"), (interface, "LAYOUT_PLAN_INTERFACE")):
             with self.subTest(code=code):
                 root = self.project()
                 mutate(root)
                 with self.assertRaisesRegex(ValidationError, code):
                     check_layout(root)
+
+    def test_feature_records_ignored_by_version_control_are_refused(self) -> None:
+        root = self.project()
+        subprocess.run(["git", "init", "-q", str(root)], check=True)
+        (root / ".gitignore").write_bytes(b"build/\n")
+        with self.assertRaisesRegex(ValidationError, "LAYOUT_RECORDS_IGNORED"):
+            check_layout(root)
+        (root / ".gitignore").write_bytes(b"/build/*\n!/build/orders/\n")
+        self.assertEqual(check_layout(root)["features"]["orders"]["untested"], [])
 
     def test_kit_ci_pins_every_action_and_the_tool_revision(self) -> None:
         workflow = (KIT / "ci/specified-development.yml").read_text(encoding="utf-8")

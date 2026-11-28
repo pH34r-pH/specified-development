@@ -1,0 +1,92 @@
+{
+  "changed": [],
+  "gaps": [],
+  "kind": "requirement-status",
+  "requirements": {
+    "archive-read-policy#ARP-FR-001": {
+      "cases": [
+        "ARP-001"
+      ],
+      "hash": "ab12873a539070e88cf09cbf2484dda2b9d46c46b3e7f4455b51b5e00fbfe000",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-FR-002": {
+      "cases": [
+        "ARP-002"
+      ],
+      "hash": "5a00521c66c67a7ccff3e0ff11784e5754c727b8570ee67a8d7d0694144247cf",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-FR-003": {
+      "cases": [
+        "ARP-003",
+        "ARP-005"
+      ],
+      "hash": "a67ebdaf11f18df1d7d4d73c09ed2110b891cc8d8cebcb297a422499118029cd",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-FR-004": {
+      "cases": [
+        "ARP-003"
+      ],
+      "hash": "694c7856f0be85021ee2144a23997ecc29fc7d4f70d81446d383b6bea343561b",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-FR-005": {
+      "cases": [
+        "ARP-004"
+      ],
+      "hash": "01f973d1898cbd253162e8436c409f9c7b4e6fb5022fff7b908177944c9a70a2",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-FR-006": {
+      "cases": [
+        "ARP-005"
+      ],
+      "hash": "80e821c67e339e18600fc0e7a872568f79dbca8997e41b3abe909fc5cd864aea",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-FR-007": {
+      "cases": [
+        "ARP-006"
+      ],
+      "hash": "11cd9a51115b20488f1b5ac70266a02a868bcfad8fba9ea7508ee8b71d834f62",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-FR-008": {
+      "cases": [
+        "ARP-007"
+      ],
+      "hash": "a3800fa15648cbc5f69669e6d3e0740bc585739b30f17ff45e3e4699e6949626",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-FR-009": {
+      "cases": [
+        "ARP-008"
+      ],
+      "hash": "4afc602aa1983aaa738bbd2ce737825fa281ed61209a31fa3b8dbceb95565e3e",
+      "status": "satisfied"
+    },
+    "archive-read-policy#ARP-SC-001": {
+      "cases": [
+        "ARP-001",
+        "ARP-002",
+        "ARP-003",
+        "ARP-004",
+        "ARP-005",
+        "ARP-006",
+        "ARP-007",
+        "ARP-008"
+      ],
+      "hash": "e2ecbf24f271c337d6ffa998cb20f5b6bfafbf173e77281b833162c1de456961",
+      "status": "satisfied"
+    }
+  },
+  "revision": "d5c579436d81207a72ec0236af2bfa5a9484eb8e",
+  "schema_version": 1,
+  "stale": {
+    "cases": [],
+    "plan_sections": [],
+    "tasks": []
+  }
+}

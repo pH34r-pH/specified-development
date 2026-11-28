@@ -39,6 +39,8 @@ mkdir -p build && cp -R /tmp/specified-development/kit/templates/build/FEATURE_I
 mv spec/features/FEATURE_ID "spec/features/<feature>"
 ```
 
+Many projects ignore `build/` for build output. Feature records must stay tracked, so replace a `build/` ignore rule with `/build/*` plus `!/build/<feature>/` for each feature; the layout check refuses ignored records. Never point build tools that clean `build/` at these records.
+
 Then replace the placeholders `PROJECT_ID`, `PROJECT_TITLE`, `FEATURE_ID` and `FEATURE_TITLE` in the copied files and run:
 
 ```sh
@@ -51,7 +53,7 @@ Add `AGENTS.md` (or include it from `CLAUDE.md`) and copy `ci/specified-developm
 
 | Command | Purpose |
 | --- | --- |
-| `specified-check-layout` | Validate the spec tree, frontmatter, requirement tables, plan targets section and test contract references. Untested requirements are reported, not rejected. |
+| `specified-check-layout` | Validate the spec tree, frontmatter, requirement tables, plan targets and public-interface sections, test contract references and that feature records are tracked. Untested requirements are reported, not rejected. |
 | `specified-onboarding` | Validate a brownfield onboarding record against the accepted spec. |
 | `specified-gaps` | Report requirement status, gaps and stale descendants from independent evidence. |
 

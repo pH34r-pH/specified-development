@@ -192,7 +192,8 @@ def allowed_public_path(value: str) -> bool:
         for name in ("plan.md", "tests.md", "tasks.md")
     }:
         return True
-    return value.startswith(("kit/", "tests/fixtures/foundation/", "tests/fixtures/onboarding/"))
+    return value.startswith(("docs/evidence/brownfield-pilot-experiment-compiler/", "kit/",
+                             "tests/fixtures/foundation/", "tests/fixtures/onboarding/"))
 
 
 def check_public_inventory(root: Path) -> None:

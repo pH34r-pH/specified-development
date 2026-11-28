@@ -4,7 +4,7 @@ Follow the [onboarding guide](../spec/usage/onboarding.md). Each step is one rev
 
 1. **Install.** Pin a reviewed commit of `specified-development`, install the tools and copy the kit templates (see [README](README.md)).
 2. **Choose one area.** Pick a bounded module, service or feature. Record its stable feature ID and source paths. Everything else stays explicitly unspecified.
-3. **Characterize.** Draft a present-tense feature page (behavior only) and a plan with its implementation-targets section (current language, architecture, dependencies) from the code, docs, existing tests and observed behavior. Record the sources for every requirement in `onboarding.json`.
+3. **Characterize.** Draft a present-tense feature page (behavior only) and a plan with its implementation-targets section (current language, architecture, dependencies) from the code, docs, existing tests and observed behavior. Search the rest of the repository for every use of the area and record what it relies on: observable behavior in the spec, exact names in the plan's public-interface section. Record the sources for every requirement in `onboarding.json`.
 4. **Decide known defects.** For every behavior the reviewer does not intend, record either `specify-actual` with a follow-up change, or `specify-intended` and add the requirement to `initial_gaps`.
 5. **Review and accept.** A human reviewer accepts the spec. Record the actor and time in `onboarding.json`. Characterization mode ends for this area.
 6. **Author independent tests.** Write `build/<feature>/tests.md` and the matching tests from the accepted spec. Existing tests may be adopted only when they check spec-level behavior; record them as `adopted-existing-test` with a reference.
