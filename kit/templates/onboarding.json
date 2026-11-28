@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "brownfield-onboarding-record",
+  "repository": "OWNER/REPOSITORY",
+  "baseline_revision": "BASELINE_COMMIT",
+  "areas": [
+    {
+      "feature_id": "FEATURE_ID",
+      "paths": ["src/FEATURE_ID"]
+    }
+  ],
+  "requirements": {
+    "FEATURE_ID#FR-001": {
+      "sources": [
+        {"kind": "code", "reference": "src/FEATURE_ID"}
+      ]
+    },
+    "FEATURE_ID#FR-002": {
+      "sources": [
+        {"kind": "code", "reference": "src/FEATURE_ID"}
+      ]
+    },
+    "FEATURE_ID#SC-001": {
+      "sources": [
+        {"kind": "documentation", "reference": "build/FEATURE_ID/tests.md"}
+      ]
+    }
+  },
+  "known_defects": [],
+  "oracle": [],
+  "acceptance": {
+    "state": "candidate"
+  },
+  "initial_gaps": [],
+  "spec_kit_layout": null
+}

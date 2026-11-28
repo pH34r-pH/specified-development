@@ -38,11 +38,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "62b4f1f7bf39de648bc79a1bd1a00f521a824fc59345ba78ee09d6a8af5e92ef"
+      "sha256": "80723803d539dc92ffae356edf040e869f2ea1f6a7a35e77efdbebbfba9c060a"
     },
     {
       "path": "REVIEW.md",
-      "sha256": "ed7da1e541fb4b556b29d3856082c0da7789f22f4174ae55d9989fcd36dff69c"
+      "sha256": "5107072508b8394fca3badc262e1e8db8295e3c212fc7e0814e1b79f00b16fdc"
     },
     {
       "path": "build/bundle-example-review/README.md",
@@ -110,7 +110,7 @@
     },
     {
       "path": "build/distribution/tests.md",
-      "sha256": "32a2b403925910a154ae7e7b9160ef3505b0adb28175d8ff5dd31802b6d7009a"
+      "sha256": "a70d0d92b80ca88827f810d38e717d3a29a24cabce77da2ce17dee87c7181ef0"
     },
     {
       "path": "build/execution-contract.yaml",
@@ -170,7 +170,7 @@
     },
     {
       "path": "docs/specification-review.json",
-      "sha256": "756f62be519b1d36c291f1bffdc4eca2dcd06fc34fc9df93d9b9c73500ab7728"
+      "sha256": "42e7fa650d2b6d6ef05abafdf59a2dda107f9277b1c1fd16d0bafef5d6073309"
     },
     {
       "path": "docs/specification-review.md",
@@ -182,15 +182,63 @@
     },
     {
       "path": "docs/tooling.md",
-      "sha256": "c8c76d006b5497a68dc9d18d39e992778b4febedec745df23dd2e24d0bca2093"
+      "sha256": "5e21a8f711d65c4f07b76634f0d9377581a687d3faeb47b7156aca77d7452bca"
     },
     {
       "path": "governance/repository-profile.json",
       "sha256": "ce4a621e1d8000a08c5c39353f36ea63ab37e2f3bac09f04f6b39d1f61112286"
     },
     {
+      "path": "kit/AGENTS.md",
+      "sha256": "8246cb4d2eb67585d0084776615f713eadd23f66505911d146ac62b7e23fea45"
+    },
+    {
+      "path": "kit/ONBOARDING.md",
+      "sha256": "956ad0b73fb2a435e344edab77baf9ffb69ba684773affe5df7b0335c30a6950"
+    },
+    {
+      "path": "kit/README.md",
+      "sha256": "85d300c7622078b0755c0711ff651db424e7ba2722d4239daa99e21bfff19622"
+    },
+    {
+      "path": "kit/ci/specified-development.yml",
+      "sha256": "4fd002dd575cdda4fe60887833bda59b1c78e8b0fc4bb2890695cf168fbb8a96"
+    },
+    {
+      "path": "kit/templates/build/FEATURE_ID/plan.md",
+      "sha256": "2092b6a11654255c0a82414a7d15c8b51271a51ec033508ca69ad7416be00218"
+    },
+    {
+      "path": "kit/templates/build/FEATURE_ID/tests.md",
+      "sha256": "cb7413b90682e9cfd7d4c389f67f5bee70946331be8b636cd43a77b60dca49f3"
+    },
+    {
+      "path": "kit/templates/evidence.json",
+      "sha256": "a325a3f90c54996c25c003985a665460fee52e33ccd98d87d1a24dc3c3c4ccb2"
+    },
+    {
+      "path": "kit/templates/onboarding.json",
+      "sha256": "56129e580603fa1ee65afee53dd1b67ab150fbc14d418fb286e50ea3bb2b8678"
+    },
+    {
+      "path": "kit/templates/spec/features/FEATURE_ID/index.md",
+      "sha256": "f6f09853b1664dead1ceba53ed45c1643db29d35c3ea0e17173e6f9079c41769"
+    },
+    {
+      "path": "kit/templates/spec/index.md",
+      "sha256": "6fda4215a049268268c1b95dcc954dfcf8c6e0bc3e6511f83063d0378d6bec74"
+    },
+    {
+      "path": "kit/templates/spec/manifest.json",
+      "sha256": "cf729f760a858e28eff0d8d0712ca3db26905e65c6863c698d9b315f34491d22"
+    },
+    {
+      "path": "kit/templates/spec/navigation.json",
+      "sha256": "693cdea722a436071dc6d342ae32147e6db4b6285239fd7518cde3844e3628b3"
+    },
+    {
       "path": "pyproject.toml",
-      "sha256": "bee64870b791d0e747295cf2480b41dbf1e2319bdb31e676a5fef265f399c293"
+      "sha256": "b632b684a585e0655be3405f1e7ca9eacfee52ecad44efac38060d1d669d7267"
     },
     {
       "path": "requirements-dev.in",
@@ -242,7 +290,7 @@
     },
     {
       "path": "spec/features/distribution/index.md",
-      "sha256": "1e5ca23f4307271d5543753a1ab326bd13f0d73fe06a7ff008db4f883ada0a5c"
+      "sha256": "67542392849ee4969ceca9d4b47c08b4b306b9d75a3de5c9a76060b3ab65a614"
     },
     {
       "path": "spec/index.md",
@@ -369,6 +417,10 @@
       "sha256": "0e58c47c52d7564d79ac506b6cf462dd585e4f08dea7f59bf1d0f6483a654835"
     },
     {
+      "path": "tests/fixtures/onboarding/tally/build/tally/tests.md",
+      "sha256": "8ec955c9a683b0be69f1290337659b1173a74170252cc88605e2c4fe2af73f3d"
+    },
+    {
       "path": "tests/fixtures/onboarding/tally/onboarding.json",
       "sha256": "84edcd6fda098ddc08c15f32c1a74e65176b5cda5b2682c40d205eb67fd36710"
     },
@@ -379,6 +431,10 @@
     {
       "path": "tests/fixtures/onboarding/tally/spec/manifest.json",
       "sha256": "471c6bf53509ac0ef837dbb0e0653ffd4754df0c9f21de637a4c0e7164670128"
+    },
+    {
+      "path": "tests/fixtures/onboarding/tally/spec/navigation.json",
+      "sha256": "7337c0f661cc7b4393191366bc7b3e7e9eac5a31b86ce53acd71f625d0318128"
     },
     {
       "path": "tests/fixtures/onboarding/tally/src/report.py",
@@ -413,6 +469,10 @@
       "sha256": "055b7b06d31fff76bd3c533cae01a25f85caacdfc259d2b48cb3be43edeafe9d"
     },
     {
+      "path": "tests/test_kit.py",
+      "sha256": "6c55346580edcce98de5d2388633bc0e40b9fe6f3e4fdefb74a94e9396073ff6"
+    },
+    {
       "path": "tests/test_onboarding.py",
       "sha256": "c392944991a920cf6885d6d5b0728e37d9af205a649fcdf44d3afc49bbd32610"
     },
@@ -430,7 +490,7 @@
     },
     {
       "path": "tests/test_spec_validation.py",
-      "sha256": "22cb55c7ab643568b0f29cec8a3ada5f0f62d1df5d76a631b7904c4580d36d86"
+      "sha256": "bc0e86b38ec5ed8f08ec992d1c10f8df60d7f39043c4639d878a7ebad4d1cee8"
     },
     {
       "path": "tests/test_task_review.py",
@@ -461,6 +521,10 @@
       "sha256": "fe8a5d6b85ddce8f7bb0c23e038f080efa9766a97ded32b3c8efa9e350a71b50"
     },
     {
+      "path": "tools/layout.py",
+      "sha256": "96f4cf3c40eb8a1148bbf062aa3150cb53c80787554c95bba00491367c08b9e4"
+    },
+    {
       "path": "tools/onboarding.py",
       "sha256": "04936f7739498ebc2fc7b6117b30c32b738d166b9d2e788a4001f864d165b6fa"
     },
@@ -470,7 +534,7 @@
     },
     {
       "path": "tools/spec_validation.py",
-      "sha256": "bc020a439a6c2c01df1c394d8465e92dd2e8208c387caf8d19d249c674f93e31"
+      "sha256": "de556bd7a5392b5f66fbeb6af58b1acb00f3a378bd441bd415988f19a3a9deaf"
     },
     {
       "path": "tools/task_review.py",
@@ -478,7 +542,7 @@
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "78914c46ca2ea33f2463bb82d7421d54731add1e367bd6818d945139b4b977b0"
+      "sha256": "98da993afcf4e2ce17017262a734925d7386fb3152983a300d37fca802526e2e"
     }
   ],
   "private_inputs_included": false,

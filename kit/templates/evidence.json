@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "kind": "requirement-evidence",
+  "revision": "CURRENT_COMMIT",
+  "features": ["FEATURE_ID"],
+  "cases": {
+    "CASE-001": {"requirements": ["FEATURE_ID#FR-001", "FEATURE_ID#SC-001"]},
+    "CASE-002": {"requirements": ["FEATURE_ID#FR-002", "FEATURE_ID#SC-001"]}
+  },
+  "tasks": {},
+  "results": null
+}

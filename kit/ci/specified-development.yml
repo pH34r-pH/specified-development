@@ -1,0 +1,38 @@
+# Copy to .github/workflows/specified-development.yml in the adopting repository.
+# Replace REVIEWED_COMMIT with the exact reviewed specified-development commit.
+name: Specified Development
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  specification:
+    name: Check specification layout and gaps
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      SPECIFIED_DEVELOPMENT_REVISION: REVIEWED_COMMIT
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Install pinned Specified Development tools
+        run: python -m pip install "specified-development-tools[authoring] @ git+https://github.com/pH34r-pH/specified-development@${SPECIFIED_DEVELOPMENT_REVISION}"
+      - name: Check specification layout
+        run: specified-check-layout --root .
+      - name: Validate onboarding record
+        if: hashFiles('onboarding.json') != ''
+        run: specified-onboarding onboarding.json --root .
+      - name: Report requirement gaps
+        if: hashFiles('evidence.json') != ''
+        run: specified-gaps evidence.json --root .

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "label": "Overview",
+      "document": "PROJECT_ID/overview"
+    },
+    {
+      "label": "FEATURE_TITLE",
+      "document": "PROJECT_ID/FEATURE_ID"
+    }
+  ]
+}

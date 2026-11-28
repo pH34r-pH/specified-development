@@ -8,6 +8,8 @@ Specified Development is a programming paradigm built on GitHub Spec Kit. A repo
 
 **Next milestone:** a minimal adoption kit ([#41](https://github.com/pH34r-pH/specified-development/issues/41)) and a brownfield onboarding procedure ([#39](https://github.com/pH34r-pH/specified-development/issues/39)), so existing projects can adopt the paradigm before the packaged distribution exists. The campaign is tracked in [#38](https://github.com/pH34r-pH/specified-development/issues/38).
 
+To adopt the paradigm in another repository today, use the [adoption kit](kit/README.md).
+
 Start at [the specification](spec/index.md) and the [lifecycle guide](spec/usage/lifecycle.md), which defines the living spec and spec-first change. Read the [authority contract](spec/contracts/authority.md), the [directory feature](spec/features/directory-specs/index.md) and the [upstream decision](spec/operations/upstream.md). Candidate plans, independent test contracts and structured leaf tasks live under `build/<feature>/`; accepted revisions and evidence there are durable records.
 
 The repository uses Apache-2.0 for its original tooling and documentation. Upstream Spec Kit keeps its own license; releases need dependency and license notices. See [LICENSING.md](LICENSING.md).

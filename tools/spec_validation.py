@@ -69,8 +69,21 @@ def frontmatter(text: str) -> tuple[dict[str, Any], str]:
     return value, "".join(lines[end + 1:])
 
 
+# Schemas ship with the tools: beside the installed package, or at the checkout root.
+SCHEMA_DIRS = (Path(__file__).resolve().parent / "schemas", Path(__file__).resolve().parents[1] / "schemas")
+
+
+def schema_path(name: str) -> Path:
+    for directory in SCHEMA_DIRS:
+        candidate = directory / f"{name}.schema.json"
+        if candidate.is_file():
+            return candidate
+    raise ValidationError(f"SCHEMA_MISSING: {name} is not installed with the tools")
+
+
 def _schema(root: Path, name: str, value: Any, code: str) -> None:
-    schema = read_json(confined_file(root, f"schemas/{name}.schema.json"))
+    # The validated repository never supplies its own schema; root is kept for call compatibility.
+    schema = read_json(schema_path(name))
     Draft202012Validator.check_schema(schema)
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
     errors = sorted(validator.iter_errors(value), key=lambda error: str(list(error.path)))

@@ -33,6 +33,7 @@ the package's supported dependency ranges.
 | `specified-task-review` | `python -m tools.task_review` |
 | `specified-onboarding` | `python -m tools.onboarding` |
 | `specified-gaps` | `python -m tools.gaps` |
+| `specified-check-layout` | `python -m tools.layout` |
 
 The existing `python tools/bundle_validation.py ...` and
 `python tools/bundle_review.py ...` commands continue to work, including in the
@@ -44,6 +45,20 @@ into site-packages.
 Import selection depends on the invocation's `__package__` value. An import
 failure inside a module propagates normally; it is never retried as an import
 of an unrelated top-level module.
+
+## Consumer layout check
+
+`specified-check-layout` validates a repository that adopted the paradigm with
+the [adoption kit](../kit/README.md): the canonical spec tree and manifest,
+schema version 1 frontmatter, feature requirement tables, each feature's plan
+implementation-targets section and its independent test contract references.
+It needs the `authoring` extra. Untested requirements are reported as gaps, not
+errors. JSON schemas ship inside the package, so the check never reads schemas
+from the validated repository.
+
+```sh
+specified-check-layout --root /path/to/project
+```
 
 ## Brownfield onboarding records
 
