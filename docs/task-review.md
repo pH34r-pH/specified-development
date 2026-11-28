@@ -4,7 +4,7 @@ Generated from the existing ph34r-task-authoring-v1 records. Edit reviewed autho
 
 This view does not schedule or accept work. The native execution contract remains the only executable dependency graph. Planned tasks and pending bindings remain unqualified for execution.
 
-Native source SHA256: `0829ea48fd2801661956a3e1494cdd7416d78fbb3d685607fdc3cabacd2d5759`.
+Native source SHA256: `7169ee1f6a5d11843874b8c240b257bfa9a4490942eaa6b40e3e92b77448f10a`.
 
 The frozen Markdown summaries remain historical. Expand a task below to inspect the exact structured scope, command declaration, tests and acceptance used by the checked native projection. The [existing lossless bundle review](../build/bundle-review/README.md) retains full frozen inputs.
 
@@ -896,7 +896,7 @@ Unexecuted command declarations:
 
 ## distribution
 
-[Structured source](../build/distribution/tasks.md), SHA256 `48baea57dce561116b0997727d4f52850b9dd2f5d58bd242ed02820817f9e686`.
+[Structured source](../build/distribution/tasks.md), SHA256 `f7303acd5bb78acf7eb10ab034a48ee1c7fe8c115646f7b80467f80191c8d3ea`.
 
 <details>
 <summary>T003 — Freeze the toolchain and execution policy</summary>
@@ -991,7 +991,7 @@ Native parents: T004.
 
 Independent tests: TST-001, TST-002.
 
-Acceptance: Replacement instructions describe complete mature products in past tense with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.
+Acceptance: Replacement instructions describe complete mature products as living present-tense specifications with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.
 
 Output scope:
 

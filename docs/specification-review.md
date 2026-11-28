@@ -27,23 +27,24 @@ The existing `spec/manifest.json` remains the document inventory. The
 sixty-task native contract retains its exact bytes, and the historical sources it
 froze are retained in the [legacy review snapshot](../build/bundle-review/README.md).
 Canonical sources are living documents revised in place. The small
-[current review overlay](specification-review.json) pins that manifest, identifies
-explicit current successors, and maps source sections to already defined
-requirements. It does not copy their prose, define another requirement registry,
+[current review overlay](specification-review.json) pins that manifest and maps
+source sections to already defined requirements. It does not copy their prose, define another requirement registry,
 assign execution edges or change historical acceptance.
 
-Only the execution capability document has a current successor:
-[execution-capabilities-v2.md](specification/execution-capabilities-v2.md).
-Its frontmatter records its predecessor path, exact digest and revision. The
-successor retains the stable rules while dated interface and receipt facts live
-in [execution-capability-observations/foundation-v1](evidence/foundation-capability-observations-v1.md).
-The predecessor still applies to the frozen historical native contract. New
-authoring review selects the successor explicitly; it does not silently rewrite
-that old contract's inputs or admit any task for execution.
+Canonical documents are revised in place and carry schema version 1
+frontmatter with an incremented revision. The execution capability contract's
+former review successor is folded back into
+[its canonical document](../spec/contracts/execution-capabilities.md); dated
+interface and receipt facts live in
+[execution-capability-observations/foundation-v1](evidence/foundation-capability-observations-v1.md).
+Earlier revisions remain in the retained historical snapshot for the historical
+native contract. The overlay's `current_documents` successor mechanism remains a
+compatibility reader only; it is empty and new successors are not created.
 
 ## Obligations and traceability
 
-Finished-product past-tense prose remains the accepted writing convention.
+Canonical prose is present tense and describes the living specification. Prose
+tense never establishes delivery; delivery status comes only from evidence.
 Normative obligations appear in the existing feature requirement and success
 criterion tables and in the explicitly mapped shared sections. Their reference
 form is `document-id#requirement-id`, preserving the existing FR, DS-FR, SC and

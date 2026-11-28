@@ -397,7 +397,7 @@ class FrozenSnapshotTests(unittest.TestCase):
         self.contract = vf.read_json(ROOT / "build" / "execution-contract.yaml")
 
     def test_snapshot_covers_every_native_and_task_frozen_input(self):
-        vf.validate_frozen_design_hashes(ROOT, self.contract, self.snapshot)
+        vf.validate_frozen_design_hashes(self.contract, self.snapshot)
         _, records = vf.load_authoring_tasks(ROOT, self.snapshot)
         self.assertEqual(60, len(records))
 
@@ -405,20 +405,28 @@ class FrozenSnapshotTests(unittest.TestCase):
         changed = dict(self.snapshot)
         changed["spec/index.md"] = "0" * 64
         with self.assertRaisesRegex(vf.ValidationError, "FROZEN_INPUT_CHANGED"):
-            vf.validate_frozen_design_hashes(ROOT, self.contract, changed)
+            vf.validate_frozen_design_hashes(self.contract, changed)
         with self.assertRaisesRegex(vf.ValidationError, "TASK_FROZEN_HASH"):
             vf.load_authoring_tasks(ROOT, changed)
         missing = {path: digest for path, digest in self.snapshot.items() if path != "README.md"}
         with self.assertRaisesRegex(vf.ValidationError, "FROZEN_INPUT_MISSING"):
-            vf.validate_frozen_design_hashes(ROOT, self.contract, missing)
+            vf.validate_frozen_design_hashes(self.contract, missing)
         with self.assertRaisesRegex(vf.ValidationError, "TASK_FROZEN_MISSING"):
             vf.load_authoring_tasks(ROOT, missing)
 
-    def test_historical_native_contract_must_equal_snapshot(self):
-        changed = dict(self.snapshot)
-        changed["build/execution-contract.yaml"] = "0" * 64
-        with self.assertRaisesRegex(vf.ValidationError, "FROZEN_CONTRACT_CHANGED"):
-            vf.validate_frozen_design_hashes(ROOT, self.contract, changed)
+    def test_historical_contract_comes_from_snapshot_not_working_tree(self):
+        contents: dict[str, bytes] = {}
+        vf.load_frozen_snapshot(ROOT, contents)
+        historical = vf.historical_contract(contents)
+        vf.validate_frozen_design_hashes(historical, self.snapshot)
+        # The working contract is a living projection; its task text can differ from history.
+        self.assertEqual(historical["authority"], self.contract["authority"])
+        with self.assertRaisesRegex(vf.ValidationError, "FROZEN_CONTRACT_MISSING"):
+            vf.historical_contract({path: data for path, data in contents.items() if path != vf.HISTORICAL_CONTRACT})
+        rehashed = copy.deepcopy(self.contract)
+        rehashed["authority"]["sha256"]["spec/index.md"] = "0" * 64
+        with self.assertRaisesRegex(vf.ValidationError, "FROZEN_INPUT_CHANGED"):
+            vf.validate_frozen_design_hashes(rehashed, self.snapshot)
 
     def test_tampered_or_mismatched_snapshot_rejects(self):
         receipt_path = "build/bundle-review/regeneration.json"

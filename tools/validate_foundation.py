@@ -108,7 +108,6 @@ BUNDLE_PUBLIC_FILES = {
     "docs/shared-safety.md",
     "docs/specification-review.json",
     "docs/specification-review.md",
-    "docs/specification/execution-capabilities-v2.md",
     "docs/task-review.md",
     "docs/tooling.md",
     "governance/repository-profile.json",
@@ -533,8 +532,11 @@ def _validate_candidate_leaf(task: dict[str, Any]) -> None:
             "TASK_ACCEPTANCE", f"acceptance and an expected outcome are required: {qid}")
 
 
-def load_frozen_snapshot(root: Path) -> dict[str, str]:
-    """Return the verified path-to-SHA-256 map of the retained historical design snapshot."""
+def load_frozen_snapshot(root: Path, contents: dict[str, bytes] | None = None) -> dict[str, str]:
+    """Return the verified path-to-SHA-256 map of the retained historical design snapshot.
+
+    When ``contents`` is supplied it also receives each verified input's exact bytes.
+    """
     receipt = read_json(confined_file(root, FROZEN_SNAPSHOT_RECEIPT))
     require(isinstance(receipt, dict), "FROZEN_SNAPSHOT_RECEIPT", "snapshot receipt must be an object")
     identity = receipt.get("detail_sha256")
@@ -563,6 +565,8 @@ def load_frozen_snapshot(root: Path) -> dict[str, str]:
             raise ValidationError(f"FROZEN_SNAPSHOT_RECORD: {path}") from exc
         require(record["sha256"] == hashlib.sha256(data).hexdigest(), "FROZEN_SNAPSHOT_TAMPERED", path)
         snapshot[path] = record["sha256"]
+        if contents is not None:
+            contents[path] = data
     require(receipt.get("input_sha256") == snapshot, "FROZEN_SNAPSHOT_RECEIPT", "receipt inputs differ from the snapshot")
     return snapshot
 
@@ -1005,31 +1009,44 @@ def validate_completion_evidence(
     return "candidate-evidence-current; owner-acceptance-pending"
 
 
-def validate_frozen_design_hashes(root: Path, contract: dict[str, Any], snapshot: dict[str, str]) -> None:
-    """Bind the frozen native authority table to the retained snapshot, not to living sources."""
+HISTORICAL_CONTRACT = "build/execution-contract.yaml"
+
+
+def historical_contract(contents: dict[str, bytes]) -> dict[str, Any]:
+    """Parse the historical native contract retained in the verified snapshot."""
+    require(HISTORICAL_CONTRACT in contents, "FROZEN_CONTRACT_MISSING", "the snapshot must retain the historical native contract")
+    contract = parse_json(contents[HISTORICAL_CONTRACT], source=f"snapshot:{HISTORICAL_CONTRACT}")
+    require(isinstance(contract, dict), "FROZEN_CONTRACT_SHAPE", "historical native contract must be an object")
+    return cast(dict[str, Any], contract)
+
+
+def validate_frozen_design_hashes(contract: dict[str, Any], snapshot: dict[str, str]) -> None:
+    """Bind a contract's frozen authority table to the retained snapshot, not to living sources."""
     expected = contract.get("authority", {}).get("sha256")
     require(isinstance(expected, dict), "FROZEN_HASH_TABLE", "authority sha256 table is required")
     for relative, digest in expected.items():
         safe_relative_path(relative, code="FROZEN_INPUT_PATH")
         require(relative in snapshot, "FROZEN_INPUT_MISSING", relative)
         require(snapshot[relative] == digest, "FROZEN_INPUT_CHANGED", relative)
-    contract_path = "build/execution-contract.yaml"
-    require(snapshot.get(contract_path) == sha256_file(confined_file(root, contract_path)),
-            "FROZEN_CONTRACT_CHANGED", "the historical native contract must equal its retained snapshot")
 
 
 def validate_workspace(root: Path = ROOT) -> None:
     check_public_inventory(root)
+    # The working-tree contract is the current projection of the living task records.
+    # The historical contract and every frozen input it names stay in the snapshot.
     contract = read_json(confined_file(root, "build/execution-contract.yaml"))
-    snapshot = load_frozen_snapshot(root)
-    validate_frozen_design_hashes(root, contract, snapshot)
+    contents: dict[str, bytes] = {}
+    snapshot = load_frozen_snapshot(root, contents)
+    historical = historical_contract(contents)
+    validate_frozen_design_hashes(historical, snapshot)
+    validate_frozen_design_hashes(contract, snapshot)
     validate_spec(root)
     metadata_by_feature, records = load_authoring_tasks(root, snapshot)
     bindings = read_json(confined_file(root, "build/native-bindings.json"))
     validate_native_projection(metadata_by_feature, records, bindings, contract)
     t002 = next(record for record in metadata_by_feature["foundation"]["tasks"] if record["local_id"] == "T002")
     t002_inputs = {record["path"]: record["sha256"] for record in t002["frozen_inputs"]["authoritative"]}
-    contract_inputs = contract["authority"]["sha256"]
+    contract_inputs = historical["authority"]["sha256"]
     contract_inputs = {path: digest for path, digest in contract_inputs.items() if path != "build/foundation/tasks.md"}
     require(t002_inputs == contract_inputs, "T002_FROZEN_INPUT_BINDING", "T002 task input hashes differ from the accepted native authority table")
     validate_retention(root)
