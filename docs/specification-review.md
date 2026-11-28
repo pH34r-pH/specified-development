@@ -23,8 +23,10 @@ review content and source/native command-definition drift.
 
 ## Source and review boundaries
 
-The existing `spec/manifest.json` remains the document inventory. Historical
-sources and the sixty-task native contract retain their exact bytes. The small
+The existing `spec/manifest.json` remains the document inventory. The
+sixty-task native contract retains its exact bytes, and the historical sources it
+froze are retained in the [legacy review snapshot](../build/bundle-review/README.md).
+Canonical sources are living documents revised in place. The small
 [current review overlay](specification-review.json) pins that manifest, identifies
 explicit current successors, and maps source sections to already defined
 requirements. It does not copy their prose, define another requirement registry,

@@ -1,0 +1,3 @@
+# Validators hash exact bytes; keep LF on every platform.
+* text=auto eol=lf
+*.png binary

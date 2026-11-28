@@ -5,6 +5,10 @@
   "status": "draft-design-review-candidate",
   "files": [
     {
+      "path": ".gitattributes",
+      "sha256": "20f51963358f7c5d7f22f7e918167b37e07a6d658cb929c2d5b8183ca74ebb7a"
+    },
+    {
       "path": ".github/README.md",
       "sha256": "7c46297ccc3a5e90b1642d142b9bfe7bb7fcfbf54b2d228a2facdf5bb588e4ae"
     },
@@ -14,7 +18,7 @@
     },
     {
       "path": ".github/workflows/foundation.yml",
-      "sha256": "2a26d51502bdcbdea7e9d01566de0482ab2667143ce209bd9c1a37ea54bda5e7"
+      "sha256": "e48aa9bb8f9d19f86c05e2b4c02df6d2af6d36be14c6feea73de40d4f6c5ec59"
     },
     {
       "path": ".github/workflows/repository-governance.yml",
@@ -142,7 +146,7 @@
     },
     {
       "path": "docs/bundle-validation.md",
-      "sha256": "b84d24b37c558fa77e18be379c8c0472ca3eca92069a1ec4d2dbd137d7eee03f"
+      "sha256": "bc6dd0664057576920fb8e330b8dd269e4606d493d1b8dbaf5e89b0323ae1a6a"
     },
     {
       "path": "docs/evidence/foundation-capability-observations-v1.md",
@@ -170,7 +174,7 @@
     },
     {
       "path": "docs/specification-review.md",
-      "sha256": "51576c7cd4163ced433e6637e17f7b21bd77506f26548c654ba2d7fd424e25ab"
+      "sha256": "3750389ee4362f437431f5a22997e9b4e32ff89478a355251608eb27ac30b182"
     },
     {
       "path": "docs/specification/execution-capabilities-v2.md",
@@ -374,7 +378,7 @@
     },
     {
       "path": "tests/test_foundation.py",
-      "sha256": "676be809b0103e8152e9537695fa5e9a183efb938e8759239b8beaa773b1c312"
+      "sha256": "36ca2f81adda7997e2a01e48abd3c43c5d55862bae9453eb7acc13f08e3ae19f"
     },
     {
       "path": "tests/test_packaging.py",
@@ -430,7 +434,7 @@
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "4d0ab1306852219240f181c4cfeafa41175f7b660ca37441f81b104141ad340c"
+      "sha256": "11d572a476601bd356d14c26847d1f12941e5c462319550fd9f3337e60dec2e0"
     }
   ],
   "private_inputs_included": false,
