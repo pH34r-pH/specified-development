@@ -9,6 +9,29 @@ delivery_status: designed-only
 
 The implementation reuses upstream v1.0.13 primitives through the existing distribution's preset and extension. It adds a small documents module to `extensions/ph34r-contracts/scripts/ph34r_contracts/`, rather than a fork, new scheduler or generic agent framework. `spec/manifest.json` is the explicit inventory/dependency source and navigation.json only reading order. Directory requirements and contracts are the earliest behavioral authority.
 
+## Implementation targets and direct path
+
+**Component and consumers.** The documents module of `ph34r-contracts` implements DS-FR-001 through DS-FR-016. Its real consumers are the replacement specify/clarify/plan/tests/tasks/analyze/implement commands, the freshness entrypoints, CI guards and the optional site/wiki views. The specification owns all observable behavior; this section owns only technical choices.
+
+**Current and target implementation.** There is no current implementation. The accepted implementation decision is Python 3.12 with the standard library plus the distribution's locked Markdown and YAML parsers, running inside the existing extension. There is no candidate port: a different language or runtime would be a plan revision against the same specification and DIR test contract, and it would need comparative evidence under the same oracle.
+
+**Reuse.** Upstream Spec Kit v1.0.13 primitives through the preset/extension, `graphlib` and `heapq` for closure order (see the decision record below), the existing gate/receipt/cache/projection helpers through declared interfaces, and the approved Markdown tooling for link and anchor parsing. All are pinned through the distribution lock.
+
+**Direct path and state.** Each command call reads one immutable manifest snapshot, validates, selects closure, assembles bytes and a source map in memory, and promotes from a stage with before-hash checks. All state is per-call except the managed build outputs, whose ownership belongs to the staged-promotion journal. Feature selection, renderer choice and wiki export are runtime inputs; the closure algorithm, tie rule and lock schema are fixed at build time.
+
+**Layer dispositions.**
+
+| Layer | Disposition | Duty |
+| --- | --- | --- |
+| Six document modules (inventory, links, compile, freshness, retention, views) | Retain | Separate scopes with independent fixtures; no plugin framework. |
+| Read-only `build/<feature>/spec.md` adapter | Preserve as external compatibility boundary | Upstream scripts need sibling files. Exit condition: upstream supports a canonical source directory directly. |
+| Wiki/site projection | Retain, optional at runtime | Users choose whether to publish views. |
+| Generic rendering or agent abstraction | Remove | No consumer requires it. |
+
+**Objective and preserved acceptance.** The objective is correct, deterministic closure and freshness, not speed. Every DIR case remains the acceptance bar. A simplification that drops a validation duty is not acceptable, and no performance claim is made.
+
+**Unresolved decisions and local discretion.** Whether DIR-003 needs an explicit ready-set tie witness remains open until the post-audit review of #7. Implementation tasks may choose private function boundaries, internal names and error-message wording within the declared module scopes and stable diagnostic codes.
+
 ## Prior-art decision record: normative dependency closure and order
 
 **Status:** plan-level design candidate; no compiler implementation, task dispatch, new test, or product qualification is claimed.

@@ -90,7 +90,7 @@
     },
     {
       "path": "build/directory-specs/plan.md",
-      "sha256": "2fefc4ed80d2e706d663a20fb726c393fc006662488fdf837bcab2824a0b2dfe"
+      "sha256": "db11bf595e154e8aec7a284700b793e6ca5dbc22189fd672b314de862aa13642"
     },
     {
       "path": "build/directory-specs/tasks.md",
@@ -170,7 +170,7 @@
     },
     {
       "path": "docs/specification-review.json",
-      "sha256": "6e9728f07329f36268b73b54b323dfcc2f733abacbf3c848babef8e7029008a8"
+      "sha256": "532227b6fab0f81c8d5ced27d5bd95917bfadcac63557cb6cf56d16c3f51c3d2"
     },
     {
       "path": "docs/specification-review.md",
@@ -266,7 +266,7 @@
     },
     {
       "path": "spec/usage/lifecycle.md",
-      "sha256": "3380ec4c002c493958e79e028ec946e5d0412d8a6ad35cb47c80d4d28ea1af00"
+      "sha256": "4beda9bab25493c5cb82d97c04f6be4ada9d11ed0d9c65191f3e399d11ab80e5"
     },
     {
       "path": "tests/fixtures/bundle-v2/authority.md",

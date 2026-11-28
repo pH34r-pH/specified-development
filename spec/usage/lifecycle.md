@@ -35,6 +35,26 @@ A gap is an accepted requirement that lacks passing independent evidence at the 
 
 A spec change propagates only through its gap. The plan sections, independent test cases and tasks that depend on changed requirements become stale and are refreshed in that order; unaffected accepted descendants, receipts and identities remain valid. New tasks are produced only for the gap. A technical discovery that invalidates the plan repairs the plan; a product discovery repairs the spec first. Neither lowers the acceptance bar.
 
+## Specification and plan authority
+
+The specification defines the finished working product and is its acceptance criteria. It states required capabilities, observable inputs and outputs, failure behavior, user and runtime variability, interoperability, security, privacy and accepted operational or performance requirements. It is not a container for internal implementation architecture. Public interoperability requirements stay in the specification; the internal mechanism that satisfies them belongs in the plan.
+
+The plan selects languages and runtimes, dependency and toolchain versions, algorithms and data structures, internal architecture, build and deployment mechanisms, and the direct implementation strategy. It references product requirements by ID rather than copying or weakening them. A plan preference, stretch goal, faster kernel, smaller dependency list or reduced line count cannot redefine product acceptance, and a declared target is not evidence that it is reached.
+
+Two plans can target the same specification and the same independent behavioral oracle. A language or runtime migration that preserves the product contract revises the plan and its affected downstream artifacts, never the specification, so the specification hash is unchanged. A new or changed product promise requires specification review first.
+
+Each plan carries a compact implementation-targets section rather than a separate registry or configuration format:
+
+- the bounded component, its traced product requirements and its real consumers;
+- the current implementation and the candidate and intended language/runtime targets, labeled as aspiration, authorized experiment, accepted implementation decision or qualified result;
+- existing libraries and platform features to reuse, pinned through existing locks;
+- the direct implementation path, state ownership, and which variation is fixed at build time versus genuinely required at runtime;
+- for each material layer, a disposition of retain, remove, specialize at build time, or preserve as an external or migration boundary, with the duty it serves and any temporary bridge's exit condition;
+- the improvement objective, preserved acceptance requirements, comparative evidence, qualified environments, and rollback or migration obligations;
+- explicit unresolved decisions and the local discretion an implementation task may exercise.
+
+Prefer a simpler same-language implementation before proposing a migration when that answers the question. When gains are attributed separately to simplification and language choice, compare current, simplified same-language and optional port under the same behavioral contract; do not require three implementations when no such causal claim is made. A microbenchmark is not end-to-end performance. Product performance requirements stay in the specification; a technical threshold for choosing a candidate stays in the plan and cannot lower the product's acceptance bar.
+
 ## Prior-art review before plan authoring
 
 Before finalizing a plan, review existing standards, algorithms, data structures, patterns or compatible library interfaces when they could materially affect correctness, compatibility, security, cost or maintenance. Keep a compact decision record with the relevant requirement and constraints; where a candidate applies and does not apply; assumptions and invariants; material failure behavior, side effects, state ownership, concurrency and compatibility boundaries; a simple baseline and other plausible alternatives; and why each option is adopted, extended or rejected. Cite source-backed asymptotic bounds and label empirical performance claims separately; an empirical claim needs qualified measurement evidence.
