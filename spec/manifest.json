@@ -17,6 +17,16 @@
       "assets": [],
       "visibility": "public"
     },
+    "specified-development/onboarding": {
+      "path": "usage/onboarding.md",
+      "role": "usage",
+      "normative_dependencies": [
+        "specified-development/authority",
+        "specified-development/lifecycle"
+      ],
+      "assets": [],
+      "visibility": "public"
+    },
     "specified-development/distribution": {
       "path": "features/distribution/index.md",
       "role": "feature",
@@ -24,7 +34,8 @@
         "specified-development/authority",
         "specified-development/distribution-contract",
         "specified-development/upstream",
-        "specified-development/rollout"
+        "specified-development/rollout",
+        "specified-development/onboarding"
       ],
       "assets": [],
       "visibility": "public"

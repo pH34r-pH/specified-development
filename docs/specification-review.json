@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "base_manifest_sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1",
+  "base_manifest_sha256": "d2956f992c2e0171c12081d675f1d32f5de0c419f50973c9541c791cbe98e3e3",
   "current_documents": {},
   "section_traces": [
     {
@@ -98,6 +98,72 @@
       "sha256": "2be8e4041acf6da4db12958648b67c14a595e6087deefc7769735bea8e51cefb"
     },
     {
+      "document_id": "specified-development/onboarding",
+      "heading": "Brownfield onboarding",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-023"
+      ],
+      "sha256": "985a9562c83fc1730aa0c3debeaa910df4ee04482a136bfc5c6ca552950dbc1f"
+    },
+    {
+      "document_id": "specified-development/onboarding",
+      "heading": "Scope one area at a time",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-023"
+      ],
+      "sha256": "268b540318d1e29b30e5eda1926afd4c18dd1ced70e3efa33aafded2fb5c06c6"
+    },
+    {
+      "document_id": "specified-development/onboarding",
+      "heading": "Characterization mode",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-023"
+      ],
+      "sha256": "5fd3cb665e46fe98db530a65ed2f3732cbf41893818a621d9400d652a1b2895e"
+    },
+    {
+      "document_id": "specified-development/onboarding",
+      "heading": "Known defects",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-024"
+      ],
+      "sha256": "75b0eeefeddbc0362e85238f24bbb2abbb4f790f10bf20e33d038d64c7085d6c"
+    },
+    {
+      "document_id": "specified-development/onboarding",
+      "heading": "Independent tests and baseline",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-007",
+        "specified-development/distribution#FR-023",
+        "specified-development/distribution#FR-024"
+      ],
+      "sha256": "69f9f31e62a784352c7dae31d48bfa4171c60c6543cc69f7a5c4c2fa4157ebbd"
+    },
+    {
+      "document_id": "specified-development/onboarding",
+      "heading": "Existing Spec Kit projects",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-021",
+        "specified-development/distribution#FR-024"
+      ],
+      "sha256": "6f2584e54b718765926abfc1e91708e49ce66ba7a2f36a4e036a972d8168b437"
+    },
+    {
+      "document_id": "specified-development/onboarding",
+      "heading": "Onboarding record",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-024"
+      ],
+      "sha256": "7590b0240701b6cae68cdbeb8d8850b8f8c11fb9d82945f8eb747beec60bb524"
+    },
+    {
       "document_id": "specified-development/distribution",
       "heading": "Reusable repository specification lifecycle",
       "kind": "informative",
@@ -143,7 +209,7 @@
         "specified-development/distribution#US6-AS2",
         "specified-development/distribution#US6-AS3"
       ],
-      "sha256": "1cb9a08c41c9fb0d319578fa2aa6486698cc99dc6f78f8b3fcdd899055a1b772"
+      "sha256": "c9b2e9eec61af761586b60ff9678d1cc377e538dec1f96857ae8ff856ca74b34"
     },
     {
       "document_id": "specified-development/distribution",
@@ -173,7 +239,7 @@
         "specified-development/distribution#FR-021",
         "specified-development/distribution#FR-022"
       ],
-      "sha256": "eb625d5b4a11e8c968d2586097f68625dcddef86a58e57be60933f068aa50a17"
+      "sha256": "4eb61345b1c4fc8433eeb75af8332884b2e3da01565c0e79f0c7d81fa9397546"
     },
     {
       "document_id": "specified-development/distribution",
@@ -189,7 +255,7 @@
         "specified-development/distribution#SC-007",
         "specified-development/distribution#SC-008"
       ],
-      "sha256": "66acec87a042db28137d1f2666095b1a604246ba6f8096788720589da81735a1"
+      "sha256": "54587cb78ffd9ae799cae457a59478aa7ef54f38bf0928ffb4e583ddf9960c5b"
     },
     {
       "document_id": "specified-development/distribution",
@@ -302,7 +368,7 @@
         "specified-development/directory-specs#DS-FR-010",
         "specified-development/directory-specs#DS-FR-012"
       ],
-      "sha256": "b81b83d62263ddeec48df97c3c095f8c030835fcb1aeca613b240d523573394f"
+      "sha256": "14bce479804433c4af47a639f5d45a573f74fa65f6a2d5c6b411df8a6f3883f9"
     },
     {
       "document_id": "specified-development/authority",

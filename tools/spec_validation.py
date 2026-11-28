@@ -1,7 +1,8 @@
 """Check current specification metadata and independently authored coverage.
 
-Historical sources are read unchanged. A small review overlay selects explicit
-successors and traces shared prose sections to existing feature requirements.
+Canonical sources are living documents. A small review overlay traces each
+reviewed prose section to existing feature requirements; its successor map is a
+compatibility reader only.
 """
 from __future__ import annotations
 
