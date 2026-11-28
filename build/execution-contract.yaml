@@ -589,7 +589,7 @@
       "commands": [
         "DISTRIBUTION_C_TEMPLATES"
       ],
-      "expected": "Replacement instructions describe complete mature products in past tense with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged."
+      "expected": "Replacement instructions describe complete mature products as living present-tense specifications with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged."
     },
     "T006": {
       "parents": [
@@ -2538,7 +2538,7 @@
         "title": "Implement the mature lifecycle preset",
         "kind": "implementation",
         "story": "US1",
-        "goal": "Replacement instructions describe complete mature products in past tense with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.",
+        "goal": "Replacement instructions describe complete mature products as living present-tense specifications with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.",
         "tests": [
           "TST-001",
           "TST-002"
@@ -2622,7 +2622,7 @@
         "commands": [
           "DISTRIBUTION_C_TEMPLATES"
         ],
-        "acceptance": "Replacement instructions describe complete mature products in past tense with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.",
+        "acceptance": "Replacement instructions describe complete mature products as living present-tense specifications with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.",
         "evidence_predicates": [
           "artifact_hash",
           "contract_hash",

@@ -1,16 +1,14 @@
 {
   "schema_version": 1,
   "base_manifest_sha256": "7e9607e6ce651c429a06eba9d0f30bb8263c90728490f831cb9a799726535df1",
-  "current_documents": {
-    "specified-development/execution-capabilities": "docs/specification/execution-capabilities-v2.md"
-  },
+  "current_documents": {},
   "section_traces": [
     {
       "document_id": "specified-development/overview",
       "heading": "Specified Development",
       "kind": "informative",
       "requirements": [],
-      "sha256": "31e3d46c6b40c4a94177082d79c71c7471c98f0c1851940b177ab8673c744865"
+      "sha256": "495021971242d420c9b4ac25c36d77db1fe4d7118c2b05ffca75d3e786c0deb5"
     },
     {
       "document_id": "specified-development/lifecycle",
@@ -29,7 +27,33 @@
         "specified-development/directory-specs#DS-FR-006",
         "specified-development/directory-specs#DS-FR-008"
       ],
-      "sha256": "6c3c20de74a982afa3159e06fc0394540db3b6af893fa57f20c8024a1bd03830"
+      "sha256": "4ac87a1ffdba57576c9dc64bc8da6a5a6f50d5aa533530fe0a58993918565a82"
+    },
+    {
+      "document_id": "specified-development/lifecycle",
+      "heading": "Living specification",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-002",
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-016",
+        "specified-development/distribution#FR-017"
+      ],
+      "sha256": "f9c277a00250a6e1df8d36fdb9561df65cf4f8080b8dc64a862d0f2837f9658d"
+    },
+    {
+      "document_id": "specified-development/lifecycle",
+      "heading": "Spec-first change and gaps",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-002",
+        "specified-development/distribution#FR-003",
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-007",
+        "specified-development/distribution#FR-014",
+        "specified-development/directory-specs#DS-FR-010"
+      ],
+      "sha256": "4e7566628763fd1ba5a43a5e36757fd88559a50bfa1582c318ff936aa2e19d67"
     },
     {
       "document_id": "specified-development/lifecycle",
@@ -40,7 +64,7 @@
         "specified-development/distribution#FR-003",
         "specified-development/distribution#FR-007"
       ],
-      "sha256": "f5d7a0d74febab27275cc49feab71b63f9eb7e0a3397bb01619c77660db041c3"
+      "sha256": "abf18ba23b077e0fd78b81ed1eeb0b6a00574e236c9b4813ec4b80ce883db01c"
     },
     {
       "document_id": "specified-development/lifecycle",
@@ -57,7 +81,7 @@
         "specified-development/directory-specs#DS-FR-013",
         "specified-development/directory-specs#DS-FR-014"
       ],
-      "sha256": "96961e479c8165ee8c914be36baef8b91d583e74e997fefdbbc75f4b6ec7e67e"
+      "sha256": "2be8e4041acf6da4db12958648b67c14a595e6087deefc7769735bea8e51cefb"
     },
     {
       "document_id": "specified-development/distribution",
@@ -68,7 +92,7 @@
     },
     {
       "document_id": "specified-development/distribution",
-      "heading": "Completed-product description",
+      "heading": "Product description",
       "kind": "normative",
       "requirements": [
         "specified-development/distribution#FR-001",
@@ -81,7 +105,7 @@
         "specified-development/distribution#FR-013",
         "specified-development/distribution#FR-019"
       ],
-      "sha256": "c742fd6f5c56c57636092c4034cadb87be0bde567f2447b1c824bb9862149050"
+      "sha256": "e42818ab275472a3d13bc13604a704b4b7746e99b39518bdf3e1e36cd58a977c"
     },
     {
       "document_id": "specified-development/distribution",
@@ -105,7 +129,7 @@
         "specified-development/distribution#US6-AS2",
         "specified-development/distribution#US6-AS3"
       ],
-      "sha256": "0a63b9c73de4d4115c9ac8a5bb44c6dcb5d481326c860064c154b0665f8a9668"
+      "sha256": "1cb9a08c41c9fb0d319578fa2aa6486698cc99dc6f78f8b3fcdd899055a1b772"
     },
     {
       "document_id": "specified-development/distribution",
@@ -135,7 +159,7 @@
         "specified-development/distribution#FR-021",
         "specified-development/distribution#FR-022"
       ],
-      "sha256": "68a8d7c05f6461db79c39a2843bcc0c7053288f6881ae7683597ac6c9ea5fa54"
+      "sha256": "eb625d5b4a11e8c968d2586097f68625dcddef86a58e57be60933f068aa50a17"
     },
     {
       "document_id": "specified-development/distribution",
@@ -151,7 +175,7 @@
         "specified-development/distribution#SC-007",
         "specified-development/distribution#SC-008"
       ],
-      "sha256": "294716a7c7ad594868715e174906ed2c86281c2fb463a6deab7b1162af3a3686"
+      "sha256": "66acec87a042db28137d1f2666095b1a604246ba6f8096788720589da81735a1"
     },
     {
       "document_id": "specified-development/distribution",
@@ -165,7 +189,7 @@
         "specified-development/distribution#FR-021",
         "specified-development/distribution#FR-022"
       ],
-      "sha256": "c6de0f6490318160d48400a4abd4ad10175fac08b50a0e28eba552a074e1e222"
+      "sha256": "84f8975123ad2014aa93046fc209b0c60802f3420b4a50de04517f21a234a49a"
     },
     {
       "document_id": "specified-development/directory-specs",
@@ -176,7 +200,7 @@
         "specified-development/directory-specs#DS-FR-006",
         "specified-development/directory-specs#DS-FR-007"
       ],
-      "sha256": "91356103308bcac9e139a8611aa2ab504ac1f7974d5663ed80373eb37bb3924f"
+      "sha256": "ddce49f616f560282e121393b9d05a623049d59cc37196f7dfa984552810fb54"
     },
     {
       "document_id": "specified-development/directory-specs",
@@ -196,7 +220,7 @@
         "specified-development/directory-specs#DS-US4-AS2",
         "specified-development/directory-specs#DS-US4-AS3"
       ],
-      "sha256": "cf3ff940391876d05207055e4ddc55a3c9d30846d3432bde424962b81362da84"
+      "sha256": "a5eadfb6ca2b490fdd793997b9573220cbf7da6850afe5ad6dad31619e4fb715"
     },
     {
       "document_id": "specified-development/directory-specs",
@@ -220,7 +244,7 @@
         "specified-development/directory-specs#DS-FR-015",
         "specified-development/directory-specs#DS-FR-016"
       ],
-      "sha256": "3e518d795954b6a82e029cda5680e6966911572d1b1ad9753d8124813e38ae3c"
+      "sha256": "896c9cfc98ed944f299518bd91b462b9cd51f9d2e61dd4dec41e3940cdc5dd70"
     },
     {
       "document_id": "specified-development/directory-specs",
@@ -234,7 +258,7 @@
         "specified-development/directory-specs#DS-SC-005",
         "specified-development/directory-specs#DS-SC-006"
       ],
-      "sha256": "19b344a02c1c954c889a8cf5755a3ea4b8f83ec3d82deb5da7220561a83d8e4b"
+      "sha256": "73b62d9bc9000f775666619f6c1170c1587caa7f24accfe0fd539a79042ee759"
     },
     {
       "document_id": "specified-development/directory-specs",
@@ -247,7 +271,7 @@
         "specified-development/directory-specs#DS-FR-014",
         "specified-development/directory-specs#DS-FR-016"
       ],
-      "sha256": "677f7901408241851c3904e117524567e63b6109f4f2149e478790fe623b9b0b"
+      "sha256": "9c610f97be268fd051ac1f5b6444f52414c1ebff77cbfdfb0c01ff16618ad438"
     },
     {
       "document_id": "specified-development/authority",
@@ -264,7 +288,7 @@
         "specified-development/directory-specs#DS-FR-010",
         "specified-development/directory-specs#DS-FR-012"
       ],
-      "sha256": "afa93e46b657a3a73fb8cb6997e5e3aa06f2349811b8eae8f292abbda9aa645e"
+      "sha256": "b81b83d62263ddeec48df97c3c095f8c030835fcb1aeca613b240d523573394f"
     },
     {
       "document_id": "specified-development/authority",
@@ -278,7 +302,7 @@
         "specified-development/distribution#FR-020",
         "specified-development/directory-specs#DS-FR-012"
       ],
-      "sha256": "3c737011412b736560e37929204c0171b17ef9a902880706f5ad55e63f00dd4c"
+      "sha256": "9e050b47b9432bc98b1d9bedf566bc65e804be586e39b15a672624a74573498a"
     },
     {
       "document_id": "specified-development/documents",
@@ -298,7 +322,7 @@
         "specified-development/directory-specs#DS-FR-004",
         "specified-development/directory-specs#DS-FR-005"
       ],
-      "sha256": "51d7c54e68341b83c46ec11e8d18778d25ecb25c21325d059da3210fb04944e7"
+      "sha256": "fd59c7217120afad648ecc8f550f687cc6feb4c43517dc97917e4241ea5b29fa"
     },
     {
       "document_id": "specified-development/documents",
@@ -309,7 +333,7 @@
         "specified-development/directory-specs#DS-FR-009",
         "specified-development/directory-specs#DS-FR-011"
       ],
-      "sha256": "93a331862ad1d44546fc298e13de66c2fe2e347d4c1fdde4738b44a64cbb4b16"
+      "sha256": "a82028cb13bdb36e70e285273baecf2ef15c87ce5d40b244619d462fb23ef7a5"
     },
     {
       "document_id": "specified-development/documents",
@@ -321,7 +345,7 @@
         "specified-development/directory-specs#DS-FR-015",
         "specified-development/distribution#FR-013"
       ],
-      "sha256": "f0c7bbc760eea14f7d8d2f6343eac6f735eb2f25cc75a66b3f1f324e11965c0d"
+      "sha256": "e5cd8b966e5683e05035c436b98d27c97434c8891ecbbb751da7acf3e47c9613"
     },
     {
       "document_id": "specified-development/documents",
@@ -332,7 +356,7 @@
         "specified-development/directory-specs#DS-FR-014",
         "specified-development/directory-specs#DS-FR-016"
       ],
-      "sha256": "9c120251ff1cd8e9518b969c17100d74d3beb24c015a9b627d351d7ce841a501"
+      "sha256": "690e8606305f6af78a4c8b9fce6fe0b0fa3476b226e5c578520833e9997da6a0"
     },
     {
       "document_id": "specified-development/distribution-contract",
@@ -384,7 +408,7 @@
         "specified-development/distribution#FR-017",
         "specified-development/distribution#FR-019"
       ],
-      "sha256": "2a6462a4daaab665cc82772ff85865440fa25768de30b8a2bd16c65f52ede397"
+      "sha256": "79a020b6323c6b5f1f649bf794b1c890b63daeac6d9d3a61f8e4a3acf06410eb"
     },
     {
       "document_id": "specified-development/distribution-contract",
@@ -397,7 +421,7 @@
         "specified-development/distribution#FR-011",
         "specified-development/distribution#FR-021"
       ],
-      "sha256": "6a7cd9137ddfe3e291de3fb5e588584a21e469ad347c0ef3b11db49b3b00d61b"
+      "sha256": "4f72a6e5dfd84bb677e983841f08d383f14ac74f56f22244fc8642b3ab3c431e"
     },
     {
       "document_id": "specified-development/distribution-contract",
@@ -423,7 +447,7 @@
         "specified-development/directory-specs#DS-FR-007",
         "specified-development/directory-specs#DS-FR-015"
       ],
-      "sha256": "9dd308b9bc0febe9d877de12c913f1c75dd5a6543e1caf9b4dd6b27c772461f7"
+      "sha256": "74f078ba5f8f9f4dcfd7eb5f3ac6d89ba16f2a6c6aed24f6bce14a48b74322fe"
     },
     {
       "document_id": "specified-development/rollout",
@@ -438,7 +462,7 @@
         "specified-development/distribution#FR-022",
         "specified-development/directory-specs#DS-FR-016"
       ],
-      "sha256": "893b43c6834f8b683640c9cda352d029f72850575917887f3311b678fee41626"
+      "sha256": "cb1ca528a8c6f3647b0d8613bf932e70076419a9c0a29ca97520c81b7c56bf2f"
     },
     {
       "document_id": "specified-development/execution-capabilities",
@@ -450,7 +474,7 @@
         "specified-development/distribution#FR-015",
         "specified-development/distribution#FR-020"
       ],
-      "sha256": "2e7104579e9302c697a6c0f5a27b450e5dc02c14609f5425cea3d5a9f4338f70"
+      "sha256": "1816907bbdd6a93ada8e5e26491bc1b0b67a009b9533802da965b9e333c75564"
     },
     {
       "document_id": "specified-development/execution-capabilities",
@@ -462,7 +486,7 @@
         "specified-development/distribution#FR-017",
         "specified-development/distribution#FR-019"
       ],
-      "sha256": "5fafe17082a5e5e5a1b69c014b4a1a4663824e33b3418aa2c48375a695e4368e"
+      "sha256": "7656e29b5622aafb998e709bdd16bff15c04bcc6d1d8e55a30d5aa89dbc0c09d"
     },
     {
       "document_id": "specified-development/execution-capabilities",
@@ -475,7 +499,7 @@
         "specified-development/distribution#FR-019",
         "specified-development/distribution#FR-020"
       ],
-      "sha256": "37c09a96a0dc41c6689b85059207c48350c10f79185b225999a6399650def158"
+      "sha256": "ca8c7173f246b1d42e2d8eae0f2ed2db589d368854caecf89776a2c82fb62c28"
     },
     {
       "document_id": "specified-development/execution-capabilities",
@@ -487,14 +511,14 @@
         "specified-development/distribution#FR-014",
         "specified-development/distribution#FR-021"
       ],
-      "sha256": "ad5f1aea7727cbeeb2afc090cf76b1521acf464b10910856635f0154f0d61445"
+      "sha256": "f060177b16c9449996602c7bc4a88c0a2fe83e25430d609b5ae97435f674ba80"
     },
     {
       "document_id": "specified-development/execution-capabilities",
       "heading": "Evidence reference",
       "kind": "informative",
       "requirements": [],
-      "sha256": "f0f9303ccf59118ea9997bab8d2920d46c6d96b6bcffb344d38122b9ebdb3526"
+      "sha256": "1e4da349d17c60ed1700960311f2613571d06135dd3996b2468e6aac2c195171"
     }
   ]
 }

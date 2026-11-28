@@ -22,7 +22,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
 - [ ] T003 Implement the mature lifecycle preset
   Parents: T002. Kind: implementation. Reasoning: integration. Tests: TST-001, TST-002.
   Outputs: presets/ph34r-lifecycle/preset.yml, presets/ph34r-lifecycle/templates/spec-template.md, presets/ph34r-lifecycle/templates/plan-template.md, presets/ph34r-lifecycle/templates/tests-template.md, presets/ph34r-lifecycle/templates/tasks-template.md, presets/ph34r-lifecycle/commands/speckit.specify.md, presets/ph34r-lifecycle/commands/speckit.plan.md, presets/ph34r-lifecycle/commands/speckit.tasks.md, presets/ph34r-lifecycle/commands/speckit.analyze.md, presets/ph34r-lifecycle/commands/speckit.implement.md, presets/ph34r-lifecycle/commands/speckit.taskstoissues.md, presets/ph34r-lifecycle/commands/speckit.github.taskstoissues.md, presets/ph34r-lifecycle/scripts/bash/setup-tasks.sh, presets/ph34r-lifecycle/scripts/powershell/setup-tasks.ps1.
-  Acceptance: Replacement instructions describe complete mature products in past tense with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.
+  Acceptance: Replacement instructions describe complete mature products as living present-tense specifications with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.
 - [ ] T004 Author artifact gate, revision and repair tests
   Parents: T001. Kind: test. Reasoning: integration. Tests: TST-003, TST-004, TST-017.
   Outputs: tests/test_gates.py, fixtures/mature-feature/revisions.json, fixtures/mature-feature/repair-packets.json.
@@ -688,7 +688,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "title": "Implement the mature lifecycle preset",
       "kind": "implementation",
       "story": "US1",
-      "goal": "Replacement instructions describe complete mature products in past tense with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.",
+      "goal": "Replacement instructions describe complete mature products as living present-tense specifications with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.",
       "parents": [
         "T002"
       ],
@@ -775,7 +775,7 @@ Cross-feature native prerequisites (authoring input, projected into the sole nat
       "commands": [
         "C_TEMPLATES"
       ],
-      "acceptance": "Replacement instructions describe complete mature products in past tense with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.",
+      "acceptance": "Replacement instructions describe complete mature products as living present-tense specifications with separate evidence status, mandate independent tests before tasks and complete structured records, redirect both GitHub issue commands, and preserve domain constitutions; targeted GREEN uses T002 oracle unchanged.",
       "evidence_predicates": [
         "artifact_hash",
         "contract_hash",

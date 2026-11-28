@@ -10,7 +10,7 @@
     },
     {
       "path": ".github/README.md",
-      "sha256": "7c46297ccc3a5e90b1642d142b9bfe7bb7fcfbf54b2d228a2facdf5bb588e4ae"
+      "sha256": "dde60e80be371e5229c76cff046782f41d767f859493b610292f25e611914e8b"
     },
     {
       "path": ".github/dependabot.yml",
@@ -38,11 +38,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "5c7cbf51421d59d71d18862a48cfd13da65b72f6be9815d7ea6cf1fdf6b62f42"
+      "sha256": "62b4f1f7bf39de648bc79a1bd1a00f521a824fc59345ba78ee09d6a8af5e92ef"
     },
     {
       "path": "REVIEW.md",
-      "sha256": "1fe17ad4ee16eacbb43673b6de11437d44967cdd28c42cf977c2e485166f155a"
+      "sha256": "68e0567c30c5bf42b35074a024f96d6c2014bc66729860d7ddee5f0748a076f7"
     },
     {
       "path": "build/bundle-example-review/README.md",
@@ -90,7 +90,7 @@
     },
     {
       "path": "build/directory-specs/plan.md",
-      "sha256": "720addc352362417b0698cc9383ec9a0b0b16ffff7d606183398177d158441b1"
+      "sha256": "2fefc4ed80d2e706d663a20fb726c393fc006662488fdf837bcab2824a0b2dfe"
     },
     {
       "path": "build/directory-specs/tasks.md",
@@ -98,23 +98,23 @@
     },
     {
       "path": "build/directory-specs/tests.md",
-      "sha256": "b8e8e521cf200c803eccd459c1a6de661d55ac3dd8268c1080e996fcc8a8dac6"
+      "sha256": "a59d8ede07e405a930df9c63e195def7e0e17d18db104d1930da94386f5e3bfa"
     },
     {
       "path": "build/distribution/plan.md",
-      "sha256": "6d6cc562a3988436a954c9594ab82836000bfe58c6dac7f95d2e4486f03b1437"
+      "sha256": "15fb6837288cf3c2ea4276271ecf66548e1cba9107e2e237c312ac8eaa32d5a7"
     },
     {
       "path": "build/distribution/tasks.md",
-      "sha256": "48baea57dce561116b0997727d4f52850b9dd2f5d58bd242ed02820817f9e686"
+      "sha256": "f7303acd5bb78acf7eb10ab034a48ee1c7fe8c115646f7b80467f80191c8d3ea"
     },
     {
       "path": "build/distribution/tests.md",
-      "sha256": "dab8584bbfd4a096e46144efdcf5ff255c919690240ef4beac7f60ec6f8f5a60"
+      "sha256": "40ca32640ddafb69370691fbbc5340939e46332e91db2cb1e3f94f883c2809ea"
     },
     {
       "path": "build/execution-contract.yaml",
-      "sha256": "0829ea48fd2801661956a3e1494cdd7416d78fbb3d685607fdc3cabacd2d5759"
+      "sha256": "7169ee1f6a5d11843874b8c240b257bfa9a4490942eaa6b40e3e92b77448f10a"
     },
     {
       "path": "build/foundation/design-validation.json",
@@ -146,7 +146,7 @@
     },
     {
       "path": "docs/bundle-validation.md",
-      "sha256": "bc6dd0664057576920fb8e330b8dd269e4606d493d1b8dbaf5e89b0323ae1a6a"
+      "sha256": "fe2391aaef7524dcf12ac3d235aa328ec888efa3c1c413840bb067a3dec02362"
     },
     {
       "path": "docs/evidence/foundation-capability-observations-v1.md",
@@ -170,19 +170,15 @@
     },
     {
       "path": "docs/specification-review.json",
-      "sha256": "512e6c6d698d161c16712b5289c3c99717e166cabcf5d2372c53b2c308c31f0d"
+      "sha256": "6e9728f07329f36268b73b54b323dfcc2f733abacbf3c848babef8e7029008a8"
     },
     {
       "path": "docs/specification-review.md",
-      "sha256": "3750389ee4362f437431f5a22997e9b4e32ff89478a355251608eb27ac30b182"
-    },
-    {
-      "path": "docs/specification/execution-capabilities-v2.md",
-      "sha256": "05a3cfa6005d53d81bd0559657ff38516c67e86374eae2b9b1e51cd92b9fa42d"
+      "sha256": "b85ff5248b7a1118e4ffec0563611ccbb48ebbdb78b01ea469a11280e439b47d"
     },
     {
       "path": "docs/task-review.md",
-      "sha256": "1b8de90d605e99093085a7bcee3780c62f950150949688f91e85e07b5d804f18"
+      "sha256": "0a5e5031b5e71e14ec6cc30fd8d86269e39e4c925d6d025e14f4c955f742e6c6"
     },
     {
       "path": "docs/tooling.md",
@@ -226,31 +222,31 @@
     },
     {
       "path": "spec/contracts/authority.md",
-      "sha256": "b91ed36cdbfc806923cb015ca096dc9e3312d2d76a9a2e0cbdd6009627a12224"
+      "sha256": "a2a65773a1a1672b48e73b678abe4f414b1d624599a8f6a63b8d2f5b45f06353"
     },
     {
       "path": "spec/contracts/distribution.md",
-      "sha256": "7405ac0f16ea918c890b33845258a0b633082de3d6e3c122e32e3046636a4f29"
+      "sha256": "271e4f51fa60fa039b3adf8496f626ed9ffeb4e08f7c92b9a7fe4fcfcf7667b5"
     },
     {
       "path": "spec/contracts/documents.md",
-      "sha256": "782874a6eb0d3bf006594aa6b7b12fa21cec2a4f2b4d78ca19f1643cb376d9e2"
+      "sha256": "89d9ab8baf02d01466f62541e0fb15d46803ea3704b815db27a77722b3be2801"
     },
     {
       "path": "spec/contracts/execution-capabilities.md",
-      "sha256": "0861d156a5f0c9a06d36d46c00dfae271568a384689477dcd7a46050ab0af17e"
+      "sha256": "b067e9ab2f25d346085e63ca9fe5b1607d8d56ba34abadda85c6711d38fabd84"
     },
     {
       "path": "spec/features/directory-specs/index.md",
-      "sha256": "3ac2637e29205d920d9b3fd6e13f658ffef3b5cc7a38cf710f5e01335a632d4a"
+      "sha256": "47d64a748bfbaa529a56ab072715f61315e1c3d0f95050480922fccb2d1a42a9"
     },
     {
       "path": "spec/features/distribution/index.md",
-      "sha256": "d2a7b9e3243e161066258f2ccf57a1c8dadccb240a4080c5f247c1cccb813c39"
+      "sha256": "955d23a3614f78c38f338804f3f7b81f922798af809ff00dbd8d11ee3faa4ef3"
     },
     {
       "path": "spec/index.md",
-      "sha256": "043041fcc2071a7f25fbe5dde3da218a85b5a8a03edea1c7e6d9cdfb158b6f9d"
+      "sha256": "c26b8d6bdba04fc45d003e1ddfa2e6ef841965d4fc739925c6b82ebece843ed4"
     },
     {
       "path": "spec/manifest.json",
@@ -262,15 +258,15 @@
     },
     {
       "path": "spec/operations/rollout.md",
-      "sha256": "080d0b180e3bb6d2edd8072dd575ae19b39ae27f8b4523f10349be503e3b86bd"
+      "sha256": "c6af95ca97ab6c9e79a86aa9d567e2b553e3ae40693dda248402df0b9fe50e5a"
     },
     {
       "path": "spec/operations/upstream.md",
-      "sha256": "b6c49f416da521c2df5bae0c188e322424c366213cf01b8007cebeb80ed9833b"
+      "sha256": "2354ddfc41249a1893b800eb75cb08c5d2ad028b4f7930478ca7421903edb470"
     },
     {
       "path": "spec/usage/lifecycle.md",
-      "sha256": "4283e7fad62b959f5f2125cefba797913a833ec8a55ea90422b1d65437b0da05"
+      "sha256": "3380ec4c002c493958e79e028ec946e5d0412d8a6ad35cb47c80d4d28ea1af00"
     },
     {
       "path": "tests/fixtures/bundle-v2/authority.md",
@@ -374,11 +370,11 @@
     },
     {
       "path": "tests/test_bundle.py",
-      "sha256": "b0f79f082aad0cc69e31a54233d42a7a1f14a7a45e260263476e61650ce6398e"
+      "sha256": "73a63bb93c015e294e8c2aec4e97a08e1796f47dc228afeeffca9a13ea848d12"
     },
     {
       "path": "tests/test_foundation.py",
-      "sha256": "36ca2f81adda7997e2a01e48abd3c43c5d55862bae9453eb7acc13f08e3ae19f"
+      "sha256": "95f10d8a0280a224770c5679f1d2f78bf2a55a3830a2cd5bcad2e9a546e7b2a2"
     },
     {
       "path": "tests/test_packaging.py",
@@ -394,7 +390,7 @@
     },
     {
       "path": "tests/test_spec_validation.py",
-      "sha256": "8be890a1024b21a80161b197b9be677d66dbb92c14659762ed06977b2e061467"
+      "sha256": "c59ad0cca305c611b62a17fae4565c8240c5ae948d38bdbfdf53030c0bfb09ed"
     },
     {
       "path": "tests/test_task_review.py",
@@ -434,7 +430,7 @@
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "11d572a476601bd356d14c26847d1f12941e5c462319550fd9f3337e60dec2e0"
+      "sha256": "6d5528c8eac7e9c34c50128f929996167819d5f197ef6e89e3976f5b7aa3615a"
     }
   ],
   "private_inputs_included": false,

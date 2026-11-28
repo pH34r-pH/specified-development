@@ -398,7 +398,14 @@ class BundleValidationTests(unittest.TestCase):
                 self.assertFalse(destination.exists())
 
     def test_legacy_view_preserves_source_graph_without_claiming_migration(self):
-        generated = review.generate(ROOT, "build/execution-contract.yaml", legacy=True)
+        # The legacy view renders from the retained frozen snapshot; living sources may differ.
+        receipt = json.loads((ROOT / "build/bundle-review/regeneration.json").read_text(encoding="utf-8"))
+        identity = receipt["detail_sha256"]
+        with tempfile.TemporaryDirectory() as temporary:
+            frozen = Path(temporary) / "frozen"
+            review.expand(ROOT / "build/bundle-review/objects" / f"{identity}.json", identity, frozen)
+            generated = review.generate(frozen, "build/execution-contract.yaml", legacy=True)
+            self.assertEqual(identity, json.loads(generated["regeneration.json"])["detail_sha256"])
         self.assertIn(b"legacy view; migration and generic validation required", generated["README.md"])
         self.assertLess(len(generated["README.md"]), 30000)
         with self.assertRaisesRegex(ValidationError, "MIGRATION_REQUIRED"):

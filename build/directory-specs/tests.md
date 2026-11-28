@@ -7,9 +7,9 @@ implementation_tests_run: false
 
 # Independent directory test contract
 
-Expected behavior came from the canonical directory feature and document/authority contracts. This contract preceded leaf decomposition. Tests had no implementation-derived goldens. Positive and negative cases used disposable workspaces/fake remotes and never published or changed consumer repositories. Expected RED meant missing intended behavior; parser/syntax/fixture/environment errors did not qualify.
+Expected behavior comes from the canonical directory feature and document/authority contracts. This contract precedes leaf decomposition. Tests have no implementation-derived goldens. Positive and negative cases use disposable workspaces/fake remotes and never publish or change consumer repositories. Expected RED means missing intended behavior; parser/syntax/fixture/environment errors do not qualify.
 
-Each suite recorded test-author RED then unchanged-oracle GREEN and focused regressions from its implementation successor. Integration qualification required the actual pinned upstream/component/renderer locks; unknown versions/capabilities blocked rather than skipping required assertions. Live external-link availability was separate dated evidence, not deterministic CI success.
+Each suite records test-author RED then unchanged-oracle GREEN and focused regressions from its implementation successor. Integration qualification requires the actual pinned upstream/component/renderer locks; unknown versions/capabilities block rather than skipping required assertions. Live external-link availability is separate dated evidence, not deterministic CI success.
 
 | ID | Requirements | Success criteria | Suite | Independent input | Oracle |
 | --- | --- | --- | --- | --- | --- |
@@ -38,9 +38,9 @@ Each suite recorded test-author RED then unchanged-oracle GREEN and focused regr
 | DIR-023 | DS-FR-013/014/016 | DS-SC-004/006 | pilot | Public allowlist vs private-path/credential sentinel, source-map audit and dry export | Private/secret sentinel rejects; no original private evidence copied; no automatic publish |
 | DIR-024 | DS-FR-001/006/016 | DS-SC-006 | pilot | Compare entire source manifest with acceptance traces and retained-code/regeneration claims | Every requirement covered; rendering not behavioral regeneration proof; no deletion/false delivery claim |
 
-Renderer output expectations were captured from primary documented behavior and the pinned renderer in isolation, reviewed before implementation. They included repository/site/wiki fragment differences; no invented universal anchor rule passed by construction. Source-byte equality and output link behavior were both required. Wiki remote fixtures explicitly exercised complete inventory and compare-and-swap drift checks.
+Renderer output expectations are captured from primary documented behavior and the pinned renderer in isolation, reviewed before implementation. They include repository/site/wiki fragment differences; no invented universal anchor rule passes by construction. Source-byte equality and output link behavior are both required. Wiki remote fixtures explicitly exercise complete inventory and compare-and-swap drift checks.
 
-The baseline distribution test contract remained required for native execution, accounting, installations, model guards and behavioral regeneration. The directory feature extended its inputs; passing these 24 directory cases alone could not claim full distribution delivery or regeneration.
+The baseline distribution test contract remains required for native execution, accounting, installations, model guards and behavioral regeneration. The directory feature extends its inputs; passing these 24 directory cases alone cannot claim full distribution delivery or regeneration.
 
 | Acceptance scenario | Independent cases |
 | --- | --- |
@@ -57,4 +57,4 @@ The baseline distribution test contract remained required for native execution, 
 | DS-US4-AS2 | DIR-014, DIR-020 |
 | DS-US4-AS3 | DIR-020, DIR-021, DIR-023 |
 
-Suite test leaves and unchanged-oracle successors were inventory T002→T003, links T004→T005, compile T006→T007, freshness T008→T009, commands T010→T011, retention T012→T013, views T014→T015, upgrade T016→T017 and pilot T018→T019. Required review/handoff was T020→T021→T022 with native dependencies retained in the execution contract. Product test execution remained pending.
+Suite test leaves and unchanged-oracle successors are inventory T002→T003, links T004→T005, compile T006→T007, freshness T008→T009, commands T010→T011, retention T012→T013, views T014→T015, upgrade T016→T017 and pilot T018→T019. Required review/handoff is T020→T021→T022 with native dependencies retained in the execution contract. Product test execution is pending.

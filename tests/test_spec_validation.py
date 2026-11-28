@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import shutil
 import tempfile
@@ -19,6 +20,33 @@ from tools.spec_validation import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+CAPABILITIES = "spec/contracts/execution-capabilities.md"
+# Exact legacy frontmatter shapes from the retained historical sources. Canonical
+# documents now use schema version 1; the legacy reader stays covered here.
+LEGACY_DISTRIBUTION = """---
+document_id: specified-development/distribution
+feature_id: distribution
+artifact: specification
+revision: 1
+target_status: mature-complete-product
+architecture_approval: delegated-user-directive
+artifact_acceptance: candidate-review
+delivery_status: designed-only
+delivery_evidence: []
+---
+
+# Reusable repository specification lifecycle
+"""
+LEGACY_OVERVIEW = """---
+document_id: specified-development/overview
+target_status: mature-complete-product
+approval_status: architecture-approved-directory-enhancement-specified
+delivery_status: designed-only
+delivery_evidence: []
+---
+
+# Specified Development
+"""
 
 
 class SpecValidationTests(unittest.TestCase):
@@ -102,7 +130,9 @@ class SpecValidationTests(unittest.TestCase):
             frontmatter("---\ndocument_id: first\ndocument_id: second\n---\n# Title\n")
 
     def test_legacy_unknown_values_types_and_feature_fields(self) -> None:
-        metadata, _ = frontmatter(self.spec)
+        metadata, _ = frontmatter(LEGACY_DISTRIBUTION)
+        self.assertEqual(validate_metadata(ROOT, metadata, "specified-development/distribution", "feature")["approval_status"],
+                         "architecture-approved")
         for change, code in (
             ({"architecture_approval": "automatically-approved"}, "FRONTMATTER_LEGACY"),
             ({"revision": "one"}, "FRONTMATTER_LEGACY"),
@@ -116,8 +146,7 @@ class SpecValidationTests(unittest.TestCase):
             validate_metadata(ROOT, metadata, "specified-development/distribution", "feature")
 
     def test_compound_legacy_state_does_not_accept_artifact(self) -> None:
-        text = (ROOT / "spec/index.md").read_text()
-        metadata, _ = frontmatter(text)
+        metadata, _ = frontmatter(LEGACY_OVERVIEW)
         result = validate_metadata(ROOT, metadata, "specified-development/overview", "overview")
         self.assertEqual(result["approval_status"], "architecture-approved")
         self.assertEqual(result["artifact_acceptance"], "unspecified")
@@ -126,7 +155,7 @@ class SpecValidationTests(unittest.TestCase):
             validate_metadata(ROOT, metadata | {"approval_status": "architecture-approevd"}, "specified-development/overview", "overview")
 
     def test_current_states_require_independent_evidence_kinds(self) -> None:
-        metadata, _ = frontmatter((ROOT / "docs/specification/execution-capabilities-v2.md").read_text())
+        metadata, _ = frontmatter((ROOT / CAPABILITIES).read_text())
         for state, kinds in (("implemented", ["source"]), ("qualified", ["source", "test"]), ("deployed", ["source", "test", "deployment"])):
             candidate = metadata | {"delivery_status": state, "delivery_evidence": [{"kind": kind, "reference": "https://example.invalid/observed-evidence"} for kind in kinds]}
             self.assertEqual(validate_metadata(ROOT, candidate, metadata["document_id"], "contract")["delivery_status"], state)
@@ -138,7 +167,7 @@ class SpecValidationTests(unittest.TestCase):
             validate_metadata(ROOT, metadata | {"artifact_acceptance": "accepted", "approval_status": "architecture-approved"}, metadata["document_id"], "contract")
 
     def test_evidence_https_syntax_is_checked_without_fetching(self) -> None:
-        metadata, _ = frontmatter((ROOT / "docs/specification/execution-capabilities-v2.md").read_text())
+        metadata, _ = frontmatter((ROOT / CAPABILITIES).read_text())
         for reference in ("https://", "https://\ninvalid host", "https://bad host/path",
                           "https://example.invalid:broken/path", "https://[invalid/path"):
             with self.subTest(reference=reference), self.assertRaisesRegex(ValidationError, "FRONTMATTER_EVIDENCE"):
@@ -157,7 +186,7 @@ class SpecValidationTests(unittest.TestCase):
                 self.assertEqual(result["delivery_status"], "implemented")
 
     def test_acceptance_evidence_uses_the_same_url_guard(self) -> None:
-        metadata, _ = frontmatter((ROOT / "docs/specification/execution-capabilities-v2.md").read_text())
+        metadata, _ = frontmatter((ROOT / CAPABILITIES).read_text())
         with self.assertRaisesRegex(ValidationError, "FRONTMATTER_EVIDENCE"):
             validate_metadata(ROOT, metadata | {
                 "artifact_acceptance": "accepted", "approval_status": "architecture-approved",
@@ -167,13 +196,13 @@ class SpecValidationTests(unittest.TestCase):
 
     def test_unclassified_and_changed_prose_requires_review(self) -> None:
         root = self.review_copy()
-        path = root / "docs/specification/execution-capabilities-v2.md"
-        path.write_text(path.read_text() + "\n## Another obligation\n\nA new obligation applied.\n")
+        path = root / CAPABILITIES
+        path.write_text(path.read_text() + "\n## Another obligation\n\nA new obligation applies.\n")
         with self.assertRaisesRegex(ValidationError, "SPEC_SECTION_(STALE|UNCLASSIFIED)"):
             validate_repository(root)
         root = self.review_copy()
-        path = root / "docs/specification/execution-capabilities-v2.md"
-        path.write_text(path.read_text().replace("never silently substituted", "always silently substituted"))
+        path = root / CAPABILITIES
+        path.write_text(path.read_text().replace("never silently substitutes", "always silently substitutes"))
         with self.assertRaisesRegex(ValidationError, "SPEC_SECTION_STALE"):
             validate_repository(root)
 
@@ -193,16 +222,27 @@ class SpecValidationTests(unittest.TestCase):
                     validate_repository(root)
 
     def test_successor_is_bound_to_exact_predecessor(self) -> None:
+        # Canonical documents are revised in place; the successor overlay remains a
+        # legacy compatibility reader and must still bind its exact predecessor.
         root = self.review_copy()
-        path = root / "docs/specification/execution-capabilities-v2.md"
-        text = path.read_text()
-        metadata, _ = frontmatter(text)
-        digest = metadata["supersedes"]["sha256"]
-        path.write_text(text.replace(digest, "e" * 64))
+        original = root / CAPABILITIES
+        raw = original.read_bytes()
+        metadata, body = frontmatter(raw.decode("utf-8"))
+        successor_meta = metadata | {"revision": metadata["revision"] + 1,
+                                     "supersedes": {"path": CAPABILITIES, "sha256": hashlib.sha256(raw).hexdigest(),
+                                                    "revision": metadata["revision"]}}
+        successor = root / "docs/specification/execution-capabilities-successor.md"
+        successor.parent.mkdir(parents=True, exist_ok=True)
+        successor.write_bytes(("---\n" + json.dumps(successor_meta) + "\n---\n" + body).encode("utf-8"))
+        review_path = root / REVIEW_PATH
+        review = json.loads(review_path.read_text())
+        review["current_documents"] = {metadata["document_id"]: "docs/specification/execution-capabilities-successor.md"}
+        review_path.write_text(json.dumps(review))
+        validate_repository(root)
+        successor.write_bytes(successor.read_bytes().replace(hashlib.sha256(raw).hexdigest().encode(), b"e" * 64))
         with self.assertRaisesRegex(ValidationError, "SPEC_SUCCESSOR_SOURCE"):
             validate_repository(root)
-        original = ROOT / "spec/contracts/execution-capabilities.md"
-        self.assertEqual((root / "spec/contracts/execution-capabilities.md").read_bytes(), original.read_bytes())
+        self.assertEqual(original.read_bytes(), (ROOT / CAPABILITIES).read_bytes())
 
     def test_default_metadata_mapping_is_not_mutated(self) -> None:
         metadata, _ = frontmatter(self.spec)

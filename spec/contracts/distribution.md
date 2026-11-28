@@ -1,6 +1,14 @@
 ---
+schema_version: 1
 document_id: specified-development/distribution-contract
+role: contract
+revision: 2
+target_status: unspecified
+approval_status: unspecified
+artifact_acceptance: unspecified
 delivery_status: designed-only
+delivery_evidence: []
+qualifiers: []
 ---
 
 # Distribution data and interface contract
@@ -110,13 +118,13 @@ Exit 0 means the specific validation/projection succeeded, never human approval 
 | Rate card | ID, currency, dated effective/retrieval times, source URL/digest, provider/model/applicable tier/context/service, input/cache/output per-million rates (nullable explicitly), normalization policy, synthetic-fixture indicator. |
 | Regeneration trial | Frozen authoritative input inventory, denied retained/prior-trial source scope, independent workspace/context IDs, allowed reads, model/tool/dependency/environment fingerprints, generation command receipt, oracle/regression receipts, normalized behavior digest, all attempts/costs and scoped claim/verdict. The two qualification trials within T032 use the same exact fixed model binding throughout that task attempt. |
 
-Budgets and observations followed the [execution capability contract](execution-capabilities.md). Ordinary 90-minute/output requests were advisory and parent-monitored, with unexposed enforcement/effective fields explicit. Hard security/financial/technical limits required positively verified controls; measurement-qualified experiments required their frozen actual measurement fields. Missing optional telemetry did not block ordinary code work. Source/parent/permission/scope and no-fallback gates remained strict; no execution loop or hard-limit guarantee was invented.
+Budgets and observations follow the [execution capability contract](execution-capabilities.md). Ordinary 90-minute/output requests are advisory and parent-monitored, with unexposed enforcement/effective fields explicit. Hard security/financial/technical limits require positively verified controls; measurement-qualified experiments require their frozen actual measurement fields. Missing optional telemetry does not block ordinary code work. Source/parent/permission/scope and no-fallback gates remain strict; no execution loop or hard-limit guarantee is invented.
 
 ## Native scheduling semantics
 
 For a new feature, authors decompose tests, implementation, and required review into distinct executable leaves. Production depends on its test leaf; dependent work depends on the appropriate verified/reviewed leaf. Each leaf receives exactly one GitHub issue; epics/feature summaries are optional non-executable groups. Sub-issue membership is never a hard dependency. Native GitHub `blocked by` edges express prerequisites. All dependency reads are paginated.
 
-Legacy legacy Kanban contracts retain their aggregate/test/implementation/review interpretation and board-local receipts. A legacy aggregate may map to a grouping reference, but the distribution never fans out or assigns new executable identity without upstream-approved leaf decomposition. The existing execution system controls claiming, retry, completion, and resume. Normalized identity metadata is not a second graph.
+Legacy Kanban contracts retain their aggregate/test/implementation/review interpretation and board-local receipts. A legacy aggregate may map to a grouping reference, but the distribution never fans out or assigns new executable identity without upstream-approved leaf decomposition. The existing execution system controls claiming, retry, completion, and resume. Normalized identity metadata is not a second graph.
 
 ## Cost oracle
 
