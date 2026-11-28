@@ -1,0 +1,9 @@
+8bc6879457744c907b681fd874819e8e44a52338911587089880bd672bc23879 *./build/archive-read-policy/plan.md
+7e55c85111b28073a0dee9cd2dbc03486ef90d0855bfd0a28219b869481688e5 *./build/archive-read-policy/tests.md
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *./experiment_compiler/__init__.py
+310444ab867d7fce7b8d7962e89c927b5375298fa4ed46a0aaebe9664e8957d1 *./spec/features/archive-read-policy/index.md
+072e4163da5c7cf27f5177e2aab4dc0eccd64ad84798847f72db71d0903afc8a *./spec/index.md
+da7b18d4f6a331bebb7b362ec0c220b8738f21bb052dd9852b164e83b94a1cf6 *./spec/manifest.json
+f2c2cfe5db9a4981ba84b25779b574b6d0c8780ebe803741a6f60bd9130829d3 *./spec/navigation.json
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 *./tests/__init__.py
+c4d66d242d52c421e4c2432734f5945c3cc3035e184a3bb626f02a722fcefdbc *./tests/test_spec_archive_read_policy.py

@@ -23,6 +23,8 @@ Onboarding covers one bounded area at a time: a module, service or feature, reco
 
 Characterization mode is the single, bounded exception to the rule that specifications are not derived from implementation. While an area is being onboarded, authors draft its present-tense specification (behavior only) and plan (language, architecture, dependencies and reused libraries) from the existing code, documentation, tests and observed behavior. Every drafted requirement records the sources it was characterized from.
 
+Characterization also captures the area's public interface: every name, signature, attribute, constant and observable behavior that code outside the area imports or relies on, found by searching the rest of the repository for uses of the area. Unspecified code that depends on the area makes that dependency part of the area's specified interoperability, so the specification states the observable behavior and the plan's public-interface section fixes the exact names. A specification that passes its own independent cases but omits behavior that unspecified consumers rely on cannot regenerate a compatible implementation.
+
 A human reviewer then reviews the drafted specification and accepts it as authority. Acceptance ends characterization mode for that area. From then on, the ordinary rules apply: code is evidence, not authority, and every behavior change is spec-first.
 
 ## Known defects

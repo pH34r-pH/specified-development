@@ -110,7 +110,7 @@
     },
     {
       "path": "build/distribution/tests.md",
-      "sha256": "640240ac1e08f5890d7afeb9cb78ef086d31f008d6a29555cecbfd15714ecede"
+      "sha256": "2872808106eea6ad434ea4b516af53c33a33d4e42d4f9806903cc20348e89b86"
     },
     {
       "path": "build/execution-contract.yaml",
@@ -149,6 +149,98 @@
       "sha256": "fe2391aaef7524dcf12ac3d235aa328ec888efa3c1c413840bb067a3dec02362"
     },
     {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/README.md",
+      "sha256": "16778470e7a653b57b757e127ee32d9d87ca9da43aacc701db46a82e4f903794"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/archive_policy-ARP-FR-010.diff",
+      "sha256": "1a59bd011016258ebfbed17a9c45fb2952774b9cfff0a2b61133a1e4eafef61b"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/build/archive-read-policy/plan.md",
+      "sha256": "9251c97b66a55e3e33972fa97ae0dab51310b3c160346b9e170cd8bb73487c0e"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/build/archive-read-policy/tests.md",
+      "sha256": "4617a2f2cb10dfa80db79d85e413a2a0356148822aa5b5198e040e6dbe33c0dc"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/evidence.json",
+      "sha256": "38f70fb100f80d420bf350688d23efa356e7e5df22e31a16d5bf4289834acdca"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/onboarding.json",
+      "sha256": "b94116bd7de3fccabad66916411794eef5321af911f9ba6496134ccf7b2c5446"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/results.json",
+      "sha256": "26c53d6bd5d0cc02e92acaa66fe60c83b238500293b106a16cb6f88b32b9ca07"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/spec/features/archive-read-policy/index.md",
+      "sha256": "73a38d3c7e76c50ea0dff2f01d09d493bdce8be15560b730ee742a783e3d2ed7"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/spec/index.md",
+      "sha256": "072e4163da5c7cf27f5177e2aab4dc0eccd64ad84798847f72db71d0903afc8a"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/spec/manifest.json",
+      "sha256": "da7b18d4f6a331bebb7b362ec0c220b8738f21bb052dd9852b164e83b94a1cf6"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/spec/navigation.json",
+      "sha256": "f2c2cfe5db9a4981ba84b25779b574b6d0c8780ebe803741a6f60bd9130829d3"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/status-after-change.json",
+      "sha256": "ecf025926109b2168655cea77bf73ec9d510fccf0945911d5670d0dbcc03a88d"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/status-baseline.json",
+      "sha256": "6809380b1e9fdc013bba22a1dc35083b8579d556506ff9d00dcfc8133fe50535"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/status-spec-change.json",
+      "sha256": "b13dcae568aaf74879fc53441f5d46e5a76c3538a49c996a285b1c13be875615"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/artifacts/tests/test_spec_archive_read_policy.py",
+      "sha256": "da09c9e62b75e6634e5eba008e284447c723f848d068c86cd637e449eb88266d"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/trials/regen-trial-1-inputs.sha256",
+      "sha256": "b3cbe31992773e8d46a35ed0cee3bc6d3bf43729095321ac59a6504bfcd838a6"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/trials/regen-trial-1-outputs.sha256",
+      "sha256": "edf2783bafacdfda25f17c0482124a54edd32132d9f6d7b65258e48d33384cde"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/trials/regen-trial-1/archive_policy.py",
+      "sha256": "aafa50a5ec0145783c17fdb2c108fffbbe3e860e3ba1c347a07cf4be064794a5"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/trials/regen-trial-1/archive_policy_cli.py",
+      "sha256": "c596bf6b241d4c80b8b6ef3f14171386d79c78b170f32c112a0dacb469856db5"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/trials/regen-trial-2-inputs.sha256",
+      "sha256": "379bd979dc9e6db1801ea9a36ef2ab4543e29bb188f71edc3d7d8a45bb62356c"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/trials/regen-trial-2-outputs.sha256",
+      "sha256": "07c78d1076dc1d6125d0aeff754bb034851bfaa1d76bcf7a96f606684af5439e"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/trials/regen-trial-2/archive_policy.py",
+      "sha256": "028e32449a376b4e1a2fb1d9a2d89071508ca9a47f73c50b941b4348b0594b1f"
+    },
+    {
+      "path": "docs/evidence/brownfield-pilot-experiment-compiler/trials/regen-trial-2/archive_policy_cli.py",
+      "sha256": "c24e0e7829a426607a225ef8fabaeeb1e8f65dba33ae50598f53c6f476f914cc"
+    },
+    {
       "path": "docs/evidence/foundation-capability-observations-v1.md",
       "sha256": "6d021f6c38b98049c174d640228c10d38a24b20073441294a0056e5733c4f364"
     },
@@ -170,7 +262,7 @@
     },
     {
       "path": "docs/specification-review.json",
-      "sha256": "d4295d0e0af59511cc07d17221f159d39a176239a55bb0b2a85a7fc42c1a50a9"
+      "sha256": "a02f38b04d4372814683b6b2dd85536ccb6e1187ad517cb80f0defb58dd80716"
     },
     {
       "path": "docs/specification-review.md",
@@ -194,11 +286,11 @@
     },
     {
       "path": "kit/ONBOARDING.md",
-      "sha256": "956ad0b73fb2a435e344edab77baf9ffb69ba684773affe5df7b0335c30a6950"
+      "sha256": "c84c001eb3a4a5b612e83be22a38fee9d5ea0c216ae6a79651bf55060f21d3c3"
     },
     {
       "path": "kit/README.md",
-      "sha256": "85d300c7622078b0755c0711ff651db424e7ba2722d4239daa99e21bfff19622"
+      "sha256": "128b58645bdf84a3159b637ce3fd1ff2fa7f5adbbbc74d50ebcc87413f6f5561"
     },
     {
       "path": "kit/ci/specified-development.yml",
@@ -206,7 +298,7 @@
     },
     {
       "path": "kit/templates/build/FEATURE_ID/plan.md",
-      "sha256": "2092b6a11654255c0a82414a7d15c8b51271a51ec033508ca69ad7416be00218"
+      "sha256": "c99c7d84163b0970ae67206deeb5f684852f93d132c310446b96000449b7537e"
     },
     {
       "path": "kit/templates/build/FEATURE_ID/tests.md",
@@ -290,7 +382,7 @@
     },
     {
       "path": "spec/features/distribution/index.md",
-      "sha256": "9c96a60fadb701ebf17bde5cb086a063aba7b918e17d7d033ed2749cf6d78456"
+      "sha256": "df0df7f7c77042c80f69c3a93032360da4b3a710f55ed1c6b5c66a96e248669f"
     },
     {
       "path": "spec/index.md",
@@ -318,7 +410,7 @@
     },
     {
       "path": "spec/usage/onboarding.md",
-      "sha256": "d99bb877ad1526c01877a0f258351fec4f1c829e9b3308f078114b91e5549abb"
+      "sha256": "4c6e37015856dc17dde5d12b2370b8b6f2f71e48c9cb14f33fbda2f5233b2246"
     },
     {
       "path": "tests/fixtures/bundle-v2/authority.md",
@@ -414,7 +506,7 @@
     },
     {
       "path": "tests/fixtures/onboarding/tally/build/tally/plan.md",
-      "sha256": "0e58c47c52d7564d79ac506b6cf462dd585e4f08dea7f59bf1d0f6483a654835"
+      "sha256": "1552178056a0892635476bb1d38989f38b81614e94e03efa9695e4b33c0eef88"
     },
     {
       "path": "tests/fixtures/onboarding/tally/build/tally/tests.md",
@@ -474,7 +566,7 @@
     },
     {
       "path": "tests/test_kit.py",
-      "sha256": "6c55346580edcce98de5d2388633bc0e40b9fe6f3e4fdefb74a94e9396073ff6"
+      "sha256": "971541ee1aeca3f8bc95ed7dcc093637f3bad7778a7e0d9a0d433292388c2eb8"
     },
     {
       "path": "tests/test_onboarding.py",
@@ -526,7 +618,7 @@
     },
     {
       "path": "tools/layout.py",
-      "sha256": "96f4cf3c40eb8a1148bbf062aa3150cb53c80787554c95bba00491367c08b9e4"
+      "sha256": "6e71fe74ed0d7bb5de8d3eeb54f13ef0cfa7517856c0aa7053a13fbe917e009f"
     },
     {
       "path": "tools/onboarding.py",
@@ -546,7 +638,7 @@
     },
     {
       "path": "tools/validate_foundation.py",
-      "sha256": "e2dfa2bf1638a16986023d7570b048623a4516fccad073e0fc1f8c5b82ed6362"
+      "sha256": "b5f75e815756578576395373448371c471aa0e49152284127ca514b4020a8aa4"
     }
   ],
   "private_inputs_included": false,

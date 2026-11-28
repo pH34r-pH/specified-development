@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -37,6 +38,7 @@ else:
     from validate_foundation import validate_spec
 
 TARGETS_HEADING = "Implementation targets and direct path"
+INTERFACE_HEADING = "Public interface"
 CASE_TABLE_HEADERS = ("Case", "Requirements")
 REQUIREMENT_TOKEN = re.compile(r"(?:[A-Z]+-)?(?:FR|SC)-\d{3}")
 
@@ -47,8 +49,23 @@ def _plan(root: Path, feature: str) -> None:
     require(path.is_file(), "LAYOUT_PLAN_MISSING", relative)
     text = path.read_text(encoding="utf-8")
     body = frontmatter(text)[1] if text.startswith("---") else text
-    require(TARGETS_HEADING in sections(body), "LAYOUT_PLAN_TARGETS",
+    headings = sections(body)
+    require(TARGETS_HEADING in headings, "LAYOUT_PLAN_TARGETS",
             f"{relative} needs a '{TARGETS_HEADING}' section")
+    require(INTERFACE_HEADING in headings, "LAYOUT_PLAN_INTERFACE",
+            f"{relative} needs a '{INTERFACE_HEADING}' section listing what code outside the area relies on")
+
+
+def _not_ignored(root: Path, relatives: list[str]) -> None:
+    """Feature records must be tracked; a broad `build/` ignore rule silently drops them."""
+    if not (root / ".git").exists():
+        return
+    result = subprocess.run(["git", "-C", str(root), "check-ignore", "--no-index", "--", *relatives],
+                            capture_output=True, text=True, check=False)
+    ignored = sorted(line.strip() for line in result.stdout.splitlines() if line.strip())
+    require(not ignored, "LAYOUT_RECORDS_IGNORED",
+            f"feature records are ignored by version control: {ignored}; replace a 'build/' rule with '/build/*' "
+            "and '!/build/<feature>/'")
 
 
 def _test_contract(root: Path, feature: str, requirements: set[str]) -> dict[str, set[str]]:
@@ -86,6 +103,7 @@ def check_layout(root: Path) -> dict[str, Any]:
         _, body = frontmatter(confined_file(root, "spec/" + root_doc["path"]).read_text(encoding="utf-8"))
         requirements, scenarios = feature_requirements(body)
         _plan(root, feature)
+        _not_ignored(root, [f"build/{feature}/plan.md", f"build/{feature}/tests.md"])
         cases = _test_contract(root, feature, requirements)
         covered = set().union(*cases.values()) if cases else set()
         features[feature] = {"requirements": len(requirements), "scenarios": len(scenarios), "cases": len(cases),
