@@ -32,6 +32,7 @@ the package's supported dependency ranges.
 | `specified-validate-spec` | `python -m tools.spec_validation` |
 | `specified-task-review` | `python -m tools.task_review` |
 | `specified-onboarding` | `python -m tools.onboarding` |
+| `specified-gaps` | `python -m tools.gaps` |
 
 The existing `python tools/bundle_validation.py ...` and
 `python tools/bundle_review.py ...` commands continue to work, including in the
@@ -63,6 +64,29 @@ passing evidence. The validator never runs project code and never derives
 expected values from implementation output. A worked example lives in
 [tests/fixtures/onboarding/tally](../tests/fixtures/onboarding/tally/onboarding.json).
 The command exits 0 when the record is valid and 2 for an invalid record or I/O failure.
+
+## Requirement status and gaps
+
+`specified-gaps` reports requirement status, gaps and stale descendants from
+independent evidence, following the
+[gap propagation contract](../spec/contracts/documents.md#requirement-status-and-gap-propagation).
+It needs the `authoring` extra:
+
+```sh
+specified-gaps evidence.json --root /path/to/project --output status.json
+specified-gaps evidence.json --root /path/to/project --previous status.json --output next.json
+```
+
+The evidence file names the exact revision, the features, the independent cases
+with the requirements each traces, optional tasks with the cases each depends
+on, and optional case outcomes recorded at that revision against the
+requirement hashes in force when they ran. Each requirement is untested, stale,
+failing, regressed or satisfied, and every requirement that is not satisfied is
+a gap. With `--previous`, requirements that were added or whose text changed
+are listed as changed, together with exactly the cases, tasks and plan sections
+that trace them. The report is canonical JSON. It exits 0 on success and 2 for
+invalid evidence or an I/O failure; prose and document fields never mark a
+requirement satisfied.
 
 ## Diagnostics
 

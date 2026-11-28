@@ -31,6 +31,14 @@ The compiler emits UTF-8 LF metadata/preamble, a read-only derived warning, sele
 
 Assembly stages files on the same filesystem, validates every output and before-hash comparison, then journals promotion. No accepted snapshot is replaced. Partial failure retains the stage and journal and restores previous managed bytes and modes; recovery proof is required. Canonical sources are never symlinked into build.
 
+## Requirement status and gap propagation
+
+Each accepted requirement has a requirement hash: the SHA-256 of its normalized requirement-table description. Evidence input names the exact source revision, the onboarded or selected features, the independent cases with the requirements each traces, optional tasks with the cases each depends on, and optional case outcomes recorded at that revision against the requirement hashes in force when they ran.
+
+Status is computed per requirement. A requirement with no tracing case is untested. One whose cases have no outcome, or whose outcomes were recorded against a different requirement hash, is stale. One with any failing case is failing, or regressed when the previous report marked it satisfied under the same hash. One whose tracing cases all pass against its current hash is satisfied. Every requirement that is not satisfied is a gap.
+
+Given a previous report, requirements whose hash changed or that were added are changed requirements. The stale set contains exactly the cases that trace a changed requirement, the tasks that depend on those cases, and the plan sections that cite a changed requirement ID. Everything else keeps its status and identity. Unknown requirement IDs, cases tracing no requirement, tasks naming unknown cases and outcomes from a different revision fail before any report is produced. The report is canonical JSON and is never produced by a model.
+
 ## Upstream integration and command surface
 
 The extension exposes deterministic `ph34r-spec documents validate`, `assemble --feature ID`, `check --feature ID`, `clean --feature ID --dry-run`, `site --check`, `wiki --dry-run` and controlled `wiki --apply`. These are planned extension-owned verbs, not unsupported upstream CLI flags. Every execute path validates accepted inputs and current effective assets before delegating.
