@@ -135,6 +135,7 @@ BUNDLE_PUBLIC_FILES = {
     "tests/fixtures/tooling/authority-serialization-v1.json",
     "tests/test_bundle.py",
     "tests/test_gaps.py",
+    "tests/test_kit.py",
     "tests/test_onboarding.py",
     "tests/test_packaging.py",
     "tests/test_release_attribution.py",
@@ -147,6 +148,7 @@ BUNDLE_PUBLIC_FILES = {
     "tools/bundle_review.py",
     "tools/bundle_validation.py",
     "tools/gaps.py",
+    "tools/layout.py",
     "tools/onboarding.py",
     "tools/release_attribution.py",
     "tools/spec_validation.py",
@@ -189,7 +191,7 @@ def allowed_public_path(value: str) -> bool:
         for name in ("plan.md", "tests.md", "tasks.md")
     }:
         return True
-    return value.startswith(("tests/fixtures/foundation/", "tests/fixtures/onboarding/"))
+    return value.startswith(("kit/", "tests/fixtures/foundation/", "tests/fixtures/onboarding/"))
 
 
 def check_public_inventory(root: Path) -> None:

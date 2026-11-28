@@ -23,9 +23,16 @@ specified-validate-spec = "tools.spec_validation:main"
 specified-task-review = "tools.task_review:main"
 specified-onboarding = "tools.onboarding:main"
 specified-gaps = "tools.gaps:main"
+specified-check-layout = "tools.layout:main"
 
 [tool.setuptools]
-packages = ["tools"]
+packages = ["tools", "tools.schemas"]
+
+[tool.setuptools.package-dir]
+"tools.schemas" = "schemas"
+
+[tool.setuptools.package-data]
+"tools.schemas" = ["*.schema.json"]
 
 [tool.ruff]
 target-version = "py312"
