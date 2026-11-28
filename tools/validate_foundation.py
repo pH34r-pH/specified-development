@@ -7,6 +7,8 @@ render, install, or qualify the proposed product.
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 import hashlib
 import json
 import re
@@ -45,6 +47,11 @@ TASK_MARKER_RE = re.compile(r"^\s*- \[[ xX]\] (T\d{3})\b", re.MULTILINE)
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 HEADING_RE = re.compile(r"^#{1,6}\s+(.+?)\s*#*\s*$", re.MULTILINE)
 HTML_ID_RE = re.compile(r"\b(?:id|name)=[\"']([^\"']+)[\"']")
+# The historical design snapshot: a content-addressed, lossless copy of every
+# input byte frozen by the native contract and task records. Canonical sources
+# are living documents; frozen digests resolve against this retained snapshot.
+FROZEN_SNAPSHOT_RECEIPT = "build/bundle-review/regeneration.json"
+FROZEN_SNAPSHOT_DIR = "build/bundle-review/objects"
 
 
 if TYPE_CHECKING or __package__:
@@ -54,6 +61,7 @@ if TYPE_CHECKING or __package__:
         _unique_object,
         cli_error,
         confined_file,
+        parse_json,
         read_json,
         require,
         safe_relative_path,
@@ -67,6 +75,7 @@ else:  # Direct invocation, including the portable three-file bundle tools.
         _unique_object,
         cli_error,
         confined_file,
+        parse_json,
         read_json,
         require,
         safe_relative_path,
@@ -156,7 +165,7 @@ def allowed_public_path(value: str) -> bool:
         return False
     if value in BUNDLE_PUBLIC_FILES:
         return True
-    if value in {".github/README.md", ".gitignore", "LICENSE", "LICENSING.md", "README.md", "payload-inventory.json"}:
+    if value in {".github/README.md", ".gitattributes", ".gitignore", "LICENSE", "LICENSING.md", "README.md", "payload-inventory.json"}:
         return True
     if value in {
         "build/execution-contract.yaml", "build/native-bindings.json",
@@ -524,7 +533,45 @@ def _validate_candidate_leaf(task: dict[str, Any]) -> None:
             "TASK_ACCEPTANCE", f"acceptance and an expected outcome are required: {qid}")
 
 
-def load_authoring_tasks(root: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def load_frozen_snapshot(root: Path) -> dict[str, str]:
+    """Return the verified path-to-SHA-256 map of the retained historical design snapshot."""
+    receipt = read_json(confined_file(root, FROZEN_SNAPSHOT_RECEIPT))
+    require(isinstance(receipt, dict), "FROZEN_SNAPSHOT_RECEIPT", "snapshot receipt must be an object")
+    identity = receipt.get("detail_sha256")
+    require(isinstance(identity, str) and SHA256_RE.fullmatch(identity) is not None,
+            "FROZEN_SNAPSHOT_RECEIPT", "snapshot receipt requires a detail_sha256 identity")
+    snapshot_path = confined_file(root, f"{FROZEN_SNAPSHOT_DIR}/{identity}.json", code="FROZEN_SNAPSHOT_PATH")
+    require(snapshot_path.is_file(), "FROZEN_SNAPSHOT_MISSING", f"retained snapshot object is missing: {identity}")
+    raw = snapshot_path.read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == identity, "FROZEN_SNAPSHOT_TAMPERED", "snapshot bytes differ from their identity")
+    payload = parse_json(raw, source=FROZEN_SNAPSHOT_DIR)
+    require(isinstance(payload, dict) and payload.get("schema_version") == 1
+            and payload.get("kind") == "lossless-bundle-inputs" and payload.get("mode") == "legacy-review-only",
+            "FROZEN_SNAPSHOT_KIND", "snapshot must be a version 1 lossless legacy review object")
+    records = payload.get("inputs")
+    require(isinstance(records, list) and bool(records), "FROZEN_SNAPSHOT_INPUTS", "snapshot inputs are required")
+    snapshot: dict[str, str] = {}
+    for record in records:
+        require(isinstance(record, dict) and set(record) == {"path", "sha256", "base64"},
+                "FROZEN_SNAPSHOT_RECORD", "each snapshot input requires path, sha256 and base64")
+        path = record["path"]
+        safe_relative_path(path, code="FROZEN_SNAPSHOT_PATH")
+        require(path not in snapshot, "FROZEN_SNAPSHOT_DUPLICATE", path)
+        try:
+            data = base64.b64decode(record["base64"], validate=True)
+        except (binascii.Error, TypeError, ValueError) as exc:
+            raise ValidationError(f"FROZEN_SNAPSHOT_RECORD: {path}") from exc
+        require(record["sha256"] == hashlib.sha256(data).hexdigest(), "FROZEN_SNAPSHOT_TAMPERED", path)
+        snapshot[path] = record["sha256"]
+    require(receipt.get("input_sha256") == snapshot, "FROZEN_SNAPSHOT_RECEIPT", "receipt inputs differ from the snapshot")
+    return snapshot
+
+
+def load_authoring_tasks(
+    root: Path, snapshot: dict[str, str] | None = None,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    if snapshot is None:
+        snapshot = load_frozen_snapshot(root)
     metadata_by_feature: dict[str, Any] = {}
     records: list[dict[str, Any]] = []
     all_qids: set[str] = set()
@@ -568,9 +615,8 @@ def load_authoring_tasks(root: Path) -> tuple[dict[str, Any], list[dict[str, Any
                 require(input_path not in frozen_paths, "TASK_FROZEN_DUPLICATE", f"duplicate frozen input for {qualified_id}: {input_path}")
                 frozen_paths.add(input_path)
                 require(isinstance(input_record["sha256"], str) and SHA256_RE.fullmatch(input_record["sha256"]) is not None, "TASK_FROZEN_DIGEST", f"invalid frozen hash for {qualified_id}: {input_path}")
-                frozen_file = confined_file(root, input_path, code="TASK_FROZEN_PATH")
-                require(frozen_file.is_file(), "TASK_FROZEN_MISSING", f"missing frozen input for {qualified_id}: {input_path}")
-                require(sha256_file(frozen_file) == input_record["sha256"], "TASK_FROZEN_HASH", f"frozen input hash mismatch for {qualified_id}: {input_path}")
+                require(input_path in snapshot, "TASK_FROZEN_MISSING", f"frozen input absent from the historical snapshot for {qualified_id}: {input_path}")
+                require(snapshot[input_path] == input_record["sha256"], "TASK_FROZEN_HASH", f"frozen input hash differs from the historical snapshot for {qualified_id}: {input_path}")
             copy = dict(task)
             copy["source_feature"] = feature
             records.append(copy)
@@ -959,21 +1005,26 @@ def validate_completion_evidence(
     return "candidate-evidence-current; owner-acceptance-pending"
 
 
-def validate_frozen_design_hashes(root: Path, contract: dict[str, Any]) -> None:
+def validate_frozen_design_hashes(root: Path, contract: dict[str, Any], snapshot: dict[str, str]) -> None:
+    """Bind the frozen native authority table to the retained snapshot, not to living sources."""
     expected = contract.get("authority", {}).get("sha256")
     require(isinstance(expected, dict), "FROZEN_HASH_TABLE", "authority sha256 table is required")
     for relative, digest in expected.items():
-        path = confined_file(root, relative)
-        require(path.is_file(), "FROZEN_INPUT_MISSING", relative)
-        require(sha256_file(path) == digest, "FROZEN_INPUT_CHANGED", relative)
+        safe_relative_path(relative, code="FROZEN_INPUT_PATH")
+        require(relative in snapshot, "FROZEN_INPUT_MISSING", relative)
+        require(snapshot[relative] == digest, "FROZEN_INPUT_CHANGED", relative)
+    contract_path = "build/execution-contract.yaml"
+    require(snapshot.get(contract_path) == sha256_file(confined_file(root, contract_path)),
+            "FROZEN_CONTRACT_CHANGED", "the historical native contract must equal its retained snapshot")
 
 
 def validate_workspace(root: Path = ROOT) -> None:
     check_public_inventory(root)
     contract = read_json(confined_file(root, "build/execution-contract.yaml"))
-    validate_frozen_design_hashes(root, contract)
+    snapshot = load_frozen_snapshot(root)
+    validate_frozen_design_hashes(root, contract, snapshot)
     validate_spec(root)
-    metadata_by_feature, records = load_authoring_tasks(root)
+    metadata_by_feature, records = load_authoring_tasks(root, snapshot)
     bindings = read_json(confined_file(root, "build/native-bindings.json"))
     validate_native_projection(metadata_by_feature, records, bindings, contract)
     t002 = next(record for record in metadata_by_feature["foundation"]["tasks"] if record["local_id"] == "T002")

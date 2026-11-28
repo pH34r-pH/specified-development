@@ -56,8 +56,13 @@ jobs:
           SPECIFIED_TEST_WHEEL="${package_wheels[0]}" python -m unittest discover -s tests -p test_packaging.py -v
       - name: Validate the portable complete bundle
         run: python tools/bundle_validation.py bundle.json --root tests/fixtures/bundle-v2 --authority-sha256 "$BUNDLE_AUTHORITY_SHA256"
-      - name: Verify compact legacy review from exact frozen bytes
-        run: python tools/bundle_review.py render build/execution-contract.yaml --legacy-review-only --output build/bundle-review --check
+      - name: Verify compact legacy review from the retained frozen snapshot
+        shell: bash
+        run: |
+          snapshot_sha="$(python -c 'import json; print(json.load(open("build/bundle-review/regeneration.json"))["detail_sha256"])')"
+          frozen_root="$RUNNER_TEMP/frozen-design"
+          python tools/bundle_review.py expand "build/bundle-review/objects/$snapshot_sha.json" --sha256 "$snapshot_sha" --output "$frozen_root"
+          python tools/bundle_review.py render build/execution-contract.yaml --root "$frozen_root" --legacy-review-only --output build/bundle-review --check
       - name: Verify the historical structural example
         run: python tools/bundle_review.py render bundle.json --root tests/fixtures/bundle --output build/bundle-example-review --authority-sha256 "$LEGACY_AUTHORITY_SHA256" --check
       - name: Verify the reviewed version 2 example

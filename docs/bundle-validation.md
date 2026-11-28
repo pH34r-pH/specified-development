@@ -82,10 +82,12 @@ model and issue bindings grant no readiness or acceptance. The read-only
 validator consumes observations supplied by the existing owner and never
 dispatches a task.
 
-The existing 60-task execution contract and its accepted historical receipts remain byte-identical. [Its compact review](../build/bundle-review/README.md) is the human entry point; the lossless object retains its machine detail and frozen source closure. Rendering it requires `--legacy-review-only`. Its unresolved symbolic read scopes and old candidate semantics are explicitly unqualified for the new generic profile.
+The existing 60-task execution contract and its accepted historical receipts remain byte-identical. [Its compact review](../build/bundle-review/README.md) is the human entry point. Its lossless object is the retained historical snapshot: it holds every frozen source byte. The foundation validator resolves the contract's authority table and every task's frozen inputs against that snapshot, not against the working tree. Canonical `spec/` sources, the README and the build documents are therefore living documents that can be revised in place without rewriting history. Rendering the review requires `--legacy-review-only` and an expanded snapshot as its root. Its unresolved symbolic read scopes and old candidate semantics are explicitly unqualified for the new generic profile.
 
 ```sh
-python tools/bundle_review.py render build/execution-contract.yaml --legacy-review-only --output build/bundle-review --check
+snapshot_sha="$(python -c 'import json; print(json.load(open("build/bundle-review/regeneration.json"))["detail_sha256"])')"
+python tools/bundle_review.py expand "build/bundle-review/objects/$snapshot_sha.json" --sha256 "$snapshot_sha" --output /tmp/frozen-design
+python tools/bundle_review.py render build/execution-contract.yaml --root /tmp/frozen-design --legacy-review-only --output build/bundle-review --check
 ```
 
 Calling the generic validator on this legacy contract returns `MIGRATION_REQUIRED`; it never invents concrete permissions or promotes a historical candidate. A target owner must review concrete source records, trace coverage, scope/capability limits, command forms and source associations, version provenance, and independent acceptance authority to author a version 2 bundle. Retain the predecessor by immutable Git identity, supply the newly reviewed version 2 pin, regenerate the new review, and rerun target checks. No version 1 pin is reinterpreted as a version 2 pin. Unsupported profile/schema/generator combinations and host runtimes fail explicitly. This release performs no silent migration, model dispatch, installation, publication, or deployment.

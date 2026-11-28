@@ -389,6 +389,63 @@ class InventoryPrivacyAndRetentionTests(unittest.TestCase):
                     vf.validate_workspace(root)
 
 
+class FrozenSnapshotTests(unittest.TestCase):
+    """Historical frozen digests bind to the retained snapshot; canonical sources stay living."""
+
+    def setUp(self):
+        self.snapshot = vf.load_frozen_snapshot(ROOT)
+        self.contract = vf.read_json(ROOT / "build" / "execution-contract.yaml")
+
+    def test_snapshot_covers_every_native_and_task_frozen_input(self):
+        vf.validate_frozen_design_hashes(ROOT, self.contract, self.snapshot)
+        _, records = vf.load_authoring_tasks(ROOT, self.snapshot)
+        self.assertEqual(60, len(records))
+
+    def test_frozen_digest_absent_or_different_in_snapshot_rejects(self):
+        changed = dict(self.snapshot)
+        changed["spec/index.md"] = "0" * 64
+        with self.assertRaisesRegex(vf.ValidationError, "FROZEN_INPUT_CHANGED"):
+            vf.validate_frozen_design_hashes(ROOT, self.contract, changed)
+        with self.assertRaisesRegex(vf.ValidationError, "TASK_FROZEN_HASH"):
+            vf.load_authoring_tasks(ROOT, changed)
+        missing = {path: digest for path, digest in self.snapshot.items() if path != "README.md"}
+        with self.assertRaisesRegex(vf.ValidationError, "FROZEN_INPUT_MISSING"):
+            vf.validate_frozen_design_hashes(ROOT, self.contract, missing)
+        with self.assertRaisesRegex(vf.ValidationError, "TASK_FROZEN_MISSING"):
+            vf.load_authoring_tasks(ROOT, missing)
+
+    def test_historical_native_contract_must_equal_snapshot(self):
+        changed = dict(self.snapshot)
+        changed["build/execution-contract.yaml"] = "0" * 64
+        with self.assertRaisesRegex(vf.ValidationError, "FROZEN_CONTRACT_CHANGED"):
+            vf.validate_frozen_design_hashes(ROOT, self.contract, changed)
+
+    def test_tampered_or_mismatched_snapshot_rejects(self):
+        receipt_path = "build/bundle-review/regeneration.json"
+        with tempfile.TemporaryDirectory() as temporary:
+            root = copy_public_workspace(Path(temporary) / "repo")
+            receipt = json.loads((root / receipt_path).read_text(encoding="utf-8"))
+            obj = root / vf.FROZEN_SNAPSHOT_DIR / f"{receipt['detail_sha256']}.json"
+            original = obj.read_bytes()
+            obj.write_bytes(original.replace(b'"base64":"', b'"base64":"A', 1))
+            with self.assertRaisesRegex(vf.ValidationError, "FROZEN_SNAPSHOT_TAMPERED"):
+                vf.load_frozen_snapshot(root)
+            obj.write_bytes(original)
+            receipt["input_sha256"]["README.md"] = "0" * 64
+            (root / receipt_path).write_text(json.dumps(receipt), encoding="utf-8")
+            with self.assertRaisesRegex(vf.ValidationError, "FROZEN_SNAPSHOT_RECEIPT"):
+                vf.load_frozen_snapshot(root)
+
+    def test_living_canonical_source_edit_keeps_history_valid(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = copy_public_workspace(Path(temporary) / "repo")
+            for relative in ("README.md", "spec/usage/lifecycle.md"):
+                path = root / relative
+                path.write_bytes(path.read_bytes() + b"\nThe living specification is revised in place.\n")
+                update_inventory_hash(root, relative)
+            vf.validate_workspace(root)
+
+
 class WholeScaffoldTests(unittest.TestCase):
     def test_complete_workspace_validator(self):
         vf.validate_workspace(ROOT)
