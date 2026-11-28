@@ -33,7 +33,7 @@ Every behavior change starts in the spec. The author writes the new or changed b
 
 A gap is an accepted requirement that lacks passing independent evidence at the current source revision. A new requirement is a gap until its independent tests pass. A changed requirement invalidates its previous evidence and becomes a gap. A requirement whose evidence starts failing has regressed and is also a gap.
 
-A spec change propagates only through its gap. The plan sections, independent test cases and tasks that depend on changed requirements become stale and are refreshed in that order; unaffected accepted descendants, receipts and identities remain valid. New tasks are produced only for the gap. A technical discovery that invalidates the plan repairs the plan; a product discovery repairs the spec first. Neither lowers the acceptance bar.
+A spec change propagates only through its gap, as computed by the [requirement status and gap contract](../contracts/documents.md#requirement-status-and-gap-propagation). The plan sections, independent test cases and tasks that depend on changed requirements become stale and are refreshed in that order; unaffected accepted descendants, receipts and identities remain valid. New tasks are produced only for the gap. A technical discovery that invalidates the plan repairs the plan; a product discovery repairs the spec first. Neither lowers the acceptance bar.
 
 ## Specification and plan authority
 

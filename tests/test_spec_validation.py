@@ -67,8 +67,8 @@ class SpecValidationTests(unittest.TestCase):
         return root
 
     def test_current_repository_and_both_existing_matrices(self) -> None:
-        self.assertEqual(validate_repository(ROOT)["requirement_and_scenario_ids"], 87)
-        self.assertEqual(len(validate_coverage(self.spec, self.tests)), 53)
+        self.assertEqual(validate_repository(ROOT)["requirement_and_scenario_ids"], 93)
+        self.assertEqual(len(validate_coverage(self.spec, self.tests)), 59)
         directory = (ROOT / "spec/features/directory-specs/index.md").read_text()
         cases = (ROOT / "build/directory-specs/tests.md").read_text()
         self.assertEqual(len(validate_coverage(directory, cases)), 34)

@@ -53,7 +53,7 @@
         "specified-development/distribution#FR-014",
         "specified-development/directory-specs#DS-FR-010"
       ],
-      "sha256": "4e7566628763fd1ba5a43a5e36757fd88559a50bfa1582c318ff936aa2e19d67"
+      "sha256": "f8ec5ada47f6591fab7f2a6256ea9326bb222713f8d25ac613bdcd04847aa6cd"
     },
     {
       "document_id": "specified-development/lifecycle",
@@ -209,7 +209,7 @@
         "specified-development/distribution#US6-AS2",
         "specified-development/distribution#US6-AS3"
       ],
-      "sha256": "c9b2e9eec61af761586b60ff9678d1cc377e538dec1f96857ae8ff856ca74b34"
+      "sha256": "31def4cac113719f85ecdd32ed749acb3575057eb27fe43512127d878ea4e9ea"
     },
     {
       "document_id": "specified-development/distribution",
@@ -239,7 +239,7 @@
         "specified-development/distribution#FR-021",
         "specified-development/distribution#FR-022"
       ],
-      "sha256": "4eb61345b1c4fc8433eeb75af8332884b2e3da01565c0e79f0c7d81fa9397546"
+      "sha256": "275d92cf88a7bdac17bdb7f2e86afb766d7eafd3cee5880151b598c7a3f175ad"
     },
     {
       "document_id": "specified-development/distribution",
@@ -255,7 +255,7 @@
         "specified-development/distribution#SC-007",
         "specified-development/distribution#SC-008"
       ],
-      "sha256": "54587cb78ffd9ae799cae457a59478aa7ef54f38bf0928ffb4e583ddf9960c5b"
+      "sha256": "53de565f00fc8ee2bdd17558ea80cbf2bcc42a28e6e02bc18dc149df87574a90"
     },
     {
       "document_id": "specified-development/distribution",
@@ -414,6 +414,17 @@
         "specified-development/directory-specs#DS-FR-011"
       ],
       "sha256": "a82028cb13bdb36e70e285273baecf2ef15c87ce5d40b244619d462fb23ef7a5"
+    },
+    {
+      "document_id": "specified-development/documents",
+      "heading": "Requirement status and gap propagation",
+      "kind": "normative",
+      "requirements": [
+        "specified-development/distribution#FR-004",
+        "specified-development/distribution#FR-025",
+        "specified-development/directory-specs#DS-FR-010"
+      ],
+      "sha256": "ccea6e10f8ec1c312838505476f53663408f11da5796a6d846fcb1790caa9f59"
     },
     {
       "document_id": "specified-development/documents",

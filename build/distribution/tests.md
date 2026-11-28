@@ -46,6 +46,8 @@ Each row defines its complete stable case: level/environment, traces, preconditi
 | TST-028 | CLI contract E1; US3-AS1/US4-AS3/US6-AS2, FR-003/008/012/019, SC-001/005/007 | Invoke all documented verbs with valid/malformed/stale inputs and shell-like strings; model/process mutation fake. | Stable typed results/exit codes, trusted argv only; deterministic verbs never launch inference. Missing options/fields do not silently default authority. | `tests/test_cli.py`; T028 → T029 |
 | TST-029 | contract E1; US7-AS1/AS3, FR-023/024, SC-009 | Independently authored synthetic brownfield repository: one onboarded area with an accepted present-tense spec, characterization sources and independent oracle; other source paths outside every area. | The accepted record validates; requirements without passing evidence are exactly the declared initial gaps; unspecified paths yield no requirements or gaps; the validator never reads implementation output to compute expectations. | `tests/test_onboarding.py`; delivered onboarding validator |
 | TST-030 | contract E1; US7-AS2/AS3/AS4, FR-023/024, SC-009 | Record mutations: untraced accepted requirement, unknown requirement, known defect without a decision, intended-behavior decision missing from gaps, specify-actual decision without follow-up, oracle derived from implementation output, accepted record without actor/time, gap outside onboarded areas, Spec Kit mapping that drops history or constitution. | Each mutation fails closed with its stable diagnostic before any record is reported valid; a candidate record may omit the oracle but never contains implementation-derived expectations. | `tests/test_onboarding.py`; delivered onboarding validator |
+| TST-031 | contract E1; US8-AS1/AS2/AS3/AS4, FR-004/025, SC-010 | Synthetic onboarded repository with a plan citing requirement IDs, independent cases, tasks and a previous satisfied report. Stimuli: add one requirement, change one requirement's text, make one previously passing case fail, leave the rest unchanged. | Gaps are exactly the added (untested), changed (stale) and failing (regressed) requirements; the stale set is exactly the tracing cases, dependent tasks and citing plan sections; unchanged requirements stay satisfied. The report is byte-identical across runs and invokes no model. | `tests/test_gaps.py`; delivered gap report |
+| TST-032 | contract E1; US8-AS2, FR-025, SC-010 | Evidence mutations: unknown requirement ID, case tracing no requirement, task naming an unknown case, results from another revision, undeclared case outcome, invalid outcome value, prose claiming delivery. | Each fails closed with a stable diagnostic before a report is produced; no prose or document field can mark a requirement satisfied. | `tests/test_gaps.py`; delivered gap report |
 
 ## Coverage matrices
 
@@ -58,13 +60,14 @@ Each row defines its complete stable case: level/environment, traces, preconditi
 | US5-AS1 / AS2 | TST-015, TST-018, TST-026 / TST-017 |
 | US6-AS1 / AS2 / AS3 | TST-005, TST-019, TST-025 / TST-021, TST-022, TST-023, TST-028 / TST-020, TST-023 |
 | US7-AS1 / AS2 / AS3 / AS4 | TST-029 / TST-030 / TST-029, TST-030 / TST-030 |
+| US8-AS1 / AS2 / AS3 / AS4 | TST-031 / TST-031, TST-032 / TST-031 / TST-031 |
 
 | Requirement | Cases |
 | --- | --- |
 | FR-001 | TST-001 |
 | FR-002 | TST-001, TST-002 |
 | FR-003 | TST-003, TST-028 |
-| FR-004 | TST-004, TST-017 |
+| FR-004 | TST-004, TST-017, TST-031 |
 | FR-005 | TST-006, TST-007, TST-026, TST-027 |
 | FR-006 | TST-008, TST-025 |
 | FR-007 | TST-009, TST-018 |
@@ -85,6 +88,7 @@ Each row defines its complete stable case: level/environment, traces, preconditi
 | FR-022 | TST-014, TST-025, TST-027 |
 | FR-023 | TST-029, TST-030 |
 | FR-024 | TST-029, TST-030 |
+| FR-025 | TST-031, TST-032 |
 
 | Success criterion | Cases |
 | --- | --- |
@@ -97,8 +101,9 @@ Each row defines its complete stable case: level/environment, traces, preconditi
 | SC-007 | TST-020, TST-021, TST-022, TST-023, TST-028 |
 | SC-008 | TST-014, TST-016, TST-022, TST-024, TST-025, TST-026, TST-027 |
 | SC-009 | TST-029, TST-030 |
+| SC-010 | TST-031, TST-032 |
 
-All SCs are buildable qualification criteria. No coverage exclusion is claimed. Contract entity rules are covered as follows: artifact/revision TST-002/003/004/017; task/contract TST-009/010/011/012; installation/release TST-006/007/008/026/027; issue binding TST-013/014; model/receipt TST-015/016/018; cache TST-020; usage/rate card TST-021/022/023; regeneration TST-005/019/025; onboarding record TST-029/030. The final column above is the mandatory TST→task/file matrix.
+All SCs are buildable qualification criteria. No coverage exclusion is claimed. Contract entity rules are covered as follows: artifact/revision TST-002/003/004/017; task/contract TST-009/010/011/012; installation/release TST-006/007/008/026/027; issue binding TST-013/014; model/receipt TST-015/016/018; cache TST-020; usage/rate card TST-021/022/023; regeneration TST-005/019/025; onboarding record TST-029/030; requirement status and gap report TST-031/032. The final column above is the mandatory TST→task/file matrix.
 
 ## Evidence and independence rules
 

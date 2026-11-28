@@ -22,6 +22,7 @@ specified-bundle-review = "tools.bundle_review:main"
 specified-validate-spec = "tools.spec_validation:main"
 specified-task-review = "tools.task_review:main"
 specified-onboarding = "tools.onboarding:main"
+specified-gaps = "tools.gaps:main"
 
 [tool.setuptools]
 packages = ["tools"]
