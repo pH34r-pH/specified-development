@@ -15,7 +15,7 @@ Each suite records test-author RED then unchanged-oracle GREEN and focused regre
 | --- | --- | --- | --- | --- | --- |
 | DIR-001 | DS-FR-001/002/003 | DS-SC-002 | inventory | Registered two-feature tree, roles, unknown file, missing doc, duplicate IDs and case-fold collisions | Exact handwritten inventory; every invalid variant rejects before writes |
 | DIR-002 | DS-FR-002 | DS-SC-005 | inventory | Rename feature source while retaining stable doc/requirement IDs; invalid slugs and reused IDs | Logical identity retained, path/hash changed, invalid/reused identities rejected |
-| DIR-003 | DS-FR-003/004 | DS-SC-001 | closure | Feature A/B, shared contract C, unrelated D, shuffled input enumeration and dependency cycle | Selected dependency-first C,A only; navigation to B does not select B; cycle fails |
+| DIR-003 | DS-FR-003/004 | DS-SC-001 | closure | Feature A/B, shared contract C, unrelated D, shuffled input enumeration and dependency cycle | Selected dependency-first C,A only; navigation to B does not select B; cycle fails. Ready-set tie witness (see composition oracles): root `feature/r` → `c/b`, `c/m`; `c/b` → `c/z`; unrelated `u/x` yields exactly `c/m`, `c/z`, `c/b`, `feature/r` |
 | DIR-004 | DS-FR-003/004/005 | DS-SC-002 | links | Requirement/schema citation missing normative-ref, undeclared closure target, missing schema ref | No hidden normative omission; explicit stable diagnostics |
 | DIR-005 | DS-FR-005 | DS-SC-002 | links | Relative links/assets/fragments, traversal, symlink, absolute local path, unsafe scheme | All valid targets resolve; hostile/unknown target rejects with zero mutations |
 | DIR-006 | DS-FR-005/013/014 | DS-SC-004 | links | Duplicate/Unicode headings, escaped destinations, image refs and reference-style Markdown links | Pinned renderer-derived anchors and all references validate; ambiguity/collision rejects |
@@ -39,6 +39,20 @@ Each suite records test-author RED then unchanged-oracle GREEN and focused regre
 | DIR-024 | DS-FR-001/006/016 | DS-SC-006 | pilot | Compare entire source manifest with acceptance traces and retained-code/regeneration claims | Every requirement covered; rendering not behavioral regeneration proof; no deletion/false delivery claim |
 
 Renderer output expectations are captured from primary documented behavior and the pinned renderer in isolation, reviewed before implementation. They include repository/site/wiki fragment differences; no invented universal anchor rule passes by construction. Source-byte equality and output link behavior are both required. Wiki remote fixtures explicitly exercise complete inventory and compare-and-swap drift checks.
+
+## Composition decision oracles
+
+Each material prior-art choice in the directory plan is tested from accepted behavior, not from the implementation's output.
+
+**Decision.** Normative closure and order use a dependency-first topological order with the smallest currently ready document ID chosen at every step (directory plan, closure-and-order decision record).
+
+**Requirement and invariants.** DS-FR-003/004 and DS-SC-001: the selected result is exactly the root's transitive normative closure, contains each document once, places every dependency before its dependents, excludes navigation-only and unrelated documents, chooses the smallest ready ID at each step, and is independent of input enumeration order. A cycle produces no order.
+
+**Inputs and independently fixed oracle.** The hand-authored tie witness is root `feature/r` depending on `c/b` and `c/m`, with `c/b` depending on `c/z` and an unrelated `u/x`. The reviewer derived the expected order by hand from the invariants before any implementation existed: `c/m`, `c/z`, `c/b`, `feature/r`. Initially `c/m` and `c/z` are ready and `c/m` sorts first; `c/b` becomes ready only after `c/z`. The negative case adds `c/z` → `feature/r`, which closes a cycle.
+
+**Representative incorrect results the oracle rejects.** A sorted depth-first postorder (`c/z`, `c/b`, `c/m`, `feature/r`) satisfies dependency order but violates the smallest-ready rule. An insertion-order topological order that emits `c/z` before `c/m` violates the same rule. Including `u/x`, omitting `c/z`, repeating an ID, or emitting `c/b` before `c/z` each violates closure or dependency order. Any order for the cyclic input is rejected. The oracle is a property check over a candidate order plus the fixed expected sequence; it never computes its expectation by calling the compiler.
+
+**Executable oracle evidence.** `tests/test_composition_oracle.py` encodes the witness, the fixed expected order and the property check, and demonstrates that each representative incorrect result above is rejected. When the compile leaves implement DIR-003, their test-author RED must fail on the missing ordering behavior itself, not on syntax, harness, fixture or environment errors, and their GREEN must pass this unchanged oracle.
 
 The baseline distribution test contract remains required for native execution, accounting, installations, model guards and behavioral regeneration. The directory feature extends its inputs; passing these 24 directory cases alone cannot claim full distribution delivery or regeneration.
 
